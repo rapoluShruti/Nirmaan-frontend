@@ -9,7 +9,7 @@
 //   useEffect(() => {
 //     const fetchProject = async () => {
 //       try {
-//         const res = await fetch(`http://localhost:5000/api/projects/${id}`);
+//         const res = await fetch(`http://localhost:2026/api/projects/${id}`);
 //         if (!res.ok) throw new Error("Project not found");
 //         const data = await res.json();
 //         setProject(data);
@@ -83,7 +83,10 @@ export default function ProjectDashboard() {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/projects/${id}`);
+        const res = await 
+        
+        // fetch(`http://localhost:2026/api/projects/${id}`);
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/projects/${id}`);
         const data = await res.json();
         setProject(data);
       } catch (err) {

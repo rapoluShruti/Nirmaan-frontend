@@ -78,7 +78,9 @@ export default function ManagerapprovalPage() {
           {selected.voiceNoteUrl && (
             <audio
               controls
-              src={`http://localhost:5000${selected.voiceNoteUrl}`}
+              // src={`http://localhost:2026${selected.voiceNoteUrl}`}
+          src={`${import.meta.env.VITE_BACKEND_URL}${selected.voiceNoteUrl}`}
+    
             />
           )}
 
@@ -86,7 +88,7 @@ export default function ManagerapprovalPage() {
 
           {selected.beforePhotoUrl && (
             <img
-              src={`http://localhost:5000${selected.beforePhotoUrl}`}
+              src={`${import.meta.env.VITE_BACKEND_URL}${selected.beforePhotoUrl}`}
               className="border"
               alt="Before"
             />
@@ -94,7 +96,8 @@ export default function ManagerapprovalPage() {
 
           {selected.afterPhotoUrl && (
             <img
-              src={`http://localhost:5000${selected.afterPhotoUrl}`}
+              // src={`http://localhost:2026${selected.afterPhotoUrl}`}
+              src={`${import.meta.env.VITE_BACKEND_URL}${selected.afterPhotoUrl}`}
               className="border"
               alt="After"
             />

@@ -133,7 +133,7 @@
 // //       {task.voiceNoteUrl && (
 // //         <div className="border rounded-lg p-3 bg-white">
 // //           <div className="font-semibold mb-2">🎤 Voice Message</div>
-// //           <audio controls src={`http://localhost:5000${task.voiceNoteUrl}`} className="w-full" />
+// //           <audio controls src={`http://localhost:2026${task.voiceNoteUrl}`} className="w-full" />
 // //         </div>
 // //       )}
 
@@ -365,7 +365,7 @@
 //           <div className="font-semibold">Voice Note</div>
 //           <audio
 //             controls
-//             src={`http://localhost:5000${task.voiceNoteUrl}`}
+//             src={`http://localhost:2026${task.voiceNoteUrl}`}
 //             className="w-full"
 //           />
 //         </div>
@@ -613,7 +613,9 @@ export default function TaskDetailsPanel({ task, onActionDone }) {
           <div className="font-semibold">Voice Note</div>
           <audio
             controls
-            src={`http://localhost:5000${task.voiceNoteUrl}`}
+            // src={`http://localhost:2026${task.voiceNoteUrl}`}
+            src={`${import.meta.env.VITE_BACKEND_URL}${task.voiceNoteUrl}`}
+
             className="w-full"
           />
         </div>

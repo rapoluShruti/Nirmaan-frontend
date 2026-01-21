@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // Matches your backend port
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api`, // Matches your backend port
 });
 
 // This "Interceptor" automatically grabs the token from storage

@@ -432,7 +432,7 @@
 //               </h3>
 //               <audio
 //                 controls
-//                 src={`http://localhost:5000${selectedTask.voiceNoteUrl}`}
+//                 src={`http://localhost:2026${selectedTask.voiceNoteUrl}`}
 //                 className="w-full"
 //               />
 //             </div>
@@ -465,7 +465,7 @@
 //                   Before Photo
 //                 </h3>
 //                 <img
-//                   src={`http://localhost:5000${selectedTask.beforePhotoUrl}`}
+//                   src={`http://localhost:2026${selectedTask.beforePhotoUrl}`}
 //                   alt="Before"
 //                   className="w-full rounded-xl border-2 border-gray-200 shadow-sm"
 //                 />
@@ -498,7 +498,7 @@
 //                 After Photo
 //               </h3>
 //               <img
-//                 src={`http://localhost:5000${selectedTask.afterPhotoUrl}`}
+//                 src={`http://localhost:2026${selectedTask.afterPhotoUrl}`}
 //                 alt="After"
 //                 className="w-full rounded-xl border-2 border-gray-200 shadow-sm"
 //               />
@@ -1275,7 +1275,11 @@ export default function ManagerDailyItineraryPage() {
           {selectedTask.voiceNoteUrl && (
             <div>
               <div className="text-sm font-medium text-gray-700 mb-2">Voice Note</div>
-              <audio controls src={`http://localhost:5000${selectedTask.voiceNoteUrl}`} className="w-full" />
+              <audio controls 
+              // src={`http://localhost:2026${selectedTask.voiceNoteUrl}`}
+              src={`${import.meta.env.VITE_BACKEND_URL}${selectedTask.voiceNoteUrl}`}
+
+              className="w-full" />
             </div>
           )}
 
@@ -1284,7 +1288,8 @@ export default function ManagerDailyItineraryPage() {
             <div>
               <div className="text-sm font-medium text-gray-700 mb-2">Before Photo</div>
               <img
-                src={`http://localhost:5000${selectedTask.beforePhotoUrl}`}
+                // src={`http://localhost:2026${selectedTask.beforePhotoUrl}`}
+                src={`${import.meta.env.VITE_BACKEND_URL}${selectedTask.beforePhotoUrl}`}
                 alt="Before"
                 className="w-full rounded border"
               />
@@ -1295,7 +1300,8 @@ export default function ManagerDailyItineraryPage() {
             <div>
               <div className="text-sm font-medium text-gray-700 mb-2">After Photo</div>
               <img
-                src={`http://localhost:5000${selectedTask.afterPhotoUrl}`}
+                // src={`http://localhost:2026${selectedTask.afterPhotoUrl}`}
+                src={`${import.meta.env.VITE_BACKEND_URL}${selectedTask.afterPhotoUrl}`}
                 alt="After"
                 className="w-full rounded border"
               />

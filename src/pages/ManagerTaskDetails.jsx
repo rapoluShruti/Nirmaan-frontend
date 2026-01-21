@@ -38,14 +38,16 @@ export default function ManagerTaskDetails({ task, onDone }) {
       {/* PHOTOS */}
       {task.beforePhotoUrl && (
         <img
-          src={`http://localhost:5000${task.beforePhotoUrl}`}
+          // src={`http://localhost:2026${task.beforePhotoUrl}`}
+          src={`${import.meta.env.VITE_BACKEND_URL}${task.beforePhotoUrl}`}
           className="w-full rounded"
         />
       )}
 
       {task.afterPhotoUrl && (
         <img
-          src={`http://localhost:5000${task.afterPhotoUrl}`}
+          // src={`http://localhost:2026${task.afterPhotoUrl}`}
+          src={`${import.meta.env.VITE_BACKEND_URL}${task.afterPhotoUrl}`}
           className="w-full rounded"
         />
       )}

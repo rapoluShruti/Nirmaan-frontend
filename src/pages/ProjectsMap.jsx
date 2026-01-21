@@ -135,7 +135,10 @@ export default function ProjectDashboard() {
     const fetchProjects = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5000/api/projects", {
+        const res = await
+        //  fetch("http://localhost:2026/api/projects", 
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/projects`,
+          {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error();

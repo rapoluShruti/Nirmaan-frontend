@@ -36,10 +36,10 @@ const DPRScreen = () => {
       tasksInProgress: 5
     },
     budget: {
-      total: 5500000,
+      total: 5202600,
       usedTillYesterday: 3200000,
-      usedToday: 185000,
-      remaining: 2115000,
+      usedToday: 182026,
+      remaining: 2112026,
       warning: "Budget usage 8% higher than planned schedule"
     },
     tasks: [
@@ -278,7 +278,8 @@ const DPRScreen = () => {
   useEffect(() => {
     const fetchLayout = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/projects/${id}`);
+        // const res = await fetch(`http://localhost:2026/api/projects/${id}`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/projects/${id}`);
         if (!res.ok) throw new Error("Failed to fetch project");
         const data = await res.json();
         setLayoutImages(data.layoutImages || []);

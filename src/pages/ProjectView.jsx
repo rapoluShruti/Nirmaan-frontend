@@ -25,7 +25,8 @@ const ProjectDashboardOverlay = ({ id, onBack }) => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/projects/${id}`);
+        // const res = await fetch(`http://localhost:2026/api/projects/${id}`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/projects/${id}`);
         const data = await res.json();
         setProject(data);
       } catch (err) {
@@ -128,7 +129,8 @@ export default function ProjectsView() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/projects")
+    // fetch("http://localhost:2026/api/projects")
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/projects`)
       .then(res => res.json())
       .then(data => setProjects(Array.isArray(data) ? data : data.projects || []))
       .catch(err => console.error(err));

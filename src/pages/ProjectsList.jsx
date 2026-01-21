@@ -7,7 +7,10 @@ const ProjectsList = ({ token, onSelectProject }) => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/projects", {
+        const res = 
+        // await axios.get("http://localhost:2026/api/projects",
+        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/projects`, 
+           {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProjects(res.data.projects || []);
