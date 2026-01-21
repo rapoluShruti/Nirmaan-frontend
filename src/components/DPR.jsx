@@ -318,7 +318,9 @@ const DPRScreen = () => {
   useEffect(() => {
     const fetchLayout = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/projects/${id}`);
+        const res = await
+        //  fetch(`http://2026ost:5000/api/projects/${id}`);
+fetch(`${import.meta.env.VITE_BACKEND_URL}/api/projects/${id}`);
         if (!res.ok) throw new Error("Failed to fetch project");
         const data = await res.json();
         setLayoutImages(data.layoutImages || []);
