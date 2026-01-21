@@ -76,7 +76,7 @@ const STATUS = {
 
 const getMarkerIcon = (status) => {
   const color = STATUS[status].color;
-  const isCritical = status === "CRIT" || status === "WARN";
+  const isCritical = status === "CRIT" ;
   
   return L.divIcon({
     html: `
