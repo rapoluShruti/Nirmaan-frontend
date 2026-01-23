@@ -82,7 +82,8 @@ const Landing = () => {
   }, []);
 
   return (
-    <div className="bg-white text-slate-900 font-sans antialiased">
+    // <div className="bg-white text-slate-900 font-sans antialiased">
+       <div className="bg-gray-50 text-slate-900 font-sans antialiased">
       {/* Hero Container */}
       <div className="min-h-screen flex items-center overflow-hidden px-8 lg:px-24 relative">
         <div className="max-w-screen-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">

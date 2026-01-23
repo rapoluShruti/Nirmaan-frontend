@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-const API_BASE = "http://localhost:5000/api";
-
+// const API_BASE = "http://localhost:5000/api";
+const API_BASE = import.meta.env.VITE_BACKEND_URL + "/api";
 export default function SupervisorTaskSubmission() {
   const [tasks, setTasks] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
