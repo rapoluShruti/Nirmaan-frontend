@@ -404,6 +404,7 @@ import DPRScreen from "./components/DPR";
 import Overview from "./components/Overview";
 import MaterialManagementSystem from "./pages/Invoice";
 import SafetyReporter from "./pages/Saftey";
+import ToolLibrary from "./components/ToolLibrary";
 
 function App() {
   /* =======================
@@ -454,6 +455,7 @@ function App() {
             <Route path="/frame" element={<Overview />} />
             <Route path="/clientView" element={<OwnerClientView />} />
             <Route path="/chatbot" element={<IntelligentChatbot />} />
+             <Route path="/To" element={<ToolLibrary />} />
 
             {/* ========= PROJECT ========= */}
             <Route path="/create" element={<CreateProject />} />
