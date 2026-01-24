@@ -428,7 +428,8 @@ import api from "../api/axiosConfig";
 
 export default function TaskDetailsPanel({ task, onActionDone }) {
   const [beforeFile, setBeforeFile] = useState(null);
-  const [afterUrl, setAfterUrl] = useState("");
+ const [afterFile, setAfterFile] = useState(null);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -441,7 +442,8 @@ export default function TaskDetailsPanel({ task, onActionDone }) {
   }
 
   /* ================= LOCK STATE ================= */
-  const isLocked = !!task.afterPhotoUrl;
+const isLocked = task.isLocked === true;
+
 
   /* ================= ACTIONS ================= */
 
@@ -466,26 +468,31 @@ export default function TaskDetailsPanel({ task, onActionDone }) {
     }
   };
 
-  const completeTask = async () => {
-    if (!afterUrl) {
-      setError("Enter after photo link");
-      return;
-    }
+ const completeTask = async () => {
+  if (!afterFile) {
+    setError("Upload after photo");
+    return;
+  }
 
-    setLoading(true);
-    setError("");
+  setLoading(true);
+  setError("");
 
-    try {
-      await api.post(`/tasks/${task._id}/complete`, {
-        afterPhotoUrl: afterUrl,
-      });
-      onActionDone();
-    } catch {
-      setError("Could not complete task");
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const fd = new FormData();
+    fd.append("afterPhoto", afterFile);
+
+    await api.post(`/tasks/${task._id}/complete`, fd, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    onActionDone();
+  } catch {
+    setError("Could not complete task");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   /* ================= STATUS ================= */
 
@@ -650,25 +657,25 @@ export default function TaskDetailsPanel({ task, onActionDone }) {
           </>
         )}
 
-        {task.beforePhotoUrl && !task.afterPhotoUrl && (
-          <>
-            <div className="font-semibold">After Photo</div>
-            <input
-              disabled={isLocked}
-              placeholder="Paste photo link"
-              value={afterUrl}
-              onChange={(e) => setAfterUrl(e.target.value)}
-              className="border px-3 py-2 rounded-lg w-full text-sm disabled:opacity-50"
-            />
-            <button
-              disabled={loading || isLocked}
-              onClick={completeTask}
-              className="w-full bg-green-600 text-white py-2 rounded-lg font-semibold disabled:opacity-50"
-            >
-              Finish Work
-            </button>
-          </>
-        )}
+      {task.beforePhotoUrl && !task.afterPhotoUrl && (
+  <>
+    <div className="font-semibold">After Photo</div>
+    <input
+      type="file"
+      disabled={isLocked}
+      onChange={(e) => setAfterFile(e.target.files[0])}
+      className="text-xs disabled:opacity-50"
+    />
+    <button
+      disabled={loading || isLocked}
+      onClick={completeTask}
+      className="w-full bg-green-600 text-white py-2 rounded-lg font-semibold disabled:opacity-50"
+    >
+      Finish Work
+    </button>
+  </>
+)}
+
 
       </div>
 
