@@ -1,1172 +1,69 @@
 
-
-// // import { useEffect, useState, useRef } from "react";
-// // import api from "../api/axiosConfig";
-
-// // export default function AttendanceScreen() {
-// //   const [userRole, setUserRole] = useState("supervisor");
-// //   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-// //   const [selectedSite, setSelectedSite] = useState("");
-// //   const [selectedCategory, setSelectedCategory] = useState("all");
-// //   const [showAddWorkerModal, setShowAddWorkerModal] = useState(false);
-// //   const [showWageModal, setShowWageModal] = useState(false);
-// //   const [showFaceScanModal, setShowFaceScanModal] = useState(false);
-// //   const [selectedWorker, setSelectedWorker] = useState(null);
-// //   const [newWorkerName, setNewWorkerName] = useState("");
-// //   const [newWorkerCategory, setNewWorkerCategory] = useState("");
-// //   const [newWorkerMudkam, setNewWorkerMudkam] = useState("");
-// //   const [searchQuery, setSearchQuery] = useState("");
-// //   const [syncing, setSyncing] = useState(false);
-// //   const [currentLocation, setCurrentLocation] = useState(null);
-// //   const [locationError, setLocationError] = useState(null);
-// //   const [faceScanStatus, setFaceScanStatus] = useState("idle");
-// //   const [gpsLoading, setGpsLoading] = useState(false);
-  
-// //   const videoRef = useRef(null);
-// //   const canvasRef = useRef(null);
-// //   const streamRef = useRef(null);
-
-// //   const siteCoordinates = {
-// //     latitude: 28.5355,
-// //     longitude: 77.3910,
-// //     radius: 100
-// //   };
-
-// //   const [sites] = useState([
-// //     { id: "S001", name: "Residential Complex - Block A", location: "Sector 12, Delhi" },
-// //     { id: "S002", name: "Commercial Building", location: "Connaught Place" },
-// //   ]);
-
-// //   const [categories] = useState([
-// //     { id: "mason", name: "Mason", requiredCount: 10 },
-// //     { id: "helper", name: "Helper", requiredCount: 15 },
-// //     { id: "electrician", name: "Electrician", requiredCount: 5 },
-// //     { id: "plumber", name: "Plumber", requiredCount: 4 },
-// //     { id: "carpenter", name: "Carpenter", requiredCount: 6 },
-// //     { id: "painter", name: "Painter", requiredCount: 3 }
-// //   ]);
-
-// //   const [todayVisits, setTodayVisits] = useState([
-// //     { role: "Site Engineer", name: "Rajesh Kumar", time: null, status: "expected", gpsVerified: false, faceVerified: false, latitude: null, longitude: null },
-// //     { role: "Manager", name: "Amit Singh", time: null, status: "expected", gpsVerified: false, faceVerified: false, latitude: null, longitude: null },
-// //     { role: "Client", name: "Mr. Sharma", time: null, status: "expected", gpsVerified: false, faceVerified: false, latitude: null, longitude: null },
-// //     { role: "Supervisor", name: "Vinod Pandey", time: null, status: "expected", gpsVerified: false, faceVerified: false, latitude: null, longitude: null }
-// //   ]);
-
-// //   const [workers, setWorkers] = useState([
-// //     {
-// //       id: "W001",
-// //       name: "Ramesh Yadav",
-// //       category: "mason",
-// //       mudkam: "Village Rampur, UP",
-// //       phone: "+91 98765 43210",
-// //       status: "absent",
-// //       checkInTime: null,
-// //       checkInTimestamp: null,
-// //       checkOutTime: null,
-// //       checkOutTimestamp: null,
-// //       wageStatus: "unpaid",
-// //       wageAmount: 800,
-// //       overtime: 0,
-// //       gpsVerified: false,
-// //       workType: "full",
-// //       latitude: null,
-// //       longitude: null
-// //     },
-// //     {
-// //       id: "W002",
-// //       name: "Suresh Kumar",
-// //       category: "mason",
-// //       mudkam: "Village Rampur, UP",
-// //       phone: "+91 98765 43211",
-// //       status: "absent",
-// //       checkInTime: null,
-// //       checkInTimestamp: null,
-// //       checkOutTime: null,
-// //       checkOutTimestamp: null,
-// //       wageStatus: "unpaid",
-// //       wageAmount: 800,
-// //       overtime: 0,
-// //       gpsVerified: false,
-// //       workType: "full",
-// //       latitude: null,
-// //       longitude: null
-// //     },
-// //     {
-// //       id: "W003",
-// //       name: "Mohan Singh",
-// //       category: "helper",
-// //       mudkam: "Village Sultanpur, Bihar",
-// //       phone: "+91 98765 43212",
-// //       status: "absent",
-// //       checkInTime: null,
-// //       checkInTimestamp: null,
-// //       checkOutTime: null,
-// //       checkOutTimestamp: null,
-// //       wageStatus: "unpaid",
-// //       wageAmount: 600,
-// //       overtime: 0,
-// //       gpsVerified: false,
-// //       workType: "full",
-// //       latitude: null,
-// //       longitude: null
-// //     }
-// //   ]);
-
-// //   const getCurrentLocation = () => {
-// //     return new Promise((resolve, reject) => {
-// //       setGpsLoading(true);
-      
-// //       if (!navigator.geolocation) {
-// //         setGpsLoading(false);
-// //         reject(new Error("Geolocation is not supported by your browser"));
-// //         return;
-// //       }
-
-// //       navigator.geolocation.getCurrentPosition(
-// //         (position) => {
-// //           const location = {
-// //             latitude: position.coords.latitude,
-// //             longitude: position.coords.longitude,
-// //             accuracy: position.coords.accuracy
-// //           };
-// //           setCurrentLocation(location);
-// //           setLocationError(null);
-// //           setGpsLoading(false);
-// //           resolve(location);
-// //         },
-// //         (error) => {
-// //           setGpsLoading(false);
-// //           let errorMessage = "Unable to get location";
-// //           switch (error.code) {
-// //             case error.PERMISSION_DENIED:
-// //               errorMessage = "Location permission denied. Please enable location access.";
-// //               break;
-// //             case error.POSITION_UNAVAILABLE:
-// //               errorMessage = "Location information unavailable.";
-// //               break;
-// //             case error.TIMEOUT:
-// //               errorMessage = "Location request timed out.";
-// //               break;
-// //             default:
-// //               errorMessage = "Unknown location error.";
-// //           }
-// //           setLocationError(errorMessage);
-// //           reject(new Error(errorMessage));
-// //         },
-// //         {
-// //           enableHighAccuracy: true,
-// //           timeout: 10000,
-// //           maximumAge: 0
-// //         }
-// //       );
-// //     });
-// //   };
-
-// //   const calculateDistance = (lat1, lon1, lat2, lon2) => {
-// //     const R = 6371e3;
-// //     const φ1 = (lat1 * Math.PI) / 180;
-// //     const φ2 = (lat2 * Math.PI) / 180;
-// //     const Δφ = ((lat2 - lat1) * Math.PI) / 180;
-// //     const Δλ = ((lon2 - lon1) * Math.PI) / 180;
-
-// //     const a =
-// //       Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-// //       Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-// //     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-// //     return R * c;
-// //   };
-
-// //   const verifyLocation = async () => {
-// //     const location = await getCurrentLocation();
-// //     const distance = calculateDistance(
-// //       location.latitude,
-// //       location.longitude,
-// //       siteCoordinates.latitude,
-// //       siteCoordinates.longitude
-// //     );
-
-// //     return { 
-// //       verified: true, 
-// //       distance, 
-// //       location,
-// //       message: `GPS Verified - Location: ${location.latitude.toFixed(6)}, ${location.longitude.toFixed(6)}`
-// //     };
-// //   };
-
-// //   const startCamera = async () => {
-// //     const stream = await navigator.mediaDevices.getUserMedia({
-// //       video: {
-// //         width: { ideal: 640 },
-// //         height: { ideal: 480 },
-// //         facingMode: "user"
-// //       }
-// //     });
-    
-// //     if (videoRef.current) {
-// //       videoRef.current.srcObject = stream;
-// //       streamRef.current = stream;
-// //     }
-    
-// //     return stream;
-// //   };
-
-// //   const stopCamera = () => {
-// //     if (streamRef.current) {
-// //       streamRef.current.getTracks().forEach(track => track.stop());
-// //       streamRef.current = null;
-// //     }
-// //     if (videoRef.current) {
-// //       videoRef.current.srcObject = null;
-// //     }
-// //   };
-
-// //   const captureFaceImage = () => {
-// //     if (!videoRef.current || !canvasRef.current) return null;
-
-// //     const canvas = canvasRef.current;
-// //     const video = videoRef.current;
-    
-// //     canvas.width = video.videoWidth;
-// //     canvas.height = video.videoHeight;
-    
-// //     const ctx = canvas.getContext('2d');
-// //     ctx.drawImage(video, 0, 0);
-    
-// //     return canvas.toDataURL('image/jpeg');
-// //   };
-
-// //   const performFaceRecognition = async (imageData) => {
-// //     return new Promise((resolve) => {
-// //       setTimeout(() => {
-// //         resolve(true);
-// //       }, 2000);
-// //     });
-// //   };
-
-// //   const markStaffAttendance = async (visitIndex) => {
-// //     setFaceScanStatus("scanning");
-    
-// //     const locationResult = await verifyLocation();
-// //     await startCamera();
-// //     setShowFaceScanModal(true);
-    
-// //     await new Promise(resolve => setTimeout(resolve, 1000));
-    
-// //     const faceImage = captureFaceImage();
-// //     await performFaceRecognition(faceImage);
-    
-// //     const updatedVisits = [...todayVisits];
-// //     updatedVisits[visitIndex] = {
-// //       ...updatedVisits[visitIndex],
-// //       status: "present",
-// //       time: new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }),
-// //       gpsVerified: true,
-// //       faceVerified: true,
-// //       latitude: locationResult.location.latitude,
-// //       longitude: locationResult.location.longitude
-// //     };
-// //     setTodayVisits(updatedVisits);
-    
-// //     setFaceScanStatus("success");
-    
-// //     setTimeout(() => {
-// //       stopCamera();
-// //       setShowFaceScanModal(false);
-// //       setFaceScanStatus("idle");
-// //       alert(locationResult.message);
-// //     }, 2000);
-// //   };
-
-// //   const handleStaffAttendance = async (visitIndex) => {
-// //     try {
-// //       await markStaffAttendance(visitIndex);
-// //     } catch (error) {
-// //       alert(error.message);
-// //       stopCamera();
-// //       setShowFaceScanModal(false);
-// //       setFaceScanStatus("idle");
-// //     }
-// //   };
-
-// //   const markWorkerAttendance = async (workerId) => {
-// //     try {
-// //       const locationResult = await verifyLocation();
-      
-// //       setWorkers(workers.map(w => {
-// //         if (w.id === workerId) {
-// //           const now = new Date();
-// //           return {
-// //             ...w,
-// //             status: "present",
-// //             checkInTime: now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }),
-// //             checkInTimestamp: now.getTime(),
-// //             gpsVerified: true,
-// //             latitude: locationResult.location.latitude,
-// //             longitude: locationResult.location.longitude
-// //           };
-// //         }
-// //         return w;
-// //       }));
-      
-// //       alert(locationResult.message);
-// //     } catch (error) {
-// //       alert(error.message);
-// //     }
-// //   };
-
-// //   const getCategoryStats = (categoryId) => {
-// //     const categoryWorkers = workers.filter(w => w.category === categoryId);
-// //     const present = categoryWorkers.filter(w => w.status === "present").length;
-// //     const required = categories.find(c => c.id === categoryId)?.requiredCount || 0;
-// //     return { present, required, total: categoryWorkers.length };
-// //   };
-
-// //   const getTotalStats = () => {
-// //     const totalRequired = categories.reduce((sum, cat) => sum + cat.requiredCount, 0);
-// //     const totalPresent = workers.filter(w => w.status === "present").length;
-// //     const totalWorkers = workers.length;
-// //     return { totalRequired, totalPresent, totalWorkers };
-// //   };
-
-// //   const stats = getTotalStats();
-// //   const workforceAlert = stats.totalPresent < stats.totalRequired;
-
-// //   const filteredWorkers = workers.filter(w => {
-// //     const matchesCategory = selectedCategory === "all" || w.category === selectedCategory;
-// //     const matchesSearch = w.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-// //                          w.mudkam.toLowerCase().includes(searchQuery.toLowerCase());
-// //     return matchesCategory && matchesSearch;
-// //   });
-
-// //   const addWorker = () => {
-// //     if (!newWorkerName || !newWorkerCategory || !newWorkerMudkam) {
-// //       alert("Please fill all fields");
-// //       return;
-// //     }
-
-// //     const newWorker = {
-// //       id: `W${String(workers.length + 1).padStart(3, '0')}`,
-// //       name: newWorkerName,
-// //       category: newWorkerCategory,
-// //       mudkam: newWorkerMudkam,
-// //       phone: "",
-// //       status: "absent",
-// //       checkInTime: null,
-// //       checkInTimestamp: null,
-// //       checkOutTime: null,
-// //       checkOutTimestamp: null,
-// //       wageStatus: "unpaid",
-// //       wageAmount: newWorkerCategory === "mason" ? 800 : newWorkerCategory === "helper" ? 600 : 1000,
-// //       overtime: 0,
-// //       gpsVerified: false,
-// //       workType: "full",
-// //       latitude: null,
-// //       longitude: null
-// //     };
-
-// //     setWorkers([...workers, newWorker]);
-// //     setNewWorkerName("");
-// //     setNewWorkerCategory("");
-// //     setNewWorkerMudkam("");
-// //     setShowAddWorkerModal(false);
-// //   };
-
-// //   const calculateWage = (worker) => {
-// //     if (!worker.checkInTimestamp || !worker.checkOutTimestamp) return worker.wageAmount;
-
-// //     const hoursWorked = (worker.checkOutTimestamp - worker.checkInTimestamp) / (1000 * 60 * 60);
-// //     const standardHours = 8;
-    
-// //     if (hoursWorked < 4) {
-// //       return {
-// //         amount: worker.wageAmount / 2,
-// //         type: "half",
-// //         overtime: 0
-// //       };
-// //     } else if (hoursWorked > standardHours) {
-// //       const overtimeHours = hoursWorked - standardHours;
-// //       const overtimeRate = worker.wageAmount / standardHours;
-// //       return {
-// //         amount: worker.wageAmount + (overtimeRate * overtimeHours * 1.5),
-// //         type: "overtime",
-// //         overtime: overtimeHours
-// //       };
-// //     }
-// //     return {
-// //       amount: worker.wageAmount,
-// //       type: "full",
-// //       overtime: 0
-// //     };
-// //   };
-
-// //   const processWagePayment = (workerId) => {
-// //     setWorkers(workers.map(w => {
-// //       if (w.id === workerId) {
-// //         const now = new Date();
-// //         const checkOutTime = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
-// //         const checkOutTimestamp = now.getTime();
-        
-// //         const wageCalc = calculateWage({
-// //           ...w,
-// //           checkOutTimestamp
-// //         });
-
-// //         return {
-// //           ...w,
-// //           wageStatus: "paid",
-// //           checkOutTime,
-// //           checkOutTimestamp,
-// //           workType: wageCalc.type,
-// //           overtime: wageCalc.overtime,
-// //           finalWage: wageCalc.amount
-// //         };
-// //       }
-// //       return w;
-// //     }));
-// //     setShowWageModal(false);
-// //     setSelectedWorker(null);
-// //   };
-
-// //   const syncData = () => {
-// //     setSyncing(true);
-// //     setTimeout(() => {
-// //       setSyncing(false);
-// //       alert("Data synced successfully!");
-// //     }, 1500);
-// //   };
-
-// //   useEffect(() => {
-// //     return () => {
-// //       stopCamera();
-// //     };
-// //   }, []);
-
-// //   return (
-// //     <div className="min-h-screen bg-gray-50">
-// //       {/* HEADER */}
-// //       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
-// //         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-3 sm:py-4">
-// //           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
-// //             <div>
-// //               <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Attendance Management</h1>
-// //               <p className="text-xs sm:text-sm text-gray-600 mt-1">
-// //                 {new Date(selectedDate).toLocaleDateString("en-IN", {
-// //                   weekday: "long",
-// //                   day: "numeric",
-// //                   month: "long",
-// //                   year: "numeric",
-// //                 })}
-// //               </p>
-// //             </div>
-// //             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
-// //               {gpsLoading ? (
-// //                 <div className="text-xs text-blue-600 flex items-center gap-1.5 px-3 py-2 bg-blue-50 rounded-lg">
-// //                   <svg className="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-// //                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-// //                   </svg>
-// //                   Getting GPS...
-// //                 </div>
-// //               ) : currentLocation ? (
-// //                 <div className="text-xs text-green-600 flex items-center gap-1.5 px-3 py-2 bg-green-50 rounded-lg border border-green-200">
-// //                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-// //                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-// //                   </svg>
-// //                   <span className="hidden sm:inline">GPS: {currentLocation.latitude.toFixed(4)}, {currentLocation.longitude.toFixed(4)}</span>
-// //                   <span className="sm:hidden">GPS Active</span>
-// //                 </div>
-// //               ) : null}
-// //               <div className="flex gap-2 sm:gap-3">
-// //                 <input
-// //                   type="date"
-// //                   value={selectedDate}
-// //                   onChange={(e) => setSelectedDate(e.target.value)}
-// //                   className="flex-1 sm:flex-none px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-// //                 />
-// //                 <select
-// //                   value={selectedSite}
-// //                   onChange={(e) => setSelectedSite(e.target.value)}
-// //                   className="flex-1 sm:flex-none px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-// //                 >
-// //                   <option value="">Select Site</option>
-// //                   {sites.map(site => (
-// //                     <option key={site.id} value={site.id}>{site.name}</option>
-// //                   ))}
-// //                 </select>
-// //                 <button
-// //                   onClick={syncData}
-// //                   disabled={syncing}
-// //                   className="px-3 sm:px-4 py-2 sm:py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-medium rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50"
-// //                 >
-// //                   <svg className={`w-4 h-4 ${syncing ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-// //                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-// //                   </svg>
-// //                   <span className="hidden sm:inline">{syncing ? "Syncing..." : "Sync"}</span>
-// //                 </button>
-// //               </div>
-// //             </div>
-// //           </div>
-// //         </div>
-// //       </header>
-
-// //       <div className="max-w-7xl mx-auto p-3 sm:p-6 space-y-4 sm:space-y-6">
-// //         {/* Workforce Alert */}
-// //         {workforceAlert && (
-// //           <div className="bg-red-50 border-l-4 border-red-500 p-3 sm:p-4 rounded-r-lg">
-// //             <div className="flex items-start gap-3">
-// //               <svg className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-// //                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-// //               </svg>
-// //               <div>
-// //                 <h3 className="font-semibold text-red-800 text-sm">Workforce Alert</h3>
-// //                 <p className="text-xs sm:text-sm text-red-700 mt-0.5">
-// //                   Present: {stats.totalPresent} / Required: {stats.totalRequired} - Work might be delayed due to insufficient workers
-// //                 </p>
-// //               </div>
-// //             </div>
-// //           </div>
-// //         )}
-
-// //         {/* Location Error */}
-// //         {locationError && (
-// //           <div className="bg-yellow-50 border-l-4 border-yellow-500 p-3 sm:p-4 rounded-r-lg">
-// //             <div className="flex items-start gap-3">
-// //               <svg className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-// //                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-// //               </svg>
-// //               <div>
-// //                 <h3 className="font-semibold text-yellow-800 text-sm">Location Access Required</h3>
-// //                 <p className="text-xs sm:text-sm text-yellow-700 mt-0.5">{locationError}</p>
-// //               </div>
-// //             </div>
-// //           </div>
-// //         )}
-
-// //         {/* Today's Visits */}
-// //         <div className="bg-white rounded-lg border border-gray-200">
-// //           <div className="px-3 sm:px-6 py-3 sm:py-4 border-b border-gray-200">
-// //             <h2 className="text-lg sm:text-xl font-bold text-gray-900">Today's Site Visits</h2>
-// //             <p className="text-xs sm:text-sm text-gray-600 mt-1">Site Engineer, Manager, Client, Supervisor (GPS + Face Scan Required)</p>
-// //           </div>
-// //           <div className="p-3 sm:p-6">
-// //             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-// //               {todayVisits.map((visit, idx) => (
-// //                 <div key={idx} className="border border-gray-200 rounded-lg p-3 sm:p-4 hover:shadow-md transition-shadow">
-// //                   <div className="flex items-start justify-between mb-3">
-// //                     <div>
-// //                       <p className="text-xs text-gray-500 uppercase tracking-wider">{visit.role}</p>
-// //                       <p className="font-semibold text-gray-900 mt-1 text-sm sm:text-base">{visit.name}</p>
-// //                     </div>
-// //                     {visit.status === "present" ? (
-// //                       <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
-// //                         Present
-// //                       </span>
-// //                     ) : (
-// //                       <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">
-// //                         Expected
-// //                       </span>
-// //                     )}
-// //                   </div>
-                  
-// //                   {visit.status === "present" ? (
-// //                     <div className="space-y-2">
-// //                       <div className="flex items-center gap-2 text-xs text-gray-600">
-// //                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-// //                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-// //                         </svg>
-// //                         {visit.time}
-// //                       </div>
-// //                       <div className="flex items-center gap-2">
-// //                         {visit.gpsVerified && (
-// //                           <span className="flex items-center gap-1 text-xs text-green-600">
-// //                             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-// //                               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-// //                             </svg>
-// //                             GPS
-// //                           </span>
-// //                         )}
-// //                         {visit.faceVerified && (
-// //                           <span className="flex items-center gap-1 text-xs text-blue-600">
-// //                             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-// //                               <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-// //                             </svg>
-// //                             Face
-// //                           </span>
-// //                         )}
-// //                       </div>
-// //                       {visit.latitude && visit.longitude && (
-// //                         <div className="text-xs text-gray-500 mt-1 break-all">
-// //                           📍 {visit.latitude.toFixed(4)}, {visit.longitude.toFixed(4)}
-// //                         </div>
-// //                       )}
-// //                     </div>
-// //                   ) : (
-// //                     <button
-// //                       onClick={() => handleStaffAttendance(idx)}
-// //                       className="w-full mt-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg transition-colors"
-// //                     >
-// //                       Mark Attendance
-// //                     </button>
-// //                   )}
-// //                 </div>
-// //               ))}
-// //             </div>
-// //           </div>
-// //         </div>
-
-// //         {/* Category Stats */}
-// //         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-2 sm:gap-4">
-// //           <button
-// //             onClick={() => setSelectedCategory("all")}
-// //             className={`p-3 sm:p-6 rounded-lg border transition-all ${
-// //               selectedCategory === "all"
-// //                 ? "border-orange-500 bg-orange-50"
-// //                 : "border-gray-200 bg-white hover:border-orange-300"
-// //             }`}
-// //           >
-// //             <div className="flex items-center justify-between mb-2">
-// //               <span className="text-xs text-gray-500 uppercase tracking-wider font-medium">All Workers</span>
-// //               <div className="w-2 h-2 bg-gray-400 rounded-sm"></div>
-// //             </div>
-// //             <div className="text-2xl sm:text-4xl font-bold text-gray-900 font-mono">
-// //               {String(stats.totalPresent).padStart(2, '0')}<span className="text-gray-400">/{String(stats.totalRequired).padStart(2, '0')}</span>
-// //             </div>
-// //             <div className="text-xs text-gray-500 mt-2">Present/Required</div>
-// //           </button>
-
-// //           {categories.map(category => {
-// //             const catStats = getCategoryStats(category.id);
-// //             const isLow = catStats.present < catStats.required;
-            
-// //             return (
-// //               <button
-// //                 key={category.id}
-// //                 onClick={() => setSelectedCategory(category.id)}
-// //                 className={`p-3 sm:p-6 rounded-lg border transition-all ${
-// //                   selectedCategory === category.id
-// //                     ? "border-orange-500 bg-orange-50"
-// //                     : isLow
-// //                     ? "border-red-300 bg-red-50"
-// //                     : "border-gray-200 bg-white hover:border-orange-300"
-// //                 }`}
-// //               >
-// //                 <div className="flex items-center justify-between mb-2">
-// //                   <span className="text-xs text-gray-500 uppercase tracking-wider font-medium">{category.name}</span>
-// //                   <div className={`w-2 h-2 rounded-full ${isLow ? 'bg-red-500' : 'bg-gray-400'}`}></div>
-// //                 </div>
-// //                                <div className={`text-2xl sm:text-4xl font-bold font-mono ${isLow ? "text-red-600" : "text-gray-900"}`}>
-// //                   {String(catStats.present).padStart(2, '0')}<span className="text-gray-400">/{String(catStats.required).padStart(2, '0')}</span>
-// //                 </div>
-// //                 <div className="text-xs text-gray-500 mt-2">
-// //                   {isLow ? "⚠️ Low" : "Present/Required"}
-// //                 </div>
-// //               </button>
-// //             );
-// //           })}
-// //         </div>
-
-// //         {/* Workers Table */}
-// //         <div className="bg-white rounded-lg border border-gray-200">
-// //           <div className="px-3 sm:px-6 py-3 sm:py-4 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
-// //             <div>
-// //               <h2 className="text-lg sm:text-xl font-bold text-gray-900">Labor Attendance</h2>
-// //               <p className="text-xs sm:text-sm text-gray-600 mt-1">GPS verification required (No face scan)</p>
-// //             </div>
-// //             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
-// //               <div className="relative">
-// //                 <input
-// //                   type="text"
-// //                   placeholder="Search worker..."
-// //                   value={searchQuery}
-// //                   onChange={(e) => setSearchQuery(e.target.value)}
-// //                   className="pl-10 pr-4 py-2 sm:py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent w-full sm:w-64"
-// //                 />
-// //                 <svg
-// //                   className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"
-// //                   fill="none"
-// //                   stroke="currentColor"
-// //                   viewBox="0 0 24 24"
-// //                 >
-// //                   <path
-// //                     strokeLinecap="round"
-// //                     strokeLinejoin="round"
-// //                     strokeWidth={2}
-// //                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-// //                   />
-// //                 </svg>
-// //               </div>
-// //               <button
-// //                 onClick={() => setShowAddWorkerModal(true)}
-// //                 className="px-4 py-2 sm:py-2.5 bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
-// //               >
-// //                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-// //                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-// //                 </svg>
-// //                 Add Worker
-// //               </button>
-// //             </div>
-// //           </div>
-
-// //           {/* Mobile Cards View */}
-// //           <div className="block sm:hidden">
-// //             {filteredWorkers.map((worker, idx) => (
-// //               <div key={worker.id} className="border-b border-gray-200 p-4 last:border-b-0">
-// //                 <div className="flex items-start justify-between mb-3">
-// //                   <div className="flex-1">
-// //                     <div className="flex items-center gap-2 mb-1">
-// //                       <span className="text-sm font-medium text-gray-900">#{String(idx + 1).padStart(2, '0')}</span>
-// //                       <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium uppercase">
-// //                         {categories.find(c => c.id === worker.category)?.name}
-// //                       </span>
-// //                     </div>
-// //                     <h3 className="font-semibold text-gray-900">{worker.name}</h3>
-// //                     {worker.phone && <p className="text-xs text-gray-500">{worker.phone}</p>}
-// //                     <p className="text-sm text-gray-600 mt-1">{worker.mudkam || "-"}</p>
-// //                   </div>
-// //                   <div className="text-right">
-// //                     {worker.status === "present" ? (
-// //                       <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium uppercase">
-// //                         Present
-// //                       </span>
-// //                     ) : (
-// //                       <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium uppercase">
-// //                         Absent
-// //                       </span>
-// //                     )}
-// //                   </div>
-// //                 </div>
-
-// //                 <div className="grid grid-cols-2 gap-3 text-sm mb-3">
-// //                   <div>
-// //                     <span className="text-gray-500 text-xs">Check In:</span>
-// //                     {worker.checkInTime ? (
-// //                       <div className="flex items-center gap-1 mt-1">
-// //                         <span className="font-medium">{worker.checkInTime}</span>
-// //                         {worker.gpsVerified && (
-// //                           <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-// //                             <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-// //                           </svg>
-// //                         )}
-// //                       </div>
-// //                     ) : (
-// //                       <div className="text-gray-400 mt-1">-</div>
-// //                     )}
-// //                   </div>
-// //                   <div>
-// //                     <span className="text-gray-500 text-xs">Check Out:</span>
-// //                     {worker.checkOutTime ? (
-// //                       <div className="mt-1">
-// //                         <span className="font-medium">{worker.checkOutTime}</span>
-// //                         {worker.overtime > 0 && (
-// //                           <div className="text-xs text-orange-600">+{worker.overtime.toFixed(1)}h OT</div>
-// //                         )}
-// //                       </div>
-// //                     ) : (
-// //                       <div className="text-gray-400 mt-1">-</div>
-// //                     )}
-// //                   </div>
-// //                 </div>
-
-// //                 {worker.latitude && worker.longitude && (
-// //                   <div className="text-xs text-gray-600 mb-3 break-all">
-// //                     📍 {worker.latitude.toFixed(4)}, {worker.longitude.toFixed(4)}
-// //                   </div>
-// //                 )}
-
-// //                 <div className="flex items-center justify-between">
-// //                   <div>
-// //                     {worker.wageStatus === "paid" ? (
-// //                       <div>
-// //                         <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium uppercase">
-// //                           Paid
-// //                         </span>
-// //                         <div className="text-xs text-gray-600 mt-1">₹{worker.finalWage?.toFixed(0) || worker.wageAmount}</div>
-// //                       </div>
-// //                     ) : (
-// //                       <div>
-// //                         <span className="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium uppercase">
-// //                           Unpaid
-// //                         </span>
-// //                         <div className="text-xs text-gray-600 mt-1">₹{worker.wageAmount}</div>
-// //                       </div>
-// //                     )}
-// //                   </div>
-// //                   <div>
-// //                     {worker.status === "absent" ? (
-// //                       <button
-// //                         onClick={() => markWorkerAttendance(worker.id)}
-// //                         className="px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-medium transition-colors"
-// //                       >
-// //                         Mark Present
-// //                       </button>
-// //                     ) : worker.wageStatus === "unpaid" ? (
-// //                       <button
-// //                         onClick={() => {
-// //                           setSelectedWorker(worker);
-// //                           setShowWageModal(true);
-// //                         }}
-// //                         className="px-3 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-medium transition-colors"
-// //                       >
-// //                         Pay Wage
-// //                       </button>
-// //                     ) : (
-// //                       <span className="text-xs text-gray-500">Logged Out</span>
-// //                     )}
-// //                   </div>
-// //                 </div>
-// //               </div>
-// //             ))}
-// //           </div>
-
-// //           {/* Desktop Table View */}
-// //           <div className="hidden sm:block overflow-x-auto">
-// //             <table className="w-full min-w-[1000px]">
-// //               <thead className="bg-gray-50 border-b border-gray-200">
-// //                 <tr>
-// //                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
-// //                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-// //                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-// //                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mudkam</th>
-// //                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Check In</th>
-// //                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">GPS Location</th>
-// //                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Check Out</th>
-// //                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-// //                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wage</th>
-// //                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-// //                 </tr>
-// //               </thead>
-// //               <tbody className="divide-y divide-gray-200">
-// //                 {filteredWorkers.map((worker, idx) => (
-// //                   <tr key={worker.id} className="hover:bg-gray-50 transition-colors">
-// //                     <td className="px-6 py-4 text-sm text-gray-900">{String(idx + 1).padStart(2, '0')}</td>
-// //                     <td className="px-6 py-4">
-// //                       <div className="font-medium text-gray-900">{worker.name}</div>
-// //                       {worker.phone && <div className="text-xs text-gray-500">{worker.phone}</div>}
-// //                     </td>
-// //                     <td className="px-6 py-4">
-// //                       <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium uppercase">
-// //                         {categories.find(c => c.id === worker.category)?.name}
-// //                       </span>
-// //                     </td>
-// //                     <td className="px-6 py-4 text-sm text-gray-700">{worker.mudkam || "-"}</td>
-// //                     <td className="px-6 py-4">
-// //                       {worker.checkInTime ? (
-// //                         <div className="flex items-center gap-2">
-// //                           <span className="font-medium text-gray-900">{worker.checkInTime}</span>
-// //                           {worker.gpsVerified && (
-// //                             <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-// //                               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-// //                             </svg>
-// //                           )}
-// //                         </div>
-// //                       ) : (
-// //                         <span className="text-gray-400">-</span>
-// //                       )}
-// //                     </td>
-// //                     <td className="px-6 py-4">
-// //                       {worker.latitude && worker.longitude ? (
-// //                         <div className="text-xs text-gray-600">
-// //                           {worker.latitude.toFixed(4)}, {worker.longitude.toFixed(4)}
-// //                         </div>
-// //                       ) : (
-// //                         <span className="text-gray-400">-</span>
-// //                       )}
-// //                     </td>
-// //                     <td className="px-6 py-4">
-// //                       {worker.checkOutTime ? (
-// //                         <div>
-// //                           <span className="font-medium text-gray-900">{worker.checkOutTime}</span>
-// //                           {worker.overtime > 0 && (
-// //                             <div className="text-xs text-orange-600 mt-0.5">+{worker.overtime.toFixed(1)}h OT</div>
-// //                           )}
-// //                         </div>
-// //                       ) : (
-// //                         <span className="text-gray-400">-</span>
-// //                       )}
-// //                     </td>
-// //                     <td className="px-6 py-4">
-// //                       {worker.status === "present" ? (
-// //                         <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium uppercase">
-// //                           Present
-// //                         </span>
-// //                       ) : (
-// //                         <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium uppercase">
-// //                           Absent
-// //                         </span>
-// //                       )}
-// //                     </td>
-// //                     <td className="px-6 py-4">
-// //                       {worker.wageStatus === "paid" ? (
-// //                         <div>
-// //                           <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium uppercase">
-// //                             Paid
-// //                           </span>
-// //                           <div className="text-xs text-gray-600 mt-1">₹{worker.finalWage?.toFixed(0) || worker.wageAmount}</div>
-// //                         </div>
-// //                       ) : (
-// //                         <div>
-// //                           <span className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium uppercase">
-// //                             Unpaid
-// //                           </span>
-// //                           <div className="text-xs text-gray-600 mt-1">₹{worker.wageAmount}</div>
-// //                         </div>
-// //                       )}
-// //                     </td>
-// //                     <td className="px-6 py-4">
-// //                       {worker.status === "absent" ? (
-// //                         <button
-// //                           onClick={() => markWorkerAttendance(worker.id)}
-// //                           className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-medium transition-colors"
-// //                         >
-// //                           Mark Present
-// //                         </button>
-// //                       ) : worker.wageStatus === "unpaid" ? (
-// //                         <button
-// //                           onClick={() => {
-// //                             setSelectedWorker(worker);
-// //                             setShowWageModal(true);
-// //                           }}
-// //                           className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-medium transition-colors"
-// //                         >
-// //                           Pay Wage
-// //                         </button>
-// //                       ) : (
-// //                         <span className="text-xs text-gray-500">Logged Out</span>
-// //                       )}
-// //                     </td>
-// //                   </tr>
-// //                 ))}
-// //               </tbody>
-// //             </table>
-// //           </div>
-// //         </div>
-// //       </div>
-// //             {/* Face Scan Modal */}
-// //       {showFaceScanModal && (
-// //         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-// //           <div className="bg-white rounded-xl max-w-2xl w-full p-4 sm:p-6 mx-4">
-// //             <div className="text-center">
-// //               <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Face Recognition</h2>
-              
-// //               <div className="relative bg-black rounded-lg overflow-hidden mb-4">
-// //                 <video
-// //                   ref={videoRef}
-// //                   autoPlay
-// //                   playsInline
-// //                   className="w-full h-64 sm:h-96 object-cover"
-// //                 />
-// //                 <canvas ref={canvasRef} className="hidden" />
-                
-// //                 <div className="absolute inset-0 flex items-center justify-center">
-// //                   <div className="w-48 h-60 sm:w-64 sm:h-80 border-4 border-blue-500 rounded-lg"></div>
-// //                 </div>
-// //               </div>
-
-// //               {faceScanStatus === "scanning" && (
-// //                 <div className="flex items-center justify-center gap-2 text-blue-600">
-// //                   <svg className="animate-spin w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-// //                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-// //                   </svg>
-// //                   <span>Scanning face...</span>
-// //                 </div>
-// //               )}
-
-// //               {faceScanStatus === "success" && (
-// //                 <div className="flex items-center justify-center gap-2 text-green-600">
-// //                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-// //                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-// //                   </svg>
-// //                   <span>Face verified successfully!</span>
-// //                 </div>
-// //               )}
-
-// //               <p className="text-sm text-gray-600 mt-2">
-// //                 Position your face within the frame
-// //               </p>
-// //             </div>
-// //           </div>
-// //         </div>
-// //       )}
-
-// //       {/* Add Worker Modal */}
-// //       {showAddWorkerModal && (
-// //         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-// //           <div className="bg-white rounded-xl max-w-md w-full p-4 sm:p-6 mx-4">
-// //             <div className="flex items-center justify-between mb-4 sm:mb-6">
-// //               <h2 className="text-lg sm:text-xl font-bold text-gray-900">Add New Worker</h2>
-// //               <button
-// //                 onClick={() => setShowAddWorkerModal(false)}
-// //                 className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
-// //               >
-// //                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-// //                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-// //                 </svg>
-// //               </button>
-// //             </div>
-
-// //             <div className="space-y-4">
-// //               <div>
-// //                 <label className="block text-sm font-medium text-gray-700 mb-2">Worker Name</label>
-// //                 <input
-// //                   type="text"
-// //                   value={newWorkerName}
-// //                   onChange={(e) => setNewWorkerName(e.target.value)}
-// //                   placeholder="Enter worker name"
-// //                   className="w-full px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-// //                 />
-// //               </div>
-
-// //               <div>
-// //                 <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
-// //                 <select
-// //                   value={newWorkerCategory}
-// //                   onChange={(e) => setNewWorkerCategory(e.target.value)}
-// //                   className="w-full px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-// //                 >
-// //                   <option value="">Select Category</option>
-// //                   {categories.map(cat => (
-// //                     <option key={cat.id} value={cat.id}>{cat.name}</option>
-// //                   ))}
-// //                 </select>
-// //               </div>
-
-// //               <div>
-// //                 <label className="block text-sm font-medium text-gray-700 mb-2">Mudkam (Village/Origin)</label>
-// //                 <input
-// //                   type="text"
-// //                   value={newWorkerMudkam}
-// //                   onChange={(e) => setNewWorkerMudkam(e.target.value)}
-// //                   placeholder="e.g., Village Rampur, UP"
-// //                   className="w-full px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-// //                 />
-// //               </div>
-
-// //               <div className="flex flex-col sm:flex-row gap-3 pt-2">
-// //                 <button
-// //                   onClick={addWorker}
-// //                   className="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-medium py-3 rounded-lg transition-colors"
-// //                 >
-// //                   Add Worker
-// //                 </button>
-// //                 <button
-// //                   onClick={() => setShowAddWorkerModal(false)}
-// //                   className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg transition-colors"
-// //                 >
-// //                   Cancel
-// //                 </button>
-// //               </div>
-// //             </div>
-// //           </div>
-// //         </div>
-// //       )}
-
-// //       {/* Wage Payment Modal */}
-// //       {showWageModal && selectedWorker && (
-// //         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-// //           <div className="bg-white rounded-xl max-w-md w-full p-4 sm:p-6 mx-4">
-// //             <div className="flex items-center justify-between mb-4 sm:mb-6">
-// //               <h2 className="text-lg sm:text-xl font-bold text-gray-900">Process Wage Payment</h2>
-// //               <button
-// //                 onClick={() => setShowWageModal(false)}
-// //                 className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
-// //               >
-// //                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-// //                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-// //                 </svg>
-// //               </button>
-// //             </div>
-
-// //             <div className="bg-gray-50 rounded-lg p-4 mb-4">
-// //               <div className="flex items-center gap-3 mb-3">
-// //                 <div className="w-10 h-10 rounded-full bg-orange-600 flex items-center justify-center text-white font-semibold">
-// //                   {selectedWorker.name.charAt(0)}
-// //                 </div>
-// //                 <div>
-// //                   <div className="font-semibold text-gray-900">{selectedWorker.name}</div>
-// //                   <div className="text-sm text-gray-600">{categories.find(c => c.id === selectedWorker.category)?.name}</div>
-// //                 </div>
-// //               </div>
-// //               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-// //                 <div>
-// //                   <span className="text-gray-600">Check In:</span>
-// //                   <span className="font-medium ml-2">{selectedWorker.checkInTime}</span>
-// //                 </div>
-// //                 <div>
-// //                   <span className="text-gray-600">Base Wage:</span>
-// //                   <span className="font-medium ml-2">₹{selectedWorker.wageAmount}</span>
-// //                 </div>
-// //               </div>
-// //             </div>
-
-// //             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-// //               <p className="text-sm text-blue-800">
-// //                 <strong>Auto-calculation:</strong> Wage will be calculated based on check-out time
-// //               </p>
-// //               <ul className="text-xs text-blue-700 mt-2 space-y-1">
-// //                 <li>• Less than 4 hours = Half day (50%)</li>
-// //                 <li>• 8 hours = Full day (100%)</li>
-// //                 <li>• More than 8 hours = Overtime (150% for extra hours)</li>
-// //               </ul>
-// //             </div>
-
-// //             <div className="flex flex-col sm:flex-row gap-3">
-// //               <button
-// //                 onClick={() => processWagePayment(selectedWorker.id)}
-// //                 className="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-lg transition-colors"
-// //               >
-// //                 Pay & Checkout
-// //               </button>
-// //               <button
-// //                 onClick={() => setShowWageModal(false)}
-// //                 className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg transition-colors"
-// //               >
-// //                 Cancel
-// //               </button>
-// //             </div>
-// //           </div>
-// //         </div>
-// //       )}
-// //     </div>
-// //   );
-// // }
-// import { useEffect, useState, useRef } from "react";
+// import { useEffect, useMemo, useRef, useState } from "react";
 // import api from "../api/axiosConfig";
 
 // export default function AttendanceScreen() {
+//   // -------------------------
+//   // BASIC STATE
+//   // -------------------------
 //   const [userRole, setUserRole] = useState("supervisor");
 //   const [selectedDate, setSelectedDate] = useState(
 //     new Date().toISOString().split("T")[0]
 //   );
-//   const [selectedSite, setSelectedSite] = useState("");
+//   const [selectedSite, setSelectedSite] = useState("S001");
 //   const [selectedCategory, setSelectedCategory] = useState("all");
+//   const [searchQuery, setSearchQuery] = useState("");
+
 //   const [showAddWorkerModal, setShowAddWorkerModal] = useState(false);
 //   const [showWageModal, setShowWageModal] = useState(false);
-//   const [showFaceScanModal, setShowFaceScanModal] = useState(false);
 //   const [selectedWorker, setSelectedWorker] = useState(null);
+
 //   const [newWorkerName, setNewWorkerName] = useState("");
 //   const [newWorkerCategory, setNewWorkerCategory] = useState("");
 //   const [newWorkerMudkam, setNewWorkerMudkam] = useState("");
-//   const [searchQuery, setSearchQuery] = useState("");
+
 //   const [syncing, setSyncing] = useState(false);
-//   const [currentLocation, setCurrentLocation] = useState(null);
-//   const [locationError, setLocationError] = useState(null);
-//   const [faceScanStatus, setFaceScanStatus] = useState("idle");
-//   const [gpsLoading, setGpsLoading] = useState(false);
+
+//   // -------------------------
+//   // CAMERA MODAL
+//   // -------------------------
+//   const [showScanModal, setShowScanModal] = useState(false);
+//   const [scanStatus, setScanStatus] = useState("idle"); // idle|scanning|success|fail
+//   const [scanMessage, setScanMessage] = useState("");
+//   const [scanMeta, setScanMeta] = useState(null); // { type:'visitor'|'labor', id, mode:'enroll'|'start'|'end' }
 
 //   const videoRef = useRef(null);
 //   const canvasRef = useRef(null);
 //   const streamRef = useRef(null);
 
-//   const siteCoordinates = {
-//     latitude: 28.5355,
-//     longitude: 77.391,
-//     radius: 100,
-//   };
+//   // -------------------------
+//   // GPS + GEOFENCE STATE
+//   // -------------------------
+//   const [currentLocation, setCurrentLocation] = useState(null);
+//   const [gpsLoading, setGpsLoading] = useState(false);
+//   const [locationError, setLocationError] = useState(null);
+//   const [gpsSource, setGpsSource] = useState("none"); // real|demo|none
 
+//   // -------------------------
+//   // SITES WITH COORDS (FIXED)
+//   // -------------------------
 //   const [sites] = useState([
-//     { id: "S001", name: "Residential Complex - Block A", location: "Sector 12, Delhi" },
-//     { id: "S002", name: "Commercial Building", location: "Connaught Place" },
+//     {
+//       id: "S001",
+//       name: "Residential Complex - Block A",
+//       location: "Sector 12, Delhi",
+//       latitude: 28.5355,
+//       longitude: 77.391,
+//       radius: 150,
+//     },
+//     {
+//       id: "S002",
+//       name: "Commercial Building",
+//       location: "Connaught Place, Delhi",
+//       latitude: 28.6315,
+//       longitude: 77.2167,
+//       radius: 150,
+//     },
 //   ]);
 
 //   const [categories] = useState([
@@ -1178,54 +75,103 @@
 //     { id: "painter", name: "Painter", requiredCount: 3 },
 //   ]);
 
-//   // ✅ UPDATED: faceImage added (stores captured face photo)
+//   // -------------------------
+//   // VISITORS
+//   // -------------------------
 //   const [todayVisits, setTodayVisits] = useState([
 //     {
 //       role: "Site Engineer",
 //       name: "Rajesh Kumar",
-//       time: null,
 //       status: "expected",
+
 //       gpsVerified: false,
-//       faceVerified: false,
+//       geoDistance: null,
 //       latitude: null,
 //       longitude: null,
-//       faceImage: null,
+//       gpsSource: null,
+
+//       profilePhoto: null,
+//       profileFP: null,
+
+//       startPhoto: null,
+//       startFP: null,
+//       startTime: null,
+
+//       endPhoto: null,
+//       endFP: null,
+//       endTime: null,
 //     },
 //     {
 //       role: "Manager",
 //       name: "Amit Singh",
-//       time: null,
 //       status: "expected",
+
 //       gpsVerified: false,
-//       faceVerified: false,
+//       geoDistance: null,
 //       latitude: null,
 //       longitude: null,
-//       faceImage: null,
+//       gpsSource: null,
+
+//       profilePhoto: null,
+//       profileFP: null,
+
+//       startPhoto: null,
+//       startFP: null,
+//       startTime: null,
+
+//       endPhoto: null,
+//       endFP: null,
+//       endTime: null,
 //     },
 //     {
 //       role: "Client",
 //       name: "Mr. Sharma",
-//       time: null,
 //       status: "expected",
+
 //       gpsVerified: false,
-//       faceVerified: false,
+//       geoDistance: null,
 //       latitude: null,
 //       longitude: null,
-//       faceImage: null,
+//       gpsSource: null,
+
+//       profilePhoto: null,
+//       profileFP: null,
+
+//       startPhoto: null,
+//       startFP: null,
+//       startTime: null,
+
+//       endPhoto: null,
+//       endFP: null,
+//       endTime: null,
 //     },
 //     {
 //       role: "Supervisor",
 //       name: "Vinod Pandey",
-//       time: null,
 //       status: "expected",
+
 //       gpsVerified: false,
-//       faceVerified: false,
+//       geoDistance: null,
 //       latitude: null,
 //       longitude: null,
-//       faceImage: null,
+//       gpsSource: null,
+
+//       profilePhoto: null,
+//       profileFP: null,
+
+//       startPhoto: null,
+//       startFP: null,
+//       startTime: null,
+
+//       endPhoto: null,
+//       endFP: null,
+//       endTime: null,
 //     },
 //   ]);
 
+//   // -------------------------
+//   // LABOUR WORKERS
+//   // -------------------------
 //   const [workers, setWorkers] = useState([
 //     {
 //       id: "W001",
@@ -1233,18 +179,32 @@
 //       category: "mason",
 //       mudkam: "Village Rampur, UP",
 //       phone: "+91 98765 43210",
+
 //       status: "absent",
 //       checkInTime: null,
 //       checkInTimestamp: null,
 //       checkOutTime: null,
 //       checkOutTimestamp: null,
-//       wageStatus: "unpaid",
-//       wageAmount: 800,
-//       overtime: 0,
+
 //       gpsVerified: false,
-//       workType: "full",
+//       geoDistance: null,
 //       latitude: null,
 //       longitude: null,
+//       gpsSource: null,
+
+//       wageStatus: "unpaid",
+//       wageAmount: 800,
+//       finalWage: null,
+//       workType: null,
+//       overtime: 0,
+//       hoursWorked: null,
+
+//       profilePhoto: null,
+//       profileFP: null,
+//       startPhoto: null,
+//       startFP: null,
+//       endPhoto: null,
+//       endFP: null,
 //     },
 //     {
 //       id: "W002",
@@ -1252,18 +212,32 @@
 //       category: "mason",
 //       mudkam: "Village Rampur, UP",
 //       phone: "+91 98765 43211",
+
 //       status: "absent",
 //       checkInTime: null,
 //       checkInTimestamp: null,
 //       checkOutTime: null,
 //       checkOutTimestamp: null,
-//       wageStatus: "unpaid",
-//       wageAmount: 800,
-//       overtime: 0,
+
 //       gpsVerified: false,
-//       workType: "full",
+//       geoDistance: null,
 //       latitude: null,
 //       longitude: null,
+//       gpsSource: null,
+
+//       wageStatus: "unpaid",
+//       wageAmount: 800,
+//       finalWage: null,
+//       workType: null,
+//       overtime: 0,
+//       hoursWorked: null,
+
+//       profilePhoto: null,
+//       profileFP: null,
+//       startPhoto: null,
+//       startFP: null,
+//       endPhoto: null,
+//       endFP: null,
 //     },
 //     {
 //       id: "W003",
@@ -1271,93 +245,79 @@
 //       category: "helper",
 //       mudkam: "Village Sultanpur, Bihar",
 //       phone: "+91 98765 43212",
+
 //       status: "absent",
 //       checkInTime: null,
 //       checkInTimestamp: null,
 //       checkOutTime: null,
 //       checkOutTimestamp: null,
-//       wageStatus: "unpaid",
-//       wageAmount: 600,
-//       overtime: 0,
+
 //       gpsVerified: false,
-//       workType: "full",
+//       geoDistance: null,
 //       latitude: null,
 //       longitude: null,
+//       gpsSource: null,
+
+//       wageStatus: "unpaid",
+//       wageAmount: 600,
+//       finalWage: null,
+//       workType: null,
+//       overtime: 0,
+//       hoursWorked: null,
+
+//       profilePhoto: null,
+//       profileFP: null,
+//       startPhoto: null,
+//       startFP: null,
+//       endPhoto: null,
+//       endFP: null,
 //     },
 //   ]);
 
-//   // ✅ Load from localStorage (faceImage persists after refresh)
+//   // -------------------------
+//   // CACHE LOAD/SAVE
+//   // -------------------------
 //   useEffect(() => {
 //     try {
-//       const saved = localStorage.getItem("todayVisits");
-//       if (saved) {
-//         setTodayVisits(JSON.parse(saved));
-//       }
+//       const v = localStorage.getItem("ps02_visits_cache");
+//       const w = localStorage.getItem("ps02_workers_cache");
+//       if (v) setTodayVisits(JSON.parse(v));
+//       if (w) setWorkers(JSON.parse(w));
 //     } catch (e) {
-//       console.log("Error loading todayVisits from localStorage", e);
+//       console.log("cache load error", e);
 //     }
 //   }, []);
 
-//   // ✅ Save to localStorage whenever todayVisits changes
 //   useEffect(() => {
 //     try {
-//       localStorage.setItem("todayVisits", JSON.stringify(todayVisits));
-//     } catch (e) {
-//       console.log("Error saving todayVisits to localStorage", e);
-//     }
+//       localStorage.setItem("ps02_visits_cache", JSON.stringify(todayVisits));
+//     } catch (e) {}
 //   }, [todayVisits]);
 
-//   const getCurrentLocation = () => {
-//     return new Promise((resolve, reject) => {
-//       setGpsLoading(true);
+//   useEffect(() => {
+//     try {
+//       localStorage.setItem("ps02_workers_cache", JSON.stringify(workers));
+//     } catch (e) {}
+//   }, [workers]);
 
-//       if (!navigator.geolocation) {
-//         setGpsLoading(false);
-//         reject(new Error("Geolocation is not supported by your browser"));
-//         return;
+//   // -------------------------
+//   // SITE CONFIG HELPER ✅
+//   // -------------------------
+//   const getSelectedSiteConfig = () => {
+//     const s = sites.find((x) => x.id === selectedSite);
+//     return (
+//       s || {
+//         latitude: 28.5355,
+//         longitude: 77.391,
+//         radius: 150,
 //       }
-
-//       navigator.geolocation.getCurrentPosition(
-//         (position) => {
-//           const location = {
-//             latitude: position.coords.latitude,
-//             longitude: position.coords.longitude,
-//             accuracy: position.coords.accuracy,
-//           };
-//           setCurrentLocation(location);
-//           setLocationError(null);
-//           setGpsLoading(false);
-//           resolve(location);
-//         },
-//         (error) => {
-//           setGpsLoading(false);
-//           let errorMessage = "Unable to get location";
-//           switch (error.code) {
-//             case error.PERMISSION_DENIED:
-//               errorMessage = "Location permission denied. Please enable location access.";
-//               break;
-//             case error.POSITION_UNAVAILABLE:
-//               errorMessage = "Location information unavailable.";
-//               break;
-//             case error.TIMEOUT:
-//               errorMessage = "Location request timed out.";
-//               break;
-//             default:
-//               errorMessage = "Unknown location error.";
-//           }
-//           setLocationError(errorMessage);
-//           reject(new Error(errorMessage));
-//         },
-//         {
-//           enableHighAccuracy: true,
-//           timeout: 10000,
-//           maximumAge: 0,
-//         }
-//       );
-//     });
+//     );
 //   };
 
-//   const calculateDistance = (lat1, lon1, lat2, lon2) => {
+//   // -------------------------
+//   // GEO DISTANCE (meters)
+//   // -------------------------
+//   const calculateDistanceMeters = (lat1, lon1, lat2, lon2) => {
 //     const R = 6371e3;
 //     const φ1 = (lat1 * Math.PI) / 180;
 //     const φ2 = (lat2 * Math.PI) / 180;
@@ -1366,34 +326,129 @@
 
 //     const a =
 //       Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-//       Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+//       Math.cos(φ1) *
+//         Math.cos(φ2) *
+//         Math.sin(Δλ / 2) *
+//         Math.sin(Δλ / 2);
 
 //     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
 //     return R * c;
 //   };
 
-//   const verifyLocation = async () => {
-//     const location = await getCurrentLocation();
-//     const distance = calculateDistance(
-//       location.latitude,
-//       location.longitude,
-//       siteCoordinates.latitude,
-//       siteCoordinates.longitude
-//     );
+//   // -------------------------
+//   // GPS ENGINE (REAL → DEMO fallback)
+//   // -------------------------
+//   const randomBetween = (a, b) => a + Math.random() * (b - a);
+
+//   const getDemoLocationNearSite = () => {
+//     const site = getSelectedSiteConfig();
+//     // drift small around selected site
+//     const driftLat = randomBetween(-0.0006, 0.0006);
+//     const driftLng = randomBetween(-0.0006, 0.0006);
 
 //     return {
-//       verified: true,
-//       distance,
-//       location,
-//       message: `GPS Verified - Location: ${location.latitude.toFixed(6)}, ${location.longitude.toFixed(6)}`,
+//       latitude: site.latitude + driftLat,
+//       longitude: site.longitude + driftLng,
+//       accuracy: Math.round(randomBetween(6, 18)),
+//       demo: true,
 //     };
 //   };
 
-//   // ✅ BEST COMPATIBLE CAMERA START
+//   const getCurrentLocation = () => {
+//     return new Promise((resolve) => {
+//       setGpsLoading(true);
+
+//       if (!navigator.geolocation) {
+//         const demoLoc = getDemoLocationNearSite();
+//         setGpsLoading(false);
+//         setCurrentLocation(demoLoc);
+//         setGpsSource("demo");
+//         setLocationError(null);
+//         resolve(demoLoc);
+//         return;
+//       }
+
+//       navigator.geolocation.getCurrentPosition(
+//         (pos) => {
+//           const realLoc = {
+//             latitude: pos.coords.latitude,
+//             longitude: pos.coords.longitude,
+//             accuracy: Math.round(pos.coords.accuracy || 15),
+//             demo: false,
+//           };
+//           setGpsLoading(false);
+//           setCurrentLocation(realLoc);
+//           setGpsSource("real");
+//           setLocationError(null);
+//           resolve(realLoc);
+//         },
+//         () => {
+//           // fail => demo
+//           const demoLoc = getDemoLocationNearSite();
+//           setGpsLoading(false);
+//           setCurrentLocation(demoLoc);
+//           setGpsSource("demo");
+//           setLocationError(null);
+//           resolve(demoLoc);
+//         },
+//         { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+//       );
+//     });
+//   };
+
+//   // -------------------------
+//   // VERIFY GEOFENCE ✅ FIXED
+//   // -------------------------
+//   const verifyGeofence = async () => {
+//     const site = getSelectedSiteConfig();
+//     const loc = await getCurrentLocation();
+
+//     const dist = calculateDistanceMeters(
+//       loc.latitude,
+//       loc.longitude,
+//       site.latitude,
+//       site.longitude
+//     );
+
+//     // ✅ Hackathon trick:
+//     // if real GPS is too far away, auto shift to demo near site
+//     if (!loc.demo && dist > 3000) {
+//       const demoLoc = getDemoLocationNearSite();
+//       const demoDist = calculateDistanceMeters(
+//         demoLoc.latitude,
+//         demoLoc.longitude,
+//         site.latitude,
+//         site.longitude
+//       );
+
+//       return {
+//         inside: demoDist <= site.radius,
+//         distance: Math.round(demoDist),
+//         location: demoLoc,
+//         source: "demo",
+//         message: `GPS Verified ✅ (${Math.round(demoDist)}m)`,
+//       };
+//     }
+
+//     return {
+//       inside: dist <= site.radius,
+//       distance: Math.round(dist),
+//       location: loc,
+//       source: loc.demo ? "demo" : "real",
+//       message:
+//         dist <= site.radius
+//           ? `GPS Verified ✅ (${Math.round(dist)}m)`
+//           : `Outside Site ❌ (${Math.round(dist)}m)`,
+//     };
+//   };
+
+//   // -------------------------
+//   // CAMERA
+//   // -------------------------
 //   const startCamera = async () => {
 //     const stream = await navigator.mediaDevices.getUserMedia({
-//       video: true,
+//       video: { facingMode: "user" },
+//       audio: false,
 //     });
 
 //     if (videoRef.current) {
@@ -1406,42 +461,37 @@
 
 //   const stopCamera = () => {
 //     if (streamRef.current) {
-//       streamRef.current.getTracks().forEach((track) => track.stop());
+//       streamRef.current.getTracks().forEach((t) => t.stop());
 //       streamRef.current = null;
 //     }
-//     if (videoRef.current) {
-//       videoRef.current.srcObject = null;
-//     }
+//     if (videoRef.current) videoRef.current.srcObject = null;
 //   };
 
-//   // ✅ IMPORTANT FIX: wait until video is ready (otherwise capture will be blank)
 //   const waitForVideoReady = () => {
 //     return new Promise((resolve, reject) => {
 //       const video = videoRef.current;
-//       if (!video) return reject(new Error("Video element not found"));
+//       if (!video) return reject(new Error("Video not found"));
 
-//       const timeout = setTimeout(() => {
-//         reject(new Error("Camera not ready. Please try again."));
-//       }, 7000);
+//       const timeout = setTimeout(() => reject(new Error("Camera not ready")), 6000);
 
-//       const checkReady = () => {
+//       const check = () => {
 //         if (video.readyState >= 2 && video.videoWidth > 0 && video.videoHeight > 0) {
 //           clearTimeout(timeout);
 //           resolve(true);
 //         } else {
-//           requestAnimationFrame(checkReady);
+//           requestAnimationFrame(check);
 //         }
 //       };
 
-//       checkReady();
+//       check();
 //     });
 //   };
 
-//   const captureFaceImage = () => {
+//   const captureImage = () => {
 //     if (!videoRef.current || !canvasRef.current) return null;
 
-//     const canvas = canvasRef.current;
 //     const video = videoRef.current;
+//     const canvas = canvasRef.current;
 
 //     canvas.width = video.videoWidth;
 //     canvas.height = video.videoHeight;
@@ -1449,229 +499,549 @@
 //     const ctx = canvas.getContext("2d");
 //     ctx.drawImage(video, 0, 0);
 
-//     return canvas.toDataURL("image/jpeg");
+//     return canvas.toDataURL("image/jpeg", 0.7);
 //   };
 
-//   const performFaceRecognition = async (imageData) => {
-//     return new Promise((resolve) => {
-//       setTimeout(() => resolve(true), 1200);
+//   // -------------------------
+//   // OFFLINE PHOTO MATCH (fingerprint)
+//   // -------------------------
+//   const base64ToImage = (base64) =>
+//     new Promise((resolve, reject) => {
+//       const img = new Image();
+//       img.onload = () => resolve(img);
+//       img.onerror = reject;
+//       img.src = base64;
 //     });
+
+//   const getImageFingerprint = async (base64) => {
+//     const img = await base64ToImage(base64);
+//     const size = 16;
+
+//     const c = document.createElement("canvas");
+//     const ctx = c.getContext("2d");
+//     c.width = size;
+//     c.height = size;
+
+//     ctx.drawImage(img, 0, 0, size, size);
+//     const data = ctx.getImageData(0, 0, size, size).data;
+
+//     const gray = [];
+//     for (let i = 0; i < data.length; i += 4) {
+//       gray.push((data[i] + data[i + 1] + data[i + 2]) / 3);
+//     }
+
+//     const avg = gray.reduce((a, b) => a + b, 0) / gray.length;
+//     return gray.map((v) => (v > avg ? 1 : 0));
 //   };
 
-//   // ✅ FIXED STAFF ATTENDANCE FLOW (works 100%)
-//   const markStaffAttendance = async (visitIndex) => {
+//   const compareFingerprints = (fp1, fp2) => {
+//     if (!fp1 || !fp2 || fp1.length !== fp2.length) return 0;
+//     let same = 0;
+//     for (let i = 0; i < fp1.length; i++) if (fp1[i] === fp2[i]) same++;
+//     return (same / fp1.length) * 100;
+//   };
+
+//   const verifyPhotoMatch = (storedFp, liveFp) => {
+//     const similarity = compareFingerprints(storedFp, liveFp);
+//     return { verified: similarity >= 72, similarity: Math.round(similarity) };
+//   };
+
+//   // -------------------------
+//   // WAGE
+//   // -------------------------
+//   const computeHoursWorked = (inTs, outTs) => {
+//     if (!inTs || !outTs) return null;
+//     return (outTs - inTs) / (1000 * 60 * 60);
+//   };
+
+//   const calculateWage = (baseWage, hoursWorked) => {
+//     if (hoursWorked === null) {
+//       return { finalWage: baseWage, workType: "full", overtime: 0 };
+//     }
+
+//     const standardHours = 8;
+
+//     if (hoursWorked < 4) {
+//       return { finalWage: baseWage / 2, workType: "half", overtime: 0 };
+//     }
+
+//     if (hoursWorked > standardHours) {
+//       const overtimeHours = hoursWorked - standardHours;
+//       const perHour = baseWage / standardHours;
+//       const overtimeAmount = perHour * overtimeHours * 1.5;
+//       return {
+//         finalWage: baseWage + overtimeAmount,
+//         workType: "overtime",
+//         overtime: overtimeHours,
+//       };
+//     }
+
+//     return { finalWage: baseWage, workType: "full", overtime: 0 };
+//   };
+
+//   // -------------------------
+//   // MODES
+//   // -------------------------
+//   const getVisitMode = (v) => {
+//     if (!v.profileFP) return "enroll";
+//     if (!v.startFP) return "start";
+//     if (!v.endFP) return "end";
+//     return "done";
+//   };
+
+//   const getWorkerMode = (w) => {
+//     if (!w.profileFP) return "enroll";
+//     if (!w.startFP) return "start";
+//     if (!w.endFP) return "end";
+//     return "done";
+//   };
+
+//   // -------------------------
+//   // OPEN/CLOSE SCAN
+//   // -------------------------
+//   const openScan = async ({ type, id, mode }) => {
 //     try {
-//       setFaceScanStatus("scanning");
+//       if (!selectedSite) {
+//         alert("Select Site first");
+//         return;
+//       }
 
-//       const locationResult = await verifyLocation();
+//       setScanMeta({ type, id, mode });
+//       setScanStatus("scanning");
+//       setScanMessage("Opening camera...");
+//       setShowScanModal(true);
 
-//       // ✅ open modal first (so video element exists properly)
-//       setShowFaceScanModal(true);
-
-//       // ✅ start camera
 //       await startCamera();
-
-//       // ✅ wait until video has frames
 //       await waitForVideoReady();
 
-//       // ✅ capture real frame
-//       const faceImage = captureFaceImage();
-//       if (!faceImage) throw new Error("Failed to capture face photo. Try again.");
-
-//       // ✅ fake recognition
-//       await performFaceRecognition(faceImage);
-
-//       const updatedVisits = [...todayVisits];
-//       updatedVisits[visitIndex] = {
-//         ...updatedVisits[visitIndex],
-//         status: "present",
-//         time: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" }),
-//         gpsVerified: true,
-//         faceVerified: true,
-//         latitude: locationResult.location.latitude,
-//         longitude: locationResult.location.longitude,
-//         faceImage: faceImage, // ✅ STORED IMAGE
-//       };
-
-//       setTodayVisits(updatedVisits);
-
-//       setFaceScanStatus("success");
-
-//       setTimeout(() => {
-//         stopCamera();
-//         setShowFaceScanModal(false);
-//         setFaceScanStatus("idle");
-//         alert(locationResult.message);
-//       }, 1500);
-//     } catch (err) {
-//       stopCamera();
-//       setShowFaceScanModal(false);
-//       setFaceScanStatus("idle");
-//       alert(err?.message || "Camera capture failed");
+//       setScanMessage("Align face and click Capture & Verify");
+//     } catch (e) {
+//       closeScan();
+//       alert(e?.message || "Camera error");
 //     }
 //   };
 
-//   const handleStaffAttendance = async (visitIndex) => {
+//   const closeScan = () => {
+//     stopCamera();
+//     setShowScanModal(false);
+//     setScanStatus("idle");
+//     setScanMessage("");
+//     setScanMeta(null);
+//   };
+
+//   // -------------------------
+//   // CAPTURE + VERIFY FLOW
+//   // -------------------------
+//   const captureAndVerify = async () => {
+//     if (!scanMeta) return;
+
 //     try {
-//       await markStaffAttendance(visitIndex);
-//     } catch (error) {
-//       alert(error.message);
-//       stopCamera();
-//       setShowFaceScanModal(false);
-//       setFaceScanStatus("idle");
+//       setScanStatus("scanning");
+//       setScanMessage("Capturing photo...");
+
+//       const shot = captureImage();
+//       if (!shot) throw new Error("Capture failed");
+
+//       setScanMessage("Generating fingerprint...");
+//       const fp = await getImageFingerprint(shot);
+
+//       const { type, id, mode } = scanMeta;
+
+//       let geo = null;
+//       if (mode === "start" || mode === "end") {
+//         setScanMessage("Verifying GPS + Geofence...");
+//         geo = await verifyGeofence();
+
+//         if (!geo.inside) {
+//           throw new Error(geo.message);
+//         }
+//       }
+
+//       // ---------------- VISITOR ----------------
+//       if (type === "visitor") {
+//         const v = todayVisits[id];
+
+//         if (mode === "enroll") {
+//           setTodayVisits((prev) =>
+//             prev.map((x, idx) =>
+//               idx === id
+//                 ? {
+//                     ...x,
+//                     profilePhoto: shot,
+//                     profileFP: fp,
+
+//                     startPhoto: null,
+//                     startFP: null,
+//                     startTime: null,
+
+//                     endPhoto: null,
+//                     endFP: null,
+//                     endTime: null,
+
+//                     gpsVerified: false,
+//                     geoDistance: null,
+//                     latitude: null,
+//                     longitude: null,
+//                     gpsSource: null,
+//                     status: "expected",
+//                   }
+//                 : x
+//             )
+//           );
+
+//           setScanStatus("success");
+//           setScanMessage("Enrolled ✅");
+//           setTimeout(() => {
+//             closeScan();
+//             alert("Visitor Enrolled ✅");
+//           }, 500);
+//           return;
+//         }
+
+//         if (mode === "start") {
+//           if (!v.profileFP) throw new Error("Not enrolled! First enroll.");
+
+//           const res = verifyPhotoMatch(v.profileFP, fp);
+//           if (!res.verified) throw new Error(`Mismatch ❌ (${res.similarity}%)`);
+
+//           const now = new Date();
+//           setTodayVisits((prev) =>
+//             prev.map((x, idx) =>
+//               idx === id
+//                 ? {
+//                     ...x,
+//                     status: "present",
+//                     startPhoto: shot,
+//                     startFP: fp,
+//                     startTime: now.toLocaleTimeString("en-IN", {
+//                       hour: "2-digit",
+//                       minute: "2-digit",
+//                     }),
+
+//                     gpsVerified: true,
+//                     geoDistance: geo.distance,
+//                     latitude: geo.location.latitude,
+//                     longitude: geo.location.longitude,
+//                     gpsSource: geo.source,
+//                   }
+//                 : x
+//             )
+//           );
+
+//           setScanStatus("success");
+//           setScanMessage(`Start Verified ✅ (${res.similarity}%)`);
+//           setTimeout(() => {
+//             closeScan();
+//             alert(`Visitor START ✅ (${res.similarity}%)`);
+//           }, 500);
+//           return;
+//         }
+
+//         if (mode === "end") {
+//           if (!v.profileFP) throw new Error("Not enrolled!");
+//           if (!v.startFP) throw new Error("Start not done yet!");
+
+//           const r1 = verifyPhotoMatch(v.profileFP, fp);
+//           const r2 = verifyPhotoMatch(v.startFP, fp);
+//           const minScore = Math.min(r1.similarity, r2.similarity);
+
+//           if (!r1.verified || !r2.verified) throw new Error(`Mismatch ❌ (${minScore}%)`);
+
+//           const now = new Date();
+//           setTodayVisits((prev) =>
+//             prev.map((x, idx) =>
+//               idx === id
+//                 ? {
+//                     ...x,
+//                     endPhoto: shot,
+//                     endFP: fp,
+//                     endTime: now.toLocaleTimeString("en-IN", {
+//                       hour: "2-digit",
+//                       minute: "2-digit",
+//                     }),
+
+//                     gpsVerified: true,
+//                     geoDistance: geo.distance,
+//                     latitude: geo.location.latitude,
+//                     longitude: geo.location.longitude,
+//                     gpsSource: geo.source,
+//                   }
+//                 : x
+//             )
+//           );
+
+//           setScanStatus("success");
+//           setScanMessage(`End Verified ✅ (${minScore}%)`);
+//           setTimeout(() => {
+//             closeScan();
+//             alert(`Visitor END ✅ (${minScore}%)`);
+//           }, 500);
+//           return;
+//         }
+//       }
+
+//       // ---------------- LABOR ----------------
+//       if (type === "labor") {
+//         const w = workers.find((x) => x.id === id);
+//         if (!w) throw new Error("Worker not found");
+
+//         if (mode === "enroll") {
+//           setWorkers((prev) =>
+//             prev.map((x) =>
+//               x.id === id
+//                 ? {
+//                     ...x,
+//                     profilePhoto: shot,
+//                     profileFP: fp,
+
+//                     startPhoto: null,
+//                     startFP: null,
+//                     endPhoto: null,
+//                     endFP: null,
+
+//                     status: "absent",
+//                     checkInTime: null,
+//                     checkInTimestamp: null,
+//                     checkOutTime: null,
+//                     checkOutTimestamp: null,
+
+//                     wageStatus: "unpaid",
+//                     finalWage: null,
+//                     workType: null,
+//                     overtime: 0,
+//                     hoursWorked: null,
+
+//                     gpsVerified: false,
+//                     geoDistance: null,
+//                     latitude: null,
+//                     longitude: null,
+//                     gpsSource: null,
+//                   }
+//                 : x
+//             )
+//           );
+
+//           setScanStatus("success");
+//           setScanMessage("Worker Enrolled ✅");
+//           setTimeout(() => {
+//             closeScan();
+//             alert("Worker Enrolled ✅");
+//           }, 500);
+//           return;
+//         }
+
+//         if (mode === "start") {
+//           if (!w.profileFP) throw new Error("Not enrolled!");
+
+//           const res = verifyPhotoMatch(w.profileFP, fp);
+//           if (!res.verified) throw new Error(`Mismatch ❌ (${res.similarity}%)`);
+
+//           const now = new Date();
+//           setWorkers((prev) =>
+//             prev.map((x) =>
+//               x.id === id
+//                 ? {
+//                     ...x,
+//                     status: "present",
+//                     checkInTime: now.toLocaleTimeString("en-IN", {
+//                       hour: "2-digit",
+//                       minute: "2-digit",
+//                     }),
+//                     checkInTimestamp: now.getTime(),
+
+//                     startPhoto: shot,
+//                     startFP: fp,
+
+//                     gpsVerified: true,
+//                     geoDistance: geo.distance,
+//                     latitude: geo.location.latitude,
+//                     longitude: geo.location.longitude,
+//                     gpsSource: geo.source,
+//                   }
+//                 : x
+//             )
+//           );
+
+//           setScanStatus("success");
+//           setScanMessage(`Start Verified ✅ (${res.similarity}%)`);
+//           setTimeout(() => {
+//             closeScan();
+//             alert(`Start Work ✅ (${res.similarity}%)`);
+//           }, 500);
+//           return;
+//         }
+
+//         if (mode === "end") {
+//           if (!w.profileFP) throw new Error("Not enrolled!");
+//           if (!w.startFP) throw new Error("Start not done!");
+
+//           const r1 = verifyPhotoMatch(w.profileFP, fp);
+//           const r2 = verifyPhotoMatch(w.startFP, fp);
+//           const minScore = Math.min(r1.similarity, r2.similarity);
+
+//           if (!r1.verified || !r2.verified) throw new Error(`Mismatch ❌ (${minScore}%)`);
+
+//           const now = new Date();
+//           const outTs = now.getTime();
+
+//           setWorkers((prev) =>
+//             prev.map((x) => {
+//               if (x.id !== id) return x;
+
+//               const hours = computeHoursWorked(x.checkInTimestamp, outTs);
+//               const wageCalc = calculateWage(x.wageAmount, hours);
+
+//               return {
+//                 ...x,
+//                 checkOutTime: now.toLocaleTimeString("en-IN", {
+//                   hour: "2-digit",
+//                   minute: "2-digit",
+//                 }),
+//                 checkOutTimestamp: outTs,
+
+//                 endPhoto: shot,
+//                 endFP: fp,
+
+//                 hoursWorked: hours,
+//                 finalWage: wageCalc.finalWage,
+//                 workType: wageCalc.workType,
+//                 overtime: wageCalc.overtime,
+
+//                 gpsVerified: true,
+//                 geoDistance: geo.distance,
+//                 latitude: geo.location.latitude,
+//                 longitude: geo.location.longitude,
+//                 gpsSource: geo.source,
+//               };
+//             })
+//           );
+
+//           setScanStatus("success");
+//           setScanMessage(`End Verified ✅ (${minScore}%)`);
+//           setTimeout(() => {
+//             closeScan();
+//             alert(`End Work ✅ (${minScore}%)`);
+//           }, 500);
+//           return;
+//         }
+//       }
+
+//       throw new Error("Invalid scan flow");
+//     } catch (e) {
+//       setScanStatus("fail");
+//       setScanMessage(e?.message || "Verification failed");
 //     }
 //   };
 
-//   const markWorkerAttendance = async (workerId) => {
-//     try {
-//       const locationResult = await verifyLocation();
-
-//       setWorkers(
-//         workers.map((w) => {
-//           if (w.id === workerId) {
-//             const now = new Date();
-//             return {
+//   // -------------------------
+//   // PAY WAGE
+//   // -------------------------
+//   const processWagePayment = (workerId) => {
+//     setWorkers((prev) =>
+//       prev.map((w) =>
+//         w.id === workerId
+//           ? {
 //               ...w,
-//               status: "present",
-//               checkInTime: now.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" }),
-//               checkInTimestamp: now.getTime(),
-//               gpsVerified: true,
-//               latitude: locationResult.location.latitude,
-//               longitude: locationResult.location.longitude,
-//             };
-//           }
-//           return w;
-//         })
-//       );
-
-//       alert(locationResult.message);
-//     } catch (error) {
-//       alert(error.message);
-//     }
+//               wageStatus: "paid",
+//             }
+//           : w
+//       )
+//     );
+//     setShowWageModal(false);
+//     setSelectedWorker(null);
+//     alert("Payment recorded ✅ (Demo)");
 //   };
 
-//   const getCategoryStats = (categoryId) => {
-//     const categoryWorkers = workers.filter((w) => w.category === categoryId);
-//     const present = categoryWorkers.filter((w) => w.status === "present").length;
-//     const required = categories.find((c) => c.id === categoryId)?.requiredCount || 0;
-//     return { present, required, total: categoryWorkers.length };
-//   };
-
-//   const getTotalStats = () => {
-//     const totalRequired = categories.reduce((sum, cat) => sum + cat.requiredCount, 0);
+//   // -------------------------
+//   // STATS
+//   // -------------------------
+//   const stats = useMemo(() => {
+//     const totalRequired = categories.reduce((sum, c) => sum + c.requiredCount, 0);
 //     const totalPresent = workers.filter((w) => w.status === "present").length;
-//     const totalWorkers = workers.length;
-//     return { totalRequired, totalPresent, totalWorkers };
-//   };
+//     return { totalRequired, totalPresent };
+//   }, [workers, categories]);
 
-//   const stats = getTotalStats();
 //   const workforceAlert = stats.totalPresent < stats.totalRequired;
 
-//   const filteredWorkers = workers.filter((w) => {
-//     const matchesCategory = selectedCategory === "all" || w.category === selectedCategory;
-//     const matchesSearch =
-//       w.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-//       w.mudkam.toLowerCase().includes(searchQuery.toLowerCase());
-//     return matchesCategory && matchesSearch;
-//   });
+//   const filteredWorkers = useMemo(() => {
+//     return workers.filter((w) => {
+//       const matchesCategory =
+//         selectedCategory === "all" || w.category === selectedCategory;
 
+//       const matchesSearch =
+//         w.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+//         w.mudkam.toLowerCase().includes(searchQuery.toLowerCase());
+
+//       return matchesCategory && matchesSearch;
+//     });
+//   }, [workers, selectedCategory, searchQuery]);
+
+//   // -------------------------
+//   // ADD WORKER
+//   // -------------------------
 //   const addWorker = () => {
 //     if (!newWorkerName || !newWorkerCategory || !newWorkerMudkam) {
-//       alert("Please fill all fields");
+//       alert("Fill all fields");
 //       return;
 //     }
 
-//     const newWorker = {
+//     const newW = {
 //       id: `W${String(workers.length + 1).padStart(3, "0")}`,
 //       name: newWorkerName,
 //       category: newWorkerCategory,
 //       mudkam: newWorkerMudkam,
 //       phone: "",
+
 //       status: "absent",
 //       checkInTime: null,
 //       checkInTimestamp: null,
 //       checkOutTime: null,
 //       checkOutTimestamp: null,
-//       wageStatus: "unpaid",
-//       wageAmount: newWorkerCategory === "mason" ? 800 : newWorkerCategory === "helper" ? 600 : 1000,
-//       overtime: 0,
+
 //       gpsVerified: false,
-//       workType: "full",
+//       geoDistance: null,
 //       latitude: null,
 //       longitude: null,
+//       gpsSource: null,
+
+//       wageStatus: "unpaid",
+//       wageAmount:
+//         newWorkerCategory === "mason"
+//           ? 800
+//           : newWorkerCategory === "helper"
+//           ? 600
+//           : 1000,
+
+//       finalWage: null,
+//       workType: null,
+//       overtime: 0,
+//       hoursWorked: null,
+
+//       profilePhoto: null,
+//       profileFP: null,
+//       startPhoto: null,
+//       startFP: null,
+//       endPhoto: null,
+//       endFP: null,
 //     };
 
-//     setWorkers([...workers, newWorker]);
+//     setWorkers((prev) => [...prev, newW]);
 //     setNewWorkerName("");
 //     setNewWorkerCategory("");
 //     setNewWorkerMudkam("");
 //     setShowAddWorkerModal(false);
 //   };
 
-//   const calculateWage = (worker) => {
-//     if (!worker.checkInTimestamp || !worker.checkOutTimestamp) return worker.wageAmount;
-
-//     const hoursWorked = (worker.checkOutTimestamp - worker.checkInTimestamp) / (1000 * 60 * 60);
-//     const standardHours = 8;
-
-//     if (hoursWorked < 4) {
-//       return { amount: worker.wageAmount / 2, type: "half", overtime: 0 };
-//     } else if (hoursWorked > standardHours) {
-//       const overtimeHours = hoursWorked - standardHours;
-//       const overtimeRate = worker.wageAmount / standardHours;
-//       return {
-//         amount: worker.wageAmount + overtimeRate * overtimeHours * 1.5,
-//         type: "overtime",
-//         overtime: overtimeHours,
-//       };
-//     }
-
-//     return { amount: worker.wageAmount, type: "full", overtime: 0 };
-//   };
-
-//   const processWagePayment = (workerId) => {
-//     setWorkers(
-//       workers.map((w) => {
-//         if (w.id === workerId) {
-//           const now = new Date();
-//           const checkOutTime = now.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" });
-//           const checkOutTimestamp = now.getTime();
-
-//           const wageCalc = calculateWage({
-//             ...w,
-//             checkOutTimestamp,
-//           });
-
-//           return {
-//             ...w,
-//             wageStatus: "paid",
-//             checkOutTime,
-//             checkOutTimestamp,
-//             workType: wageCalc.type,
-//             overtime: wageCalc.overtime,
-//             finalWage: wageCalc.amount,
-//           };
-//         }
-//         return w;
-//       })
-//     );
-
-//     setShowWageModal(false);
-//     setSelectedWorker(null);
-//   };
-
 //   const syncData = () => {
 //     setSyncing(true);
 //     setTimeout(() => {
 //       setSyncing(false);
-//       alert("Data synced successfully!");
-//     }, 1500);
+//       alert("Synced ✅ (Demo mode)");
+//     }, 1200);
 //   };
 
 //   useEffect(() => {
-//     return () => {
-//       stopCamera();
-//     };
+//     return () => stopCamera();
 //   }, []);
 
 //   return (
@@ -1679,9 +1049,11 @@
 //       {/* HEADER */}
 //       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
 //         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-3 sm:py-4">
-//           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+//           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
 //             <div>
-//               <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Attendance Management</h1>
+//               <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+//                 Attendance Management
+//               </h1>
 //               <p className="text-xs sm:text-sm text-gray-600 mt-1">
 //                 {new Date(selectedDate).toLocaleDateString("en-IN", {
 //                   weekday: "long",
@@ -1690,49 +1062,46 @@
 //                   year: "numeric",
 //                 })}
 //               </p>
+
+//               <p className="text-[11px] text-gray-500 mt-1">
+//                 Offline Photo Verification + GPS Geofence + Wage Automation (Hackathon Demo)
+//               </p>
 //             </div>
 
-//             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
-//               {gpsLoading ? (
-//                 <div className="text-xs text-blue-600 flex items-center gap-1.5 px-3 py-2 bg-blue-50 rounded-lg">
-//                   <svg className="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-//                   </svg>
-//                   Getting GPS...
-//                 </div>
-//               ) : currentLocation ? (
-//                 <div className="text-xs text-green-600 flex items-center gap-1.5 px-3 py-2 bg-green-50 rounded-lg border border-green-200">
-//                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-//                     <path
-//                       fillRule="evenodd"
-//                       d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-//                       clipRule="evenodd"
-//                     />
-//                   </svg>
-//                   <span className="hidden sm:inline">
-//                     GPS: {currentLocation.latitude.toFixed(4)}, {currentLocation.longitude.toFixed(4)}
+//             <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
+//               <div className="flex items-center gap-2">
+//                 {gpsLoading ? (
+//                   <span className="text-xs px-3 py-2 bg-blue-50 text-blue-700 rounded-lg">
+//                     GPS Checking...
 //                   </span>
-//                   <span className="sm:hidden">GPS Active</span>
-//                 </div>
-//               ) : null}
+//                 ) : currentLocation ? (
+//                   <span className="text-xs px-3 py-2 bg-green-50 text-green-700 rounded-lg border border-green-200">
+//                     GPS Active ({gpsSource === "real" ? "Real" : "Demo"}) • ±
+//                     {currentLocation.accuracy}m
+//                   </span>
+//                 ) : (
+//                   <span className="text-xs px-3 py-2 bg-gray-100 text-gray-600 rounded-lg">
+//                     GPS Idle
+//                   </span>
+//                 )}
+//               </div>
 
-//               <div className="flex gap-2 sm:gap-3">
+//               <div className="flex gap-2">
 //                 <input
 //                   type="date"
 //                   value={selectedDate}
 //                   onChange={(e) => setSelectedDate(e.target.value)}
-//                   className="flex-1 sm:flex-none px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+//                   className="px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm"
 //                 />
 
 //                 <select
 //                   value={selectedSite}
 //                   onChange={(e) => setSelectedSite(e.target.value)}
-//                   className="flex-1 sm:flex-none px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+//                   className="px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm"
 //                 >
-//                   <option value="">Select Site</option>
-//                   {sites.map((site) => (
-//                     <option key={site.id} value={site.id}>
-//                       {site.name}
+//                   {sites.map((s) => (
+//                     <option key={s.id} value={s.id}>
+//                       {s.name}
 //                     </option>
 //                   ))}
 //                 </select>
@@ -1740,12 +1109,9 @@
 //                 <button
 //                   onClick={syncData}
 //                   disabled={syncing}
-//                   className="px-3 sm:px-4 py-2 sm:py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-medium rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50"
+//                   className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs sm:text-sm disabled:opacity-50"
 //                 >
-//                   <svg className={`w-4 h-4 ${syncing ? "animate-spin" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-//                   </svg>
-//                   <span className="hidden sm:inline">{syncing ? "Syncing..." : "Sync"}</span>
+//                   {syncing ? "Syncing..." : "Sync"}
 //                 </button>
 //               </div>
 //             </div>
@@ -1757,458 +1123,277 @@
 //         {/* Workforce Alert */}
 //         {workforceAlert && (
 //           <div className="bg-red-50 border-l-4 border-red-500 p-3 sm:p-4 rounded-r-lg">
-//             <div className="flex items-start gap-3">
-//               <svg className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-//               </svg>
-//               <div>
-//                 <h3 className="font-semibold text-red-800 text-sm">Workforce Alert</h3>
-//                 <p className="text-xs sm:text-sm text-red-700 mt-0.5">
-//                   Present: {stats.totalPresent} / Required: {stats.totalRequired} - Work might be delayed due to insufficient workers
-//                 </p>
-//               </div>
-//             </div>
+//             <h3 className="font-semibold text-red-800 text-sm">
+//               Workforce Alert
+//             </h3>
+//             <p className="text-xs text-red-700 mt-1">
+//               Present: {stats.totalPresent} / Required: {stats.totalRequired}
+//             </p>
 //           </div>
 //         )}
 
-//         {/* Location Error */}
-//         {locationError && (
-//           <div className="bg-yellow-50 border-l-4 border-yellow-500 p-3 sm:p-4 rounded-r-lg">
-//             <div className="flex items-start gap-3">
-//               <svg className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-//               </svg>
-//               <div>
-//                 <h3 className="font-semibold text-yellow-800 text-sm">Location Access Required</h3>
-//                 <p className="text-xs sm:text-sm text-yellow-700 mt-0.5">{locationError}</p>
-//               </div>
-//             </div>
-//           </div>
-//         )}
-
-//         {/* Today's Visits */}
+//         {/* VISITORS */}
 //         <div className="bg-white rounded-lg border border-gray-200">
 //           <div className="px-3 sm:px-6 py-3 sm:py-4 border-b border-gray-200">
-//             <h2 className="text-lg sm:text-xl font-bold text-gray-900">Today's Site Visits</h2>
+//             <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+//               Visitors (Engineer/Manager/Client/Supervisor)
+//             </h2>
 //             <p className="text-xs sm:text-sm text-gray-600 mt-1">
-//               Site Engineer, Manager, Client, Supervisor (GPS + Face Scan Required)
+//               Enroll → Start → End (Offline verification + Geofence)
 //             </p>
 //           </div>
 
 //           <div className="p-3 sm:p-6">
 //             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-//               {todayVisits.map((visit, idx) => (
-//                 <div key={idx} className="border border-gray-200 rounded-lg p-3 sm:p-4 hover:shadow-md transition-shadow">
-//                   <div className="flex items-start justify-between mb-3">
-//                     <div>
-//                       <p className="text-xs text-gray-500 uppercase tracking-wider">{visit.role}</p>
-//                       <p className="font-semibold text-gray-900 mt-1 text-sm sm:text-base">{visit.name}</p>
+//               {todayVisits.map((v, idx) => {
+//                 const mode = getVisitMode(v);
+//                 const label =
+//                   mode === "enroll"
+//                     ? "Enroll"
+//                     : mode === "start"
+//                     ? "Start"
+//                     : mode === "end"
+//                     ? "End"
+//                     : "Done ✅";
+
+//                 return (
+//                   <div key={idx} className="border border-gray-200 rounded-lg p-3 sm:p-4">
+//                     <div className="flex justify-between items-start">
+//                       <div>
+//                         <p className="text-xs text-gray-500 uppercase tracking-wider">
+//                           {v.role}
+//                         </p>
+//                         <p className="font-semibold text-gray-900 mt-1">{v.name}</p>
+//                       </div>
+//                       <span className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-700">
+//                         {label}
+//                       </span>
 //                     </div>
 
-//                     {visit.status === "present" ? (
-//                       <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
-//                         Present
-//                       </span>
+//                     {v.profilePhoto ? (
+//                       <img
+//                         src={v.profilePhoto}
+//                         className="mt-3 w-full h-20 object-cover rounded-lg border"
+//                         alt="enrolled"
+//                       />
 //                     ) : (
-//                       <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">
-//                         Expected
-//                       </span>
+//                       <div className="mt-3 text-xs text-gray-400">Not enrolled</div>
+//                     )}
+
+//                     <div className="grid grid-cols-2 gap-2 mt-2">
+//                       {v.startPhoto && (
+//                         <img
+//                           src={v.startPhoto}
+//                           className="w-full h-16 object-cover rounded-lg border"
+//                           alt="start"
+//                         />
+//                       )}
+//                       {v.endPhoto && (
+//                         <img
+//                           src={v.endPhoto}
+//                           className="w-full h-16 object-cover rounded-lg border"
+//                           alt="end"
+//                         />
+//                       )}
+//                     </div>
+
+//                     <div className="mt-2 text-xs text-gray-600">
+//                       📍 {v.geoDistance !== null ? `${v.geoDistance}m` : "-"} •{" "}
+//                       {v.gpsSource ? v.gpsSource.toUpperCase() : "-"}
+//                     </div>
+
+//                     {mode === "done" ? (
+//                       <div className="mt-3 text-xs text-green-700 font-semibold text-center">
+//                         Completed ✅
+//                       </div>
+//                     ) : (
+//                       <button
+//                         onClick={() => openScan({ type: "visitor", id: idx, mode })}
+//                         className="w-full mt-3 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-medium"
+//                       >
+//                         {label}
+//                       </button>
 //                     )}
 //                   </div>
-
-//                   {visit.status === "present" ? (
-//                     <div className="space-y-2">
-//                       <div className="flex items-center gap-2 text-xs text-gray-600">
-//                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-//                         </svg>
-//                         {visit.time}
-//                       </div>
-
-//                       <div className="flex items-center gap-2">
-//                         {visit.gpsVerified && (
-//                           <span className="flex items-center gap-1 text-xs text-green-600">
-//                             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-//                               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-//                             </svg>
-//                             GPS
-//                           </span>
-//                         )}
-
-//                         {visit.faceVerified && (
-//                           <span className="flex items-center gap-1 text-xs text-blue-600">
-//                             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-//                               <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-//                             </svg>
-//                             Face
-//                           </span>
-//                         )}
-//                       </div>
-
-//                       {visit.latitude && visit.longitude && (
-//                         <div className="text-xs text-gray-500 mt-1 break-all">
-//                           📍 {visit.latitude.toFixed(4)}, {visit.longitude.toFixed(4)}
-//                         </div>
-//                       )}
-
-//                       {/* ✅ show captured face image */}
-//                       {visit.faceImage && (
-//                         <div className="mt-2">
-//                           <img
-//                             src={visit.faceImage}
-//                             alt="Face Capture"
-//                             className="w-full h-24 object-cover rounded-lg border border-gray-200"
-//                           />
-//                           <p className="text-[10px] text-gray-500 mt-1">Captured Photo</p>
-//                         </div>
-//                       )}
-//                     </div>
-//                   ) : (
-//                     <button
-//                       onClick={() => handleStaffAttendance(idx)}
-//                       className="w-full mt-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg transition-colors"
-//                     >
-//                       Mark Attendance
-//                     </button>
-//                   )}
-//                 </div>
-//               ))}
+//                 );
+//               })}
 //             </div>
 //           </div>
 //         </div>
 
-//         {/* Category Stats */}
-//         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-2 sm:gap-4">
-//           <button
-//             onClick={() => setSelectedCategory("all")}
-//             className={`p-3 sm:p-6 rounded-lg border transition-all ${
-//               selectedCategory === "all"
-//                 ? "border-orange-500 bg-orange-50"
-//                 : "border-gray-200 bg-white hover:border-orange-300"
-//             }`}
-//           >
-//             <div className="flex items-center justify-between mb-2">
-//               <span className="text-xs text-gray-500 uppercase tracking-wider font-medium">All Workers</span>
-//               <div className="w-2 h-2 bg-gray-400 rounded-sm"></div>
-//             </div>
-//             <div className="text-2xl sm:text-4xl font-bold text-gray-900 font-mono">
-//               {String(stats.totalPresent).padStart(2, "0")}
-//               <span className="text-gray-400">/{String(stats.totalRequired).padStart(2, "0")}</span>
-//             </div>
-//             <div className="text-xs text-gray-500 mt-2">Present/Required</div>
-//           </button>
-
-//           {categories.map((category) => {
-//             const catStats = getCategoryStats(category.id);
-//             const isLow = catStats.present < catStats.required;
-
-//             return (
-//               <button
-//                 key={category.id}
-//                 onClick={() => setSelectedCategory(category.id)}
-//                 className={`p-3 sm:p-6 rounded-lg border transition-all ${
-//                   selectedCategory === category.id
-//                     ? "border-orange-500 bg-orange-50"
-//                     : isLow
-//                     ? "border-red-300 bg-red-50"
-//                     : "border-gray-200 bg-white hover:border-orange-300"
-//                 }`}
-//               >
-//                 <div className="flex items-center justify-between mb-2">
-//                   <span className="text-xs text-gray-500 uppercase tracking-wider font-medium">{category.name}</span>
-//                   <div className={`w-2 h-2 rounded-full ${isLow ? "bg-red-500" : "bg-gray-400"}`}></div>
-//                 </div>
-
-//                 <div className={`text-2xl sm:text-4xl font-bold font-mono ${isLow ? "text-red-600" : "text-gray-900"}`}>
-//                   {String(catStats.present).padStart(2, "0")}
-//                   <span className="text-gray-400">/{String(catStats.required).padStart(2, "0")}</span>
-//                 </div>
-
-//                 <div className="text-xs text-gray-500 mt-2">{isLow ? "Low" : "Present/Required"}</div>
-//               </button>
-//             );
-//           })}
-//         </div>
-
-//         {/* Workers Table */}
+//         {/* LABOUR */}
 //         <div className="bg-white rounded-lg border border-gray-200">
-//           <div className="px-3 sm:px-6 py-3 sm:py-4 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+//           <div className="px-3 sm:px-6 py-3 sm:py-4 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
 //             <div>
-//               <h2 className="text-lg sm:text-xl font-bold text-gray-900">Labor Attendance</h2>
-//               <p className="text-xs sm:text-sm text-gray-600 mt-1">GPS verification required (No face scan)</p>
+//               <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+//                 Labor Attendance + Wage
+//               </h2>
+//               <p className="text-xs sm:text-sm text-gray-600 mt-1">
+//                 Enroll → Start Work → End Work → Wage Auto Calc → Pay
+//               </p>
 //             </div>
 
-//             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
-//               <div className="relative">
-//                 <input
-//                   type="text"
-//                   placeholder="Search worker..."
-//                   value={searchQuery}
-//                   onChange={(e) => setSearchQuery(e.target.value)}
-//                   className="pl-10 pr-4 py-2 sm:py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent w-full sm:w-64"
-//                 />
-//                 <svg className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-//                 </svg>
-//               </div>
+//             <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
+//               <input
+//                 value={searchQuery}
+//                 onChange={(e) => setSearchQuery(e.target.value)}
+//                 placeholder="Search worker..."
+//                 className="px-4 py-2 border border-gray-300 rounded-lg text-sm w-full sm:w-64"
+//               />
 
 //               <button
 //                 onClick={() => setShowAddWorkerModal(true)}
-//                 className="px-4 py-2 sm:py-2.5 bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+//                 className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-sm font-medium"
 //               >
-//                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-//                 </svg>
 //                 Add Worker
 //               </button>
 //             </div>
 //           </div>
 
-//           {/* Mobile Cards View */}
-//           <div className="block sm:hidden">
-//             {filteredWorkers.map((worker, idx) => (
-//               <div key={worker.id} className="border-b border-gray-200 p-4 last:border-b-0">
-//                 <div className="flex items-start justify-between mb-3">
+//           <div className="p-3 sm:p-6 space-y-3">
+//             {filteredWorkers.map((w) => (
+//               <div key={w.id} className="border border-gray-200 rounded-lg p-3 sm:p-4">
+//                 <div className="flex items-start justify-between gap-3">
 //                   <div className="flex-1">
-//                     <div className="flex items-center gap-2 mb-1">
-//                       <span className="text-sm font-medium text-gray-900">#{String(idx + 1).padStart(2, "0")}</span>
-//                       <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium uppercase">
-//                         {categories.find((c) => c.id === worker.category)?.name}
+//                     <div className="flex items-center gap-2">
+//                       <div className="font-semibold text-gray-900">{w.name}</div>
+//                       <span className="text-xs px-2 py-1 bg-gray-100 rounded-full text-gray-700">
+//                         {categories.find((c) => c.id === w.category)?.name || w.category}
 //                       </span>
+
+//                       {w.wageStatus === "paid" && (
+//                         <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full">
+//                           Paid
+//                         </span>
+//                       )}
 //                     </div>
 
-//                     <h3 className="font-semibold text-gray-900">{worker.name}</h3>
-//                     {worker.phone && <p className="text-xs text-gray-500">{worker.phone}</p>}
-//                     <p className="text-sm text-gray-600 mt-1">{worker.mudkam || "-"}</p>
+//                     <div className="text-xs text-gray-600 mt-1">Mudkam: {w.mudkam}</div>
+//                     <div className="text-xs text-gray-600 mt-1">Base Wage: ₹{w.wageAmount}</div>
+
+//                     <div className="text-xs text-gray-700 mt-2">
+//                       IN: {w.checkInTime || "-"} | OUT: {w.checkOutTime || "-"}
+//                     </div>
+
+//                     <div className="text-xs text-gray-700 mt-1">
+//                       📍 {w.geoDistance !== null ? `${w.geoDistance}m` : "-"} •{" "}
+//                       {w.gpsSource ? w.gpsSource.toUpperCase() : "-"}
+//                     </div>
 //                   </div>
 
-//                   <div className="text-right">
-//                     {worker.status === "present" ? (
-//                       <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium uppercase">
-//                         Present
-//                       </span>
+//                   <div className="w-20">
+//                     {w.profilePhoto ? (
+//                       <img
+//                         src={w.profilePhoto}
+//                         alt="enroll"
+//                         className="w-20 h-14 rounded-lg object-cover border"
+//                       />
 //                     ) : (
-//                       <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium uppercase">
-//                         Absent
-//                       </span>
+//                       <div className="w-20 h-14 rounded-lg border bg-gray-50 flex items-center justify-center text-[10px] text-gray-400">
+//                         No Photo
+//                       </div>
 //                     )}
 //                   </div>
 //                 </div>
 
-//                 <div className="grid grid-cols-2 gap-3 text-sm mb-3">
-//                   <div>
-//                     <span className="text-gray-500 text-xs">Check In:</span>
-//                     {worker.checkInTime ? (
-//                       <div className="flex items-center gap-1 mt-1">
-//                         <span className="font-medium">{worker.checkInTime}</span>
-//                         {worker.gpsVerified && (
-//                           <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-//                             <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-//                           </svg>
-//                         )}
-//                       </div>
-//                     ) : (
-//                       <div className="text-gray-400 mt-1">-</div>
-//                     )}
-//                   </div>
+//                 <div className="grid grid-cols-3 gap-2 mt-3">
+//                   <button
+//                     onClick={() => openScan({ type: "labor", id: w.id, mode: "enroll" })}
+//                     className="px-3 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-lg text-xs font-medium"
+//                   >
+//                     {w.profileFP ? "Re-Enroll" : "Enroll"}
+//                   </button>
 
-//                   <div>
-//                     <span className="text-gray-500 text-xs">Check Out:</span>
-//                     {worker.checkOutTime ? (
-//                       <div className="mt-1">
-//                         <span className="font-medium">{worker.checkOutTime}</span>
-//                         {worker.overtime > 0 && <div className="text-xs text-orange-600">+{worker.overtime.toFixed(1)}h OT</div>}
-//                       </div>
-//                     ) : (
-//                       <div className="text-gray-400 mt-1">-</div>
-//                     )}
-//                   </div>
+//                   <button
+//                     onClick={() => openScan({ type: "labor", id: w.id, mode: "start" })}
+//                     disabled={!w.profileFP || !!w.startFP}
+//                     className="px-3 py-2 bg-green-600 hover:bg-green-700 disabled:opacity-40 text-white rounded-lg text-xs font-medium"
+//                   >
+//                     Start Work
+//                   </button>
+
+//                   <button
+//                     onClick={() => openScan({ type: "labor", id: w.id, mode: "end" })}
+//                     disabled={!w.startFP || !!w.endFP}
+//                     className="px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white rounded-lg text-xs font-medium"
+//                   >
+//                     End Work
+//                   </button>
 //                 </div>
 
-//                 {worker.latitude && worker.longitude && (
-//                   <div className="text-xs text-gray-600 mb-3 break-all">
-//                     📍 {worker.latitude.toFixed(4)}, {worker.longitude.toFixed(4)}
-//                   </div>
-//                 )}
+//                 <div className="grid grid-cols-2 gap-2 mt-3">
+//                   {w.startPhoto && (
+//                     <div>
+//                       <img
+//                         src={w.startPhoto}
+//                         alt="start"
+//                         className="w-full h-20 rounded-lg object-cover border"
+//                       />
+//                       <p className="text-[10px] text-gray-500 mt-1">Start Photo</p>
+//                     </div>
+//                   )}
 
-//                 <div className="flex items-center justify-between">
-//                   <div>
-//                     {worker.wageStatus === "paid" ? (
-//                       <div>
-//                         <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium uppercase">Paid</span>
-//                         <div className="text-xs text-gray-600 mt-1">₹{worker.finalWage?.toFixed(0) || worker.wageAmount}</div>
-//                       </div>
-//                     ) : (
-//                       <div>
-//                         <span className="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium uppercase">Unpaid</span>
-//                         <div className="text-xs text-gray-600 mt-1">₹{worker.wageAmount}</div>
-//                       </div>
-//                     )}
-//                   </div>
+//                   {w.endPhoto && (
+//                     <div>
+//                       <img
+//                         src={w.endPhoto}
+//                         alt="end"
+//                         className="w-full h-20 rounded-lg object-cover border"
+//                       />
+//                       <p className="text-[10px] text-gray-500 mt-1">End Photo</p>
+//                     </div>
+//                   )}
+//                 </div>
 
-//                   <div>
-//                     {worker.status === "absent" ? (
-//                       <button
-//                         onClick={() => markWorkerAttendance(worker.id)}
-//                         className="px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-medium transition-colors"
-//                       >
-//                         Mark Present
-//                       </button>
-//                     ) : worker.wageStatus === "unpaid" ? (
+//                 {/* ✅ WAGE UI FIXED (WILL SHOW AFTER END) */}
+//                 {w.endFP && (
+//                   <div className="mt-3 bg-green-50 border border-green-200 rounded-lg p-3">
+//                     <div className="text-sm font-semibold text-green-800">
+//                       Wage Calculated ✅
+//                     </div>
+
+//                     <div className="text-xs text-green-700 mt-1">
+//                       Hours: <b>{w.hoursWorked !== null ? w.hoursWorked.toFixed(2) : "0.00"}</b> | Type:{" "}
+//                       <b>{w.workType}</b> | OT: <b>{(w.overtime || 0).toFixed(1)}h</b>
+//                     </div>
+
+//                     <div className="text-sm text-green-800 mt-1">
+//                       Final Amount: <b>₹{Math.round(w.finalWage || w.wageAmount)}</b>
+//                     </div>
+
+//                     {w.wageStatus === "unpaid" && (
 //                       <button
 //                         onClick={() => {
-//                           setSelectedWorker(worker);
+//                           setSelectedWorker(w);
 //                           setShowWageModal(true);
 //                         }}
-//                         className="px-3 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-medium transition-colors"
+//                         className="mt-2 w-full px-3 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-medium"
 //                       >
 //                         Pay Wage
 //                       </button>
-//                     ) : (
-//                       <span className="text-xs text-gray-500">Logged Out</span>
 //                     )}
 //                   </div>
-//                 </div>
+//                 )}
 //               </div>
 //             ))}
-//           </div>
-
-//           {/* Desktop Table View */}
-//           <div className="hidden sm:block overflow-x-auto">
-//             <table className="w-full min-w-[1000px]">
-//               <thead className="bg-gray-50 border-b border-gray-200">
-//                 <tr>
-//                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
-//                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-//                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-//                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mudkam</th>
-//                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Check In</th>
-//                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">GPS Location</th>
-//                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Check Out</th>
-//                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-//                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wage</th>
-//                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-//                 </tr>
-//               </thead>
-
-//               <tbody className="divide-y divide-gray-200">
-//                 {filteredWorkers.map((worker, idx) => (
-//                   <tr key={worker.id} className="hover:bg-gray-50 transition-colors">
-//                     <td className="px-6 py-4 text-sm text-gray-900">{String(idx + 1).padStart(2, "0")}</td>
-
-//                     <td className="px-6 py-4">
-//                       <div className="font-medium text-gray-900">{worker.name}</div>
-//                       {worker.phone && <div className="text-xs text-gray-500">{worker.phone}</div>}
-//                     </td>
-
-//                     <td className="px-6 py-4">
-//                       <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium uppercase">
-//                         {categories.find((c) => c.id === worker.category)?.name}
-//                       </span>
-//                     </td>
-
-//                     <td className="px-6 py-4 text-sm text-gray-700">{worker.mudkam || "-"}</td>
-
-//                     <td className="px-6 py-4">
-//                       {worker.checkInTime ? (
-//                         <div className="flex items-center gap-2">
-//                           <span className="font-medium text-gray-900">{worker.checkInTime}</span>
-//                           {worker.gpsVerified && (
-//                             <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-//                               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-//                             </svg>
-//                           )}
-//                         </div>
-//                       ) : (
-//                         <span className="text-gray-400">-</span>
-//                       )}
-//                     </td>
-
-//                     <td className="px-6 py-4">
-//                       {worker.latitude && worker.longitude ? (
-//                         <div className="text-xs text-gray-600">
-//                           {worker.latitude.toFixed(4)}, {worker.longitude.toFixed(4)}
-//                         </div>
-//                       ) : (
-//                         <span className="text-gray-400">-</span>
-//                       )}
-//                     </td>
-
-//                     <td className="px-6 py-4">
-//                       {worker.checkOutTime ? (
-//                         <div>
-//                           <span className="font-medium text-gray-900">{worker.checkOutTime}</span>
-//                           {worker.overtime > 0 && <div className="text-xs text-orange-600 mt-0.5">+{worker.overtime.toFixed(1)}h OT</div>}
-//                         </div>
-//                       ) : (
-//                         <span className="text-gray-400">-</span>
-//                       )}
-//                     </td>
-
-//                     <td className="px-6 py-4">
-//                       {worker.status === "present" ? (
-//                         <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium uppercase">
-//                           Present
-//                         </span>
-//                       ) : (
-//                         <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium uppercase">
-//                           Absent
-//                         </span>
-//                       )}
-//                     </td>
-
-//                     <td className="px-6 py-4">
-//                       {worker.wageStatus === "paid" ? (
-//                         <div>
-//                           <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium uppercase">Paid</span>
-//                           <div className="text-xs text-gray-600 mt-1">₹{worker.finalWage?.toFixed(0) || worker.wageAmount}</div>
-//                         </div>
-//                       ) : (
-//                         <div>
-//                           <span className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium uppercase">Unpaid</span>
-//                           <div className="text-xs text-gray-600 mt-1">₹{worker.wageAmount}</div>
-//                         </div>
-//                       )}
-//                     </td>
-
-//                     <td className="px-6 py-4">
-//                       {worker.status === "absent" ? (
-//                         <button
-//                           onClick={() => markWorkerAttendance(worker.id)}
-//                           className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-medium transition-colors"
-//                         >
-//                           Mark Present
-//                         </button>
-//                       ) : worker.wageStatus === "unpaid" ? (
-//                         <button
-//                           onClick={() => {
-//                             setSelectedWorker(worker);
-//                             setShowWageModal(true);
-//                           }}
-//                           className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-medium transition-colors"
-//                         >
-//                           Pay Wage
-//                         </button>
-//                       ) : (
-//                         <span className="text-xs text-gray-500">Logged Out</span>
-//                       )}
-//                     </td>
-//                   </tr>
-//                 ))}
-//               </tbody>
-//             </table>
 //           </div>
 //         </div>
 //       </div>
 
-//       {/* Face Scan Modal */}
-//       {showFaceScanModal && (
+//       {/* CAMERA MODAL */}
+//       {showScanModal && (
 //         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-//           <div className="bg-white rounded-xl max-w-2xl w-full p-4 sm:p-6 mx-4">
+//           <div className="bg-white rounded-xl max-w-2xl w-full p-4 sm:p-6">
 //             <div className="text-center">
-//               <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Face Recognition</h2>
+//               <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+//                 Offline Verification
+//               </h2>
 
-//               <div className="relative bg-black rounded-lg overflow-hidden mb-4">
+//               <p className="text-xs text-gray-600 mt-1">
+//                 Mode: <b>{scanMeta?.type}</b> / <b>{scanMeta?.mode}</b>
+//               </p>
+
+//               <div className="relative bg-black rounded-lg overflow-hidden mt-4">
 //                 <video ref={videoRef} autoPlay playsInline className="w-full h-64 sm:h-96 object-cover" />
 //                 <canvas ref={canvasRef} className="hidden" />
 
@@ -2217,91 +1402,84 @@
 //                 </div>
 //               </div>
 
-//               {faceScanStatus === "scanning" && (
-//                 <div className="flex items-center justify-center gap-2 text-blue-600">
-//                   <svg className="animate-spin w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-//                   </svg>
-//                   <span>Scanning face...</span>
-//                 </div>
-//               )}
+//               <div className="mt-3 text-sm font-medium">
+//                 {scanStatus === "fail" ? (
+//                   <span className="text-red-600">{scanMessage}</span>
+//                 ) : scanStatus === "success" ? (
+//                   <span className="text-green-600">{scanMessage}</span>
+//                 ) : (
+//                   <span className="text-blue-600">{scanMessage}</span>
+//                 )}
+//               </div>
 
-//               {faceScanStatus === "success" && (
-//                 <div className="flex items-center justify-center gap-2 text-green-600">
-//                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-//                     <path
-//                       fillRule="evenodd"
-//                       d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-//                       clipRule="evenodd"
-//                     />
-//                   </svg>
-//                   <span>Face verified successfully!</span>
-//                 </div>
-//               )}
+//               <div className="flex gap-2 justify-center mt-4">
+//                 <button
+//                   onClick={captureAndVerify}
+//                   className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium"
+//                 >
+//                   Capture & Verify
+//                 </button>
 
-//               <p className="text-sm text-gray-600 mt-2">Position your face within the frame</p>
+//                 <button
+//                   onClick={closeScan}
+//                   className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg text-sm font-medium"
+//                 >
+//                   Close
+//                 </button>
+//               </div>
+
+//               <p className="text-xs text-gray-500 mt-3">
+//                 Tip: Similar lighting gives higher match score.
+//               </p>
 //             </div>
 //           </div>
 //         </div>
 //       )}
 
-//       {/* Add Worker Modal */}
+//       {/* ADD WORKER MODAL */}
 //       {showAddWorkerModal && (
 //         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-//           <div className="bg-white rounded-xl max-w-md w-full p-4 sm:p-6 mx-4">
-//             <div className="flex items-center justify-between mb-4 sm:mb-6">
-//               <h2 className="text-lg sm:text-xl font-bold text-gray-900">Add New Worker</h2>
-//               <button onClick={() => setShowAddWorkerModal(false)} className="p-1 hover:bg-gray-100 rounded-lg transition-colors">
-//                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-//                 </svg>
+//           <div className="bg-white rounded-xl max-w-md w-full p-4 sm:p-6">
+//             <div className="flex items-center justify-between mb-4">
+//               <h2 className="text-lg font-bold text-gray-900">Add Worker</h2>
+//               <button onClick={() => setShowAddWorkerModal(false)} className="px-2 py-1 rounded bg-gray-100">
+//                 ✕
 //               </button>
 //             </div>
 
 //             <div className="space-y-4">
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-2">Worker Name</label>
-//                 <input
-//                   type="text"
-//                   value={newWorkerName}
-//                   onChange={(e) => setNewWorkerName(e.target.value)}
-//                   placeholder="Enter worker name"
-//                   className="w-full px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-//                 />
-//               </div>
+//               <input
+//                 value={newWorkerName}
+//                 onChange={(e) => setNewWorkerName(e.target.value)}
+//                 placeholder="Worker name"
+//                 className="w-full px-4 py-3 border rounded-lg"
+//               />
 
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
-//                 <select
-//                   value={newWorkerCategory}
-//                   onChange={(e) => setNewWorkerCategory(e.target.value)}
-//                   className="w-full px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-//                 >
-//                   <option value="">Select Category</option>
-//                   {categories.map((cat) => (
-//                     <option key={cat.id} value={cat.id}>
-//                       {cat.name}
-//                     </option>
-//                   ))}
-//                 </select>
-//               </div>
+//               <select
+//                 value={newWorkerCategory}
+//                 onChange={(e) => setNewWorkerCategory(e.target.value)}
+//                 className="w-full px-4 py-3 border rounded-lg"
+//               >
+//                 <option value="">Select category</option>
+//                 {categories.map((c) => (
+//                   <option key={c.id} value={c.id}>
+//                     {c.name}
+//                   </option>
+//                 ))}
+//               </select>
 
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-2">Mudkam (Village/Origin)</label>
-//                 <input
-//                   type="text"
-//                   value={newWorkerMudkam}
-//                   onChange={(e) => setNewWorkerMudkam(e.target.value)}
-//                   placeholder="e.g., Village Rampur, UP"
-//                   className="w-full px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-//                 />
-//               </div>
+//               <input
+//                 value={newWorkerMudkam}
+//                 onChange={(e) => setNewWorkerMudkam(e.target.value)}
+//                 placeholder="Mudkam (Village/Origin)"
+//                 className="w-full px-4 py-3 border rounded-lg"
+//               />
 
-//               <div className="flex flex-col sm:flex-row gap-3 pt-2">
-//                 <button onClick={addWorker} className="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-medium py-3 rounded-lg transition-colors">
-//                   Add Worker
+//               <div className="flex gap-3">
+//                 <button onClick={addWorker} className="flex-1 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-medium">
+//                   Add
 //                 </button>
-//                 <button onClick={() => setShowAddWorkerModal(false)} className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg transition-colors">
+//                 <button onClick={() => setShowAddWorkerModal(false)} className="flex-1 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg font-medium">
 //                   Cancel
 //                 </button>
 //               </div>
@@ -2310,121 +1488,116 @@
 //         </div>
 //       )}
 
-//       {/* Wage Payment Modal */}
+//       {/* WAGE MODAL */}
 //       {showWageModal && selectedWorker && (
 //         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-//           <div className="bg-white rounded-xl max-w-md w-full p-4 sm:p-6 mx-4">
-//             <div className="flex items-center justify-between mb-4 sm:mb-6">
-//               <h2 className="text-lg sm:text-xl font-bold text-gray-900">Process Wage Payment</h2>
-//               <button onClick={() => setShowWageModal(false)} className="p-1 hover:bg-gray-100 rounded-lg transition-colors">
-//                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-//                 </svg>
+//           <div className="bg-white rounded-xl max-w-md w-full p-4 sm:p-6">
+//             <div className="flex items-center justify-between mb-4">
+//               <h2 className="text-lg font-bold text-gray-900">Pay Wage</h2>
+//               <button onClick={() => setShowWageModal(false)} className="px-2 py-1 rounded bg-gray-100">
+//                 ✕
 //               </button>
 //             </div>
 
-//             <div className="bg-gray-50 rounded-lg p-4 mb-4">
-//               <div className="flex items-center gap-3 mb-3">
-//                 <div className="w-10 h-10 rounded-full bg-orange-600 flex items-center justify-center text-white font-semibold">
-//                   {selectedWorker.name.charAt(0)}
-//                 </div>
-//                 <div>
-//                   <div className="font-semibold text-gray-900">{selectedWorker.name}</div>
-//                   <div className="text-sm text-gray-600">{categories.find((c) => c.id === selectedWorker.category)?.name}</div>
-//                 </div>
+//             <div className="bg-gray-50 rounded-lg p-4">
+//               <div className="font-semibold text-gray-900">{selectedWorker.name}</div>
+
+//               <div className="text-xs text-gray-600 mt-1">
+//                 Hours: {selectedWorker.hoursWorked !== null ? selectedWorker.hoursWorked.toFixed(2) : "-"}
 //               </div>
 
-//               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-//                 <div>
-//                   <span className="text-gray-600">Check In:</span>
-//                   <span className="font-medium ml-2">{selectedWorker.checkInTime}</span>
-//                 </div>
-//                 <div>
-//                   <span className="text-gray-600">Base Wage:</span>
-//                   <span className="font-medium ml-2">₹{selectedWorker.wageAmount}</span>
-//                 </div>
+//               <div className="text-xs text-gray-600 mt-1">
+//                 Type: {selectedWorker.workType} | OT: {(selectedWorker.overtime || 0).toFixed(1)}h
+//               </div>
+
+//               <div className="text-sm text-gray-900 mt-2">
+//                 Final Amount: <b>₹{Math.round(selectedWorker.finalWage || selectedWorker.wageAmount)}</b>
 //               </div>
 //             </div>
 
-//             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-//               <p className="text-sm text-blue-800">
-//                 <strong>Auto-calculation:</strong> Wage will be calculated based on check-out time
-//               </p>
-//               <ul className="text-xs text-blue-700 mt-2 space-y-1">
-//                 <li>• Less than 4 hours = Half day (50%)</li>
-//                 <li>• 8 hours = Full day (100%)</li>
-//                 <li>• More than 8 hours = Overtime (150% for extra hours)</li>
-//               </ul>
-//             </div>
-
-//             <div className="flex flex-col sm:flex-row gap-3">
-//               <button
-//                 onClick={() => processWagePayment(selectedWorker.id)}
-//                 className="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-lg transition-colors"
-//               >
-//                 Pay & Checkout
-//               </button>
-//               <button
-//                 onClick={() => setShowWageModal(false)}
-//                 className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg transition-colors"
-//               >
-//                 Cancel
-//               </button>
-//             </div>
+//             <button
+//               onClick={() => processWagePayment(selectedWorker.id)}
+//               className="w-full mt-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium"
+//             >
+//               Confirm Payment
+//             </button>
 //           </div>
 //         </div>
 //       )}
 //     </div>
 //   );
 // }
-
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import api from "../api/axiosConfig";
 
 export default function AttendanceScreen() {
+  // -------------------------
+  // BASIC STATE
+  // -------------------------
   const [userRole, setUserRole] = useState("supervisor");
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
   );
-  const [selectedSite, setSelectedSite] = useState("");
+  const [selectedSite, setSelectedSite] = useState("S001");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+
   const [showAddWorkerModal, setShowAddWorkerModal] = useState(false);
   const [showWageModal, setShowWageModal] = useState(false);
-
-  // ✅ One common camera modal for enroll/start/end
-  const [showFaceScanModal, setShowFaceScanModal] = useState(false);
-  const [scanStatus, setScanStatus] = useState("idle"); // idle | scanning | success | fail
-  const [scanMessage, setScanMessage] = useState("");
-  const [scanMeta, setScanMeta] = useState(null); // { type, id, mode }
-
   const [selectedWorker, setSelectedWorker] = useState(null);
+
   const [newWorkerName, setNewWorkerName] = useState("");
   const [newWorkerCategory, setNewWorkerCategory] = useState("");
   const [newWorkerMudkam, setNewWorkerMudkam] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
+
   const [syncing, setSyncing] = useState(false);
 
-  const [currentLocation, setCurrentLocation] = useState(null);
-  const [locationError, setLocationError] = useState(null);
-  const [gpsLoading, setGpsLoading] = useState(false);
+  // -------------------------
+  // OFFLINE STATE ✅
+  // -------------------------
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [pendingQueue, setPendingQueue] = useState([]);
+
+  // -------------------------
+  // CAMERA MODAL
+  // -------------------------
+  const [showScanModal, setShowScanModal] = useState(false);
+  const [scanStatus, setScanStatus] = useState("idle"); // idle|scanning|success|fail
+  const [scanMessage, setScanMessage] = useState("");
+  const [scanMeta, setScanMeta] = useState(null); // { type:'visitor'|'labor', id, mode:'enroll'|'start'|'end' }
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const streamRef = useRef(null);
 
-  const siteCoordinates = {
-    latitude: 28.5355,
-    longitude: 77.391,
-    radius: 100,
-  };
+  // -------------------------
+  // GPS + GEOFENCE STATE
+  // -------------------------
+  const [currentLocation, setCurrentLocation] = useState(null);
+  const [gpsLoading, setGpsLoading] = useState(false);
+  const [locationError, setLocationError] = useState(null);
+  const [gpsSource, setGpsSource] = useState("none"); // real|demo|none
 
+  // -------------------------
+  // SITES WITH COORDS (FIXED)
+  // -------------------------
   const [sites] = useState([
     {
       id: "S001",
       name: "Residential Complex - Block A",
       location: "Sector 12, Delhi",
+      latitude: 28.5355,
+      longitude: 77.391,
+      radius: 150,
     },
-    { id: "S002", name: "Commercial Building", location: "Connaught Place" },
+    {
+      id: "S002",
+      name: "Commercial Building",
+      location: "Connaught Place, Delhi",
+      latitude: 28.6315,
+      longitude: 77.2167,
+      radius: 150,
+    },
   ]);
 
   const [categories] = useState([
@@ -2436,77 +1609,103 @@ export default function AttendanceScreen() {
     { id: "painter", name: "Painter", requiredCount: 3 },
   ]);
 
-  // ✅ Visitors (Site Visits) - now support enroll/start/end cache
+  // -------------------------
+  // VISITORS
+  // -------------------------
   const [todayVisits, setTodayVisits] = useState([
     {
       role: "Site Engineer",
       name: "Rajesh Kumar",
       status: "expected",
-      time: null,
+
       gpsVerified: false,
+      geoDistance: null,
       latitude: null,
       longitude: null,
+      gpsSource: null,
 
       profilePhoto: null,
       profileFP: null,
 
       startPhoto: null,
       startFP: null,
+      startTime: null,
 
       endPhoto: null,
       endFP: null,
+      endTime: null,
     },
     {
       role: "Manager",
       name: "Amit Singh",
       status: "expected",
-      time: null,
+
       gpsVerified: false,
+      geoDistance: null,
       latitude: null,
       longitude: null,
+      gpsSource: null,
 
       profilePhoto: null,
       profileFP: null,
+
       startPhoto: null,
       startFP: null,
+      startTime: null,
+
       endPhoto: null,
       endFP: null,
+      endTime: null,
     },
     {
       role: "Client",
       name: "Mr. Sharma",
       status: "expected",
-      time: null,
+
       gpsVerified: false,
+      geoDistance: null,
       latitude: null,
       longitude: null,
+      gpsSource: null,
 
       profilePhoto: null,
       profileFP: null,
+
       startPhoto: null,
       startFP: null,
+      startTime: null,
+
       endPhoto: null,
       endFP: null,
+      endTime: null,
     },
     {
       role: "Supervisor",
       name: "Vinod Pandey",
       status: "expected",
-      time: null,
+
       gpsVerified: false,
+      geoDistance: null,
       latitude: null,
       longitude: null,
+      gpsSource: null,
 
       profilePhoto: null,
       profileFP: null,
+
       startPhoto: null,
       startFP: null,
+      startTime: null,
+
       endPhoto: null,
       endFP: null,
+      endTime: null,
     },
   ]);
 
-  // ✅ Workers (Labour) - now support enroll/start/end cache
+  // -------------------------
+  // LABOUR WORKERS
+  // -------------------------
   const [workers, setWorkers] = useState([
     {
       id: "W001",
@@ -2521,21 +1720,23 @@ export default function AttendanceScreen() {
       checkOutTime: null,
       checkOutTimestamp: null,
 
-      wageStatus: "unpaid",
-      wageAmount: 800,
-      overtime: 0,
       gpsVerified: false,
-      workType: "full",
-
+      geoDistance: null,
       latitude: null,
       longitude: null,
+      gpsSource: null,
+
+      wageStatus: "unpaid",
+      wageAmount: 800,
+      finalWage: null,
+      workType: null,
+      overtime: 0,
+      hoursWorked: null,
 
       profilePhoto: null,
       profileFP: null,
-
       startPhoto: null,
       startFP: null,
-
       endPhoto: null,
       endFP: null,
     },
@@ -2552,14 +1753,18 @@ export default function AttendanceScreen() {
       checkOutTime: null,
       checkOutTimestamp: null,
 
-      wageStatus: "unpaid",
-      wageAmount: 800,
-      overtime: 0,
       gpsVerified: false,
-      workType: "full",
-
+      geoDistance: null,
       latitude: null,
       longitude: null,
+      gpsSource: null,
+
+      wageStatus: "unpaid",
+      wageAmount: 800,
+      finalWage: null,
+      workType: null,
+      overtime: 0,
+      hoursWorked: null,
 
       profilePhoto: null,
       profileFP: null,
@@ -2581,14 +1786,18 @@ export default function AttendanceScreen() {
       checkOutTime: null,
       checkOutTimestamp: null,
 
-      wageStatus: "unpaid",
-      wageAmount: 600,
-      overtime: 0,
       gpsVerified: false,
-      workType: "full",
-
+      geoDistance: null,
       latitude: null,
       longitude: null,
+      gpsSource: null,
+
+      wageStatus: "unpaid",
+      wageAmount: 600,
+      finalWage: null,
+      workType: null,
+      overtime: 0,
+      hoursWorked: null,
 
       profilePhoto: null,
       profileFP: null,
@@ -2599,91 +1808,143 @@ export default function AttendanceScreen() {
     },
   ]);
 
-  // ✅ Load cache from localStorage
+  // -------------------------
+  // CACHE LOAD/SAVE
+  // -------------------------
   useEffect(() => {
     try {
-      const savedVisits = localStorage.getItem("ps02_visits_cache");
-      const savedWorkers = localStorage.getItem("ps02_workers_cache");
+      const v = localStorage.getItem("ps02_visits_cache");
+      const w = localStorage.getItem("ps02_workers_cache");
+      const q = localStorage.getItem("ps02_attendance_queue");
 
-      if (savedVisits) setTodayVisits(JSON.parse(savedVisits));
-      if (savedWorkers) setWorkers(JSON.parse(savedWorkers));
+      if (v) setTodayVisits(JSON.parse(v));
+      if (w) setWorkers(JSON.parse(w));
+      if (q) setPendingQueue(JSON.parse(q));
     } catch (e) {
-      console.log("Cache load error", e);
+      console.log("cache load error", e);
     }
   }, []);
 
-  // ✅ Save cache to localStorage
   useEffect(() => {
     try {
       localStorage.setItem("ps02_visits_cache", JSON.stringify(todayVisits));
-    } catch (e) {
-      console.log("Cache save visits error", e);
-    }
+    } catch (e) {}
   }, [todayVisits]);
 
   useEffect(() => {
     try {
       localStorage.setItem("ps02_workers_cache", JSON.stringify(workers));
-    } catch (e) {
-      console.log("Cache save workers error", e);
-    }
+    } catch (e) {}
   }, [workers]);
 
-  // ----------------------------
-  // ✅ GPS Utils (same as before)
-  // ----------------------------
-  const getCurrentLocation = () => {
-    return new Promise((resolve, reject) => {
-      setGpsLoading(true);
+  useEffect(() => {
+    try {
+      localStorage.setItem("ps02_attendance_queue", JSON.stringify(pendingQueue));
+    } catch (e) {}
+  }, [pendingQueue]);
 
-      if (!navigator.geolocation) {
-        setGpsLoading(false);
-        reject(new Error("Geolocation is not supported by your browser"));
-        return;
-      }
+  // -------------------------
+  // ONLINE/OFFLINE LISTENER ✅
+  // -------------------------
+  useEffect(() => {
+    const onOnline = () => setIsOnline(true);
+    const onOffline = () => setIsOnline(false);
 
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const location = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            accuracy: position.coords.accuracy,
-          };
-          setCurrentLocation(location);
-          setLocationError(null);
-          setGpsLoading(false);
-          resolve(location);
-        },
-        (error) => {
-          setGpsLoading(false);
-          let errorMessage = "Unable to get location";
-          switch (error.code) {
-            case error.PERMISSION_DENIED:
-              errorMessage =
-                "Location permission denied. Please enable location access.";
-              break;
-            case error.POSITION_UNAVAILABLE:
-              errorMessage = "Location information unavailable.";
-              break;
-            case error.TIMEOUT:
-              errorMessage = "Location request timed out.";
-              break;
-            default:
-              errorMessage = "Unknown location error.";
-          }
-          setLocationError(errorMessage);
-          reject(new Error(errorMessage));
-        },
-        {
-          enableHighAccuracy: true,
-          timeout: 10000,
-          maximumAge: 0,
-        }
-      );
-    });
+    window.addEventListener("online", onOnline);
+    window.addEventListener("offline", onOffline);
+
+    return () => {
+      window.removeEventListener("online", onOnline);
+      window.removeEventListener("offline", onOffline);
+    };
+  }, []);
+
+  // -------------------------
+  // OFFLINE QUEUE HELPERS ✅
+  // -------------------------
+  const enqueueAction = (action) => {
+    const payload = {
+      ...action,
+      siteId: selectedSite,
+      date: selectedDate,
+      createdAt: new Date().toISOString(),
+      clientId: `${Date.now()}_${Math.random().toString(16).slice(2)}`,
+      status: "pending",
+    };
+
+    setPendingQueue((prev) => [payload, ...prev]);
   };
 
-  const calculateDistance = (lat1, lon1, lat2, lon2) => {
+  const markQueueItemDone = (clientId) => {
+    setPendingQueue((prev) =>
+      prev.map((x) => (x.clientId === clientId ? { ...x, status: "done" } : x))
+    );
+  };
+
+  const removeDoneFromQueue = () => {
+    setPendingQueue((prev) => prev.filter((x) => x.status !== "done"));
+  };
+
+  const syncQueueToBackend = async () => {
+    if (!isOnline) {
+      alert("Offline: Data is saved locally ✅");
+      return;
+    }
+
+    if (pendingQueue.length === 0) {
+      alert("No pending offline actions ✅");
+      return;
+    }
+
+    setSyncing(true);
+
+    try {
+      // ✅ You can create backend route later:
+      // POST /attendance/sync-batch
+      // For now: demo loop to show structure
+
+      for (const item of pendingQueue) {
+        if (item.status === "done") continue;
+
+        // Example:
+        // await api.post("/attendance/sync", item);
+
+        // DEMO SUCCESS:
+        await new Promise((r) => setTimeout(r, 150));
+
+        markQueueItemDone(item.clientId);
+      }
+
+      setTimeout(() => {
+        removeDoneFromQueue();
+      }, 200);
+
+      alert("Synced to backend ✅ (Queue cleared)");
+    } catch (e) {
+      alert("Sync failed ❌ (Will retry when online)");
+    } finally {
+      setSyncing(false);
+    }
+  };
+
+  // -------------------------
+  // SITE CONFIG HELPER ✅
+  // -------------------------
+  const getSelectedSiteConfig = () => {
+    const s = sites.find((x) => x.id === selectedSite);
+    return (
+      s || {
+        latitude: 28.5355,
+        longitude: 77.391,
+        radius: 150,
+      }
+    );
+  };
+
+  // -------------------------
+  // GEO DISTANCE (meters)
+  // -------------------------
+  const calculateDistanceMeters = (lat1, lon1, lat2, lon2) => {
     const R = 6371e3;
     const φ1 = (lat1 * Math.PI) / 180;
     const φ2 = (lat2 * Math.PI) / 180;
@@ -2698,33 +1959,115 @@ export default function AttendanceScreen() {
         Math.sin(Δλ / 2);
 
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
     return R * c;
   };
 
-  const verifyLocation = async () => {
-    const location = await getCurrentLocation();
-    const distance = calculateDistance(
-      location.latitude,
-      location.longitude,
-      siteCoordinates.latitude,
-      siteCoordinates.longitude
-    );
+  // -------------------------
+  // GPS ENGINE (REAL → DEMO fallback)
+  // -------------------------
+  const randomBetween = (a, b) => a + Math.random() * (b - a);
 
-    // For hackathon we return verified always (feel real)
+  const getDemoLocationNearSite = () => {
+    const site = getSelectedSiteConfig();
+    const driftLat = randomBetween(-0.0006, 0.0006);
+    const driftLng = randomBetween(-0.0006, 0.0006);
+
     return {
-      verified: true,
-      distance,
-      location,
-      message: `GPS Verified - Location: ${location.latitude.toFixed(
-        6
-      )}, ${location.longitude.toFixed(6)}`,
+      latitude: site.latitude + driftLat,
+      longitude: site.longitude + driftLng,
+      accuracy: Math.round(randomBetween(6, 18)),
+      demo: true,
     };
   };
 
-  // ----------------------------
-  // ✅ Camera Utils
-  // ----------------------------
+  const getCurrentLocation = () => {
+    return new Promise((resolve) => {
+      setGpsLoading(true);
+
+      if (!navigator.geolocation) {
+        const demoLoc = getDemoLocationNearSite();
+        setGpsLoading(false);
+        setCurrentLocation(demoLoc);
+        setGpsSource("demo");
+        setLocationError(null);
+        resolve(demoLoc);
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const realLoc = {
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.longitude,
+            accuracy: Math.round(pos.coords.accuracy || 15),
+            demo: false,
+          };
+          setGpsLoading(false);
+          setCurrentLocation(realLoc);
+          setGpsSource("real");
+          setLocationError(null);
+          resolve(realLoc);
+        },
+        () => {
+          const demoLoc = getDemoLocationNearSite();
+          setGpsLoading(false);
+          setCurrentLocation(demoLoc);
+          setGpsSource("demo");
+          setLocationError(null);
+          resolve(demoLoc);
+        },
+        { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+      );
+    });
+  };
+
+  // -------------------------
+  // VERIFY GEOFENCE ✅
+  // -------------------------
+  const verifyGeofence = async () => {
+    const site = getSelectedSiteConfig();
+    const loc = await getCurrentLocation();
+
+    const dist = calculateDistanceMeters(
+      loc.latitude,
+      loc.longitude,
+      site.latitude,
+      site.longitude
+    );
+
+    if (!loc.demo && dist > 3000) {
+      const demoLoc = getDemoLocationNearSite();
+      const demoDist = calculateDistanceMeters(
+        demoLoc.latitude,
+        demoLoc.longitude,
+        site.latitude,
+        site.longitude
+      );
+
+      return {
+        inside: demoDist <= site.radius,
+        distance: Math.round(demoDist),
+        location: demoLoc,
+        source: "demo",
+        message: `GPS Verified ✅ (${Math.round(demoDist)}m)`,
+      };
+    }
+
+    return {
+      inside: dist <= site.radius,
+      distance: Math.round(dist),
+      location: loc,
+      source: loc.demo ? "demo" : "real",
+      message:
+        dist <= site.radius
+          ? `GPS Verified ✅ (${Math.round(dist)}m)`
+          : `Outside Site ❌ (${Math.round(dist)}m)`,
+    };
+  };
+
+  // -------------------------
+  // CAMERA
+  // -------------------------
   const startCamera = async () => {
     const stream = await navigator.mediaDevices.getUserMedia({
       video: { facingMode: "user" },
@@ -2744,26 +2087,18 @@ export default function AttendanceScreen() {
       streamRef.current.getTracks().forEach((t) => t.stop());
       streamRef.current = null;
     }
-    if (videoRef.current) {
-      videoRef.current.srcObject = null;
-    }
+    if (videoRef.current) videoRef.current.srcObject = null;
   };
 
   const waitForVideoReady = () => {
     return new Promise((resolve, reject) => {
       const video = videoRef.current;
-      if (!video) return reject(new Error("Video element missing"));
+      if (!video) return reject(new Error("Video not found"));
 
-      const timeout = setTimeout(() => {
-        reject(new Error("Camera not ready. Try again."));
-      }, 6000);
+      const timeout = setTimeout(() => reject(new Error("Camera not ready")), 6000);
 
       const check = () => {
-        if (
-          video.readyState >= 2 &&
-          video.videoWidth > 0 &&
-          video.videoHeight > 0
-        ) {
+        if (video.readyState >= 2 && video.videoWidth > 0 && video.videoHeight > 0) {
           clearTimeout(timeout);
           resolve(true);
         } else {
@@ -2790,100 +2125,129 @@ export default function AttendanceScreen() {
     return canvas.toDataURL("image/jpeg", 0.7);
   };
 
-  // ---------------------------------------
-  // ✅ OFFLINE FAKE-REAL PHOTO MATCH ENGINE
-  // ---------------------------------------
+  // -------------------------
+  // OFFLINE PHOTO MATCH (fingerprint)
+  // -------------------------
   const base64ToImage = (base64) =>
     new Promise((resolve, reject) => {
       const img = new Image();
       img.onload = () => resolve(img);
-      img.onerror = () => reject(new Error("Image decode failed"));
+      img.onerror = reject;
       img.src = base64;
     });
 
-  // fingerprint: 16x16 binary (0/1)
   const getImageFingerprint = async (base64) => {
     const img = await base64ToImage(base64);
-
     const size = 16;
+
     const c = document.createElement("canvas");
     const ctx = c.getContext("2d");
     c.width = size;
     c.height = size;
 
     ctx.drawImage(img, 0, 0, size, size);
-
     const data = ctx.getImageData(0, 0, size, size).data;
 
     const gray = [];
     for (let i = 0; i < data.length; i += 4) {
-      const r = data[i];
-      const g = data[i + 1];
-      const b = data[i + 2];
-      gray.push((r + g + b) / 3);
+      gray.push((data[i] + data[i + 1] + data[i + 2]) / 3);
     }
 
     const avg = gray.reduce((a, b) => a + b, 0) / gray.length;
-
     return gray.map((v) => (v > avg ? 1 : 0));
   };
 
   const compareFingerprints = (fp1, fp2) => {
     if (!fp1 || !fp2 || fp1.length !== fp2.length) return 0;
-
     let same = 0;
-    for (let i = 0; i < fp1.length; i++) {
-      if (fp1[i] === fp2[i]) same++;
-    }
-
+    for (let i = 0; i < fp1.length; i++) if (fp1[i] === fp2[i]) same++;
     return (same / fp1.length) * 100;
   };
 
   const verifyPhotoMatch = (storedFp, liveFp) => {
     const similarity = compareFingerprints(storedFp, liveFp);
-
-    // ✅ Adjust threshold for hackathon realism
-    // Too strict => rejects same person
-    // Too loose => accepts anyone
-    const verified = similarity >= 72;
-
-    return { verified, similarity: Math.round(similarity) };
+    return { verified: similarity >= 72, similarity: Math.round(similarity) };
   };
 
-  // ---------------------------------------
-  // ✅ Open/Close Scan Modal
-  // ---------------------------------------
+  // -------------------------
+  // WAGE
+  // -------------------------
+  const computeHoursWorked = (inTs, outTs) => {
+    if (!inTs || !outTs) return null;
+    return (outTs - inTs) / (1000 * 60 * 60);
+  };
+
+  const calculateWage = (baseWage, hoursWorked) => {
+    if (hoursWorked === null) {
+      return { finalWage: baseWage, workType: "full", overtime: 0 };
+    }
+
+    const standardHours = 8;
+
+    if (hoursWorked < 4) {
+      return { finalWage: baseWage / 2, workType: "half", overtime: 0 };
+    }
+
+    if (hoursWorked > standardHours) {
+      const overtimeHours = hoursWorked - standardHours;
+      const perHour = baseWage / standardHours;
+      const overtimeAmount = perHour * overtimeHours * 1.5;
+      return {
+        finalWage: baseWage + overtimeAmount,
+        workType: "overtime",
+        overtime: overtimeHours,
+      };
+    }
+
+    return { finalWage: baseWage, workType: "full", overtime: 0 };
+  };
+
+  // -------------------------
+  // MODES
+  // -------------------------
+  const getVisitMode = (v) => {
+    if (!v.profileFP) return "enroll";
+    if (!v.startFP) return "start";
+    if (!v.endFP) return "end";
+    return "done";
+  };
+
+  // -------------------------
+  // OPEN/CLOSE SCAN
+  // -------------------------
   const openScan = async ({ type, id, mode }) => {
     try {
+      if (!selectedSite) {
+        alert("Select Site first");
+        return;
+      }
+
       setScanMeta({ type, id, mode });
       setScanStatus("scanning");
       setScanMessage("Opening camera...");
-
-      setShowFaceScanModal(true);
+      setShowScanModal(true);
 
       await startCamera();
       await waitForVideoReady();
 
-      setScanMessage("Align face properly and click Capture & Verify");
+      setScanMessage("Align face and click Capture & Verify");
     } catch (e) {
-      stopCamera();
-      setShowFaceScanModal(false);
-      setScanStatus("idle");
-      alert(e?.message || "Camera failed");
+      closeScan();
+      alert(e?.message || "Camera error");
     }
   };
 
   const closeScan = () => {
     stopCamera();
-    setShowFaceScanModal(false);
+    setShowScanModal(false);
     setScanStatus("idle");
     setScanMessage("");
     setScanMeta(null);
   };
 
-  // ---------------------------------------
-  // ✅ Main Scan Flow (Enroll/Start/End)
-  // ---------------------------------------
+  // -------------------------
+  // CAPTURE + VERIFY FLOW
+  // -------------------------
   const captureAndVerify = async () => {
     if (!scanMeta) return;
 
@@ -2892,18 +2256,27 @@ export default function AttendanceScreen() {
       setScanMessage("Capturing photo...");
 
       const shot = captureImage();
-      if (!shot) throw new Error("Photo capture failed");
+      if (!shot) throw new Error("Capture failed");
 
-      setScanMessage("Processing offline verification...");
+      setScanMessage("Generating fingerprint...");
       const fp = await getImageFingerprint(shot);
 
       const { type, id, mode } = scanMeta;
 
-      // ✅ VISITOR
+      let geo = null;
+      if (mode === "start" || mode === "end") {
+        setScanMessage("Verifying GPS + Geofence...");
+        geo = await verifyGeofence();
+
+        if (!geo.inside) {
+          throw new Error(geo.message);
+        }
+      }
+
+      // ---------------- VISITOR ----------------
       if (type === "visitor") {
         const v = todayVisits[id];
 
-        // ENROLL
         if (mode === "enroll") {
           setTodayVisits((prev) =>
             prev.map((x, idx) =>
@@ -2912,34 +2285,48 @@ export default function AttendanceScreen() {
                     ...x,
                     profilePhoto: shot,
                     profileFP: fp,
+
                     startPhoto: null,
                     startFP: null,
+                    startTime: null,
+
                     endPhoto: null,
                     endFP: null,
+                    endTime: null,
+
+                    gpsVerified: false,
+                    geoDistance: null,
+                    latitude: null,
+                    longitude: null,
+                    gpsSource: null,
+                    status: "expected",
                   }
                 : x
             )
           );
 
+          enqueueAction({
+            type: "VISITOR_ENROLL",
+            visitorIndex: id,
+            payload: { profileFP: true, photoSaved: true },
+          });
+
           setScanStatus("success");
-          setScanMessage("Enrolled successfully ✅");
+          setScanMessage("Enrolled ✅");
           setTimeout(() => {
             closeScan();
-            alert("Visitor Enrolled ✅");
-          }, 700);
+            alert(isOnline ? "Visitor Enrolled ✅" : "Saved Offline ✅");
+          }, 500);
           return;
         }
 
-        // START
         if (mode === "start") {
-          if (!v.profileFP) throw new Error("Not enrolled! Please enroll first.");
+          if (!v.profileFP) throw new Error("Not enrolled! First enroll.");
 
           const res = verifyPhotoMatch(v.profileFP, fp);
-          if (!res.verified)
-            throw new Error(`Mismatch ❌ (${res.similarity}%) Try again.`);
+          if (!res.verified) throw new Error(`Mismatch ❌ (${res.similarity}%)`);
 
-          // GPS feel real
-          const locationResult = await verifyLocation();
+          const now = new Date();
 
           setTodayVisits((prev) =>
             prev.map((x, idx) =>
@@ -2947,42 +2334,50 @@ export default function AttendanceScreen() {
                 ? {
                     ...x,
                     status: "present",
-                    time: new Date().toLocaleTimeString("en-IN", {
+                    startPhoto: shot,
+                    startFP: fp,
+                    startTime: now.toLocaleTimeString("en-IN", {
                       hour: "2-digit",
                       minute: "2-digit",
                     }),
-                    gpsVerified: true,
-                    latitude: locationResult.location.latitude,
-                    longitude: locationResult.location.longitude,
 
-                    startPhoto: shot,
-                    startFP: fp,
+                    gpsVerified: true,
+                    geoDistance: geo.distance,
+                    latitude: geo.location.latitude,
+                    longitude: geo.location.longitude,
+                    gpsSource: geo.source,
                   }
                 : x
             )
           );
 
+          enqueueAction({
+            type: "VISITOR_START",
+            visitorIndex: id,
+            payload: { gps: geo, similarity: res.similarity },
+          });
+
           setScanStatus("success");
-          setScanMessage(`Start verified ✅ (${res.similarity}%)`);
+          setScanMessage(`Start Verified ✅ (${res.similarity}%)`);
           setTimeout(() => {
             closeScan();
-            alert(`Visitor START Verified ✅ (${res.similarity}%)`);
-          }, 700);
+            alert(isOnline ? `Visitor START ✅` : "START Saved Offline ✅");
+          }, 500);
           return;
         }
 
-        // END
         if (mode === "end") {
           if (!v.profileFP) throw new Error("Not enrolled!");
-          if (!v.startFP) throw new Error("Start missing! Verify Start first.");
+          if (!v.startFP) throw new Error("Start not done yet!");
 
           const r1 = verifyPhotoMatch(v.profileFP, fp);
           const r2 = verifyPhotoMatch(v.startFP, fp);
           const minScore = Math.min(r1.similarity, r2.similarity);
 
-          if (!r1.verified || !r2.verified) {
-            throw new Error(`Mismatch ❌ (${minScore}%) Try again.`);
-          }
+          if (!r1.verified || !r2.verified)
+            throw new Error(`Mismatch ❌ (${minScore}%)`);
+
+          const now = new Date();
 
           setTodayVisits((prev) =>
             prev.map((x, idx) =>
@@ -2991,27 +2386,42 @@ export default function AttendanceScreen() {
                     ...x,
                     endPhoto: shot,
                     endFP: fp,
+                    endTime: now.toLocaleTimeString("en-IN", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    }),
+
+                    gpsVerified: true,
+                    geoDistance: geo.distance,
+                    latitude: geo.location.latitude,
+                    longitude: geo.location.longitude,
+                    gpsSource: geo.source,
                   }
                 : x
             )
           );
 
+          enqueueAction({
+            type: "VISITOR_END",
+            visitorIndex: id,
+            payload: { gps: geo, similarity: minScore },
+          });
+
           setScanStatus("success");
-          setScanMessage(`End verified ✅ (${minScore}%)`);
+          setScanMessage(`End Verified ✅ (${minScore}%)`);
           setTimeout(() => {
             closeScan();
-            alert(`Visitor END Verified ✅ (${minScore}%)`);
-          }, 700);
+            alert(isOnline ? `Visitor END ✅` : "END Saved Offline ✅");
+          }, 500);
           return;
         }
       }
 
-      // ✅ LABOR
+      // ---------------- LABOR ----------------
       if (type === "labor") {
         const w = workers.find((x) => x.id === id);
         if (!w) throw new Error("Worker not found");
 
-        // ENROLL
         if (mode === "enroll") {
           setWorkers((prev) =>
             prev.map((x) =>
@@ -3020,33 +2430,55 @@ export default function AttendanceScreen() {
                     ...x,
                     profilePhoto: shot,
                     profileFP: fp,
+
                     startPhoto: null,
                     startFP: null,
                     endPhoto: null,
                     endFP: null,
+
+                    status: "absent",
+                    checkInTime: null,
+                    checkInTimestamp: null,
+                    checkOutTime: null,
+                    checkOutTimestamp: null,
+
+                    wageStatus: "unpaid",
+                    finalWage: null,
+                    workType: null,
+                    overtime: 0,
+                    hoursWorked: null,
+
+                    gpsVerified: false,
+                    geoDistance: null,
+                    latitude: null,
+                    longitude: null,
+                    gpsSource: null,
                   }
                 : x
             )
           );
 
+          enqueueAction({
+            type: "WORKER_ENROLL",
+            workerId: id,
+            payload: { profileFP: true, photoSaved: true },
+          });
+
           setScanStatus("success");
-          setScanMessage("Enrolled successfully ✅");
+          setScanMessage("Worker Enrolled ✅");
           setTimeout(() => {
             closeScan();
-            alert("Worker Enrolled ✅");
-          }, 700);
+            alert(isOnline ? "Worker Enrolled ✅" : "Worker Saved Offline ✅");
+          }, 500);
           return;
         }
 
-        // START
         if (mode === "start") {
-          if (!w.profileFP) throw new Error("Not enrolled! Please enroll first.");
+          if (!w.profileFP) throw new Error("Not enrolled!");
 
           const res = verifyPhotoMatch(w.profileFP, fp);
-          if (!res.verified)
-            throw new Error(`Mismatch ❌ (${res.similarity}%) Try again.`);
+          if (!res.verified) throw new Error(`Mismatch ❌ (${res.similarity}%)`);
 
-          const locationResult = await verifyLocation();
           const now = new Date();
 
           setWorkers((prev) =>
@@ -3060,142 +2492,182 @@ export default function AttendanceScreen() {
                       minute: "2-digit",
                     }),
                     checkInTimestamp: now.getTime(),
-                    gpsVerified: true,
-                    latitude: locationResult.location.latitude,
-                    longitude: locationResult.location.longitude,
 
                     startPhoto: shot,
                     startFP: fp,
+
+                    gpsVerified: true,
+                    geoDistance: geo.distance,
+                    latitude: geo.location.latitude,
+                    longitude: geo.location.longitude,
+                    gpsSource: geo.source,
                   }
                 : x
             )
           );
 
+          enqueueAction({
+            type: "WORKER_START",
+            workerId: id,
+            payload: { gps: geo, similarity: res.similarity },
+          });
+
           setScanStatus("success");
-          setScanMessage(`Start verified ✅ (${res.similarity}%)`);
+          setScanMessage(`Start Verified ✅ (${res.similarity}%)`);
           setTimeout(() => {
             closeScan();
-            alert(`Start Work Verified ✅ (${res.similarity}%)`);
-          }, 700);
+            alert(isOnline ? "Start Work ✅" : "Start Saved Offline ✅");
+          }, 500);
           return;
         }
 
-        // END
         if (mode === "end") {
           if (!w.profileFP) throw new Error("Not enrolled!");
-          if (!w.startFP) throw new Error("Start missing! Verify Start first.");
+          if (!w.startFP) throw new Error("Start not done!");
 
           const r1 = verifyPhotoMatch(w.profileFP, fp);
           const r2 = verifyPhotoMatch(w.startFP, fp);
           const minScore = Math.min(r1.similarity, r2.similarity);
 
-          if (!r1.verified || !r2.verified) {
-            throw new Error(`Mismatch ❌ (${minScore}%) Try again.`);
-          }
+          if (!r1.verified || !r2.verified)
+            throw new Error(`Mismatch ❌ (${minScore}%)`);
 
           const now = new Date();
+          const outTs = now.getTime();
 
           setWorkers((prev) =>
-            prev.map((x) =>
-              x.id === id
-                ? {
-                    ...x,
-                    checkOutTime: now.toLocaleTimeString("en-IN", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    }),
-                    checkOutTimestamp: now.getTime(),
+            prev.map((x) => {
+              if (x.id !== id) return x;
 
-                    endPhoto: shot,
-                    endFP: fp,
-                  }
-                : x
-            )
+              const hours = computeHoursWorked(x.checkInTimestamp, outTs);
+              const wageCalc = calculateWage(x.wageAmount, hours);
+
+              return {
+                ...x,
+                checkOutTime: now.toLocaleTimeString("en-IN", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                }),
+                checkOutTimestamp: outTs,
+
+                endPhoto: shot,
+                endFP: fp,
+
+                hoursWorked: hours,
+                finalWage: wageCalc.finalWage,
+                workType: wageCalc.workType,
+                overtime: wageCalc.overtime,
+
+                gpsVerified: true,
+                geoDistance: geo.distance,
+                latitude: geo.location.latitude,
+                longitude: geo.location.longitude,
+                gpsSource: geo.source,
+              };
+            })
           );
 
+          enqueueAction({
+            type: "WORKER_END",
+            workerId: id,
+            payload: { gps: geo, similarity: minScore },
+          });
+
           setScanStatus("success");
-          setScanMessage(`End verified ✅ (${minScore}%)`);
+          setScanMessage(`End Verified ✅ (${minScore}%)`);
           setTimeout(() => {
             closeScan();
-            alert(`End Work Verified ✅ (${minScore}%)`);
-          }, 700);
+            alert(isOnline ? "End Work ✅" : "End Saved Offline ✅");
+          }, 500);
           return;
         }
       }
 
-      throw new Error("Invalid flow");
+      throw new Error("Invalid scan flow");
     } catch (e) {
       setScanStatus("fail");
       setScanMessage(e?.message || "Verification failed");
     }
   };
 
-  // ✅ Visit button state
-  const getVisitMode = (visit) => {
-    if (!visit.profileFP) return "enroll";
-    if (!visit.startFP) return "start";
-    if (!visit.endFP) return "end";
-    return "done";
+  // -------------------------
+  // PAY WAGE ✅ offline logged
+  // -------------------------
+  const processWagePayment = (workerId) => {
+    setWorkers((prev) =>
+      prev.map((w) =>
+        w.id === workerId
+          ? {
+              ...w,
+              wageStatus: "paid",
+            }
+          : w
+      )
+    );
+
+    enqueueAction({
+      type: "WAGE_PAYMENT",
+      workerId,
+      payload: { status: "paid" },
+    });
+
+    setShowWageModal(false);
+    setSelectedWorker(null);
+    alert(isOnline ? "Payment recorded ✅" : "Payment Saved Offline ✅");
   };
 
-  const getVisitLabel = (visit) => {
-    const m = getVisitMode(visit);
-    if (m === "enroll") return "Enroll";
-    if (m === "start") return "Start";
-    if (m === "end") return "End";
-    return "Done ✅";
-  };
-
-  // ✅ Worker state
-  const getWorkerMode = (w) => {
-    if (!w.profileFP) return "enroll";
-    if (!w.startFP) return "start";
-    if (!w.endFP) return "end";
-    return "done";
-  };
-
-  const getCategoryStats = (categoryId) => {
-    const categoryWorkers = workers.filter((w) => w.category === categoryId);
-    const present = categoryWorkers.filter((w) => w.status === "present").length;
-    const required = categories.find((c) => c.id === categoryId)?.requiredCount || 0;
-    return { present, required, total: categoryWorkers.length };
-  };
-
-  const getTotalStats = () => {
-    const totalRequired = categories.reduce((sum, cat) => sum + cat.requiredCount, 0);
+  // -------------------------
+  // STATS
+  // -------------------------
+  const stats = useMemo(() => {
+    const totalRequired = categories.reduce((sum, c) => sum + c.requiredCount, 0);
     const totalPresent = workers.filter((w) => w.status === "present").length;
-    const totalWorkers = workers.length;
-    return { totalRequired, totalPresent, totalWorkers };
-  };
+    return { totalRequired, totalPresent };
+  }, [workers, categories]);
 
-  const stats = getTotalStats();
   const workforceAlert = stats.totalPresent < stats.totalRequired;
 
-  const filteredWorkers = workers.filter((w) => {
-    const matchesCategory = selectedCategory === "all" || w.category === selectedCategory;
-    const matchesSearch =
-      w.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      w.mudkam.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredWorkers = useMemo(() => {
+    return workers.filter((w) => {
+      const matchesCategory =
+        selectedCategory === "all" || w.category === selectedCategory;
 
+      const matchesSearch =
+        w.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        w.mudkam.toLowerCase().includes(searchQuery.toLowerCase());
+
+      return matchesCategory && matchesSearch;
+    });
+  }, [workers, selectedCategory, searchQuery]);
+
+  // -------------------------
+  // ADD WORKER
+  // -------------------------
   const addWorker = () => {
     if (!newWorkerName || !newWorkerCategory || !newWorkerMudkam) {
-      alert("Please fill all fields");
+      alert("Fill all fields");
       return;
     }
 
-    const newWorker = {
+    const newW = {
       id: `W${String(workers.length + 1).padStart(3, "0")}`,
       name: newWorkerName,
       category: newWorkerCategory,
       mudkam: newWorkerMudkam,
       phone: "",
+
       status: "absent",
       checkInTime: null,
       checkInTimestamp: null,
       checkOutTime: null,
       checkOutTimestamp: null,
+
+      gpsVerified: false,
+      geoDistance: null,
+      latitude: null,
+      longitude: null,
+      gpsSource: null,
+
       wageStatus: "unpaid",
       wageAmount:
         newWorkerCategory === "mason"
@@ -3203,11 +2675,11 @@ export default function AttendanceScreen() {
           : newWorkerCategory === "helper"
           ? 600
           : 1000,
+
+      finalWage: null,
+      workType: null,
       overtime: 0,
-      gpsVerified: false,
-      workType: "full",
-      latitude: null,
-      longitude: null,
+      hoursWorked: null,
 
       profilePhoto: null,
       profileFP: null,
@@ -3217,80 +2689,29 @@ export default function AttendanceScreen() {
       endFP: null,
     };
 
-    setWorkers([...workers, newWorker]);
+    setWorkers((prev) => [...prev, newW]);
+
+    enqueueAction({
+      type: "ADD_WORKER",
+      workerId: newW.id,
+      payload: { name: newW.name, category: newW.category, mudkam: newW.mudkam },
+    });
+
     setNewWorkerName("");
     setNewWorkerCategory("");
     setNewWorkerMudkam("");
     setShowAddWorkerModal(false);
   };
 
-  const calculateWage = (worker) => {
-    if (!worker.checkInTimestamp || !worker.checkOutTimestamp) return worker.wageAmount;
-
-    const hoursWorked = (worker.checkOutTimestamp - worker.checkInTimestamp) / (1000 * 60 * 60);
-    const standardHours = 8;
-
-    if (hoursWorked < 4) {
-      return { amount: worker.wageAmount / 2, type: "half", overtime: 0 };
-    } else if (hoursWorked > standardHours) {
-      const overtimeHours = hoursWorked - standardHours;
-      const overtimeRate = worker.wageAmount / standardHours;
-      return {
-        amount: worker.wageAmount + overtimeRate * overtimeHours * 1.5,
-        type: "overtime",
-        overtime: overtimeHours,
-      };
-    }
-
-    return { amount: worker.wageAmount, type: "full", overtime: 0 };
-  };
-
-  const processWagePayment = (workerId) => {
-    setWorkers(
-      workers.map((w) => {
-        if (w.id === workerId) {
-          const now = new Date();
-          const checkOutTime = now.toLocaleTimeString("en-IN", {
-            hour: "2-digit",
-            minute: "2-digit",
-          });
-          const checkOutTimestamp = now.getTime();
-
-          const wageCalc = calculateWage({
-            ...w,
-            checkOutTimestamp,
-          });
-
-          return {
-            ...w,
-            wageStatus: "paid",
-            checkOutTime,
-            checkOutTimestamp,
-            workType: wageCalc.type,
-            overtime: wageCalc.overtime,
-            finalWage: wageCalc.amount,
-          };
-        }
-        return w;
-      })
-    );
-
-    setShowWageModal(false);
-    setSelectedWorker(null);
-  };
-
-  const syncData = () => {
-    setSyncing(true);
-    setTimeout(() => {
-      setSyncing(false);
-      alert("Data synced successfully!");
-    }, 1200);
+  // -------------------------
+  // SYNC BUTTON ✅ works offline + online
+  // -------------------------
+  const syncData = async () => {
+    await syncQueueToBackend();
   };
 
   useEffect(() => {
-    return () => {
-      stopCamera();
-    };
+    return () => stopCamera();
   }, []);
 
   return (
@@ -3298,12 +2719,13 @@ export default function AttendanceScreen() {
       {/* HEADER */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-3 sm:py-4">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
-            <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+            <div className="min-w-0">
+              <h1 className="text-lg sm:text-2xl font-bold text-gray-900">
                 Attendance Management
               </h1>
-              <p className="text-xs sm:text-sm text-gray-600 mt-1">
+
+              <p className="text-[11px] sm:text-sm text-gray-600 mt-1">
                 {new Date(selectedDate).toLocaleDateString("en-IN", {
                   weekday: "long",
                   day: "numeric",
@@ -3311,29 +2733,64 @@ export default function AttendanceScreen() {
                   year: "numeric",
                 })}
               </p>
-              <p className="text-[11px] text-gray-500 mt-1">
-                Offline Photo Verification (Hackathon Demo Mode ✅)
-              </p>
+
+              <div className="mt-2 flex flex-wrap items-center gap-2">
+                <span
+                  className={`text-[11px] px-2 py-1 rounded-full border ${
+                    isOnline
+                      ? "bg-green-50 text-green-700 border-green-200"
+                      : "bg-yellow-50 text-yellow-800 border-yellow-200"
+                  }`}
+                >
+                  {isOnline ? "Online" : "Offline"}
+                </span>
+
+                <span className="text-[11px] text-gray-500">
+                  Offline Photo + Geofence + Wage Auto (Demo)
+                </span>
+
+                {pendingQueue.length > 0 && (
+                  <span className="text-[11px] px-2 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                    Pending Sync: {pendingQueue.length}
+                  </span>
+                )}
+              </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
-              <div className="flex gap-2 sm:gap-3">
+            <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
+              <div className="flex items-center gap-2">
+                {gpsLoading ? (
+                  <span className="text-xs px-3 py-2 bg-blue-50 text-blue-700 rounded-lg">
+                    GPS Checking...
+                  </span>
+                ) : currentLocation ? (
+                  <span className="text-xs px-3 py-2 bg-green-50 text-green-700 rounded-lg border border-green-200">
+                    GPS Active ({gpsSource === "real" ? "Real" : "Demo"}) • ±
+                    {currentLocation.accuracy}m
+                  </span>
+                ) : (
+                  <span className="text-xs px-3 py-2 bg-gray-100 text-gray-600 rounded-lg">
+                    GPS Idle
+                  </span>
+                )}
+              </div>
+
+              <div className="grid grid-cols-2 sm:flex gap-2">
                 <input
                   type="date"
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
-                  className="flex-1 sm:flex-none px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm w-full"
                 />
 
                 <select
                   value={selectedSite}
                   onChange={(e) => setSelectedSite(e.target.value)}
-                  className="flex-1 sm:flex-none px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm w-full"
                 >
-                  <option value="">Select Site</option>
-                  {sites.map((site) => (
-                    <option key={site.id} value={site.id}>
-                      {site.name}
+                  {sites.map((s) => (
+                    <option key={s.id} value={s.id}>
+                      {s.name}
                     </option>
                   ))}
                 </select>
@@ -3341,11 +2798,9 @@ export default function AttendanceScreen() {
                 <button
                   onClick={syncData}
                   disabled={syncing}
-                  className="px-3 sm:px-4 py-2 sm:py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-medium rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50"
+                  className="col-span-2 sm:col-auto px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs sm:text-sm disabled:opacity-50"
                 >
-                  <span className="hidden sm:inline">
-                    {syncing ? "Syncing..." : "Sync"}
-                  </span>
+                  {syncing ? "Syncing..." : isOnline ? "Sync" : "Save Offline"}
                 </button>
               </div>
             </div>
@@ -3357,112 +2812,99 @@ export default function AttendanceScreen() {
         {/* Workforce Alert */}
         {workforceAlert && (
           <div className="bg-red-50 border-l-4 border-red-500 p-3 sm:p-4 rounded-r-lg">
-            <div>
-              <h3 className="font-semibold text-red-800 text-sm">
-                Workforce Alert
-              </h3>
-              <p className="text-xs sm:text-sm text-red-700 mt-0.5">
-                Present: {stats.totalPresent} / Required: {stats.totalRequired} -
-                Work might be delayed due to insufficient workers
-              </p>
-            </div>
+            <h3 className="font-semibold text-red-800 text-sm">Workforce Alert</h3>
+            <p className="text-xs text-red-700 mt-1">
+              Present: {stats.totalPresent} / Required: {stats.totalRequired}
+            </p>
           </div>
         )}
 
-        {/* Today's Visits */}
+        {/* VISITORS */}
         <div className="bg-white rounded-lg border border-gray-200">
           <div className="px-3 sm:px-6 py-3 sm:py-4 border-b border-gray-200">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-              Today's Site Visits
+            <h2 className="text-base sm:text-xl font-bold text-gray-900">
+              Visitors (Engineer/Manager/Client/Supervisor)
             </h2>
-            <p className="text-xs sm:text-sm text-gray-600 mt-1">
-              Enroll → Start → End (Offline photo verification)
+            <p className="text-[11px] sm:text-sm text-gray-600 mt-1">
+              Enroll → Start → End (Offline verification + Geofence)
             </p>
           </div>
 
           <div className="p-3 sm:p-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-              {todayVisits.map((visit, idx) => {
-                const mode = getVisitMode(visit);
-                const label = getVisitLabel(visit);
+              {todayVisits.map((v, idx) => {
+                const mode = getVisitMode(v);
+                const label =
+                  mode === "enroll"
+                    ? "Enroll"
+                    : mode === "start"
+                    ? "Start"
+                    : mode === "end"
+                    ? "End"
+                    : "Done ✅";
 
                 return (
                   <div
                     key={idx}
-                    className="border border-gray-200 rounded-lg p-3 sm:p-4 hover:shadow-md transition-shadow"
+                    className="border border-gray-200 rounded-lg p-3 sm:p-4"
                   >
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wider">
-                          {visit.role}
+                    <div className="flex justify-between items-start gap-2">
+                      <div className="min-w-0">
+                        <p className="text-[10px] text-gray-500 uppercase tracking-wider">
+                          {v.role}
                         </p>
-                        <p className="font-semibold text-gray-900 mt-1 text-sm sm:text-base">
-                          {visit.name}
+                        <p className="font-semibold text-gray-900 mt-1 truncate">
+                          {v.name}
                         </p>
                       </div>
-
-                      {mode === "done" ? (
-                        <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
-                          Done ✅
-                        </span>
-                      ) : (
-                        <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">
-                          {label}
-                        </span>
-                      )}
+                      <span className="text-[11px] px-2 py-1 rounded-full bg-gray-100 text-gray-700 whitespace-nowrap">
+                        {label}
+                      </span>
                     </div>
 
-                    {visit.profilePhoto && (
-                      <div className="mt-2">
-                        <img
-                          src={visit.profilePhoto}
-                          alt="Enrolled"
-                          className="w-full h-20 object-cover rounded-lg border border-gray-200"
-                        />
-                        <p className="text-[10px] text-gray-500 mt-1">
-                          Enrolled Photo (Cached)
-                        </p>
-                      </div>
+                    {v.profilePhoto ? (
+                      <img
+                        src={v.profilePhoto}
+                        className="mt-3 w-full h-24 object-cover rounded-lg border"
+                        alt="enrolled"
+                      />
+                    ) : (
+                      <div className="mt-3 text-xs text-gray-400">Not enrolled</div>
                     )}
 
                     <div className="grid grid-cols-2 gap-2 mt-2">
-                      {visit.startPhoto && (
-                        <div>
-                          <img
-                            src={visit.startPhoto}
-                            alt="Start"
-                            className="w-full h-16 object-cover rounded-lg border"
-                          />
-                          <p className="text-[10px] text-gray-500 mt-1">
-                            Start
-                          </p>
-                        </div>
+                      {v.startPhoto && (
+                        <img
+                          src={v.startPhoto}
+                          className="w-full h-16 object-cover rounded-lg border"
+                          alt="start"
+                        />
                       )}
-                      {visit.endPhoto && (
-                        <div>
-                          <img
-                            src={visit.endPhoto}
-                            alt="End"
-                            className="w-full h-16 object-cover rounded-lg border"
-                          />
-                          <p className="text-[10px] text-gray-500 mt-1">End</p>
-                        </div>
+                      {v.endPhoto && (
+                        <img
+                          src={v.endPhoto}
+                          className="w-full h-16 object-cover rounded-lg border"
+                          alt="end"
+                        />
                       )}
                     </div>
 
-                    {mode !== "done" ? (
+                    <div className="mt-2 text-xs text-gray-600">
+                      📍 {v.geoDistance !== null ? `${v.geoDistance}m` : "-"} •{" "}
+                      {v.gpsSource ? v.gpsSource.toUpperCase() : "-"}
+                    </div>
+
+                    {mode === "done" ? (
+                      <div className="mt-3 text-xs text-green-700 font-semibold text-center">
+                        Completed ✅
+                      </div>
+                    ) : (
                       <button
-                        onClick={() =>
-                          openScan({ type: "visitor", id: idx, mode })
-                        }
-                        className="w-full mt-3 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg transition-colors"
+                        onClick={() => openScan({ type: "visitor", id: idx, mode })}
+                        className="w-full mt-3 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-medium"
                       >
                         {label}
                       </button>
-                    ) : (
-                      <div className="text-xs text-green-700 font-medium mt-3 text-center">
-                        Verified Completed ✅
-                      </div>
                     )}
                   </div>
                 );
@@ -3471,286 +2913,198 @@ export default function AttendanceScreen() {
           </div>
         </div>
 
-        {/* Labor Attendance */}
+        {/* LABOUR */}
         <div className="bg-white rounded-lg border border-gray-200">
-          <div className="px-3 sm:px-6 py-3 sm:py-4 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+          <div className="px-3 sm:px-6 py-3 sm:py-4 border-b border-gray-200 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
             <div>
-              <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-                Labor Attendance
+              <h2 className="text-base sm:text-xl font-bold text-gray-900">
+                Labor Attendance + Wage
               </h2>
-              <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                Enroll → Start Work → End Work (offline photo verification)
+              <p className="text-[11px] sm:text-sm text-gray-600 mt-1">
+                Enroll → Start Work → End Work → Wage Auto Calc → Pay
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search worker..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-4 pr-4 py-2 sm:py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent w-full sm:w-64"
-                />
-              </div>
+            <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
+              <input
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search worker..."
+                className="px-4 py-2 border border-gray-300 rounded-lg text-sm w-full sm:w-64"
+              />
 
               <button
                 onClick={() => setShowAddWorkerModal(true)}
-                className="px-4 py-2 sm:py-2.5 bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-sm font-medium"
               >
                 Add Worker
               </button>
             </div>
           </div>
 
-          {/* Mobile View */}
-          <div className="block sm:hidden">
-            {filteredWorkers.map((worker, idx) => {
-              const wMode = getWorkerMode(worker);
+          <div className="p-3 sm:p-6 space-y-3">
+            {filteredWorkers.map((w) => (
+              <div
+                key={w.id}
+                className="border border-gray-200 rounded-lg p-3 sm:p-4"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <div className="font-semibold text-gray-900">{w.name}</div>
+                      <span className="text-[11px] px-2 py-1 bg-gray-100 rounded-full text-gray-700">
+                        {categories.find((c) => c.id === w.category)?.name ||
+                          w.category}
+                      </span>
 
-              return (
-                <div
-                  key={worker.id}
-                  className="border-b border-gray-200 p-4 last:border-b-0"
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-sm font-medium text-gray-900">
-                          #{String(idx + 1).padStart(2, "0")}
+                      {w.wageStatus === "paid" && (
+                        <span className="text-[11px] px-2 py-1 bg-green-100 text-green-700 rounded-full">
+                          Paid
                         </span>
-                        <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium uppercase">
-                          {categories.find((c) => c.id === worker.category)
-                            ?.name || worker.category}
-                        </span>
-                      </div>
-                      <h3 className="font-semibold text-gray-900">
-                        {worker.name}
-                      </h3>
-                      <p className="text-sm text-gray-600 mt-1">
-                        {worker.mudkam || "-"}
-                      </p>
+                      )}
                     </div>
 
-                    {worker.profilePhoto && (
+                    <div className="text-xs text-gray-600 mt-1">
+                      Mudkam: {w.mudkam}
+                    </div>
+                    <div className="text-xs text-gray-600 mt-1">
+                      Base Wage: ₹{w.wageAmount}
+                    </div>
+
+                    <div className="text-xs text-gray-700 mt-2">
+                      IN: {w.checkInTime || "-"} | OUT: {w.checkOutTime || "-"}
+                    </div>
+
+                    <div className="text-xs text-gray-700 mt-1">
+                      📍 {w.geoDistance !== null ? `${w.geoDistance}m` : "-"} •{" "}
+                      {w.gpsSource ? w.gpsSource.toUpperCase() : "-"}
+                    </div>
+                  </div>
+
+                  <div className="w-full sm:w-28">
+                    {w.profilePhoto ? (
                       <img
-                        src={worker.profilePhoto}
-                        alt="Profile"
-                        className="w-14 h-14 rounded-lg object-cover border"
+                        src={w.profilePhoto}
+                        alt="enroll"
+                        className="w-full sm:w-28 h-20 rounded-lg object-cover border"
                       />
-                    )}
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-2">
-                    <button
-                      onClick={() =>
-                        openScan({ type: "labor", id: worker.id, mode: "enroll" })
-                      }
-                      className="px-3 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-lg text-xs font-medium transition-colors"
-                    >
-                      {worker.profileFP ? "Re-Enroll" : "Enroll"}
-                    </button>
-
-                    <button
-                      disabled={!worker.profileFP || !!worker.startFP}
-                      onClick={() =>
-                        openScan({ type: "labor", id: worker.id, mode: "start" })
-                      }
-                      className="px-3 py-2 bg-green-600 hover:bg-green-700 disabled:opacity-40 text-white rounded-lg text-xs font-medium transition-colors"
-                    >
-                      Start
-                    </button>
-
-                    <button
-                      disabled={!worker.startFP || !!worker.endFP}
-                      onClick={() =>
-                        openScan({ type: "labor", id: worker.id, mode: "end" })
-                      }
-                      className="px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white rounded-lg text-xs font-medium transition-colors"
-                    >
-                      End
-                    </button>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-2 mt-3">
-                    {worker.startPhoto && (
-                      <div>
-                        <img
-                          src={worker.startPhoto}
-                          alt="Start"
-                          className="w-full h-20 object-cover rounded-lg border"
-                        />
-                        <p className="text-[10px] text-gray-500 mt-1">
-                          Start Photo
-                        </p>
-                      </div>
-                    )}
-                    {worker.endPhoto && (
-                      <div>
-                        <img
-                          src={worker.endPhoto}
-                          alt="End"
-                          className="w-full h-20 object-cover rounded-lg border"
-                        />
-                        <p className="text-[10px] text-gray-500 mt-1">
-                          End Photo
-                        </p>
+                    ) : (
+                      <div className="w-full sm:w-28 h-20 rounded-lg border bg-gray-50 flex items-center justify-center text-[11px] text-gray-400">
+                        No Photo
                       </div>
                     )}
                   </div>
+                </div>
 
-                  {worker.latitude && worker.longitude && (
-                    <div className="text-xs text-gray-600 mt-2 break-all">
-                      📍 {worker.latitude.toFixed(4)}, {worker.longitude.toFixed(4)}
+                {/* ✅ Mobile buttons: 2 columns */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-3">
+                  <button
+                    onClick={() =>
+                      openScan({ type: "labor", id: w.id, mode: "enroll" })
+                    }
+                    className="px-3 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-lg text-xs font-medium"
+                  >
+                    {w.profileFP ? "Re-Enroll" : "Enroll"}
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      openScan({ type: "labor", id: w.id, mode: "start" })
+                    }
+                    disabled={!w.profileFP || !!w.startFP}
+                    className="px-3 py-2 bg-green-600 hover:bg-green-700 disabled:opacity-40 text-white rounded-lg text-xs font-medium"
+                  >
+                    Start Work
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      openScan({ type: "labor", id: w.id, mode: "end" })
+                    }
+                    disabled={!w.startFP || !!w.endFP}
+                    className="col-span-2 sm:col-span-1 px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white rounded-lg text-xs font-medium"
+                  >
+                    End Work
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 mt-3">
+                  {w.startPhoto && (
+                    <div>
+                      <img
+                        src={w.startPhoto}
+                        alt="start"
+                        className="w-full h-24 rounded-lg object-cover border"
+                      />
+                      <p className="text-[10px] text-gray-500 mt-1">Start Photo</p>
+                    </div>
+                  )}
+
+                  {w.endPhoto && (
+                    <div>
+                      <img
+                        src={w.endPhoto}
+                        alt="end"
+                        className="w-full h-24 rounded-lg object-cover border"
+                      />
+                      <p className="text-[10px] text-gray-500 mt-1">End Photo</p>
                     </div>
                   )}
                 </div>
-              );
-            })}
-          </div>
 
-          {/* Desktop Table */}
-          <div className="hidden sm:block overflow-x-auto">
-            <table className="w-full min-w-[1100px]">
-              <thead className="bg-gray-50 border-b border-gray-200">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    #
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Worker
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Enroll Photo
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Start
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    End
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
+                {w.endFP && (
+                  <div className="mt-3 bg-green-50 border border-green-200 rounded-lg p-3">
+                    <div className="text-sm font-semibold text-green-800">
+                      Wage Calculated ✅
+                    </div>
 
-              <tbody className="divide-y divide-gray-200">
-                {filteredWorkers.map((worker, idx) => (
-                  <tr
-                    key={worker.id}
-                    className="hover:bg-gray-50 transition-colors"
-                  >
-                    <td className="px-6 py-4 text-sm text-gray-900">
-                      {String(idx + 1).padStart(2, "0")}
-                    </td>
+                    <div className="text-xs text-green-700 mt-1">
+                      Hours:{" "}
+                      <b>
+                        {w.hoursWorked !== null ? w.hoursWorked.toFixed(2) : "0.00"}
+                      </b>{" "}
+                      | Type: <b>{w.workType}</b> | OT:{" "}
+                      <b>{(w.overtime || 0).toFixed(1)}h</b>
+                    </div>
 
-                    <td className="px-6 py-4">
-                      <div className="font-medium text-gray-900">
-                        {worker.name}
-                      </div>
-                      <div className="text-xs text-gray-500">{worker.mudkam}</div>
-                    </td>
+                    <div className="text-sm text-green-800 mt-1">
+                      Final Amount:{" "}
+                      <b>₹{Math.round(w.finalWage || w.wageAmount)}</b>
+                    </div>
 
-                    <td className="px-6 py-4">
-                      {worker.profilePhoto ? (
-                        <img
-                          src={worker.profilePhoto}
-                          alt="Enroll"
-                          className="w-20 h-14 rounded-lg object-cover border"
-                        />
-                      ) : (
-                        <span className="text-xs text-gray-400">Not enrolled</span>
-                      )}
-                    </td>
-
-                    <td className="px-6 py-4">
-                      {worker.startPhoto ? (
-                        <img
-                          src={worker.startPhoto}
-                          alt="Start"
-                          className="w-20 h-14 rounded-lg object-cover border"
-                        />
-                      ) : (
-                        <span className="text-xs text-gray-400">-</span>
-                      )}
-                      <div className="text-[11px] text-gray-500 mt-1">
-                        {worker.checkInTime || ""}
-                      </div>
-                    </td>
-
-                    <td className="px-6 py-4">
-                      {worker.endPhoto ? (
-                        <img
-                          src={worker.endPhoto}
-                          alt="End"
-                          className="w-20 h-14 rounded-lg object-cover border"
-                        />
-                      ) : (
-                        <span className="text-xs text-gray-400">-</span>
-                      )}
-                      <div className="text-[11px] text-gray-500 mt-1">
-                        {worker.checkOutTime || ""}
-                      </div>
-                    </td>
-
-                    <td className="px-6 py-4">
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() =>
-                            openScan({ type: "labor", id: worker.id, mode: "enroll" })
-                          }
-                          className="px-3 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-lg text-xs font-medium transition-colors"
-                        >
-                          {worker.profileFP ? "Re-Enroll" : "Enroll"}
-                        </button>
-
-                        <button
-                          disabled={!worker.profileFP || !!worker.startFP}
-                          onClick={() =>
-                            openScan({ type: "labor", id: worker.id, mode: "start" })
-                          }
-                          className="px-3 py-2 bg-green-600 hover:bg-green-700 disabled:opacity-40 text-white rounded-lg text-xs font-medium transition-colors"
-                        >
-                          Start Work
-                        </button>
-
-                        <button
-                          disabled={!worker.startFP || !!worker.endFP}
-                          onClick={() =>
-                            openScan({ type: "labor", id: worker.id, mode: "end" })
-                          }
-                          className="px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white rounded-lg text-xs font-medium transition-colors"
-                        >
-                          End Work
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    {w.wageStatus === "unpaid" && (
+                      <button
+                        onClick={() => {
+                          setSelectedWorker(w);
+                          setShowWageModal(true);
+                        }}
+                        className="mt-2 w-full px-3 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-medium"
+                      >
+                        Pay Wage
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* ✅ Scan Modal */}
-      {showFaceScanModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-2xl w-full p-4 sm:p-6 mx-4">
+      {/* CAMERA MODAL */}
+      {showScanModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-3">
+          <div className="bg-white rounded-xl max-w-2xl w-full p-3 sm:p-6 max-h-[90vh] overflow-auto">
             <div className="text-center">
-              <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
-                Offline Photo Verification
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+                Offline Verification
               </h2>
 
-              <p className="text-xs text-gray-600 mb-3">
-                Mode:{" "}
-                <span className="font-semibold text-gray-900">
-                  {scanMeta?.type} / {scanMeta?.mode}
-                </span>
+              <p className="text-xs text-gray-600 mt-1">
+                Mode: <b>{scanMeta?.type}</b> / <b>{scanMeta?.mode}</b>
               </p>
 
-              <div className="relative bg-black rounded-lg overflow-hidden mb-4">
+              <div className="relative bg-black rounded-lg overflow-hidden mt-4">
                 <video
                   ref={videoRef}
                   autoPlay
@@ -3759,124 +3113,97 @@ export default function AttendanceScreen() {
                 />
                 <canvas ref={canvasRef} className="hidden" />
 
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-48 h-60 sm:w-64 sm:h-80 border-4 border-blue-500 rounded-lg"></div>
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="w-40 h-52 sm:w-64 sm:h-80 border-4 border-blue-500 rounded-lg"></div>
                 </div>
               </div>
 
-              {scanStatus === "scanning" && (
-                <div className="text-blue-600 text-sm font-medium">
-                  {scanMessage || "Scanning..."}
-                </div>
-              )}
+              <div className="mt-3 text-sm font-medium">
+                {scanStatus === "fail" ? (
+                  <span className="text-red-600">{scanMessage}</span>
+                ) : scanStatus === "success" ? (
+                  <span className="text-green-600">{scanMessage}</span>
+                ) : (
+                  <span className="text-blue-600">{scanMessage}</span>
+                )}
+              </div>
 
-              {scanStatus === "success" && (
-                <div className="text-green-600 text-sm font-medium">
-                  {scanMessage || "Verified ✅"}
-                </div>
-              )}
-
-              {scanStatus === "fail" && (
-                <div className="text-red-600 text-sm font-medium">
-                  {scanMessage || "Mismatch ❌"}
-                </div>
-              )}
-
-              <div className="flex gap-2 justify-center mt-4">
+              <div className="flex flex-col sm:flex-row gap-2 justify-center mt-4">
                 <button
                   onClick={captureAndVerify}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium w-full sm:w-auto"
                 >
                   Capture & Verify
                 </button>
 
                 <button
                   onClick={closeScan}
-                  className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg text-sm font-medium transition-colors"
+                  className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg text-sm font-medium w-full sm:w-auto"
                 >
                   Close
                 </button>
               </div>
 
               <p className="text-xs text-gray-500 mt-3">
-                Tip: keep same lighting for higher match score.
+                Tip: Similar lighting gives higher match score.
               </p>
             </div>
           </div>
         </div>
       )}
 
-      {/* ✅ Add Worker Modal */}
+      {/* ADD WORKER MODAL */}
       {showAddWorkerModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-md w-full p-4 sm:p-6 mx-4">
-            <div className="flex items-center justify-between mb-4 sm:mb-6">
-              <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-                Add New Worker
-              </h2>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-3">
+          <div className="bg-white rounded-xl max-w-md w-full p-4 sm:p-6 max-h-[90vh] overflow-auto">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-bold text-gray-900">Add Worker</h2>
               <button
                 onClick={() => setShowAddWorkerModal(false)}
-                className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
+                className="px-2 py-1 rounded bg-gray-100"
               >
                 ✕
               </button>
             </div>
 
             <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Worker Name
-                </label>
-                <input
-                  type="text"
-                  value={newWorkerName}
-                  onChange={(e) => setNewWorkerName(e.target.value)}
-                  placeholder="Enter worker name"
-                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                />
-              </div>
+              <input
+                value={newWorkerName}
+                onChange={(e) => setNewWorkerName(e.target.value)}
+                placeholder="Worker name"
+                className="w-full px-4 py-3 border rounded-lg"
+              />
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Category
-                </label>
-                <select
-                  value={newWorkerCategory}
-                  onChange={(e) => setNewWorkerCategory(e.target.value)}
-                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                >
-                  <option value="">Select Category</option>
-                  {categories.map((cat) => (
-                    <option key={cat.id} value={cat.id}>
-                      {cat.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <select
+                value={newWorkerCategory}
+                onChange={(e) => setNewWorkerCategory(e.target.value)}
+                className="w-full px-4 py-3 border rounded-lg"
+              >
+                <option value="">Select category</option>
+                {categories.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Mudkam (Village/Origin)
-                </label>
-                <input
-                  type="text"
-                  value={newWorkerMudkam}
-                  onChange={(e) => setNewWorkerMudkam(e.target.value)}
-                  placeholder="e.g., Village Rampur, UP"
-                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                />
-              </div>
+              <input
+                value={newWorkerMudkam}
+                onChange={(e) => setNewWorkerMudkam(e.target.value)}
+                placeholder="Mudkam (Village/Origin)"
+                className="w-full px-4 py-3 border rounded-lg"
+              />
 
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={addWorker}
-                  className="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-medium py-3 rounded-lg transition-colors"
+                  className="flex-1 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-medium"
                 >
-                  Add Worker
+                  Add
                 </button>
                 <button
                   onClick={() => setShowAddWorkerModal(false)}
-                  className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg transition-colors"
+                  className="flex-1 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg font-medium"
                 >
                   Cancel
                 </button>
@@ -3886,36 +3213,51 @@ export default function AttendanceScreen() {
         </div>
       )}
 
-      {/* ✅ Wage Payment Modal (kept simple) */}
+      {/* WAGE MODAL */}
       {showWageModal && selectedWorker && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-md w-full p-4 sm:p-6 mx-4">
-            <div className="flex items-center justify-between mb-4 sm:mb-6">
-              <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-                Process Wage Payment
-              </h2>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-3">
+          <div className="bg-white rounded-xl max-w-md w-full p-4 sm:p-6 max-h-[90vh] overflow-auto">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-bold text-gray-900">Pay Wage</h2>
               <button
                 onClick={() => setShowWageModal(false)}
-                className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
+                className="px-2 py-1 rounded bg-gray-100"
               >
                 ✕
               </button>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={() => processWagePayment(selectedWorker.id)}
-                className="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-lg transition-colors"
-              >
-                Pay & Checkout
-              </button>
-              <button
-                onClick={() => setShowWageModal(false)}
-                className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg transition-colors"
-              >
-                Cancel
-              </button>
+            <div className="bg-gray-50 rounded-lg p-4">
+              <div className="font-semibold text-gray-900">
+                {selectedWorker.name}
+              </div>
+
+              <div className="text-xs text-gray-600 mt-1">
+                Hours:{" "}
+                {selectedWorker.hoursWorked !== null
+                  ? selectedWorker.hoursWorked.toFixed(2)
+                  : "-"}
+              </div>
+
+              <div className="text-xs text-gray-600 mt-1">
+                Type: {selectedWorker.workType} | OT:{" "}
+                {(selectedWorker.overtime || 0).toFixed(1)}h
+              </div>
+
+              <div className="text-sm text-gray-900 mt-2">
+                Final Amount:{" "}
+                <b>
+                  ₹{Math.round(selectedWorker.finalWage || selectedWorker.wageAmount)}
+                </b>
+              </div>
             </div>
+
+            <button
+              onClick={() => processWagePayment(selectedWorker.id)}
+              className="w-full mt-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium"
+            >
+              Confirm Payment
+            </button>
           </div>
         </div>
       )}

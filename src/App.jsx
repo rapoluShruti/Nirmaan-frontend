@@ -405,6 +405,10 @@ import Overview from "./components/Overview";
 import MaterialManagementSystem from "./pages/Invoice";
 import SafetyReporter from "./pages/Saftey";
 import ToolLibrary from "./components/ToolLibrary";
+import ToolRoomManagement from "./components/ToolRoomManagement";
+import PettyCashWallet from "./components/PettyCashWallet";
+import ProjectCostAnalyzer from "./pages/ProjectCostAnalyzer";
+import ContractorRatingManagement from "./components/Contractor";
 
 function App() {
   /* =======================
@@ -456,6 +460,10 @@ function App() {
             <Route path="/clientView" element={<OwnerClientView />} />
             <Route path="/chatbot" element={<IntelligentChatbot />} />
              <Route path="/To" element={<ToolLibrary />} />
+              <Route path="/req" element={<ToolRoomManagement />} />
+               <Route path="/petty" element={<PettyCashWallet />} />
+               <Route path="/contractor" element={<ContractorRatingManagement />} />
+                <Route path="/cost-analyzer" element={<ProjectCostAnalyzer />} />
 
             {/* ========= PROJECT ========= */}
             <Route path="/create" element={<CreateProject />} />

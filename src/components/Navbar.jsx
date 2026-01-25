@@ -15,11 +15,14 @@ const ROLE_CONFIG = {
     route: "/quick-view",
     links: [
       { to: "/quick-view", label: "Overview" },
-      { to: "/create", label: "Projects" },
-      { to: "/view", label: "Layout" },
+      { to: "/cost-analyzer", label: "Cost analyzer" },
+      
       { to: "/task", label: "Tasks" },
       { to: "/invoice", label: "Materials" },
       { to: "/iternary-new", label: "Today" },
+      { to: "/contractor", label: "Contractor" },
+      
+      
     ],
   },
   SITE_ENGINEER: {
@@ -32,7 +35,8 @@ const ROLE_CONFIG = {
       { to: "/quick-view", label: "Overview" },
       { to: "/view", label: "Layout" },
       { to: "/invoice", label: "Materials" },
-      { to: "/iternary-new", label: "Today" },
+        
+      { to: "/petty", label: "Petty Cash" },
     ],
   },
   SUPERVISOR: {
@@ -45,6 +49,7 @@ const ROLE_CONFIG = {
       { to: "/step4", label: "Tasks" },
       { to: "/attendance", label: "Attendance" },
       { to: "/invoice", label: "Material" },
+      { to: "/To", label: "Tool" },
     ],
   },
 };
