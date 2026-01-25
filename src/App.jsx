@@ -409,6 +409,9 @@ import ToolRoomManagement from "./components/ToolRoomManagement";
 import PettyCashWallet from "./components/PettyCashWallet";
 import ProjectCostAnalyzer from "./pages/ProjectCostAnalyzer";
 import ContractorRatingManagement from "./components/Contractor";
+import Lan from "./components/L";
+import BuilderDashboard from "./components/Siteer";
+import Sales from "./components/Sales";
 
 function App() {
   /* =======================
@@ -454,6 +457,7 @@ function App() {
 
             {/* ========= PUBLIC ========= */}
             <Route path="/" element={<Landing />} />
+            <Route path="/Lan" element={<Lan />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/frame" element={<Overview />} />
@@ -464,6 +468,8 @@ function App() {
                <Route path="/petty" element={<PettyCashWallet />} />
                <Route path="/contractor" element={<ContractorRatingManagement />} />
                 <Route path="/cost-analyzer" element={<ProjectCostAnalyzer />} />
+                 <Route path="/siteer" element={<BuilderDashboard />} />
+                  <Route path="/sales" element={<Sales />} />
 
             {/* ========= PROJECT ========= */}
             <Route path="/create" element={<CreateProject />} />

@@ -25,16 +25,46 @@ const ROLE_CONFIG = {
       
     ],
   },
+    OWNER: {
+    label: "Owner",
+    email: "own@gmail.com",
+    password: "owner",
+    route: "/contractor",
+    links: [
+      
+      { to: "/cost-analyzer", label: "Cost analyzer" },
+      
+     
+      { to: "/invoice", label: "Materials" },
+      { to: "/iternary-new", label: "Today" },
+      { to: "/contractor", label: "Contractor" },
+      
+      
+    ],
+  },
   SITE_ENGINEER: {
     label: "Site Engineer",
     email: "siteengineer@nirmaan.com",
     password: "siteengineer",
     route: "/task",
     links: [
+       { to: "/siteer", label: "Cost" },
       { to: "/task", label: "Tasks" },
       { to: "/quick-view", label: "Overview" },
       { to: "/view", label: "Layout" },
       { to: "/invoice", label: "Materials" },
+        
+      { to: "/petty", label: "Petty Cash" },
+    ],
+  },
+  SALES: {
+    label: "Sales",
+    email: "sale@gmail.com",
+    password: "sales",
+    route: "/sales",
+    links: [
+       { to: "/sales", label: "sales" },
+     
         
       { to: "/petty", label: "Petty Cash" },
     ],
