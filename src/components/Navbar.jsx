@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { HardHat, Menu, X } from "lucide-react";
 import API from "../api/axiosConfig";
 
@@ -86,9 +86,9 @@ const ROLE_CONFIG = {
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const [currentRole, setCurrentRole] = useState(storedUser?.role || "MANAGER");
+  const [currentRole, setCurrentRole] = useState("MANAGER");
   const [loading, setLoading] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -120,14 +120,27 @@ export default function Navbar() {
     }
   };
 
+  // Initialize role and auto-login if needed
   useEffect(() => {
-    if (!storedUser) {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser?.role) {
+      setCurrentRole(storedUser.role);
+    } else {
+      // No stored user, auto-login with default role
       handleRoleChange({ target: { value: currentRole } });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleNavClick = () => setMobileMenuOpen(false);
+
+  /* ======================
+     HIDE NAVBAR ON AUTH PAGES
+  ====================== */
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
+  if (isAuthPage) {
+    return null;
+  }
 
   return (
     <header className="w-full bg-white border-b border-zinc-200">

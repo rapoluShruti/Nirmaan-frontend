@@ -10,19 +10,20 @@ export default function Login() {
 
   /* ======================
      REDIRECT ONLY IF ALREADY LOGGED IN
+     TEMPORARILY DISABLED FOR TESTING
   ====================== */
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) return;
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem("user"));
+  //   if (!user) return;
 
-    if (user.role === "MANAGER") {
-      navigate("/quick-view", { replace: true });
-    } else if (user.role === "SITE_ENGINEER") {
-      navigate("/task", { replace: true });
-    } else if (user.role === "SUPERVISOR") {
-      navigate("/iop", { replace: true });
-    }
-  }, [navigate]);
+  //   if (user.role === "MANAGER") {
+  //     navigate("/quick-view", { replace: true });
+  //   } else if (user.role === "SITE_ENGINEER") {
+  //     navigate("/task", { replace: true });
+  //   } else if (user.role === "SUPERVISOR") {
+  //     navigate("/iop", { replace: true });
+  //   }
+  // }, [navigate]);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
