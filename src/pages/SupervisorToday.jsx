@@ -1,6 +1,6 @@
 import React from "react";
 import { supervisorTodayData } from "./supervisorTodayData";
-import { CalendarDays, ClipboardList, Users, Package, AlertTriangle, HardHat, WifiOff, ArrowUpRight, Clock3, CheckCircle2, Truck } from "lucide-react";
+import { CalendarDays, ClipboardList, Users, Package, AlertTriangle, HardHat, WifiOff, Clock3, CheckCircle2, Truck } from "lucide-react";
 
 const SupervisorToday = () => {
   const data = supervisorTodayData;
