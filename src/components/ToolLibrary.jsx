@@ -16,6 +16,7 @@ export default function ToolLibrary() {
 
   const [selectedTool, setSelectedTool] = useState(null);
   const [allocationLabel, setAllocationLabel] = useState(null);
+  const [localAssignments, setLocalAssignments] = useState({});
 
   // Supervisor enters Tool ID manually (main workflow)
   const [toolIdInput, setToolIdInput] = useState("");
@@ -171,7 +172,7 @@ export default function ToolLibrary() {
     [repairStages]
   );
 
-  const allTools = useMemo(() => [...heavyTools, ...lightTools], [heavyTools, lightTools]);
+  const allTools = useMemo(() => [...heavyTools, ...lightTools].map((tool) => ({ ...tool, ...(localAssignments[tool.id] || {}) })), [heavyTools, lightTools, localAssignments]);
 
   const toolsForTab = useMemo(() => {
     if (activeTab === "heavy") return heavyTools;
@@ -264,6 +265,11 @@ export default function ToolLibrary() {
       return;
     }
 
+    const issuedOn = new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+    setLocalAssignments((prev) => ({
+      ...prev,
+      [selectedTool.id]: { status: "Issued", issuedTo: allocateForm.worker, issuedOn },
+    }));
     setAllocationLabel({
       tool: selectedTool,
       worker: allocateForm.worker,
@@ -296,6 +302,10 @@ export default function ToolLibrary() {
       return;
     }
 
+    setLocalAssignments((prev) => ({
+      ...prev,
+      [selectedTool.id]: { status: "Available", issuedTo: "-", issuedOn: "-" },
+    }));
     setScreen("success");
     setTimeout(() => {
       setScreen("list");
