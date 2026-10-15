@@ -120,16 +120,17 @@ export default function Navbar() {
     }
   };
 
-  // Initialize role and auto-login if needed
+  // Restore the selected role if a user is already logged in.
+  // Do not auto-login here: it redirects visitors away from /login and /register.
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser?.role) {
-      setCurrentRole(storedUser.role);
-    } else {
-      // No stored user, auto-login with default role
-      handleRoleChange({ target: { value: currentRole } });
+    try {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      if (storedUser?.role && ROLE_CONFIG[storedUser.role]) {
+        setCurrentRole(storedUser.role);
+      }
+    } catch {
+      localStorage.removeItem("user");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleNavClick = () => setMobileMenuOpen(false);
