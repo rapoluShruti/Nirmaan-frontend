@@ -244,7 +244,7 @@ export default function ContractorRatingManagement() {
   }, [contractors]);
 
   return (
-    <div className="min-h-screen bg-[#fff7ed]">
+    <div className="min-h-screen bg-[#f4f7f4]">
       {/* Header */}
       <div className="sticky top-0 z-30 border-b border-[#b9d9cf] bg-white/90 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
