@@ -1558,3 +1558,28 @@ main [role="dialog"] textarea { width: 100%; max-width: 100%; }
     border-color: #d0e1d9;
   }
 }
+
+
+/* Brand-color migration for legacy pages that still use orange Tailwind utilities. */
+main .bg-orange-600, main .bg-orange-500 {
+  background-color: #0f766e !important;
+}
+main .hover\\:bg-orange-700:hover, main .hover\\:bg-orange-600:hover {
+  background-color: #0b5d57 !important;
+}
+main .text-orange-500, main .text-orange-600 {
+  color: #0f766e !important;
+}
+main .border-orange-400, main .border-orange-500 {
+  border-color: #b9d9cf !important;
+}
+main .ring-orange-500, main .focus\\:ring-orange-500:focus {
+  --tw-ring-color: rgba(15, 118, 110, .28) !important;
+}
+main .focus\\:border-orange-500:focus { border-color: #0f766e !important; }
+main .bg-gradient-to-br.from-orange-600.to-orange-700,
+main .bg-gradient-to-r.from-orange-600.to-orange-700,
+main .bg-gradient-to-r.from-orange-500.to-orange-700,
+main .bg-gradient-to-br.from-orange-500.to-orange-700 {
+  background-image: linear-gradient(135deg, #102b2a, #0f766e) !important;
+}
