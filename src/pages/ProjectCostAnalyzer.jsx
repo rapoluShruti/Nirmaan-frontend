@@ -301,7 +301,7 @@ export default function ProjectCostAnalyzer() {
     return { total, sold, available, area };
   }, [currentFloor]);
 
-  const kpiCard = (title, value, hint, icon, accent = "orange") => {
+  const kpiCard = (title, value, hint, icon, accent = "teal") => {
     const accentBg = accent === "green" ? "bg-green-50 border-green-200 text-green-700" : "bg-[#e6f3ee] border-[#b9d9cf] text-teal-800";
     return (
       <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
