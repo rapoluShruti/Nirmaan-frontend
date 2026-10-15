@@ -76,14 +76,14 @@ export default function Sales() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-4 gap-4 mb-6">
-          <div className="bg-[#e6f3ee] border border-orange-100 rounded-2xl p-5">
+          <div className="bg-[#e6f3ee] border border-[#dce7e1] rounded-2xl p-5">
             <div className="flex items-start justify-between mb-3">
               <div>
                 <div className="text-sm text-gray-600 mb-1">TOTAL FLATS</div>
                 <div className="text-4xl font-black text-gray-900">{totalFlats}</div>
                 <div className="text-sm text-gray-500 mt-1">कुल फ्लैट</div>
               </div>
-              <div className="bg-orange-100 p-3 rounded-xl">
+              <div className="bg-[#e6f3ee] p-3 rounded-xl">
                 <svg className="w-6 h-6 text-teal-700" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/>
                 </svg>
@@ -106,14 +106,14 @@ export default function Sales() {
             </div>
           </div>
 
-          <div className="bg-[#e6f3ee] border border-orange-100 rounded-2xl p-5">
+          <div className="bg-[#e6f3ee] border border-[#dce7e1] rounded-2xl p-5">
             <div className="flex items-start justify-between mb-3">
               <div>
                 <div className="text-sm text-gray-600 mb-1">AVAILABLE</div>
                 <div className="text-4xl font-black text-gray-900">{availableFlats}</div>
                 <div className="text-sm text-gray-500 mt-1">उपलब्ध</div>
               </div>
-              <div className="bg-orange-100 p-3 rounded-xl">
+              <div className="bg-[#e6f3ee] p-3 rounded-xl">
                 <Home className="w-6 h-6 text-teal-700" />
               </div>
             </div>
@@ -191,8 +191,8 @@ export default function Sales() {
                   <div className="text-3xl font-black text-green-700">{soldFlats}</div>
                 </div>
                 <div className="bg-[#e6f3ee] border-2 border-[#b9d9cf] rounded-xl p-4">
-                  <div className="text-sm text-orange-700 font-semibold mb-1">Available</div>
-                  <div className="text-3xl font-black text-orange-700">{availableFlats}</div>
+                  <div className="text-sm text-teal-800 font-semibold mb-1">Available</div>
+                  <div className="text-3xl font-black text-teal-800">{availableFlats}</div>
                 </div>
               </div>
 
@@ -313,7 +313,7 @@ export default function Sales() {
                       <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
                         selectedFlat.status === 'sold'
                           ? 'bg-green-100 text-green-700'
-                          : 'bg-orange-100 text-orange-700'
+                          : 'bg-[#e6f3ee] text-teal-800'
                       }`}>
                         {selectedFlat.status === 'sold' ? '✓ Sold' : '◯ Available'}
                       </span>
@@ -342,8 +342,8 @@ export default function Sales() {
                       </div>
 
                       <div className="bg-[#e6f3ee] rounded-lg p-3">
-                        <div className="text-xs text-orange-700 mb-1">Margin per Sq.Ft</div>
-                        <div className="text-xl font-black text-orange-700">
+                        <div className="text-xs text-teal-800 mb-1">Margin per Sq.Ft</div>
+                        <div className="text-xl font-black text-teal-800">
                           {formatRupees(selectedFlat.marginPerSqFt)}
                         </div>
                       </div>
