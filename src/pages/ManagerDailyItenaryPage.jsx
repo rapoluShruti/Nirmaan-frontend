@@ -2456,8 +2456,8 @@ const resolveMediaUrl = (value) => {
   const trimmed = value.trim();
   if (/^(https?:|data:|blob:)/i.test(trimmed)) return trimmed;
   const backendBase = (import.meta.env.VITE_BACKEND_URL || "").replace(/\/+$/, "");
-  const path = trimmed.startsWith("/") ? trimmed : \`/\${trimmed}\`;
-  return backendBase ? \`\${backendBase}\${path}\` : path;
+  const mediaPath = trimmed.startsWith("/") ? trimmed : "/" + trimmed;
+  return backendBase ? backendBase + mediaPath : mediaPath;
 };
 
 const getBeforePhoto = (task) =>
