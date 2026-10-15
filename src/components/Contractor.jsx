@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 
 /*
-  NIRMAAN – CONTRACTOR RATING & MANAGEMENT (Orange + White Premium)
+  NIRMAAN – CONTRACTOR RATING & MANAGEMENT (Forest + Teal Workspace)
   - Enterprise dashboard look
   - Better right drawer (ERP-like)
   - Sales Enablement module inside details (like Tally for Finance)
@@ -270,7 +270,7 @@ export default function ContractorRatingManagement() {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
                 <input
-                  className="w-full pl-9 pr-3 py-2.5 border border-[#b9d9cf] rounded-xl bg-white text-sm focus:outline-none focus:ring-2 focus:ring-orange-200"
+                  className="w-full pl-9 pr-3 py-2.5 border border-[#b9d9cf] rounded-xl bg-white text-sm focus:outline-none focus:ring-2 focus:ring-teal-200"
                   placeholder="Search contractor name / state..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
@@ -766,7 +766,7 @@ export default function ContractorRatingManagement() {
               <div className="p-4 border-t border-[#b9d9cf] bg-white">
                 <div className="flex items-center justify-between">
                   <div className="text-xs text-gray-500">Nirmaan • Contractor Governance</div>
-                  <div className="text-xs font-semibold text-teal-800">Orange ERP Theme</div>
+                  <div className="text-xs font-semibold text-teal-800">NIRMAAN design system</div>
                 </div>
               </div>
             </div>
