@@ -296,8 +296,12 @@ export default function ToolLibrary() {
       return;
     }
 
-    // If damaged, take supervisor to repair ticket screen directly
+    // Keep the assigned tool out of circulation while it is being repaired.
     if (returnForm.condition === "damaged") {
+      setLocalAssignments((prev) => ({
+        ...prev,
+        [selectedTool.id]: { status: "Under Repair", issuedTo: "-", issuedOn: "-" },
+      }));
       setScreen("repair");
       return;
     }
@@ -856,7 +860,7 @@ export default function ToolLibrary() {
               </div>
               <div className="flex flex-col items-center justify-center rounded-2xl border border-[#dce7e1] p-5 text-center">
                 <div className="rounded-xl bg-white p-3"><QRCode value={JSON.stringify({ app: "NIRMAAN", type: "tool", toolId: allocationLabel.tool?.id || toolIdInput, toolName: allocationLabel.tool?.name, assignedTo: allocationLabel.worker, purpose: allocationLabel.purpose, zone: allocationLabel.zone, issuedAt: allocationLabel.issuedAt })} size={180} level="M" /></div>
-                <p className="mt-4 text-sm font-bold">Tool QR label</p><p className="mt-1 text-xs text-[#71847d]">Scan-ready assignment details</p>
+                <p className="mt-4 text-sm font-bold">Tool QR label</p><p className="mt-1 font-mono text-xs font-bold text-[#244740]">{allocationLabel.tool?.id || toolIdInput}</p><p className="mt-1 text-xs text-[#71847d]">{allocationLabel.worker} · {allocationLabel.zone}</p><p className="mt-1 text-xs text-[#71847d]">Scan-ready assignment details</p>
                 <button onClick={() => window.print()} className="mt-4 w-full rounded-xl border border-[#dce7e1] px-4 py-2.5 text-sm font-bold text-[#244740] hover:bg-[#f4f7f4]">Print label</button>
               </div>
             </div>
