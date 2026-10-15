@@ -50,7 +50,7 @@ export default function Login() {
         <div className="nirmaan-auth-orbit nirmaan-orbit-two" />
       </aside>
 
-      <main className="nirmaan-auth-main">
+      <div className="nirmaan-auth-main">
         <div className="nirmaan-auth-topline"><span>Already part of a team?</span><Link to="/register">Create an account <ArrowUpRight size={15} /></Link></div>
         <section className="nirmaan-auth-panel">
           <div className="nirmaan-form-kicker"><span className="nirmaan-form-kicker-icon"><Building2 size={17} /></span> YOUR WORKSPACE</div>
@@ -66,7 +66,7 @@ export default function Login() {
           <div className="nirmaan-secure-note"><ShieldCheck size={16} /><span>Your workspace is protected with secure sign-in.</span></div>
         </section>
         <footer className="nirmaan-auth-footer">© NIRMAAN <span>·</span> Construction operations, thoughtfully connected.</footer>
-      </main>
+      </div>
     </div>
   );
 }
