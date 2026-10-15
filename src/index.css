@@ -235,3 +235,123 @@ body,
 .input {
   @apply w-full rounded-lg border px-4 py-3 text-sm focus:ring-2 focus:ring-orange-500 focus:outline-none;
 }
+
+
+/* =========================================================
+   NIRMAAN UI REFRESH — shared visual foundation
+   Keep these styles presentational; app logic and API flows
+   remain in the existing components.
+========================================================= */
+:root {
+  color-scheme: light;
+  --nirmaan-ink: #172033;
+  --nirmaan-muted: #64748b;
+  --nirmaan-line: #e2e8f0;
+  --nirmaan-surface: #ffffff;
+  --nirmaan-canvas: #f5f7fb;
+  --nirmaan-orange: #f97316;
+  --nirmaan-orange-dark: #ea580c;
+  --nirmaan-navy: #172033;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--nirmaan-canvas);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(ellipse at top left, rgba(249, 115, 22, 0.045), transparent 34rem),
+    var(--nirmaan-canvas);
+  color: var(--nirmaan-ink);
+  font-feature-settings: "ss01" on, "cv11" on;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button, a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease,
+    box-shadow 160ms ease, transform 160ms ease;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(249, 115, 22, 0.35);
+  outline-offset: 2px;
+}
+
+input, select, textarea {
+  max-width: 100%;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
+}
+
+::selection {
+  color: #fff;
+  background: rgba(234, 88, 12, 0.86);
+}
+
+/* Shared cards and panels used throughout project, task and finance screens. */
+.stat-card, .dashboard-section {
+  border-color: rgba(226, 232, 240, 0.9);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.025), 0 12px 28px rgba(15, 23, 42, 0.025);
+  transition: box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.stat-card:hover {
+  border-color: rgba(249, 115, 22, 0.25);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.dashboard-section {
+  border-radius: 1rem;
+}
+
+/* Make wide data tables readable on smaller screens without changing their data. */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+th {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+td, th {
+  border-color: #edf0f5;
+}
+
+@media (max-width: 640px) {
+  .dashboard-section {
+    padding: 1rem;
+    border-radius: 0.875rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
