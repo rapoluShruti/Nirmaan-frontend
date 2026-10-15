@@ -202,7 +202,7 @@ export default function ProjectDashboard() {
         <aside className={`${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } fixed lg:relative lg:translate-x-0 w-64 bg-white border-r-2 border-slate-300 flex flex-col z-40 shadow-xl transition-transform duration-300 h-full overflow-hidden`}>
-          <div className="p-4 lg:p-5 border-b-2 border-slate-200 bg-gradient-to-r from-orange-50 to-white">
+          <div className="p-4 lg:p-5 border-b-2 border-slate-200 bg-gradient-to-r from-[#e6f3ee] to-white">
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-lg lg:text-xl font-black text-slate-900 mb-0.5">MAP-VIEW</h1>
@@ -219,7 +219,7 @@ export default function ProjectDashboard() {
 
           <div className="px-4 lg:px-5 py-3 lg:py-4 border-b-2 border-slate-200 bg-slate-50">
             <select 
-              className="w-full px-3 py-2 text-xs lg:text-sm font-bold text-slate-900 bg-white border-2 border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 shadow-sm"
+              className="w-full px-3 py-2 text-xs lg:text-sm font-bold text-slate-900 bg-white border-2 border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 shadow-sm"
               value={filters.projectDropdown}
               onChange={(e) => setFilters({ ...filters, projectDropdown: e.target.value })}
             >
@@ -248,7 +248,7 @@ export default function ProjectDashboard() {
               <label className="text-[9px] lg:text-[10px] font-black uppercase text-slate-700 mb-2 block tracking-wider">Global Search</label>
               <input
                 placeholder="Search Project ID, Site Name, City"
-                className="w-full px-3 py-2 text-xs lg:text-sm font-medium bg-white border-2 border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 shadow-sm"
+                className="w-full px-3 py-2 text-xs lg:text-sm font-medium bg-white border-2 border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 shadow-sm"
                 value={filters.search}
                 onChange={(e) => setFilters({ ...filters, search: e.target.value })}
               />
@@ -273,7 +273,7 @@ export default function ProjectDashboard() {
                   <label key={s} className="flex items-center gap-2 lg:gap-3 cursor-pointer group p-2 rounded-md hover:bg-slate-100 border border-slate-200">
                     <input
                       type="checkbox"
-                      className="w-4 lg:w-4.5 h-4 lg:h-4.5 border-2 border-slate-400 rounded text-orange-600 focus:ring-orange-500"
+                      className="w-4 lg:w-4.5 h-4 lg:h-4.5 border-2 border-slate-400 rounded text-teal-700 focus:ring-teal-600"
                       checked={filters.statuses.includes(s)}
                       onChange={() => setFilters(f => ({
                         ...f, statuses: f.statuses.includes(s) ? f.statuses.filter(x => x !== s) : [...f.statuses, s]
@@ -290,7 +290,7 @@ export default function ProjectDashboard() {
               <label className="text-[9px] lg:text-[10px] font-black uppercase text-slate-700 mb-2 lg:mb-3 block tracking-wider">Regional Filter</label>
               <div className="space-y-2 lg:space-y-3">
                 <select 
-                  className="w-full px-3 py-2 text-xs lg:text-sm font-bold text-slate-900 bg-white border-2 border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm"
+                  className="w-full px-3 py-2 text-xs lg:text-sm font-bold text-slate-900 bg-white border-2 border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600 shadow-sm"
                   value={filters.state} 
                   onChange={(e) => setFilters({...filters, state: e.target.value, city: ""})}
                 >
@@ -298,7 +298,7 @@ export default function ProjectDashboard() {
                   {states.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
                 <select 
-                  className="w-full px-3 py-2 text-xs lg:text-sm font-bold text-slate-900 bg-white border-2 border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm"
+                  className="w-full px-3 py-2 text-xs lg:text-sm font-bold text-slate-900 bg-white border-2 border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600 shadow-sm"
                   value={filters.city} 
                   onChange={(e) => setFilters({...filters, city: e.target.value})}
                 >
@@ -345,7 +345,7 @@ export default function ProjectDashboard() {
               </button>
 
               <select 
-                className="hidden md:block px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm font-bold text-slate-900 bg-white border-2 border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm"
+                className="hidden md:block px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm font-bold text-slate-900 bg-white border-2 border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-600 shadow-sm"
                 value={filters.projectDropdown}
                 onChange={(e) => setFilters({ ...filters, projectDropdown: e.target.value })}
               >
@@ -372,7 +372,7 @@ export default function ProjectDashboard() {
                 <button
                   onClick={() => setViewMode("map")}
                   className={`px-2 lg:px-4 py-1 lg:py-1.5 text-[10px] lg:text-sm font-black rounded-md transition-all ${
-                    viewMode === "map" ? "bg-orange-600 text-white shadow-md border-2 border-orange-700" : "text-slate-800 hover:text-slate-900 hover:bg-slate-300"
+                    viewMode === "map" ? "bg-teal-700 text-white shadow-md border-2 border-orange-700" : "text-slate-800 hover:text-slate-900 hover:bg-slate-300"
                   }`}
                 >
                   Map
@@ -380,7 +380,7 @@ export default function ProjectDashboard() {
                 <button
                   onClick={() => setViewMode("table")}
                   className={`px-2 lg:px-4 py-1 lg:py-1.5 text-[10px] lg:text-sm font-black rounded-md transition-all ${
-                    viewMode === "table" ? "bg-orange-600 text-white shadow-md border-2 border-orange-700" : "text-slate-800 hover:text-slate-900 hover:bg-slate-300"
+                    viewMode === "table" ? "bg-teal-700 text-white shadow-md border-2 border-orange-700" : "text-slate-800 hover:text-slate-900 hover:bg-slate-300"
                   }`}
                 >
                   Table
@@ -401,7 +401,7 @@ export default function ProjectDashboard() {
             <button
               onClick={() => setViewMode("map")}
               className={`flex-1 py-2 text-xs font-black rounded-md transition-all border-2 ${
-                viewMode === "map" ? "bg-orange-600 text-white shadow-md border-orange-700" : "bg-slate-100 text-slate-800 border-slate-300"
+                viewMode === "map" ? "bg-teal-700 text-white shadow-md border-orange-700" : "bg-slate-100 text-slate-800 border-slate-300"
               }`}
             >
               Map View
@@ -409,7 +409,7 @@ export default function ProjectDashboard() {
             <button
               onClick={() => setViewMode("table")}
               className={`flex-1 py-2 text-xs font-black rounded-md transition-all border-2 ${
-                viewMode === "table" ? "bg-orange-600 text-white shadow-md border-orange-700" : "bg-slate-100 text-slate-800 border-slate-300"
+                viewMode === "table" ? "bg-teal-700 text-white shadow-md border-orange-700" : "bg-slate-100 text-slate-800 border-slate-300"
               }`}
             >
               Table View
@@ -522,7 +522,7 @@ export default function ProjectDashboard() {
                           </div>
                           <div className="w-full h-2.5 lg:h-3 bg-slate-200 rounded-full overflow-hidden border-2 border-slate-300">
                             <div 
-                              className="h-full bg-orange-600 rounded-full transition-all"
+                              className="h-full bg-teal-700 rounded-full transition-all"
                               style={{ width: `${p.summary.progress}%` }}
                             ></div>
                           </div>
@@ -574,7 +574,7 @@ export default function ProjectDashboard() {
 
                         <button 
                           onClick={() => navigate(`/project/${p.id}`)}
-                          className="w-full py-2 lg:py-2.5 bg-orange-600 hover:bg-orange-700 text-white text-xs lg:text-sm font-black rounded-md transition-colors border-2 border-orange-700 shadow-md"
+                          className="w-full py-2 lg:py-2.5 bg-teal-700 hover:bg-teal-800 text-white text-xs lg:text-sm font-black rounded-md transition-colors border-2 border-orange-700 shadow-md"
                         >
                           View Details
                         </button>
@@ -671,7 +671,7 @@ export default function ProjectDashboard() {
                             <div className="flex items-center gap-2">
                               <div className="flex-1 h-2.5 lg:h-3 bg-slate-200 rounded-full overflow-hidden min-w-[60px] border-2 border-slate-300">
                                 <div
-                                  className="h-full bg-orange-600 rounded-full transition-all"
+                                  className="h-full bg-teal-700 rounded-full transition-all"
                                   style={{ width: `${p.summary.progress}%` }}
                                 ></div>
                               </div>
@@ -697,7 +697,7 @@ export default function ProjectDashboard() {
                           <td className="px-3 lg:px-6 py-3 lg:py-4 text-right">
                             <button
                               onClick={() => navigate(`/project/${p.id}`)}
-                              className="bg-orange-600 hover:bg-orange-700 text-white px-3 lg:px-4 py-2 lg:py-2.5 text-xs lg:text-sm font-black rounded-md transition-colors whitespace-nowrap border-2 border-orange-700 shadow-md"
+                              className="bg-teal-700 hover:bg-teal-800 text-white px-3 lg:px-4 py-2 lg:py-2.5 text-xs lg:text-sm font-black rounded-md transition-colors whitespace-nowrap border-2 border-orange-700 shadow-md"
                             >
                               View
                             </button>
