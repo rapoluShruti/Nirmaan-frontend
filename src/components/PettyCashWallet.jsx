@@ -263,12 +263,12 @@ const PettyCashWallet = () => {
       maxWidth: '1200px',
       margin: '0 auto',
       padding: '20px',
-      background: '#f5f5f5',
+      background: '#f4f7f4',
       minHeight: '100vh'
     }}>
       {/* Header */}
       <div style={{
-        background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+        background: 'linear-gradient(135deg, #102b2a 0%, #0f766e 100%)',
         color: 'white',
         padding: '30px',
         borderRadius: '12px',
@@ -348,7 +348,7 @@ const PettyCashWallet = () => {
               outline: 'none',
               transition: 'border-color 0.2s'
             }}
-            onFocus={(e) => e.target.style.borderColor = '#ff6b35'}
+            onFocus={(e) => e.target.style.borderColor = '#0f766e'}
             onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
           />
         </div>
@@ -373,7 +373,7 @@ const PettyCashWallet = () => {
               fontSize: '14px',
               outline: 'none'
             }}
-            onFocus={(e) => e.target.style.borderColor = '#ff6b35'}
+            onFocus={(e) => e.target.style.borderColor = '#0f766e'}
             onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
           />
         </div>
@@ -383,7 +383,7 @@ const PettyCashWallet = () => {
             Receipt / Payment Screenshot * (Required)
           </label>
           <div style={{
-            border: '2px dashed #ff6b35',
+            border: '2px dashed #0f766e',
             borderRadius: '8px',
             padding: '20px',
             textAlign: 'center',
@@ -416,7 +416,7 @@ const PettyCashWallet = () => {
           style={{
             width: '100%',
             padding: '14px',
-            background: gpsActive ? '#ff6b35' : '#ccc',
+            background: gpsActive ? '#0f766e' : '#ccc',
             color: 'white',
             border: 'none',
             borderRadius: '6px',
@@ -426,7 +426,7 @@ const PettyCashWallet = () => {
             transition: 'background 0.2s'
           }}
           onMouseOver={(e) => gpsActive && (e.target.style.background = '#e85a28')}
-          onMouseOut={(e) => gpsActive && (e.target.style.background = '#ff6b35')}
+          onMouseOut={(e) => gpsActive && (e.target.style.background = '#0f766e')}
         >
           {gpsActive ? 'Add Expense' : 'Enable GPS to Add Expense'}
         </button>
@@ -455,16 +455,16 @@ const PettyCashWallet = () => {
               minWidth: '200px',
               padding: '12px 20px',
               background: 'white',
-              color: '#ff6b35',
-              border: '2px solid #ff6b35',
+              color: '#0f766e',
+              border: '2px solid #0f766e',
               borderRadius: '6px',
               fontSize: '14px',
               fontWeight: '600',
               cursor: gpsActive ? 'pointer' : 'not-allowed',
               transition: 'all 0.2s'
             }}
-            onMouseOver={(e) => gpsActive && (e.target.style.background = '#ff6b35', e.target.style.color = 'white')}
-            onMouseOut={(e) => gpsActive && (e.target.style.background = 'white', e.target.style.color = '#ff6b35')}
+            onMouseOver={(e) => gpsActive && (e.target.style.background = '#0f766e', e.target.style.color = 'white')}
+            onMouseOut={(e) => gpsActive && (e.target.style.background = 'white', e.target.style.color = '#0f766e')}
           >
             Sync Material Requests
           </button>
@@ -477,16 +477,16 @@ const PettyCashWallet = () => {
               minWidth: '200px',
               padding: '12px 20px',
               background: 'white',
-              color: '#ff6b35',
-              border: '2px solid #ff6b35',
+              color: '#0f766e',
+              border: '2px solid #0f766e',
               borderRadius: '6px',
               fontSize: '14px',
               fontWeight: '600',
               cursor: gpsActive ? 'pointer' : 'not-allowed',
               transition: 'all 0.2s'
             }}
-            onMouseOver={(e) => gpsActive && (e.target.style.background = '#ff6b35', e.target.style.color = 'white')}
-            onMouseOut={(e) => gpsActive && (e.target.style.background = 'white', e.target.style.color = '#ff6b35')}
+            onMouseOver={(e) => gpsActive && (e.target.style.background = '#0f766e', e.target.style.color = 'white')}
+            onMouseOut={(e) => gpsActive && (e.target.style.background = 'white', e.target.style.color = '#0f766e')}
           >
             Sync Transport Data
           </button>
@@ -531,7 +531,7 @@ const PettyCashWallet = () => {
               fontSize: '13px',
               outline: 'none'
             }}
-            onFocus={(e) => e.target.style.borderColor = '#ff6b35'}
+            onFocus={(e) => e.target.style.borderColor = '#0f766e'}
             onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
           />
         </div>
@@ -612,7 +612,7 @@ const PettyCashWallet = () => {
                         {exp.source && ` • ${exp.source}`}
                       </div>
                     </td>
-                    <td style={{ padding: '16px 12px', fontSize: '15px', fontWeight: '600', color: '#ff6b35', textAlign: 'right' }}>
+                    <td style={{ padding: '16px 12px', fontSize: '15px', fontWeight: '600', color: '#0f766e', textAlign: 'right' }}>
                       ${exp.amount}
                     </td>
                     <td style={{ padding: '16px 12px', fontSize: '12px', color: '#666' }}>
