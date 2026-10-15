@@ -382,7 +382,7 @@
 // // //   };
 
 // // //   return (
-// // //     <div className="h-screen flex flex-col bg-gray-50">
+// // //     <div className="min-h-screen flex flex-col bg-[#f4f7f4]">
 // // //       {/* Header */}
 // // //       <div className="bg-white border-b px-6 py-4">
 // // //         <div className="max-w-7xl mx-auto">
@@ -1078,7 +1078,7 @@
 // //   };
 
 // //   return (
-// //     <div className="h-screen flex flex-col bg-gray-50">
+// //     <div className="min-h-screen flex flex-col bg-[#f4f7f4]">
 // //       {/* Header */}
 // //       <div className="bg-white border-b px-6 py-4">
 // //         <div className="max-w-7xl mx-auto">
@@ -2001,7 +2001,7 @@
 //   }
 
 //   return (
-//     <div className="h-screen flex flex-col bg-gray-50">
+//     <div className="min-h-screen flex flex-col bg-[#f4f7f4]">
 //       {/* OTP MODAL (Dummy Gmail OTP) */}
 //       {otpModalOpen && (
 //         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
@@ -2943,7 +2943,7 @@ export default function ManagerDailyItineraryPage() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-[#f4f7f4]">
       {/* Header */}
       <div className="bg-white border-b px-6 py-4">
         <div className="max-w-7xl mx-auto">
