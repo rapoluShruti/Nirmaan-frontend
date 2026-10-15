@@ -58,7 +58,7 @@
 
 // // //   if (loading) {
 // // //     return (
-// // //       <div className="h-screen flex items-center justify-center bg-zinc-50">
+// // //       <div className="h-screen flex items-center justify-center bg-[#f4f7f4]">
 // // //         <div className="flex flex-col items-center gap-4">
 // // //           <div className="w-10 lg:w-12 h-10 lg:h-12 border-2 border-zinc-200 border-t-indigo-600 rounded-full animate-spin"></div>
 // // //           <span className="text-xs lg:text-sm text-zinc-500 font-mono tracking-wider">INITIALIZING WORKSPACE</span>
@@ -117,13 +117,13 @@
 // // //   };
 
 // // //   return (
-// // //     <div className="min-h-screen bg-zinc-50">
+// // //     <div className="min-h-screen bg-[#f4f7f4]">
       
 // // //       {/* POPUP MODAL */}
 // // //       {showPopup && popupData && (
 // // //         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
 // // //           <div className="bg-white rounded-lg shadow-2xl max-w-md w-full border-2 border-amber-300">
-// // //             <div className="bg-gradient-to-r from-amber-500 to-orange-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
+// // //             <div className="bg-gradient-to-r from-amber-500 to-teal-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
 // // //               <div className="flex items-center justify-between">
 // // //                 <h3 className="text-white font-bold text-base lg:text-lg">Request Sent for Approval</h3>
 // // //                 <button 
@@ -162,8 +162,8 @@
 // // //                         <div className="bg-red-50 border border-red-200 rounded px-2 py-1">
 // // //                           <span className="text-red-600 font-mono">In Stock: {mat.inStock}</span>
 // // //                         </div>
-// // //                         <div className="bg-blue-50 border border-blue-200 rounded px-2 py-1">
-// // //                           <span className="text-blue-600 font-mono">Required: {mat.required}</span>
+// // //                         <div className="bg-teal-50 border border-teal-200 rounded px-2 py-1">
+// // //                           <span className="text-teal-600 font-mono">Required: {mat.required}</span>
 // // //                         </div>
 // // //                       </div>
 // // //                     </div>
@@ -173,7 +173,7 @@
               
 // // //               <button 
 // // //                 onClick={() => setShowPopup(false)}
-// // //                 className="w-full px-4 py-2.5 lg:py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold rounded-lg transition-all text-sm lg:text-base"
+// // //                 className="w-full px-4 py-2.5 lg:py-3 bg-gradient-to-r from-amber-600 to-teal-600 hover:from-amber-700 hover:to-teal-700 text-white font-bold rounded-lg transition-all text-sm lg:text-base"
 // // //               >
 // // //                 Close
 // // //               </button>
@@ -456,7 +456,7 @@
 // // //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
               
 // // //               {/* TABLE HEADER - Hidden on mobile, shown as cards */}
-// // //               <div className="hidden lg:block bg-zinc-50 border-b border-zinc-200">
+// // //               <div className="hidden lg:block bg-[#f4f7f4] border-b border-zinc-200">
 // // //                 <div className="grid grid-cols-12 gap-6 px-6 py-4 items-center">
 // // //                   <div className="col-span-1 text-[10px] font-mono text-zinc-500 tracking-widest">#</div>
 // // //                   <div className="col-span-4 text-[10px] font-mono text-zinc-500 tracking-widest">TASK DESCRIPTION</div>
@@ -472,10 +472,10 @@
 // // //                 {Object.entries(grouped).map(([group, list]) => (
 // // //                   <div key={group}>
 // // //                     {/* SECTION DIVIDER */}
-// // //                     <div className="bg-zinc-50/50 border-y border-zinc-200">
+// // //                     <div className="bg-[#f4f7f4]/50 border-y border-zinc-200">
 // // //                       <div className="px-3 lg:px-6 py-2 flex items-center justify-between">
 // // //                         <div className="flex items-center gap-2 lg:gap-3">
-// // //                           <div className={`w-1 h-3 lg:h-4 rounded-full ${group === "Auto Carried Forward" ? "bg-orange-500" : "bg-emerald-500"}`}></div>
+// // //                           <div className={`w-1 h-3 lg:h-4 rounded-full ${group === "Auto Carried Forward" ? "bg-teal-500" : "bg-emerald-500"}`}></div>
 // // //                           <span className="text-[9px] lg:text-[10px] font-mono font-bold tracking-widest text-zinc-700">{group.toUpperCase()}</span>
 // // //                         </div>
 // // //                         <span className="text-[9px] lg:text-[10px] font-mono text-zinc-500 bg-white px-2 lg:px-3 py-0.5 border border-zinc-200 rounded-full">
@@ -505,7 +505,7 @@
 // // //                               className={`hidden lg:grid grid-cols-12 gap-6 px-6 py-4 items-center cursor-pointer transition-all
 // // //                                 ${isSelected 
 // // //                                   ? "bg-indigo-50/50 border-l-4 border-l-indigo-600" 
-// // //                                   : "hover:bg-zinc-50 border-l-4 border-l-transparent"
+// // //                                   : "hover:bg-[#f4f7f4] border-l-4 border-l-transparent"
 // // //                                 }`}
 // // //                             >
 // // //                               <div className="col-span-1">
@@ -563,7 +563,7 @@
 // // //                               className={`lg:hidden p-3 cursor-pointer transition-all border-l-4 ${
 // // //                                 isSelected 
 // // //                                   ? "bg-indigo-50/50 border-l-indigo-600" 
-// // //                                   : "hover:bg-zinc-50 border-l-transparent"
+// // //                                   : "hover:bg-[#f4f7f4] border-l-transparent"
 // // //                               }`}
 // // //                             >
 // // //                               <div className="flex items-start justify-between mb-2">
@@ -615,14 +615,14 @@
             
 // // //             {/* LAYOUT MAP */}
 // // //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-// // //               <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+// // //               <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
 // // //                 <div className="flex items-center justify-between">
 // // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">SITE LAYOUT</span>
 // // //                   <span className="text-[9px] font-mono text-emerald-600 font-bold">● ACTIVE</span>
 // // //                 </div>
 // // //               </div>
 // // //               <div className="p-4">
-// // //                 <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+// // //                 <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
 // // //                   {selectedLayout ? (
 // // //                     <LayoutTaskMap
 // // //                       layoutImage={selectedLayout}
@@ -640,7 +640,7 @@
 
 // // //             {/* TASK DETAILS */}
 // // //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-// // //               <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+// // //               <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
 // // //                 <div className="flex items-center justify-between">
 // // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">PROGRESS LOG</span>
 // // //                   {selectedTask && (
@@ -672,7 +672,7 @@
 // // //       {showSidePanel && selectedTask && (
 // // //         <div className="lg:hidden fixed inset-0 bg-black/50 z-50 flex items-end">
 // // //           <div className="bg-white w-full max-h-[85vh] rounded-t-2xl overflow-hidden flex flex-col">
-// // //             <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50 flex items-center justify-between">
+// // //             <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4] flex items-center justify-between">
 // // //               <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">TASK DETAILS</span>
 // // //               <button 
 // // //                 onClick={() => setShowSidePanel(false)}
@@ -690,7 +690,7 @@
 // // //                 <div className="mb-2">
 // // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">SITE LAYOUT</span>
 // // //                 </div>
-// // //                 <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+// // //                 <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
 // // //                   {selectedLayout ? (
 // // //                     <LayoutTaskMap
 // // //                       layoutImage={selectedLayout}
@@ -782,7 +782,7 @@
 
 // //   if (loading) {
 // //     return (
-// //       <div className="h-screen flex items-center justify-center bg-zinc-50">
+// //       <div className="h-screen flex items-center justify-center bg-[#f4f7f4]">
 // //         <div className="flex flex-col items-center gap-4">
 // //           <div className="w-10 lg:w-12 h-10 lg:h-12 border-2 border-zinc-200 border-t-indigo-600 rounded-full animate-spin"></div>
 // //           <span className="text-xs lg:text-sm text-zinc-500 font-mono tracking-wider">INITIALIZING WORKSPACE</span>
@@ -841,13 +841,13 @@
 // //   };
 
 // //   return (
-// //     <div className="min-h-screen bg-zinc-50">
+// //     <div className="min-h-screen bg-[#f4f7f4]">
       
 // //       {/* POPUP MODAL */}
 // //       {showPopup && popupData && (
 // //         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
 // //           <div className="bg-white rounded-lg shadow-2xl max-w-md w-full border-2 border-amber-300">
-// //             <div className="bg-gradient-to-r from-amber-500 to-orange-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
+// //             <div className="bg-gradient-to-r from-amber-500 to-teal-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
 // //               <div className="flex items-center justify-between">
 // //                 <h3 className="text-white font-bold text-base lg:text-lg">Request Sent for Approval</h3>
 // //                 <button 
@@ -886,8 +886,8 @@
 // //                         <div className="bg-red-50 border border-red-200 rounded px-2 py-1">
 // //                           <span className="text-red-600 font-mono">In Stock: {mat.inStock}</span>
 // //                         </div>
-// //                         <div className="bg-blue-50 border border-blue-200 rounded px-2 py-1">
-// //                           <span className="text-blue-600 font-mono">Required: {mat.required}</span>
+// //                         <div className="bg-teal-50 border border-teal-200 rounded px-2 py-1">
+// //                           <span className="text-teal-600 font-mono">Required: {mat.required}</span>
 // //                         </div>
 // //                       </div>
 // //                     </div>
@@ -897,7 +897,7 @@
               
 // //               <button 
 // //                 onClick={() => setShowPopup(false)}
-// //                 className="w-full px-4 py-2.5 lg:py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold rounded-lg transition-all text-sm lg:text-base"
+// //                 className="w-full px-4 py-2.5 lg:py-3 bg-gradient-to-r from-amber-600 to-teal-600 hover:from-amber-700 hover:to-teal-700 text-white font-bold rounded-lg transition-all text-sm lg:text-base"
 // //               >
 // //                 Close
 // //               </button>
@@ -1180,7 +1180,7 @@
 // //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
               
 // //               {/* TABLE HEADER - Hidden on mobile, shown as cards */}
-// //               <div className="hidden lg:block bg-zinc-50 border-b border-zinc-200">
+// //               <div className="hidden lg:block bg-[#f4f7f4] border-b border-zinc-200">
 // //                 <div className="grid grid-cols-12 gap-6 px-6 py-4 items-center">
 // //                   <div className="col-span-1 text-[10px] font-mono text-zinc-500 tracking-widest">#</div>
 // //                   <div className="col-span-4 text-[10px] font-mono text-zinc-500 tracking-widest">TASK DESCRIPTION</div>
@@ -1196,10 +1196,10 @@
 // //                 {Object.entries(grouped).map(([group, list]) => (
 // //                   <div key={group}>
 // //                     {/* SECTION DIVIDER */}
-// //                     <div className="bg-zinc-50/50 border-y border-zinc-200">
+// //                     <div className="bg-[#f4f7f4]/50 border-y border-zinc-200">
 // //                       <div className="px-3 lg:px-6 py-2 flex items-center justify-between">
 // //                         <div className="flex items-center gap-2 lg:gap-3">
-// //                           <div className={`w-1 h-3 lg:h-4 rounded-full ${group === "Auto Carried Forward" ? "bg-orange-500" : "bg-emerald-500"}`}></div>
+// //                           <div className={`w-1 h-3 lg:h-4 rounded-full ${group === "Auto Carried Forward" ? "bg-teal-500" : "bg-emerald-500"}`}></div>
 // //                           <span className="text-[9px] lg:text-[10px] font-mono font-bold tracking-widest text-zinc-700">{group.toUpperCase()}</span>
 // //                         </div>
 // //                         <span className="text-[9px] lg:text-[10px] font-mono text-zinc-500 bg-white px-2 lg:px-3 py-0.5 border border-zinc-200 rounded-full">
@@ -1229,7 +1229,7 @@
 // //                               className={`hidden lg:grid grid-cols-12 gap-6 px-6 py-4 items-center cursor-pointer transition-all
 // //                                 ${isSelected 
 // //                                   ? "bg-indigo-50/50 border-l-4 border-l-indigo-600" 
-// //                                   : "hover:bg-zinc-50 border-l-4 border-l-transparent"
+// //                                   : "hover:bg-[#f4f7f4] border-l-4 border-l-transparent"
 // //                                 }`}
 // //                             >
 // //                               <div className="col-span-1">
@@ -1287,7 +1287,7 @@
 // //                               className={`lg:hidden p-3 cursor-pointer transition-all border-l-4 ${
 // //                                 isSelected 
 // //                                   ? "bg-indigo-50/50 border-l-indigo-600" 
-// //                                   : "hover:bg-zinc-50 border-l-transparent"
+// //                                   : "hover:bg-[#f4f7f4] border-l-transparent"
 // //                               }`}
 // //                             >
 // //                               <div className="flex items-start justify-between mb-2">
@@ -1339,14 +1339,14 @@
             
 // //             {/* LAYOUT MAP */}
 // //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-// //               <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+// //               <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
 // //                 <div className="flex items-center justify-between">
 // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">SITE LAYOUT</span>
 // //                   <span className="text-[9px] font-mono text-emerald-600 font-bold">● ACTIVE</span>
 // //                 </div>
 // //               </div>
 // //               <div className="p-4">
-// //                 <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+// //                 <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
 // //                   {selectedLayout ? (
 // //                     <LayoutTaskMap
 // //                       layoutImage={selectedLayout}
@@ -1364,7 +1364,7 @@
 
 // //             {/* TASK DETAILS */}
 // //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-// //               <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+// //               <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
 // //                 <div className="flex items-center justify-between">
 // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">PROGRESS LOG</span>
 // //                   {selectedTask && (
@@ -1396,7 +1396,7 @@
 // //       {showSidePanel && selectedTask && (
 // //         <div className="lg:hidden fixed inset-0 bg-black/50 z-50 flex items-end">
 // //           <div className="bg-white w-full max-h-[85vh] rounded-t-2xl overflow-hidden flex flex-col">
-// //             <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50 flex items-center justify-between">
+// //             <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4] flex items-center justify-between">
 // //               <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">TASK DETAILS</span>
 // //               <button 
 // //                 onClick={() => setShowSidePanel(false)}
@@ -1414,7 +1414,7 @@
 // //                 <div className="mb-2">
 // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">SITE LAYOUT</span>
 // //                 </div>
-// //                 <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+// //                 <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
 // //                   {selectedLayout ? (
 // //                     <LayoutTaskMap
 // //                       layoutImage={selectedLayout}
@@ -1565,7 +1565,7 @@
 
 //   if (loading) {
 //     return (
-//       <div className="h-screen flex items-center justify-center bg-zinc-50">
+//       <div className="h-screen flex items-center justify-center bg-[#f4f7f4]">
 //         <div className="flex flex-col items-center gap-4">
 //           <div className="w-10 lg:w-12 h-10 lg:h-12 border-2 border-zinc-200 border-t-indigo-600 rounded-full animate-spin"></div>
 //           <span className="text-xs lg:text-sm text-zinc-500 font-mono tracking-wider">
@@ -1626,12 +1626,12 @@
 //   };
 
 //   return (
-//     <div className="min-h-screen bg-zinc-50">
+//     <div className="min-h-screen bg-[#f4f7f4]">
 //       {/* POPUP MODAL */}
 //       {showPopup && popupData && (
 //         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
 //           <div className="bg-white rounded-lg shadow-2xl max-w-md w-full border-2 border-amber-300">
-//             <div className="bg-gradient-to-r from-amber-500 to-orange-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
+//             <div className="bg-gradient-to-r from-amber-500 to-teal-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
 //               <div className="flex items-center justify-between">
 //                 <h3 className="text-white font-bold text-base lg:text-lg">Request Sent for Approval</h3>
 //                 <button onClick={() => setShowPopup(false)} className="text-white hover:text-amber-100">
@@ -1662,8 +1662,8 @@
 //                         <div className="bg-red-50 border border-red-200 rounded px-2 py-1">
 //                           <span className="text-red-600 font-mono">In Stock: {mat.inStock}</span>
 //                         </div>
-//                         <div className="bg-blue-50 border border-blue-200 rounded px-2 py-1">
-//                           <span className="text-blue-600 font-mono">Required: {mat.required}</span>
+//                         <div className="bg-teal-50 border border-teal-200 rounded px-2 py-1">
+//                           <span className="text-teal-600 font-mono">Required: {mat.required}</span>
 //                         </div>
 //                       </div>
 //                     </div>
@@ -1673,7 +1673,7 @@
 
 //               <button
 //                 onClick={() => setShowPopup(false)}
-//                 className="w-full px-4 py-2.5 bg-gradient-to-r from-amber-600 to-orange-600 text-white font-bold rounded-lg"
+//                 className="w-full px-4 py-2.5 bg-gradient-to-r from-amber-600 to-teal-600 text-white font-bold rounded-lg"
 //               >
 //                 Close
 //               </button>
@@ -1786,7 +1786,7 @@
 //               <div className="divide-y divide-zinc-100">
 //                 {Object.entries(grouped).map(([group, list]) => (
 //                   <div key={group}>
-//                     <div className="bg-zinc-50 border-y border-zinc-200 px-4 py-2 flex items-center justify-between">
+//                     <div className="bg-[#f4f7f4] border-y border-zinc-200 px-4 py-2 flex items-center justify-between">
 //                       <span className="text-[10px] font-mono font-bold tracking-widest text-zinc-700">
 //                         {group.toUpperCase()}
 //                       </span>
@@ -1811,7 +1811,7 @@
 //                               setShowSidePanel(true);
 //                             }}
 //                             className={`px-4 py-3 cursor-pointer transition-all border-l-4 ${
-//                               isSelected ? "bg-indigo-50 border-l-indigo-600" : "hover:bg-zinc-50 border-l-transparent"
+//                               isSelected ? "bg-indigo-50 border-l-indigo-600" : "hover:bg-[#f4f7f4] border-l-transparent"
 //                             } ${isHighRisk ? "bg-red-50/60" : ""}`}
 //                           >
 //                             <div className="flex items-start justify-between">
@@ -1849,13 +1849,13 @@
 //           {/* SIDE PANEL DESKTOP */}
 //           <div className="hidden lg:block lg:col-span-1 space-y-6">
 //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-//               <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+//               <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
 //                 <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">
 //                   SITE LAYOUT
 //                 </span>
 //               </div>
 //               <div className="p-4">
-//                 <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+//                 <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
 //                   {selectedLayout ? (
 //                     <LayoutTaskMap
 //                       layoutImage={selectedLayout}
@@ -1872,7 +1872,7 @@
 //             </div>
 
 //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-//               <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+//               <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
 //                 <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">
 //                   TASK DETAILS
 //                 </span>
@@ -1889,7 +1889,7 @@
 //       {showSidePanel && selectedTask && (
 //         <div className="lg:hidden fixed inset-0 bg-black/50 z-50 flex items-end">
 //           <div className="bg-white w-full max-h-[85vh] rounded-t-2xl overflow-hidden flex flex-col">
-//             <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50 flex items-center justify-between">
+//             <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4] flex items-center justify-between">
 //               <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">
 //                 TASK DETAILS
 //               </span>
@@ -2175,7 +2175,7 @@ export default function SupervisorItineraryPage() {
 
   if (loading) {
     return (
-      <div className="h-screen flex items-center justify-center bg-zinc-50">
+      <div className="h-screen flex items-center justify-center bg-[#f4f7f4]">
         <div className="flex flex-col items-center gap-4">
           <div className="w-10 lg:w-12 h-10 lg:h-12 border-2 border-zinc-200 border-t-indigo-600 rounded-full animate-spin"></div>
           <span className="text-xs lg:text-sm text-zinc-500 font-mono tracking-wider">
@@ -2187,12 +2187,12 @@ export default function SupervisorItineraryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50">
+    <div className="min-h-screen bg-[#f4f7f4]">
       {/* POPUP MODAL (Material request) */}
       {showPopup && popupData && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-2xl max-w-md w-full border-2 border-amber-300">
-            <div className="bg-gradient-to-r from-amber-500 to-orange-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
+            <div className="bg-gradient-to-r from-amber-500 to-teal-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
               <div className="flex items-center justify-between">
                 <h3 className="text-white font-bold text-base lg:text-lg">Request Sent for Approval</h3>
                 <button
@@ -2241,8 +2241,8 @@ export default function SupervisorItineraryPage() {
                         <div className="bg-red-50 border border-red-200 rounded px-2 py-1">
                           <span className="text-red-600 font-mono">In Stock: {mat.inStock}</span>
                         </div>
-                        <div className="bg-blue-50 border border-blue-200 rounded px-2 py-1">
-                          <span className="text-blue-600 font-mono">Required: {mat.required}</span>
+                        <div className="bg-teal-50 border border-teal-200 rounded px-2 py-1">
+                          <span className="text-teal-600 font-mono">Required: {mat.required}</span>
                         </div>
                       </div>
                     </div>
@@ -2252,7 +2252,7 @@ export default function SupervisorItineraryPage() {
 
               <button
                 onClick={() => setShowPopup(false)}
-                className="w-full px-4 py-2.5 lg:py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold rounded-lg transition-all text-sm lg:text-base"
+                className="w-full px-4 py-2.5 lg:py-3 bg-gradient-to-r from-amber-600 to-teal-600 hover:from-amber-700 hover:to-teal-700 text-white font-bold rounded-lg transition-all text-sm lg:text-base"
               >
                 Close
               </button>
@@ -2570,7 +2570,7 @@ export default function SupervisorItineraryPage() {
           {/* TASK TABLE */}
           <div className="lg:col-span-2">
             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-              <div className="hidden lg:block bg-zinc-50 border-b border-zinc-200">
+              <div className="hidden lg:block bg-[#f4f7f4] border-b border-zinc-200">
                 <div className="grid grid-cols-12 gap-6 px-6 py-4 items-center">
                   <div className="col-span-1 text-[10px] font-mono text-zinc-500 tracking-widest">#</div>
                   <div className="col-span-4 text-[10px] font-mono text-zinc-500 tracking-widest">
@@ -2597,12 +2597,12 @@ export default function SupervisorItineraryPage() {
 
                   return (
                     <div key={group}>
-                      <div className="bg-zinc-50/50 border-y border-zinc-200">
+                      <div className="bg-[#f4f7f4]/50 border-y border-zinc-200">
                         <div className="px-3 lg:px-6 py-2 flex items-center justify-between">
                           <div className="flex items-center gap-2 lg:gap-3">
                             <div
                               className={`w-1 h-3 lg:h-4 rounded-full ${
-                                group === "Auto Carried Forward" ? "bg-orange-500" : "bg-emerald-500"
+                                group === "Auto Carried Forward" ? "bg-teal-500" : "bg-emerald-500"
                               }`}
                             ></div>
                             <span className="text-[9px] lg:text-[10px] font-mono font-bold tracking-widest text-zinc-700">
@@ -2641,7 +2641,7 @@ export default function SupervisorItineraryPage() {
                                   setShowSidePanel(true);
                                 }}
                                 className={`hidden lg:grid grid-cols-12 gap-6 px-6 py-4 items-center cursor-pointer transition-all border-l-4
-                                  ${isSelected ? "bg-indigo-50/50 border-l-indigo-600" : `hover:bg-zinc-50 ${riskBg} ${riskBorder}`}
+                                  ${isSelected ? "bg-indigo-50/50 border-l-indigo-600" : `hover:bg-[#f4f7f4] ${riskBg} ${riskBorder}`}
                                 `}
                               >
                                 <div className="col-span-1">
@@ -2721,7 +2721,7 @@ export default function SupervisorItineraryPage() {
                                 className={`lg:hidden p-3 cursor-pointer transition-all border-l-4 ${
                                   isSelected
                                     ? "bg-indigo-50/50 border-l-indigo-600"
-                                    : `${isHighRisk ? "bg-red-50/60 border-l-red-500" : "hover:bg-zinc-50 border-l-transparent"}`
+                                    : `${isHighRisk ? "bg-red-50/60 border-l-red-500" : "hover:bg-[#f4f7f4] border-l-transparent"}`
                                 }`}
                               >
                                 <div className="flex items-start justify-between mb-2">
@@ -2784,7 +2784,7 @@ export default function SupervisorItineraryPage() {
           {/* RIGHT SIDE PANELS (desktop) */}
           <div className="hidden lg:block lg:col-span-1 space-y-6">
             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-              <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+              <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">
                     SITE LAYOUT
@@ -2793,7 +2793,7 @@ export default function SupervisorItineraryPage() {
                 </div>
               </div>
               <div className="p-4">
-                <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+                <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
                   {selectedLayout ? (
                     <LayoutTaskMap
                       layoutImage={selectedLayout}
@@ -2810,7 +2810,7 @@ export default function SupervisorItineraryPage() {
             </div>
 
             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-              <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+              <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">
                     PROGRESS LOG
@@ -2842,7 +2842,7 @@ export default function SupervisorItineraryPage() {
       {showSidePanel && selectedTask && (
         <div className="lg:hidden fixed inset-0 bg-black/50 z-50 flex items-end">
           <div className="bg-white w-full max-h-[88vh] rounded-t-2xl overflow-hidden flex flex-col">
-            <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50 flex items-center justify-between">
+            <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4] flex items-center justify-between">
               <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">TASK DETAILS</span>
               <button
                 onClick={() => setShowSidePanel(false)}
@@ -2859,7 +2859,7 @@ export default function SupervisorItineraryPage() {
                 <div className="mb-2">
                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">SITE LAYOUT</span>
                 </div>
-                <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+                <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
                   {selectedLayout ? (
                     <LayoutTaskMap
                       layoutImage={selectedLayout}
