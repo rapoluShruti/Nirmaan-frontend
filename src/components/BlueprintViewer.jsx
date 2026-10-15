@@ -107,10 +107,10 @@ export default function BlueprintViewer({
 //             style={{ left: `${coordinates.xPercent}%`, top: `${coordinates.yPercent}%` }}
 //           >
 //             <div className="flex flex-col items-center drop-shadow-lg">
-//               <div className="w-7 h-7 bg-[#f27420] rounded-full border-2 border-white flex items-center justify-center text-[10px] text-white font-bold shadow-md">
+//               <div className="w-7 h-7 bg-[#0f766e] rounded-full border-2 border-white flex items-center justify-center text-[10px] text-white font-bold shadow-md">
 //                 1
 //               </div>
-//               <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[#f27420] -mt-1"></div>
+//               <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[#0f766e] -mt-1"></div>
 //             </div>
 //           </div>
 //         )}
@@ -228,10 +228,10 @@ export default function BlueprintViewer({
 //             }}
 //           >
 //             <div className="flex flex-col items-center drop-shadow-lg">
-//               <div className="w-7 h-7 bg-[#f27420] rounded-full border-2 border-white flex items-center justify-center text-[10px] text-white font-bold shadow-md">
+//               <div className="w-7 h-7 bg-[#0f766e] rounded-full border-2 border-white flex items-center justify-center text-[10px] text-white font-bold shadow-md">
 //                 1
 //               </div>
-//               <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[#f27420] -mt-1" />
+//               <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[#0f766e] -mt-1" />
 //             </div>
 //           </div>
 //         )}
