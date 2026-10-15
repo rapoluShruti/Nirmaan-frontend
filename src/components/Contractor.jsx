@@ -123,7 +123,7 @@ export default function ContractorRatingManagement() {
       };
     if (r >= 7)
       return {
-        chip: "bg-[#e6f3ee] text-orange-700 border-[#b9d9cf]",
+        chip: "bg-[#e6f3ee] text-teal-800 border-[#b9d9cf]",
         bar: "bg-teal-700",
       };
     if (r >= 6)
@@ -140,7 +140,7 @@ export default function ContractorRatingManagement() {
   const deadlineBadge = (d) => {
     const map = {
       "On Time": "bg-emerald-50 text-emerald-700 border-emerald-200",
-      Completed: "bg-[#e6f3ee] text-orange-700 border-[#b9d9cf]",
+      Completed: "bg-[#e6f3ee] text-teal-800 border-[#b9d9cf]",
       Delayed: "bg-amber-50 text-amber-700 border-amber-200",
       Warning: "bg-red-50 text-red-700 border-red-200",
     };
@@ -205,7 +205,7 @@ export default function ContractorRatingManagement() {
   const salesChip = (temp) => {
     const map = {
       Hot: "bg-red-50 text-red-700 border-red-200",
-      Warm: "bg-[#e6f3ee] text-orange-700 border-[#b9d9cf]",
+      Warm: "bg-[#e6f3ee] text-teal-800 border-[#b9d9cf]",
       Cold: "bg-slate-50 text-slate-700 border-slate-200",
     };
     return (
@@ -377,7 +377,7 @@ export default function ContractorRatingManagement() {
               <h2 className="text-base font-bold text-gray-900">Contractor List</h2>
               <p className="text-xs text-gray-500">Click any contractor to view Governance + Sales Enablement</p>
             </div>
-            <span className="text-xs px-3 py-1 rounded-full bg-[#e6f3ee] text-orange-700 border border-[#b9d9cf]">
+            <span className="text-xs px-3 py-1 rounded-full bg-[#e6f3ee] text-teal-800 border border-[#b9d9cf]">
               Showing {filtered.length} / {contractors.length}
             </span>
           </div>
@@ -405,7 +405,7 @@ export default function ContractorRatingManagement() {
                 return (
                   <tr
                     key={c.id}
-                    className="border-t border-orange-100 hover:bg-[#e6f3ee]/30 cursor-pointer"
+                    className="border-t border-[#dce7e1] hover:bg-[#e6f3ee]/30 cursor-pointer"
                     onClick={() => setSelected(c)}
                   >
                     <td className="px-5 py-4">
@@ -499,7 +499,7 @@ export default function ContractorRatingManagement() {
         <div className="lg:hidden space-y-3">
           <div className="flex items-center justify-between">
             <h2 className="text-base font-bold text-gray-900">Contractors</h2>
-            <span className="text-xs px-3 py-1 rounded-full bg-[#e6f3ee] text-orange-700 border border-[#b9d9cf]">
+            <span className="text-xs px-3 py-1 rounded-full bg-[#e6f3ee] text-teal-800 border border-[#b9d9cf]">
               {filtered.length} shown
             </span>
           </div>
@@ -690,7 +690,7 @@ export default function ContractorRatingManagement() {
                           </div>
                           <div className="flex items-center gap-2">
                             {salesChip(selected.leadTemp)}
-                            <span className="text-[11px] px-2.5 py-1 rounded-full border border-[#b9d9cf] bg-[#e6f3ee] text-orange-700 font-semibold">
+                            <span className="text-[11px] px-2.5 py-1 rounded-full border border-[#b9d9cf] bg-[#e6f3ee] text-teal-800 font-semibold">
                               {selected.salesStage}
                             </span>
                           </div>
@@ -766,7 +766,7 @@ export default function ContractorRatingManagement() {
               <div className="p-4 border-t border-[#b9d9cf] bg-white">
                 <div className="flex items-center justify-between">
                   <div className="text-xs text-gray-500">Nirmaan • Contractor Governance</div>
-                  <div className="text-xs font-semibold text-orange-700">Orange ERP Theme</div>
+                  <div className="text-xs font-semibold text-teal-800">Orange ERP Theme</div>
                 </div>
               </div>
             </div>
