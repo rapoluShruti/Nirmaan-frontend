@@ -1071,7 +1071,7 @@
 //             <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
 //               <div className="flex items-center gap-2">
 //                 {gpsLoading ? (
-//                   <span className="text-xs px-3 py-2 bg-blue-50 text-blue-700 rounded-lg">
+//                   <span className="text-xs px-3 py-2 bg-[#e6f3ee] text-teal-800 rounded-lg">
 //                     GPS Checking...
 //                   </span>
 //                 ) : currentLocation ? (
@@ -1109,7 +1109,7 @@
 //                 <button
 //                   onClick={syncData}
 //                   disabled={syncing}
-//                   className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs sm:text-sm disabled:opacity-50"
+//                   className="px-3 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-xs sm:text-sm disabled:opacity-50"
 //                 >
 //                   {syncing ? "Syncing..." : "Sync"}
 //                 </button>
@@ -1209,7 +1209,7 @@
 //                     ) : (
 //                       <button
 //                         onClick={() => openScan({ type: "visitor", id: idx, mode })}
-//                         className="w-full mt-3 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-medium"
+//                         className="w-full mt-3 px-3 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-xs font-medium"
 //                       >
 //                         {label}
 //                       </button>
@@ -1243,7 +1243,7 @@
 
 //               <button
 //                 onClick={() => setShowAddWorkerModal(true)}
-//                 className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-sm font-medium"
+//                 className="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-sm font-medium"
 //               >
 //                 Add Worker
 //               </button>
@@ -1315,7 +1315,7 @@
 //                   <button
 //                     onClick={() => openScan({ type: "labor", id: w.id, mode: "end" })}
 //                     disabled={!w.startFP || !!w.endFP}
-//                     className="px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white rounded-lg text-xs font-medium"
+//                     className="px-3 py-2 bg-teal-700 hover:bg-teal-800 disabled:opacity-40 text-white rounded-lg text-xs font-medium"
 //                   >
 //                     End Work
 //                   </button>
@@ -1367,7 +1367,7 @@
 //                           setSelectedWorker(w);
 //                           setShowWageModal(true);
 //                         }}
-//                         className="mt-2 w-full px-3 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-medium"
+//                         className="mt-2 w-full px-3 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-xs font-medium"
 //                       >
 //                         Pay Wage
 //                       </button>
@@ -1398,7 +1398,7 @@
 //                 <canvas ref={canvasRef} className="hidden" />
 
 //                 <div className="absolute inset-0 flex items-center justify-center">
-//                   <div className="w-48 h-60 sm:w-64 sm:h-80 border-4 border-blue-500 rounded-lg"></div>
+//                   <div className="w-48 h-60 sm:w-64 sm:h-80 border-4 border-teal-600 rounded-lg"></div>
 //                 </div>
 //               </div>
 
@@ -1408,14 +1408,14 @@
 //                 ) : scanStatus === "success" ? (
 //                   <span className="text-green-600">{scanMessage}</span>
 //                 ) : (
-//                   <span className="text-blue-600">{scanMessage}</span>
+//                   <span className="text-teal-700">{scanMessage}</span>
 //                 )}
 //               </div>
 
 //               <div className="flex gap-2 justify-center mt-4">
 //                 <button
 //                   onClick={captureAndVerify}
-//                   className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium"
+//                   className="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-sm font-medium"
 //                 >
 //                   Capture & Verify
 //                 </button>
@@ -1476,7 +1476,7 @@
 //               />
 
 //               <div className="flex gap-3">
-//                 <button onClick={addWorker} className="flex-1 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-medium">
+//                 <button onClick={addWorker} className="flex-1 py-3 bg-teal-700 hover:bg-teal-800 text-white rounded-lg font-medium">
 //                   Add
 //                 </button>
 //                 <button onClick={() => setShowAddWorkerModal(false)} className="flex-1 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg font-medium">
@@ -2750,7 +2750,7 @@ export default function AttendanceScreen() {
                 </span>
 
                 {pendingQueue.length > 0 && (
-                  <span className="text-[11px] px-2 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                  <span className="text-[11px] px-2 py-1 rounded-full bg-[#e6f3ee] text-teal-800 border border-[#b9d9cf]">
                     Pending Sync: {pendingQueue.length}
                   </span>
                 )}
@@ -2760,7 +2760,7 @@ export default function AttendanceScreen() {
             <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
               <div className="flex items-center gap-2">
                 {gpsLoading ? (
-                  <span className="text-xs px-3 py-2 bg-blue-50 text-blue-700 rounded-lg">
+                  <span className="text-xs px-3 py-2 bg-[#e6f3ee] text-teal-800 rounded-lg">
                     GPS Checking...
                   </span>
                 ) : currentLocation ? (
@@ -2798,7 +2798,7 @@ export default function AttendanceScreen() {
                 <button
                   onClick={syncData}
                   disabled={syncing}
-                  className="col-span-2 sm:col-auto px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs sm:text-sm disabled:opacity-50"
+                  className="col-span-2 sm:col-auto px-3 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-xs sm:text-sm disabled:opacity-50"
                 >
                   {syncing ? "Syncing..." : isOnline ? "Sync" : "Save Offline"}
                 </button>
@@ -2901,7 +2901,7 @@ export default function AttendanceScreen() {
                     ) : (
                       <button
                         onClick={() => openScan({ type: "visitor", id: idx, mode })}
-                        className="w-full mt-3 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-medium"
+                        className="w-full mt-3 px-3 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-xs font-medium"
                       >
                         {label}
                       </button>
@@ -2935,7 +2935,7 @@ export default function AttendanceScreen() {
 
               <button
                 onClick={() => setShowAddWorkerModal(true)}
-                className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-sm font-medium"
+                className="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-sm font-medium"
               >
                 Add Worker
               </button>
@@ -3022,7 +3022,7 @@ export default function AttendanceScreen() {
                       openScan({ type: "labor", id: w.id, mode: "end" })
                     }
                     disabled={!w.startFP || !!w.endFP}
-                    className="col-span-2 sm:col-span-1 px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white rounded-lg text-xs font-medium"
+                    className="col-span-2 sm:col-span-1 px-3 py-2 bg-teal-700 hover:bg-teal-800 disabled:opacity-40 text-white rounded-lg text-xs font-medium"
                   >
                     End Work
                   </button>
@@ -3078,7 +3078,7 @@ export default function AttendanceScreen() {
                           setSelectedWorker(w);
                           setShowWageModal(true);
                         }}
-                        className="mt-2 w-full px-3 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-medium"
+                        className="mt-2 w-full px-3 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-xs font-medium"
                       >
                         Pay Wage
                       </button>
@@ -3114,7 +3114,7 @@ export default function AttendanceScreen() {
                 <canvas ref={canvasRef} className="hidden" />
 
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="w-40 h-52 sm:w-64 sm:h-80 border-4 border-blue-500 rounded-lg"></div>
+                  <div className="w-40 h-52 sm:w-64 sm:h-80 border-4 border-teal-600 rounded-lg"></div>
                 </div>
               </div>
 
@@ -3124,14 +3124,14 @@ export default function AttendanceScreen() {
                 ) : scanStatus === "success" ? (
                   <span className="text-green-600">{scanMessage}</span>
                 ) : (
-                  <span className="text-blue-600">{scanMessage}</span>
+                  <span className="text-teal-700">{scanMessage}</span>
                 )}
               </div>
 
               <div className="flex flex-col sm:flex-row gap-2 justify-center mt-4">
                 <button
                   onClick={captureAndVerify}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium w-full sm:w-auto"
+                  className="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-sm font-medium w-full sm:w-auto"
                 >
                   Capture & Verify
                 </button>
@@ -3197,7 +3197,7 @@ export default function AttendanceScreen() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={addWorker}
-                  className="flex-1 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-medium"
+                  className="flex-1 py-3 bg-teal-700 hover:bg-teal-800 text-white rounded-lg font-medium"
                 >
                   Add
                 </button>
