@@ -1002,3 +1002,67 @@ main .shadow-orange-500\/20 { --tw-shadow-color: rgba(15,118,110,.18); }
   .nirmaan-form-grid { grid-template-columns: 1fr; }
   .nirmaan-field-full { grid-column: auto; }
 }
+
+
+/* Landing page: coherent construction-tech palette instead of rainbow gradients. */
+.relative.bg-white.h-screen.overflow-y-auto { background: #f6f8f5; color: #132a2a; }
+.relative.bg-white.h-screen.overflow-y-auto .zoho-grid {
+  background-image: linear-gradient(to right, rgba(16,43,42,.045) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(16,43,42,.045) 1px, transparent 1px) !important;
+  background-size: 72px 72px !important;
+}
+.relative.bg-white.h-screen.overflow-y-auto > .relative > section:first-of-type > div.absolute.inset-0:nth-child(2) {
+  background: radial-gradient(ellipse at 78% 25%, rgba(34,123,105,.25), transparent 34%),
+              linear-gradient(135deg, #102b2a 0%, #153b36 62%, #102b2a 100%) !important;
+  opacity: 1 !important;
+}
+.relative.bg-white.h-screen.overflow-y-auto > .relative > section:first-of-type h1,
+.relative.bg-white.h-screen.overflow-y-auto > .relative > section:first-of-type .text-slate-900 {
+  color: #f4f8f3 !important;
+}
+.relative.bg-white.h-screen.overflow-y-auto > .relative > section:first-of-type .text-blue-600 {
+  color: #9bd9c4 !important;
+}
+.relative.bg-white.h-screen.overflow-y-auto > .relative > section:first-of-type .text-slate-700,
+.relative.bg-white.h-screen.overflow-y-auto > .relative > section:first-of-type .text-slate-600 {
+  color: #bed0c8 !important;
+}
+.relative.bg-white.h-screen.overflow-y-auto > .relative > section:first-of-type button.bg-red-600 {
+  background: #e9b45e !important; color: #102b2a !important;
+  border-radius: .75rem; box-shadow: 0 8px 24px rgba(0,0,0,.14);
+}
+.relative.bg-white.h-screen.overflow-y-auto > .relative > section:first-of-type button.bg-red-600:hover {
+  background: #f3c777 !important;
+}
+.relative.bg-white.h-screen.overflow-y-auto > .relative > section:first-of-type button.border {
+  border-color: rgba(235,245,238,.32) !important;
+  background: rgba(255,255,255,.07) !important; color: #f4f8f3 !important;
+  border-radius: .75rem;
+}
+.relative.bg-white.h-screen.overflow-y-auto > .relative > section:not(:first-of-type) > div.absolute.inset-0:nth-child(2) {
+  background: linear-gradient(135deg, #f6f8f5, #edf4ef 55%, #f6f8f5) !important;
+  opacity: 1 !important;
+}
+.relative.bg-white.h-screen.overflow-y-auto > .relative > section:not(:first-of-type) h2 {
+  color: #132a2a !important; letter-spacing: -.055em;
+}
+.relative.bg-white.h-screen.overflow-y-auto .bg-\[\#0b2a66\] { background: #102b2a !important; }
+.relative.bg-white.h-screen.overflow-y-auto .text-blue-600 { color: #0f766e !important; }
+.relative.bg-white.h-screen.overflow-y-auto button.bg-blue-600 {
+  background: #0f766e !important; border-radius: .65rem;
+}
+.relative.bg-white.h-screen.overflow-y-auto button.bg-blue-600:hover { background: #0b5d57 !important; }
+.relative.bg-white.h-screen.overflow-y-auto .rounded-2xl.border.border-slate-200.bg-white {
+  border-color: #dce6e2 !important; border-radius: 1rem !important;
+  box-shadow: 0 12px 36px rgba(16,43,42,.07) !important;
+}
+.relative.bg-white.h-screen.overflow-y-auto .rounded-xl.border.border-slate-200 {
+  border-color: #dce6e2 !important; border-radius: .85rem !important;
+}
+.relative.bg-white.h-screen.overflow-y-auto section:not(:first-of-type) {
+  scroll-margin-top: 2rem;
+}
+@media (max-width: 640px) {
+  .relative.bg-white.h-screen.overflow-y-auto > .relative > section:first-of-type h1 { font-size: clamp(2.5rem, 11vw, 3.7rem); }
+  .relative.bg-white.h-screen.overflow-y-auto > .relative > section:not(:first-of-type) h2 { font-size: clamp(2rem, 9vw, 3rem); }
+}
