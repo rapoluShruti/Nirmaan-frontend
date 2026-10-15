@@ -186,7 +186,7 @@ export default function ToolRoomManagement() {
               key={t}
               onClick={() => setActiveTab(t)}
               className={`px-4 py-2 rounded-xl border font-semibold ${
-                activeTab === t ? "bg-orange-600 text-white" : ""
+                activeTab === t ? "bg-teal-700 text-white" : ""
               }`}
             >
               {t.toUpperCase()}
@@ -204,7 +204,7 @@ export default function ToolRoomManagement() {
                 return (
                   <div key={t.name} className="border rounded-2xl p-4 flex justify-between">
                     <div className="flex gap-3 items-center">
-                      <Icon className="w-6 h-6 text-orange-600" />
+                      <Icon className="w-6 h-6 text-teal-700" />
                       <div>
                         <p className="font-bold">{t.name}</p>
                         <p className="text-xs text-gray-500">
@@ -218,7 +218,7 @@ export default function ToolRoomManagement() {
                         setSelectedType(t);
                         setScreen("allocate");
                       }}
-                      className="px-4 py-2 bg-orange-600 text-white rounded-xl"
+                      className="px-4 py-2 bg-teal-700 text-white rounded-xl"
                     >
                       Allocate
                     </button>
@@ -341,7 +341,7 @@ export default function ToolRoomManagement() {
 
         <button
           onClick={allocateTool}
-          className="mt-4 w-full bg-orange-600 text-white py-3 rounded-xl"
+          className="mt-4 w-full bg-teal-700 text-white py-3 rounded-xl"
         >
           Generate ID & Allocate
         </button>
@@ -368,7 +368,7 @@ export default function ToolRoomManagement() {
               key={c}
               onClick={() => setReturnCondition(c)}
               className={`flex-1 py-3 rounded-xl border ${
-                returnCondition === c ? "bg-orange-600 text-white" : ""
+                returnCondition === c ? "bg-teal-700 text-white" : ""
               }`}
             >
               {c.toUpperCase()}
@@ -398,7 +398,7 @@ export default function ToolRoomManagement() {
 
         <button
           onClick={returnTool}
-          className="mt-4 w-full bg-orange-600 text-white py-3 rounded-xl"
+          className="mt-4 w-full bg-teal-700 text-white py-3 rounded-xl"
         >
           Confirm Return
         </button>
@@ -412,7 +412,7 @@ export default function ToolRoomManagement() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="p-6 border rounded-3xl shadow-xl text-center">
-          <CheckCircle2 className="mx-auto text-orange-600 w-8 h-8" />
+          <CheckCircle2 className="mx-auto text-teal-700 w-8 h-8" />
           <p className="mt-3 font-bold">Action Completed</p>
           <p className="text-sm text-gray-500">
             Tool record updated successfully
