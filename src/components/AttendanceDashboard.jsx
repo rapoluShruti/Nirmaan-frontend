@@ -81,14 +81,14 @@ const AttendanceDashboard = () => {
       <div className="max-w-6xl mx-auto">
         
         {/* Header Section */}
-        <header className="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <header className="bg-[#102b2a] text-white p-6 rounded-3xl shadow-lg border border-[#102b2a] mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-4">
             <div className="bg-[#e6f3ee] p-3 rounded-2xl">
               <HardHat className="text-teal-700" size={32} />
             </div>
             <div>
-              <h1 className="text-2xl font-black tracking-tight uppercase">Daily Attendance</h1>
-              <p className="text-slate-400 text-xs font-bold tracking-widest uppercase">Workforce Tracking System</p>
+              <h1 className="text-2xl font-black tracking-tight uppercase text-white">Daily Attendance</h1>
+              <p className="text-slate-300 text-xs font-bold tracking-widest uppercase">Workforce Tracking System</p>
             </div>
           </div>
           
