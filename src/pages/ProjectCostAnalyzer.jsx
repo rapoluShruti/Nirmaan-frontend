@@ -301,8 +301,8 @@ export default function ProjectCostAnalyzer() {
     return { total, sold, available, area };
   }, [currentFloor]);
 
-  const kpiCard = (title, value, hint, icon, accent = "orange") => {
-    const accentBg = accent === "green" ? "bg-green-50 border-green-200 text-green-700" : "bg-orange-50 border-orange-200 text-orange-700";
+  const kpiCard = (title, value, hint, icon, accent = "teal") => {
+    const accentBg = accent === "green" ? "bg-green-50 border-green-200 text-green-700" : "bg-[#e6f3ee] border-[#b9d9cf] text-teal-800";
     return (
       <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
         <div className="flex items-start justify-between gap-3">
@@ -323,7 +323,7 @@ export default function ProjectCostAnalyzer() {
         className={`inline-flex items-center justify-center px-2.5 py-1 rounded-full text-xs font-extrabold border ${
           status === "sold"
             ? "bg-green-50 text-green-700 border-green-200"
-            : "bg-orange-50 text-orange-700 border-orange-200"
+            : "bg-[#e6f3ee] text-teal-800 border-[#b9d9cf]"
         }`}
       >
         {status === "sold" ? "Sold" : "Available"}
@@ -332,26 +332,26 @@ export default function ProjectCostAnalyzer() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fafafa]">
+    <div className="min-h-screen bg-[#f4f7f4]">
       {/* Header */}
-      <div className="border-b border-gray-200 bg-white sticky top-0 z-20">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="relative sticky top-0 z-20 overflow-hidden border-b border-white/10 bg-[#102b2a] text-white shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 py-5 md:px-6 md:py-6">
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-br from-orange-600 to-orange-700 p-2.5 rounded-xl shadow-sm">
+              <div className="bg-gradient-to-br from-[#102b2a] to-teal-700 p-2.5 rounded-xl shadow-sm">
                 <Calculator className="w-6 h-6 text-white" />
               </div>
 
               <div>
-                <h1 className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight">
+                <h1 className="text-xl md:text-2xl font-extrabold text-white tracking-tight">
                   Project Cost Analyzer
                 </h1>
-                <p className="text-sm text-gray-500">Real estate inventory + profit analytics (builder dashboard)</p>
+                <p className="text-sm text-slate-300">A live planning view of costs, inventory, selling rates and margin</p>
               </div>
             </div>
 
             {/* Floor segmented control */}
-            <div className="flex items-center bg-gray-100 p-1 rounded-xl border border-gray-200">
+            <div className="flex items-center bg-white/10 p-1 rounded-xl border border-white/15">
               {floors.map((f) => (
                 <button
                   key={f.id}
@@ -361,8 +361,8 @@ export default function ProjectCostAnalyzer() {
                   }}
                   className={`px-4 py-2 rounded-lg text-sm font-extrabold transition ${
                     selectedFloor === f.id
-                      ? "bg-white text-orange-700 shadow-sm border border-orange-100"
-                      : "text-gray-600 hover:text-gray-900"
+                      ? "bg-white text-teal-800 shadow-sm border border-[#dce7e1]"
+                      : "text-slate-300 hover:text-white"
                   }`}
                 >
                   {f.name}
@@ -373,7 +373,7 @@ export default function ProjectCostAnalyzer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-6 space-y-6">
+      <div className="max-w-7xl mx-auto px-4 py-5 md:px-6 md:py-7 space-y-6">
         {/* Global KPI cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {kpiCard("Total Flats", totalFlats, "कुल फ्लैट", <Building2 className="w-5 h-5" />)}
@@ -390,9 +390,9 @@ export default function ProjectCostAnalyzer() {
               <p className="text-sm text-gray-500">Update expenses to calculate profit automatically</p>
             </div>
 
-            <div className="bg-orange-50 border border-orange-200 rounded-xl px-4 py-3">
-              <p className="text-xs text-orange-800 font-semibold">Revenue needed to hit target</p>
-              <p className="text-lg font-extrabold text-orange-900">{formatCurrency(totalRevenueNeeded)}</p>
+            <div className="bg-[#e6f3ee] border border-[#b9d9cf] rounded-xl px-4 py-3">
+              <p className="text-xs text-teal-800 font-semibold">Revenue needed to hit target</p>
+              <p className="text-lg font-extrabold text-[#244740]">{formatCurrency(totalRevenueNeeded)}</p>
             </div>
           </div>
 
@@ -411,7 +411,7 @@ export default function ProjectCostAnalyzer() {
                   type="number"
                   value={projectData[item.field]}
                   onChange={(e) => handleInputChange(item.field, e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-300"
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-300 focus:border-teal-200"
                 />
               </div>
             ))}
@@ -446,19 +446,19 @@ export default function ProjectCostAnalyzer() {
               <p className="mt-1 text-sm text-gray-500">All expenses included</p>
             </div>
 
-            <div className="rounded-2xl border border-orange-200 bg-orange-50 p-5">
-              <p className="text-xs font-bold text-orange-800 uppercase tracking-wide">Per Sq.Ft Metrics</p>
+            <div className="rounded-2xl border border-[#b9d9cf] bg-[#e6f3ee] p-5">
+              <p className="text-xs font-bold text-teal-800 uppercase tracking-wide">Per Sq.Ft Metrics</p>
               <div className="mt-2 space-y-2">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-orange-900/80 font-semibold">Cost / Sq.Ft</span>
-                  <span className="font-extrabold text-orange-900">{formatMoney(costPerSqFt)}</span>
+                  <span className="text-[#244740]/80 font-semibold">Cost / Sq.Ft</span>
+                  <span className="font-extrabold text-[#244740]">{formatMoney(costPerSqFt)}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-orange-900/80 font-semibold">Avg Sell / Sq.Ft</span>
-                  <span className="font-extrabold text-orange-900">{formatMoney(avgSellingPricePerSqFt)}</span>
+                  <span className="text-[#244740]/80 font-semibold">Avg Sell / Sq.Ft</span>
+                  <span className="font-extrabold text-[#244740]">{formatMoney(avgSellingPricePerSqFt)}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-orange-900/80 font-semibold">Margin / Sq.Ft</span>
+                  <span className="text-[#244740]/80 font-semibold">Margin / Sq.Ft</span>
                   <span className="font-extrabold text-green-800">
                     {formatMoney(avgSellingPricePerSqFt - costPerSqFt)}
                   </span>
@@ -489,7 +489,7 @@ export default function ProjectCostAnalyzer() {
                   <h3 className="font-extrabold text-gray-900">{currentFloor.name}</h3>
                   <p className="text-sm text-gray-500">Floor snapshot</p>
                 </div>
-                <div className="p-2.5 rounded-xl bg-orange-50 border border-orange-100 text-orange-700">
+                <div className="p-2.5 rounded-xl bg-[#e6f3ee] border border-[#dce7e1] text-teal-800">
                   <Layers className="w-5 h-5" />
                 </div>
               </div>
@@ -509,9 +509,9 @@ export default function ProjectCostAnalyzer() {
                   <p className="text-xs font-bold text-green-700">Sold</p>
                   <p className="text-lg font-extrabold text-green-900 mt-1">{floorStats.sold}</p>
                 </div>
-                <div className="rounded-2xl border border-orange-200 bg-orange-50 p-4">
-                  <p className="text-xs font-bold text-orange-700">Available</p>
-                  <p className="text-lg font-extrabold text-orange-900 mt-1">{floorStats.available}</p>
+                <div className="rounded-2xl border border-[#b9d9cf] bg-[#e6f3ee] p-4">
+                  <p className="text-xs font-bold text-teal-800">Available</p>
+                  <p className="text-lg font-extrabold text-[#244740] mt-1">{floorStats.available}</p>
                 </div>
               </div>
 
@@ -532,7 +532,7 @@ export default function ProjectCostAnalyzer() {
 
                 <div className="flex items-center gap-2">
                   <div className="px-3 py-2 rounded-xl border border-gray-200 bg-gray-50 text-xs font-bold text-gray-700">
-                    Cost/Sq.Ft: <span className="text-orange-700">{formatMoney(costPerSqFt)}</span>
+                    Cost/Sq.Ft: <span className="text-teal-800">{formatMoney(costPerSqFt)}</span>
                   </div>
                   <div className="px-3 py-2 rounded-xl border border-gray-200 bg-gray-50 text-xs font-bold text-gray-700">
                     Avg Sell/Sq.Ft: <span className="text-green-700">{formatMoney(avgSellingPricePerSqFt)}</span>
@@ -595,7 +595,7 @@ export default function ProjectCostAnalyzer() {
                             key={flat.id}
                             onClick={() => setSelectedRoom(flat)}
                             className={`cursor-pointer transition ${
-                              isActive ? "bg-orange-50" : "hover:bg-gray-50"
+                              isActive ? "bg-[#e6f3ee]" : "hover:bg-gray-50"
                             }`}
                           >
                             <td className="px-4 py-3 font-extrabold text-gray-900">{flat.id}</td>
@@ -610,7 +610,7 @@ export default function ProjectCostAnalyzer() {
                               ₹{sellRate.toLocaleString()}
                             </td>
 
-                            <td className="px-4 py-3 text-right font-bold text-orange-700">
+                            <td className="px-4 py-3 text-right font-bold text-teal-800">
                               ₹{Math.round(costRate).toLocaleString()}
                             </td>
 
@@ -647,7 +647,7 @@ export default function ProjectCostAnalyzer() {
                                     <Wallet className="w-4 h-4 text-gray-400" />
                                     <span
                                       className={`font-extrabold ${
-                                        flat.paymentStatus === "Completed" ? "text-green-700" : "text-orange-700"
+                                        flat.paymentStatus === "Completed" ? "text-green-700" : "text-teal-800"
                                       }`}
                                     >
                                       {flat.paymentStatus || "—"}
@@ -714,24 +714,24 @@ export default function ProjectCostAnalyzer() {
 
                     return (
                       <>
-                        <div className="mt-5 rounded-2xl border border-orange-200 bg-orange-50 p-4">
-                          <p className="text-xs font-extrabold text-orange-800 uppercase tracking-wide">
+                        <div className="mt-5 rounded-2xl border border-[#b9d9cf] bg-[#e6f3ee] p-4">
+                          <p className="text-xs font-extrabold text-teal-800 uppercase tracking-wide">
                             Selling Summary
                           </p>
 
                           <div className="mt-3 space-y-2 text-sm">
                             <div className="flex items-center justify-between">
-                              <span className="text-orange-900/80 font-semibold">Total Selling</span>
-                              <span className="font-extrabold text-orange-900">{formatCurrency(totalSell)}</span>
+                              <span className="text-[#244740]/80 font-semibold">Total Selling</span>
+                              <span className="font-extrabold text-[#244740]">{formatCurrency(totalSell)}</span>
                             </div>
 
                             <div className="flex items-center justify-between">
-                              <span className="text-orange-900/80 font-semibold">Estimated Cost</span>
+                              <span className="text-[#244740]/80 font-semibold">Estimated Cost</span>
                               <span className="font-extrabold text-gray-900">{formatCurrency(totalCost)}</span>
                             </div>
 
                             <div className="flex items-center justify-between">
-                              <span className="text-orange-900/80 font-semibold flex items-center gap-2">
+                              <span className="text-[#244740]/80 font-semibold flex items-center gap-2">
                                 <Percent className="w-4 h-4" />
                                 Margin
                               </span>
@@ -749,7 +749,7 @@ export default function ProjectCostAnalyzer() {
                           </div>
                           <div className="rounded-2xl border border-gray-200 p-3">
                             <p className="text-[11px] font-bold text-gray-500">Cost/Sq.Ft</p>
-                            <p className="mt-1 font-extrabold text-orange-700">{formatMoney(costRate)}</p>
+                            <p className="mt-1 font-extrabold text-teal-800">{formatMoney(costRate)}</p>
                           </div>
                           <div className="rounded-2xl border border-gray-200 p-3">
                             <p className="text-[11px] font-bold text-gray-500">Margin/Sq.Ft</p>
@@ -811,8 +811,8 @@ export default function ProjectCostAnalyzer() {
                 </>
               ) : (
                 <div className="text-center py-12">
-                  <div className="mx-auto w-12 h-12 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center">
-                    <Home className="w-6 h-6 text-orange-600" />
+                  <div className="mx-auto w-12 h-12 rounded-2xl bg-[#e6f3ee] border border-[#dce7e1] flex items-center justify-center">
+                    <Home className="w-6 h-6 text-teal-700" />
                   </div>
                   <h3 className="mt-4 font-extrabold text-gray-900">Select a flat</h3>
                   <p className="text-sm text-gray-500 mt-1">Click any table row to open profitability + sold details</p>

@@ -81,19 +81,19 @@ const AttendanceDashboard = () => {
       <div className="max-w-6xl mx-auto">
         
         {/* Header Section */}
-        <header className="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <header className="bg-[#102b2a] text-white p-6 rounded-3xl shadow-lg border border-[#102b2a] mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-4">
-            <div className="bg-orange-100 p-3 rounded-2xl">
-              <HardHat className="text-orange-600" size={32} />
+            <div className="bg-[#e6f3ee] p-3 rounded-2xl">
+              <HardHat className="text-teal-700" size={32} />
             </div>
             <div>
-              <h1 className="text-2xl font-black tracking-tight uppercase">Daily Attendance</h1>
-              <p className="text-slate-400 text-xs font-bold tracking-widest uppercase">Workforce Tracking System</p>
+              <h1 className="text-2xl font-black tracking-tight uppercase text-white">Daily Attendance</h1>
+              <p className="text-slate-300 text-xs font-bold tracking-widest uppercase">Workforce Tracking System</p>
             </div>
           </div>
           
           <select 
-            className="w-full md:w-80 bg-slate-100 border-none rounded-2xl p-4 font-bold text-slate-700 focus:ring-2 focus:ring-orange-500 outline-none transition-all cursor-pointer"
+            className="w-full md:w-80 bg-slate-100 border-none rounded-2xl p-4 font-bold text-slate-700 focus:ring-2 focus:ring-teal-600 outline-none transition-all cursor-pointer"
             value={selectedProjectId}
             onChange={(e) => setSelectedProjectId(e.target.value)}
           >
@@ -110,7 +110,7 @@ const AttendanceDashboard = () => {
             <p className="font-black text-xl uppercase tracking-tighter">Please select a project to begin</p>
           </div>
         ) : loading ? (
-          <div className="flex justify-center p-20"><Loader2 className="animate-spin text-orange-500" size={48} /></div>
+          <div className="flex justify-center p-20"><Loader2 className="animate-spin text-teal-700" size={48} /></div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
@@ -141,12 +141,12 @@ const AttendanceDashboard = () => {
                 </h3>
                 <form onSubmit={handleAddWorker} className="space-y-4">
                   <input 
-                    className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm font-semibold outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    className="w-full bg-slate-50 border-none rounded-2xl p-4 text-sm font-semibold outline-none focus:ring-2 focus:ring-teal-600 transition-all"
                     placeholder="Full Name..."
                     value={newWorkerName}
                     onChange={(e) => setNewWorkerName(e.target.value)}
                   />
-                  <button className="w-full bg-blue-600 text-white py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-700 transform active:scale-95 transition-all shadow-lg shadow-blue-100">
+                  <button className="w-full bg-teal-700 text-white py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-teal-800 transform active:scale-95 transition-all shadow-lg shadow-teal-100">
                     Add to Roster
                   </button>
                 </form>
@@ -160,7 +160,7 @@ const AttendanceDashboard = () => {
                   <h2 className="text-xl font-black uppercase tracking-tight">Worker Roster</h2>
                   <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">Daily Log</p>
                 </div>
-                <div className="bg-white px-6 py-2 rounded-full border border-slate-200 shadow-sm text-xs font-black text-blue-600">
+                <div className="bg-white px-6 py-2 rounded-full border border-slate-200 shadow-sm text-xs font-black text-teal-700">
                   {presentIds.length} / {workerPool.length} PRESENT
                 </div>
               </div>

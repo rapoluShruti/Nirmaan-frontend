@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import QRCode from "react-qr-code";
 import {
   ArrowLeft,
   CheckCircle2,
@@ -14,6 +15,8 @@ export default function ToolLibrary() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [selectedTool, setSelectedTool] = useState(null);
+  const [allocationLabel, setAllocationLabel] = useState(null);
+  const [localAssignments, setLocalAssignments] = useState({});
 
   // Supervisor enters Tool ID manually (main workflow)
   const [toolIdInput, setToolIdInput] = useState("");
@@ -169,7 +172,7 @@ export default function ToolLibrary() {
     [repairStages]
   );
 
-  const allTools = useMemo(() => [...heavyTools, ...lightTools], [heavyTools, lightTools]);
+  const allTools = useMemo(() => [...heavyTools, ...lightTools].map((tool) => ({ ...tool, ...(localAssignments[tool.id] || {}) })), [heavyTools, lightTools, localAssignments]);
 
   const toolsForTab = useMemo(() => {
     if (activeTab === "heavy") return heavyTools;
@@ -262,11 +265,19 @@ export default function ToolLibrary() {
       return;
     }
 
+    const issuedOn = new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+    setLocalAssignments((prev) => ({
+      ...prev,
+      [selectedTool.id]: { status: "Issued", issuedTo: allocateForm.worker, issuedOn },
+    }));
+    setAllocationLabel({
+      tool: selectedTool,
+      worker: allocateForm.worker,
+      purpose: allocateForm.purpose,
+      zone: allocateForm.zone,
+      issuedAt: new Date().toISOString(),
+    });
     setScreen("success");
-    setTimeout(() => {
-      setScreen("list");
-      resetFlow();
-    }, 1800);
   };
 
   const handleReturnOpen = (tool) => {
@@ -285,12 +296,20 @@ export default function ToolLibrary() {
       return;
     }
 
-    // If damaged, take supervisor to repair ticket screen directly
+    // Keep the assigned tool out of circulation while it is being repaired.
     if (returnForm.condition === "damaged") {
+      setLocalAssignments((prev) => ({
+        ...prev,
+        [selectedTool.id]: { status: "Under Repair", issuedTo: "-", issuedOn: "-" },
+      }));
       setScreen("repair");
       return;
     }
 
+    setLocalAssignments((prev) => ({
+      ...prev,
+      [selectedTool.id]: { status: "Available", issuedTo: "-", issuedOn: "-" },
+    }));
     setScreen("success");
     setTimeout(() => {
       setScreen("list");
@@ -307,7 +326,7 @@ export default function ToolLibrary() {
           <div className="px-5 py-5">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="text-xs font-semibold tracking-wide text-orange-600 uppercase">
+                <p className="text-xs font-semibold tracking-wide text-teal-700 uppercase">
                   Tool Library
                 </p>
                 <h1 className="text-xl font-bold text-gray-900 mt-1">
@@ -318,8 +337,8 @@ export default function ToolLibrary() {
                 </p>
               </div>
 
-              <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center">
-                <Wrench className="w-5 h-5 text-orange-700" />
+              <div className="w-10 h-10 rounded-xl bg-[#e6f3ee] border border-[#b9d9cf] flex items-center justify-center">
+                <Wrench className="w-5 h-5 text-teal-800" />
               </div>
             </div>
 
@@ -341,11 +360,11 @@ export default function ToolLibrary() {
                   value={toolIdInput}
                   onChange={(e) => setToolIdInput(e.target.value.toUpperCase())}
                   placeholder="Tool ID (HT-001 / LT-003)"
-                  className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400 text-sm"
+                  className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400 text-sm"
                 />
                 <button
                   onClick={handleOpenAllocateByToolId}
-                  className="px-4 py-3 rounded-xl bg-orange-600 text-white text-sm font-semibold hover:bg-orange-700 transition"
+                  className="px-4 py-3 rounded-xl bg-teal-700 text-white text-sm font-semibold hover:bg-teal-800 transition"
                 >
                   Allocate
                 </button>
@@ -358,7 +377,7 @@ export default function ToolLibrary() {
                 onClick={() => setActiveTab("heavy")}
                 className={`px-4 py-2.5 rounded-xl text-sm font-semibold border transition ${
                   activeTab === "heavy"
-                    ? "bg-orange-600 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-teal-600"
                     : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -369,7 +388,7 @@ export default function ToolLibrary() {
                 onClick={() => setActiveTab("light")}
                 className={`px-4 py-2.5 rounded-xl text-sm font-semibold border transition ${
                   activeTab === "light"
-                    ? "bg-orange-600 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-teal-600"
                     : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -380,7 +399,7 @@ export default function ToolLibrary() {
                 onClick={() => setActiveTab("repair")}
                 className={`px-4 py-2.5 rounded-xl text-sm font-semibold border transition ${
                   activeTab === "repair"
-                    ? "bg-orange-600 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-teal-600"
                     : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -395,7 +414,7 @@ export default function ToolLibrary() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search by ID / name / issued to..."
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400 text-sm"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400 text-sm"
               />
             </div>
           </div>
@@ -448,7 +467,7 @@ export default function ToolLibrary() {
                             setSelectedTool(t);
                             setScreen("allocate");
                           }}
-                          className="px-3 py-2.5 rounded-xl bg-orange-600 text-white text-sm font-semibold hover:bg-orange-700 transition"
+                          className="px-3 py-2.5 rounded-xl bg-teal-700 text-white text-sm font-semibold hover:bg-teal-800 transition"
                         >
                           Allocate
                         </button>
@@ -501,8 +520,8 @@ export default function ToolLibrary() {
 
             <p className="text-sm font-semibold text-gray-900">Allocate Tool</p>
 
-            <div className="w-8 h-8 rounded-lg bg-orange-50 border border-orange-200 flex items-center justify-center">
-              <Wrench className="w-4 h-4 text-orange-700" />
+            <div className="w-8 h-8 rounded-lg bg-[#e6f3ee] border border-[#b9d9cf] flex items-center justify-center">
+              <Wrench className="w-4 h-4 text-teal-800" />
             </div>
           </div>
         </div>
@@ -528,7 +547,7 @@ export default function ToolLibrary() {
             <select
               value={allocateForm.worker}
               onChange={(e) => setAllocateForm({ ...allocateForm, worker: e.target.value })}
-              className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400"
+              className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400"
             >
               <option value="">Select...</option>
               {workers.map((w, i) => (
@@ -545,7 +564,7 @@ export default function ToolLibrary() {
             <select
               value={allocateForm.zone}
               onChange={(e) => setAllocateForm({ ...allocateForm, zone: e.target.value })}
-              className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400"
+              className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400"
             >
               <option value="">Select...</option>
               {zones.map((z, i) => (
@@ -563,7 +582,7 @@ export default function ToolLibrary() {
               value={allocateForm.purpose}
               onChange={(e) => setAllocateForm({ ...allocateForm, purpose: e.target.value })}
               placeholder="e.g., slab drilling / shuttering work"
-              className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400"
+              className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400"
             />
           </div>
 
@@ -571,7 +590,7 @@ export default function ToolLibrary() {
           <button
             onClick={handleAllocate}
             disabled={!allocateForm.worker || !allocateForm.zone}
-            className="w-full py-3.5 rounded-2xl bg-orange-600 text-white font-semibold hover:bg-orange-700 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
+            className="w-full py-3.5 rounded-2xl bg-teal-700 text-white font-semibold hover:bg-teal-800 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
           >
             Confirm Allocation
           </button>
@@ -603,8 +622,8 @@ export default function ToolLibrary() {
 
             <p className="text-sm font-semibold text-gray-900">Return Tool</p>
 
-            <div className="w-8 h-8 rounded-lg bg-orange-50 border border-orange-200 flex items-center justify-center">
-              <Wrench className="w-4 h-4 text-orange-700" />
+            <div className="w-8 h-8 rounded-lg bg-[#e6f3ee] border border-[#b9d9cf] flex items-center justify-center">
+              <Wrench className="w-4 h-4 text-teal-800" />
             </div>
           </div>
         </div>
@@ -631,7 +650,7 @@ export default function ToolLibrary() {
                 onClick={() => setReturnForm({ ...returnForm, condition: "good" })}
                 className={`py-3 rounded-xl border text-sm font-semibold transition ${
                   returnForm.condition === "good"
-                    ? "bg-orange-600 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-teal-600"
                     : "bg-white text-gray-800 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -642,7 +661,7 @@ export default function ToolLibrary() {
                 onClick={() => setReturnForm({ ...returnForm, condition: "damaged" })}
                 className={`py-3 rounded-xl border text-sm font-semibold transition ${
                   returnForm.condition === "damaged"
-                    ? "bg-orange-600 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-teal-600"
                     : "bg-white text-gray-800 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -658,7 +677,7 @@ export default function ToolLibrary() {
                   onChange={(e) => setReturnForm({ ...returnForm, damageNote: e.target.value })}
                   rows={4}
                   placeholder="Describe issue clearly..."
-                  className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400"
+                  className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400"
                 />
               </div>
             )}
@@ -666,7 +685,7 @@ export default function ToolLibrary() {
 
           <button
             onClick={handleReturnSubmit}
-            className="w-full py-3.5 rounded-2xl bg-orange-600 text-white font-semibold hover:bg-orange-700 transition"
+            className="w-full py-3.5 rounded-2xl bg-teal-700 text-white font-semibold hover:bg-teal-800 transition"
           >
             Confirm Return
           </button>
@@ -698,8 +717,8 @@ export default function ToolLibrary() {
 
             <p className="text-sm font-semibold text-gray-900">Repair Tracking</p>
 
-            <div className="w-8 h-8 rounded-lg bg-orange-50 border border-orange-200 flex items-center justify-center">
-              <Wrench className="w-4 h-4 text-orange-700" />
+            <div className="w-8 h-8 rounded-lg bg-[#e6f3ee] border border-[#b9d9cf] flex items-center justify-center">
+              <Wrench className="w-4 h-4 text-teal-800" />
             </div>
           </div>
         </div>
@@ -732,16 +751,16 @@ export default function ToolLibrary() {
                     <div
                       className={`w-8 h-8 rounded-full border flex items-center justify-center ${
                         done
-                          ? "bg-orange-600 border-orange-600"
+                          ? "bg-teal-700 border-teal-600"
                           : active
-                          ? "bg-orange-50 border-orange-300"
+                          ? "bg-[#e6f3ee] border-teal-300"
                           : "bg-white border-gray-200"
                       }`}
                     >
                       {done ? (
                         <CheckCircle2 className="w-4 h-4 text-white" />
                       ) : (
-                        <span className={`text-xs font-bold ${active ? "text-orange-700" : "text-gray-400"}`}>
+                        <span className={`text-xs font-bold ${active ? "text-teal-800" : "text-gray-400"}`}>
                           {idx + 1}
                         </span>
                       )}
@@ -752,7 +771,7 @@ export default function ToolLibrary() {
                         {s.label}
                       </p>
                       {active && (
-                        <p className="text-xs text-orange-700 font-semibold">Current Stage</p>
+                        <p className="text-xs text-teal-800 font-semibold">Current Stage</p>
                       )}
                     </div>
                   </div>
@@ -804,7 +823,7 @@ export default function ToolLibrary() {
                 resetFlow();
               }, 1600);
             }}
-            className="w-full py-3.5 rounded-2xl bg-orange-600 text-white font-semibold hover:bg-orange-700 transition"
+            className="w-full py-3.5 rounded-2xl bg-teal-700 text-white font-semibold hover:bg-teal-800 transition"
           >
             Save / Update Repair
           </button>
@@ -820,23 +839,35 @@ export default function ToolLibrary() {
   // -------------------- SUCCESS --------------------
   if (screen === "success") {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center px-5">
-        <div className="w-full max-w-md rounded-3xl border border-gray-200 bg-white shadow-xl p-6">
-          <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center">
-            <CheckCircle2 className="w-6 h-6 text-orange-700" />
+      <div className="min-h-screen bg-[#f4f7f4] px-4 py-10 text-[#183a35] md:px-8">
+        <div className="mx-auto max-w-3xl overflow-hidden rounded-3xl border border-[#dce7e1] bg-white shadow-xl">
+          <div className="bg-[#102b2a] px-6 py-7 text-white md:px-8">
+            <div className="flex items-center gap-3"><CheckCircle2 className="h-9 w-9 text-emerald-300" /><div><p className="text-xs font-bold uppercase tracking-[.18em] text-teal-100">Tool allocation</p><h1 className="mt-1 text-2xl font-bold">{allocationLabel ? "QR label generated" : "Action completed"}</h1></div></div>
+            <p className="mt-3 text-sm leading-6 text-slate-300">{allocationLabel ? "Keep this QR label with the equipment so the assigned tool can be identified quickly." : "The selected tool action has been processed in this interface."}</p>
           </div>
-
-          <p className="mt-4 text-lg font-bold text-gray-900">Action Completed</p>
-          <p className="text-sm text-gray-500 mt-1">
-            Allocation / return / repair update saved successfully.
-          </p>
-
-          <div className="mt-4 rounded-2xl bg-gray-50 border border-gray-200 p-4">
-            <p className="text-xs text-gray-500 font-semibold">Reference</p>
-            <p className="mt-1 text-sm font-mono font-bold text-gray-900">
-              {selectedTool?.id || toolIdInput || "—"}
-            </p>
-          </div>
+          {allocationLabel ? (
+            <div className="grid gap-6 p-6 md:grid-cols-[minmax(0,1fr)_240px] md:p-8">
+              <div className="rounded-2xl border border-[#dce7e1] bg-[#f7faf8] p-5">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#71847d]">Tool ID</p>
+                <p className="mt-2 font-mono text-3xl font-bold text-[#102b2a]">{allocationLabel.tool?.id || toolIdInput}</p>
+                <div className="mt-5 space-y-4">
+                  <div><p className="text-xs text-[#71847d]">Equipment</p><p className="mt-1 font-semibold">{allocationLabel.tool?.name}</p></div>
+                  <div><p className="text-xs text-[#71847d]">Assigned to</p><p className="mt-1 font-semibold">{allocationLabel.worker}</p></div>
+                  <div><p className="text-xs text-[#71847d]">Work zone</p><p className="mt-1 font-semibold">{allocationLabel.zone}</p></div>
+                  {allocationLabel.purpose && <div><p className="text-xs text-[#71847d]">Purpose</p><p className="mt-1 font-semibold">{allocationLabel.purpose}</p></div>}
+                </div>
+                <span className="mt-5 inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-800">Issued assignment</span>
+              </div>
+              <div className="tool-qr-print flex flex-col items-center justify-center rounded-2xl border border-[#dce7e1] p-5 text-center">
+                <div className="rounded-xl bg-white p-3"><QRCode value={JSON.stringify({ app: "NIRMAAN", type: "tool", toolId: allocationLabel.tool?.id || toolIdInput, toolName: allocationLabel.tool?.name, assignedTo: allocationLabel.worker, purpose: allocationLabel.purpose, zone: allocationLabel.zone, issuedAt: allocationLabel.issuedAt })} size={180} level="M" /></div>
+                <p className="mt-4 text-sm font-bold">Tool QR label</p><p className="mt-1 font-mono text-xs font-bold text-[#244740]">{allocationLabel.tool?.id || toolIdInput}</p><p className="mt-1 text-xs text-[#71847d]">{allocationLabel.worker} · {allocationLabel.zone}</p><p className="mt-1 text-xs text-[#71847d]">Scan-ready assignment details</p>
+                <button onClick={() => window.print()} className="mt-4 w-full rounded-xl border border-[#dce7e1] px-4 py-2.5 text-sm font-bold text-[#244740] hover:bg-[#f4f7f4]">Print label</button>
+              </div>
+            </div>
+          ) : (
+            <div className="p-6"><div className="rounded-xl border border-[#dce7e1] bg-[#f7faf8] p-4"><p className="text-xs font-semibold text-[#71847d]">Reference</p><p className="mt-1 font-mono font-bold">{selectedTool?.id || toolIdInput || "—"}</p></div></div>
+          )}
+          <div className="px-6 pb-6 md:px-8 md:pb-8"><p className="mb-4 text-xs leading-5 text-[#71847d]">QR labels are generated in the browser from the current allocation details. Connecting the QR payload to a backend record or live scanning workflow can be added separately.</p><button onClick={() => { setScreen("list"); resetFlow(); setAllocationLabel(null); }} className="w-full rounded-xl bg-[#0f766e] px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#0b5d57]">Back to tool library</button></div>
         </div>
       </div>
     );

@@ -1,132 +1,36 @@
-// import { useState } from "react";
-// import { registerUser } from "../api/auth";
-// import { useNavigate } from "react-router-dom";
-
-// export default function Register() {
-//   const [form, setForm] = useState({
-//     name: "",
-//     email: "",
-//     password: "",
-//     role: "MANAGER",
-//   });
-//   const navigate = useNavigate();
-
-//   const handleChange = (e) =>
-//     setForm({ ...form, [e.target.name]: e.target.value });
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       await registerUser(form);
-//       alert("Registration successful!");
-//       navigate("/login");
-//     } catch (err) {
-//       alert(err.response?.data?.message || "Registration failed");
-//     }
-//   };
-
-//   return (
-//     <div className="flex justify-center items-center h-screen">
-//       <form
-//         onSubmit={handleSubmit}
-//         className="p-6 bg-white rounded shadow-md w-96"
-//       >
-//         <h1 className="text-xl font-bold mb-4">Register</h1>
-//         <input
-//           type="text"
-//           name="name"
-//           placeholder="Name"
-//           value={form.name}
-//           onChange={handleChange}
-//           className="w-full mb-2 p-2 border rounded"
-//         />
-//         <input
-//           type="email"
-//           name="email"
-//           placeholder="Email"
-//           value={form.email}
-//           onChange={handleChange}
-//           className="w-full mb-2 p-2 border rounded"
-//         />
-//         <input
-//           type="password"
-//           name="password"
-//           placeholder="Password"
-//           value={form.password}
-//           onChange={handleChange}
-//           className="w-full mb-2 p-2 border rounded"
-//         />
-//         <select
-//           name="role"
-//           value={form.role}
-//           onChange={handleChange}
-//           className="w-full mb-2 p-2 border rounded"
-//         >
-//           <option value="MANAGER">Manager</option>
-//           <option value="SITE_ENGINEER">Site Engineer</option>
-//           <option value="SUPERVISOR">Supervisor</option>
-//         </select>
-//         <button
-//           type="submit"
-//           className="w-full p-2 bg-blue-500 text-white rounded"
-//         >
-//           Register
-//         </button>
-//       </form>
-//     </div>
-//   );
-// }
 import { useState } from "react";
 import { registerUser } from "../api/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { HardHat, ArrowUpRight, Building2, ShieldCheck, CheckCircle2 } from "lucide-react";
 
-/* ---------------- MOCK GST LOOKUP ---------------- */
+/* Demo GST lookup retained from the existing registration flow. */
 const mockGSTLookup = (gst) =>
   new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        companyName: "Shree Infra Projects Pvt Ltd",
-        address: "Andheri East, Mumbai, Maharashtra – 400069",
-        status: "Active",
-      });
-    }, 1500);
+    setTimeout(() => resolve({
+      companyName: "Shree Infra Projects Pvt Ltd",
+      address: "Andheri East, Mumbai, Maharashtra – 400069",
+      status: "Active",
+    }), 1500);
   });
 
 export default function Register() {
   const navigate = useNavigate();
-
   const [form, setForm] = useState({
-    companyName: "",
-    orgType: "BUILDER",
-    gst: "",
-    address: "",
-    phone: "",
-    name: "",
-    email: "",
-    password: "",
-    role: "MANAGER",
+    companyName: "", orgType: "BUILDER", gst: "", address: "", phone: "",
+    name: "", email: "", password: "", role: "MANAGER",
   });
-
   const [gstLoading, setGstLoading] = useState(false);
   const [gstVerified, setGstVerified] = useState(false);
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  /* ---------------- GST AUTO FETCH ---------------- */
   const handleGSTBlur = async () => {
     if (form.gst.length < 10) return;
-
     setGstLoading(true);
     setGstVerified(false);
-
     try {
       const data = await mockGSTLookup(form.gst);
-      setForm((f) => ({
-        ...f,
-        companyName: data.companyName,
-        address: data.address,
-      }));
+      setForm((f) => ({ ...f, companyName: data.companyName, address: data.address }));
       setGstVerified(true);
     } catch {
       setGstVerified(false);
@@ -135,18 +39,9 @@ export default function Register() {
     }
   };
 
-  /* ---------------- SUBMIT ---------------- */
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // 🚨 Only auth-related data is sent
-    const payload = {
-      name: form.name,
-      email: form.email,
-      password: form.password,
-      role: form.role,
-    };
-
+    const payload = { name: form.name, email: form.email, password: form.password, role: form.role };
     try {
       await registerUser(payload);
       alert("Organization registered successfully!");
@@ -157,150 +52,48 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-white px-4">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white w-full max-w-lg rounded-2xl shadow-xl p-8 space-y-6"
-      >
-        {/* HEADER */}
-        <div>
-          <h1 className="text-2xl font-black text-gray-900">
-            Organization Registration
-          </h1>
-          <p className="text-sm text-gray-500">
-            Used for compliance, invoicing & ownership
-          </p>
-        </div>
-
-        {/* ORG DETAILS */}
-        <div className="space-y-3">
-          <input
-            name="companyName"
-            placeholder="Company / Firm Name"
-            value={form.companyName}
-            onChange={handleChange}
-            className="w-full p-3 border rounded-xl"
-            required
-          />
-
-          <select
-            name="orgType"
-            value={form.orgType}
-            onChange={handleChange}
-            className="w-full p-3 border rounded-xl"
-          >
-            <option value="INDIVIDUAL">Individual / Contractor</option>
-            <option value="BUILDER">Builder</option>
-            <option value="DEVELOPER">Developer</option>
-          </select>
-
-          {/* GST FIELD */}
-          <div className="relative">
-            <input
-              name="gst"
-              placeholder="GST Number (Optional)"
-              value={form.gst}
-              onChange={handleChange}
-              onBlur={handleGSTBlur}
-              className="w-full p-3 border rounded-xl pr-10"
-            />
-
-            {gstLoading && (
-              <span className="absolute right-3 top-3 text-sm text-orange-500">
-                Verifying…
-              </span>
-            )}
-
-            {gstVerified && !gstLoading && (
-              <span className="absolute right-3 top-3 text-green-600 font-bold">
-                ✓
-              </span>
-            )}
+    <div className="nirmaan-register">
+      <header className="nirmaan-register-header">
+        <Link to="/" className="nirmaan-register-brand"><span className="nirmaan-brand-mark"><HardHat size={21} /></span><strong>NIRMAAN<span className="nirmaan-brand-period">.</span></strong></Link>
+        <span>Already have a workspace? <Link to="/login">Sign in <ArrowUpRight size={14} /></Link></span>
+      </header>
+      <div className="nirmaan-register-layout">
+        <aside className="nirmaan-register-aside">
+          <span className="nirmaan-eyebrow"><span /> GET YOUR TEAM ON SITE</span>
+          <h1>Good work<br />starts <em>connected.</em></h1>
+          <p>Bring your projects, field teams and daily operations into one dependable workspace.</p>
+          <div className="nirmaan-register-benefits">
+            <div><CheckCircle2 size={18} /><span><strong>One shared workspace</strong><small>Keep the whole project team aligned.</small></span></div>
+            <div><CheckCircle2 size={18} /><span><strong>Clear site operations</strong><small>Keep updates, tasks and materials together.</small></span></div>
+            <div><CheckCircle2 size={18} /><span><strong>Built around your team</strong><small>Role-based access for your people.</small></span></div>
           </div>
-
-          <textarea
-            name="address"
-            placeholder="Registered Address"
-            value={form.address}
-            onChange={handleChange}
-            rows={2}
-            className="w-full p-3 border rounded-xl resize-none"
-            required
-          />
-
-          <input
-            name="phone"
-            placeholder="Primary Contact Number"
-            value={form.phone}
-            onChange={handleChange}
-            className="w-full p-3 border rounded-xl"
-            required
-          />
-        </div>
-
-        {/* DIVIDER */}
-        <div className="border-t pt-4">
-          <p className="text-sm font-semibold text-gray-700 mb-3">
-            Login Credentials
-          </p>
-
-          <div className="space-y-3">
-            <input
-              name="name"
-              placeholder="Admin Name"
-              value={form.name}
-              onChange={handleChange}
-              className="w-full p-3 border rounded-xl"
-              required
-            />
-
-            <input
-              name="email"
-              type="email"
-              placeholder="Email ID"
-              value={form.email}
-              onChange={handleChange}
-              className="w-full p-3 border rounded-xl"
-              required
-            />
-
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              value={form.password}
-              onChange={handleChange}
-              className="w-full p-3 border rounded-xl"
-              required
-            />
-
-            <select
-              name="role"
-              value={form.role}
-              onChange={handleChange}
-              className="w-full p-3 border rounded-xl"
-            >
-              <option value="MANAGER">Manager</option>
-              <option value="SITE_ENGINEER">Site Engineer</option>
-              <option value="SUPERVISOR">Supervisor</option>
-            </select>
-          </div>
-        </div>
-
-        {/* NOTE */}
-        <p className="text-xs text-gray-500">
-          GST verification uses government-authorized APIs (mocked for demo).
-          Details can be updated later.
-        </p>
-
-        {/* SUBMIT */}
-        <button
-          type="submit"
-          className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition"
-        >
-          Register Organization
-        </button>
-      </form>
+        </aside>
+        <section className="nirmaan-register-card">
+          <div className="nirmaan-form-kicker"><span className="nirmaan-form-kicker-icon"><Building2 size={17} /></span> NEW WORKSPACE</div>
+          <h2>Set up your organization</h2>
+          <p className="nirmaan-form-subtitle">Start with your organization and admin details.</p>
+          <form onSubmit={handleSubmit} className="nirmaan-register-form">
+            <div className="nirmaan-form-section-title"><span>01</span> Organization details</div>
+            <div className="nirmaan-form-grid">
+              <div className="nirmaan-field nirmaan-field-full"><label htmlFor="reg-company">Company / firm name</label><input id="reg-company" name="companyName" placeholder="e.g. Shree Infra Projects" value={form.companyName} onChange={handleChange} required /></div>
+              <div className="nirmaan-field"><label htmlFor="reg-type">Organization type</label><select id="reg-type" name="orgType" value={form.orgType} onChange={handleChange}><option value="INDIVIDUAL">Individual / Contractor</option><option value="BUILDER">Builder</option><option value="DEVELOPER">Developer</option></select></div>
+              <div className="nirmaan-field"><label htmlFor="reg-gst">GST number <span>Optional</span></label><div className="nirmaan-gst-wrap"><input id="reg-gst" name="gst" placeholder="Enter GSTIN" value={form.gst} onChange={handleChange} onBlur={handleGSTBlur} />{gstLoading && <small>Checking…</small>}{gstVerified && !gstLoading && <CheckCircle2 size={17} />}</div></div>
+              <div className="nirmaan-field nirmaan-field-full"><label htmlFor="reg-address">Registered address</label><textarea id="reg-address" name="address" placeholder="Street, city, state and PIN code" value={form.address} onChange={handleChange} rows={2} required /></div>
+              <div className="nirmaan-field nirmaan-field-full"><label htmlFor="reg-phone">Primary contact number</label><input id="reg-phone" name="phone" type="tel" placeholder="+91 98765 43210" value={form.phone} onChange={handleChange} required /></div>
+            </div>
+            <div className="nirmaan-form-section-title nirmaan-credentials-title"><span>02</span> Admin account</div>
+            <div className="nirmaan-form-grid">
+              <div className="nirmaan-field"><label htmlFor="reg-name">Admin name</label><input id="reg-name" name="name" placeholder="Your full name" value={form.name} onChange={handleChange} required /></div>
+              <div className="nirmaan-field"><label htmlFor="reg-email">Work email</label><input id="reg-email" type="email" name="email" placeholder="you@company.com" value={form.email} onChange={handleChange} autoComplete="email" required /></div>
+              <div className="nirmaan-field"><label htmlFor="reg-password">Password</label><input id="reg-password" type="password" name="password" placeholder="Create a password" value={form.password} onChange={handleChange} autoComplete="new-password" required /></div>
+              <div className="nirmaan-field"><label htmlFor="reg-role">Your role</label><select id="reg-role" name="role" value={form.role} onChange={handleChange}><option value="MANAGER">Manager</option><option value="SITE_ENGINEER">Site Engineer</option><option value="SUPERVISOR">Supervisor</option></select></div>
+            </div>
+            <button type="submit" className="nirmaan-submit">Create organization <ArrowUpRight size={17} /></button>
+          </form>
+          <div className="nirmaan-secure-note"><ShieldCheck size={16} /><span>Registration details are used to configure your workspace. GST lookup is currently a demo.</span></div>
+        </section>
+      </div>
+      <footer className="nirmaan-register-footer">© NIRMAAN <span>·</span> Construction operations, thoughtfully connected.</footer>
     </div>
   );
 }

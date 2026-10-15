@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 
 /*
-  NIRMAAN – CONTRACTOR RATING & MANAGEMENT (Orange + White Premium)
+  NIRMAAN – CONTRACTOR RATING & MANAGEMENT (Forest + Teal Workspace)
   - Enterprise dashboard look
   - Better right drawer (ERP-like)
   - Sales Enablement module inside details (like Tally for Finance)
@@ -123,8 +123,8 @@ export default function ContractorRatingManagement() {
       };
     if (r >= 7)
       return {
-        chip: "bg-orange-50 text-orange-700 border-orange-200",
-        bar: "bg-orange-600",
+        chip: "bg-[#e6f3ee] text-teal-800 border-[#b9d9cf]",
+        bar: "bg-teal-700",
       };
     if (r >= 6)
       return {
@@ -140,7 +140,7 @@ export default function ContractorRatingManagement() {
   const deadlineBadge = (d) => {
     const map = {
       "On Time": "bg-emerald-50 text-emerald-700 border-emerald-200",
-      Completed: "bg-orange-50 text-orange-700 border-orange-200",
+      Completed: "bg-[#e6f3ee] text-teal-800 border-[#b9d9cf]",
       Delayed: "bg-amber-50 text-amber-700 border-amber-200",
       Warning: "bg-red-50 text-red-700 border-red-200",
     };
@@ -205,7 +205,7 @@ export default function ContractorRatingManagement() {
   const salesChip = (temp) => {
     const map = {
       Hot: "bg-red-50 text-red-700 border-red-200",
-      Warm: "bg-orange-50 text-orange-700 border-orange-200",
+      Warm: "bg-[#e6f3ee] text-teal-800 border-[#b9d9cf]",
       Cold: "bg-slate-50 text-slate-700 border-slate-200",
     };
     return (
@@ -244,14 +244,14 @@ export default function ContractorRatingManagement() {
   }, [contractors]);
 
   return (
-    <div className="min-h-screen bg-[#fff7ed]">
+    <div className="min-h-screen bg-[#f4f7f4]">
       {/* Header */}
-      <div className="sticky top-0 z-30 border-b border-orange-200 bg-white/90 backdrop-blur">
+      <div className="sticky top-0 z-30 border-b border-[#b9d9cf] bg-white/90 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <div className="w-9 h-9 rounded-xl bg-orange-600 text-white flex items-center justify-center shadow-sm">
+                <div className="w-9 h-9 rounded-xl bg-teal-700 text-white flex items-center justify-center shadow-sm">
                   <Building2 className="w-5 h-5" />
                 </div>
                 <div className="min-w-0">
@@ -270,7 +270,7 @@ export default function ContractorRatingManagement() {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
                 <input
-                  className="w-full pl-9 pr-3 py-2.5 border border-orange-200 rounded-xl bg-white text-sm focus:outline-none focus:ring-2 focus:ring-orange-200"
+                  className="w-full pl-9 pr-3 py-2.5 border border-[#b9d9cf] rounded-xl bg-white text-sm focus:outline-none focus:ring-2 focus:ring-teal-200"
                   placeholder="Search contractor name / state..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
@@ -279,7 +279,7 @@ export default function ContractorRatingManagement() {
 
               <button
                 onClick={() => setOpenFilter((p) => !p)}
-                className="px-4 py-2.5 border border-orange-200 bg-white rounded-xl flex items-center justify-center gap-2 text-sm font-medium hover:bg-orange-50"
+                className="px-4 py-2.5 border border-[#b9d9cf] bg-white rounded-xl flex items-center justify-center gap-2 text-sm font-medium hover:bg-[#e6f3ee]"
               >
                 <Filter className="w-4 h-4" />
                 Filters
@@ -289,14 +289,14 @@ export default function ContractorRatingManagement() {
 
           {/* Filters */}
           {openFilter && (
-            <div className="mt-3 bg-white border border-orange-200 rounded-2xl p-3 sm:p-4">
+            <div className="mt-3 bg-white border border-[#b9d9cf] rounded-2xl p-3 sm:p-4">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
                   <p className="text-[11px] font-semibold text-gray-600 mb-1">Deadline</p>
                   <select
                     value={filters.deadline}
                     onChange={(e) => setFilters((p) => ({ ...p, deadline: e.target.value }))}
-                    className="w-full px-3 py-2 border border-orange-200 rounded-xl text-sm bg-white"
+                    className="w-full px-3 py-2 border border-[#b9d9cf] rounded-xl text-sm bg-white"
                   >
                     <option value="all">All</option>
                     <option value="On Time">On Time</option>
@@ -311,7 +311,7 @@ export default function ContractorRatingManagement() {
                   <select
                     value={filters.inspection}
                     onChange={(e) => setFilters((p) => ({ ...p, inspection: e.target.value }))}
-                    className="w-full px-3 py-2 border border-orange-200 rounded-xl text-sm bg-white"
+                    className="w-full px-3 py-2 border border-[#b9d9cf] rounded-xl text-sm bg-white"
                   >
                     <option value="all">All</option>
                     <option value="Passed">Passed</option>
@@ -325,7 +325,7 @@ export default function ContractorRatingManagement() {
                   <select
                     value={filters.ratingBand}
                     onChange={(e) => setFilters((p) => ({ ...p, ratingBand: e.target.value }))}
-                    className="w-full px-3 py-2 border border-orange-200 rounded-xl text-sm bg-white"
+                    className="w-full px-3 py-2 border border-[#b9d9cf] rounded-xl text-sm bg-white"
                   >
                     <option value="all">All</option>
                     <option value="top">Top (8.5+)</option>
@@ -344,13 +344,13 @@ export default function ContractorRatingManagement() {
                       ratingBand: "all",
                     })
                   }
-                  className="px-4 py-2 rounded-xl border border-orange-200 bg-white text-sm hover:bg-orange-50"
+                  className="px-4 py-2 rounded-xl border border-[#b9d9cf] bg-white text-sm hover:bg-[#e6f3ee]"
                 >
                   Reset
                 </button>
                 <button
                   onClick={() => setOpenFilter(false)}
-                  className="px-4 py-2 rounded-xl bg-orange-600 text-white text-sm hover:bg-orange-700"
+                  className="px-4 py-2 rounded-xl bg-teal-700 text-white text-sm hover:bg-teal-800"
                 >
                   Apply
                 </button>
@@ -371,19 +371,19 @@ export default function ContractorRatingManagement() {
         </div>
 
         {/* Desktop Table */}
-        <div className="hidden lg:block bg-white border border-orange-200 rounded-2xl overflow-hidden">
-          <div className="px-5 py-4 border-b border-orange-200 flex items-center justify-between">
+        <div className="hidden lg:block bg-white border border-[#b9d9cf] rounded-2xl overflow-hidden">
+          <div className="px-5 py-4 border-b border-[#b9d9cf] flex items-center justify-between">
             <div>
               <h2 className="text-base font-bold text-gray-900">Contractor List</h2>
               <p className="text-xs text-gray-500">Click any contractor to view Governance + Sales Enablement</p>
             </div>
-            <span className="text-xs px-3 py-1 rounded-full bg-orange-50 text-orange-700 border border-orange-200">
+            <span className="text-xs px-3 py-1 rounded-full bg-[#e6f3ee] text-teal-800 border border-[#b9d9cf]">
               Showing {filtered.length} / {contractors.length}
             </span>
           </div>
 
           <table className="w-full text-sm">
-            <thead className="bg-orange-50/60">
+            <thead className="bg-[#e6f3ee]/60">
               <tr className="text-left">
                 <th className="px-5 py-3 text-xs font-semibold text-gray-700">Contractor</th>
                 <th className="px-5 py-3 text-xs font-semibold text-gray-700">Score</th>
@@ -405,12 +405,12 @@ export default function ContractorRatingManagement() {
                 return (
                   <tr
                     key={c.id}
-                    className="border-t border-orange-100 hover:bg-orange-50/30 cursor-pointer"
+                    className="border-t border-[#dce7e1] hover:bg-[#e6f3ee]/30 cursor-pointer"
                     onClick={() => setSelected(c)}
                   >
                     <td className="px-5 py-4">
                       <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-orange-600 text-white flex items-center justify-center shadow-sm">
+                        <div className="w-10 h-10 rounded-xl bg-teal-700 text-white flex items-center justify-center shadow-sm">
                           <Building2 className="w-5 h-5" />
                         </div>
 
@@ -479,7 +479,7 @@ export default function ContractorRatingManagement() {
                           e.stopPropagation();
                           setSelected(c);
                         }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-orange-600 text-white text-xs font-semibold hover:bg-orange-700"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-teal-700 text-white text-xs font-semibold hover:bg-teal-800"
                       >
                         View Details <ChevronRight className="w-4 h-4" />
                       </button>
@@ -499,7 +499,7 @@ export default function ContractorRatingManagement() {
         <div className="lg:hidden space-y-3">
           <div className="flex items-center justify-between">
             <h2 className="text-base font-bold text-gray-900">Contractors</h2>
-            <span className="text-xs px-3 py-1 rounded-full bg-orange-50 text-orange-700 border border-orange-200">
+            <span className="text-xs px-3 py-1 rounded-full bg-[#e6f3ee] text-teal-800 border border-[#b9d9cf]">
               {filtered.length} shown
             </span>
           </div>
@@ -513,7 +513,7 @@ export default function ContractorRatingManagement() {
               <button
                 key={c.id}
                 onClick={() => setSelected(c)}
-                className="w-full text-left bg-white border border-orange-200 rounded-2xl p-4 hover:bg-orange-50/40"
+                className="w-full text-left bg-white border border-[#b9d9cf] rounded-2xl p-4 hover:bg-[#e6f3ee]/40"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
@@ -573,7 +573,7 @@ export default function ContractorRatingManagement() {
           })}
 
           {filtered.length === 0 && (
-            <div className="bg-white border border-orange-200 rounded-2xl p-10 text-center text-sm text-gray-500">
+            <div className="bg-white border border-[#b9d9cf] rounded-2xl p-10 text-center text-sm text-gray-500">
               No contractors match your search/filters.
             </div>
           )}
@@ -585,13 +585,13 @@ export default function ContractorRatingManagement() {
         <div className="fixed inset-0 z-50">
           <div className="absolute inset-0 bg-black/40" onClick={() => setSelected(null)} />
 
-          <div className="absolute right-0 top-0 h-full w-full sm:w-[540px] bg-white shadow-2xl border-l border-orange-200">
+          <div className="absolute right-0 top-0 h-full w-full sm:w-[540px] bg-white shadow-2xl border-l border-[#b9d9cf]">
             <div className="h-full flex flex-col">
               {/* Header */}
-              <div className="p-5 border-b border-orange-200 bg-white">
+              <div className="p-5 border-b border-[#b9d9cf] bg-white">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="text-xs text-orange-600 font-semibold">Contractor Profile</p>
+                    <p className="text-xs text-teal-700 font-semibold">Contractor Profile</p>
                     <h3 className="text-lg font-bold text-gray-900 truncate">{selected.name}</h3>
                     <p className="text-xs text-gray-500 mt-1">
                       {selected.state} • Last Update:{" "}
@@ -601,7 +601,7 @@ export default function ContractorRatingManagement() {
 
                   <button
                     onClick={() => setSelected(null)}
-                    className="px-3 py-2 rounded-xl border border-orange-200 hover:bg-orange-50 text-sm"
+                    className="px-3 py-2 rounded-xl border border-[#b9d9cf] hover:bg-[#e6f3ee] text-sm"
                   >
                     Close
                   </button>
@@ -618,7 +618,7 @@ export default function ContractorRatingManagement() {
                   return (
                     <div className="space-y-4">
                       {/* Score + Advice */}
-                      <div className="bg-orange-50/40 border border-orange-200 rounded-2xl p-4">
+                      <div className="bg-[#e6f3ee]/40 border border-[#b9d9cf] rounded-2xl p-4">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-xs text-gray-600 font-semibold">Performance Score</p>
@@ -638,7 +638,7 @@ export default function ContractorRatingManagement() {
                           </div>
                         </div>
 
-                        <div className="mt-3 h-2 rounded-full bg-white border border-orange-200 overflow-hidden">
+                        <div className="mt-3 h-2 rounded-full bg-white border border-[#b9d9cf] overflow-hidden">
                           <div
                             className={`h-full ${tone.bar}`}
                             style={{ width: `${Math.min(100, (selected.rating / 10) * 100)}%` }}
@@ -680,7 +680,7 @@ export default function ContractorRatingManagement() {
                       </div>
 
                       {/* Sales Team Panel (NEW) */}
-                      <div className="bg-white border border-orange-200 rounded-2xl p-4">
+                      <div className="bg-white border border-[#b9d9cf] rounded-2xl p-4">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-xs text-gray-600 font-semibold">Sales Enablement</p>
@@ -690,7 +690,7 @@ export default function ContractorRatingManagement() {
                           </div>
                           <div className="flex items-center gap-2">
                             {salesChip(selected.leadTemp)}
-                            <span className="text-[11px] px-2.5 py-1 rounded-full border border-orange-200 bg-orange-50 text-orange-700 font-semibold">
+                            <span className="text-[11px] px-2.5 py-1 rounded-full border border-[#b9d9cf] bg-[#e6f3ee] text-teal-800 font-semibold">
                               {selected.salesStage}
                             </span>
                           </div>
@@ -712,22 +712,22 @@ export default function ContractorRatingManagement() {
                         </div>
 
                         <div className="mt-3 grid grid-cols-1 gap-2">
-                          <button className="w-full px-4 py-3 rounded-xl bg-orange-600 text-white text-sm font-semibold hover:bg-orange-700 flex items-center justify-center gap-2">
+                          <button className="w-full px-4 py-3 rounded-xl bg-teal-700 text-white text-sm font-semibold hover:bg-teal-800 flex items-center justify-center gap-2">
                             <Send className="w-4 h-4" />
                             Send Contractor Profile to Client
                           </button>
 
-                          <button className="w-full px-4 py-3 rounded-xl border border-orange-200 text-gray-900 text-sm font-semibold hover:bg-orange-50 flex items-center justify-center gap-2">
+                          <button className="w-full px-4 py-3 rounded-xl border border-[#b9d9cf] text-gray-900 text-sm font-semibold hover:bg-[#e6f3ee] flex items-center justify-center gap-2">
                             <FileSignature className="w-4 h-4" />
                             Create Quotation / Proposal
                           </button>
 
                           <div className="grid grid-cols-2 gap-2">
-                            <button className="w-full px-4 py-3 rounded-xl border border-orange-200 text-gray-900 text-sm font-semibold hover:bg-orange-50 flex items-center justify-center gap-2">
+                            <button className="w-full px-4 py-3 rounded-xl border border-[#b9d9cf] text-gray-900 text-sm font-semibold hover:bg-[#e6f3ee] flex items-center justify-center gap-2">
                               <PhoneCall className="w-4 h-4" />
                               Call Lead
                             </button>
-                            <button className="w-full px-4 py-3 rounded-xl border border-orange-200 text-gray-900 text-sm font-semibold hover:bg-orange-50 flex items-center justify-center gap-2">
+                            <button className="w-full px-4 py-3 rounded-xl border border-[#b9d9cf] text-gray-900 text-sm font-semibold hover:bg-[#e6f3ee] flex items-center justify-center gap-2">
                               <Mail className="w-4 h-4" />
                               Email Lead
                             </button>
@@ -736,7 +736,7 @@ export default function ContractorRatingManagement() {
                       </div>
 
                       {/* Governance Actions */}
-                      <div className="bg-white border border-orange-200 rounded-2xl p-4">
+                      <div className="bg-white border border-[#b9d9cf] rounded-2xl p-4">
                         <p className="text-xs text-gray-600 font-semibold">Governance Actions</p>
 
                         <div className="mt-3 grid grid-cols-1 gap-2">
@@ -744,11 +744,11 @@ export default function ContractorRatingManagement() {
                             Send Payment Advice to Accounts
                           </button>
 
-                          <button className="w-full px-4 py-3 rounded-xl border border-orange-200 text-gray-900 text-sm font-semibold hover:bg-orange-50">
+                          <button className="w-full px-4 py-3 rounded-xl border border-[#b9d9cf] text-gray-900 text-sm font-semibold hover:bg-[#e6f3ee]">
                             Raise NCR / Quality Issue
                           </button>
 
-                          <button className="w-full px-4 py-3 rounded-xl border border-orange-200 text-gray-900 text-sm font-semibold hover:bg-orange-50">
+                          <button className="w-full px-4 py-3 rounded-xl border border-[#b9d9cf] text-gray-900 text-sm font-semibold hover:bg-[#e6f3ee]">
                             Add Site Review Note
                           </button>
                         </div>
@@ -763,10 +763,10 @@ export default function ContractorRatingManagement() {
               </div>
 
               {/* Footer */}
-              <div className="p-4 border-t border-orange-200 bg-white">
+              <div className="p-4 border-t border-[#b9d9cf] bg-white">
                 <div className="flex items-center justify-between">
                   <div className="text-xs text-gray-500">Nirmaan • Contractor Governance</div>
-                  <div className="text-xs font-semibold text-orange-700">Orange ERP Theme</div>
+                  <div className="text-xs font-semibold text-teal-800">NIRMAAN design system</div>
                 </div>
               </div>
             </div>
@@ -781,10 +781,10 @@ export default function ContractorRatingManagement() {
 
 function KpiCard({ title, value, icon }) {
   return (
-    <div className="bg-white border border-orange-200 rounded-2xl p-4">
+    <div className="bg-white border border-[#b9d9cf] rounded-2xl p-4">
       <div className="flex items-center justify-between">
         <p className="text-[11px] sm:text-xs font-semibold text-gray-500">{title}</p>
-        <div className="w-8 h-8 rounded-xl bg-orange-600 text-white flex items-center justify-center shadow-sm">
+        <div className="w-8 h-8 rounded-xl bg-teal-700 text-white flex items-center justify-center shadow-sm">
           {icon}
         </div>
       </div>
@@ -796,10 +796,10 @@ function KpiCard({ title, value, icon }) {
 
 function InfoTile({ icon, label, value, sub }) {
   return (
-    <div className="bg-orange-50/40 border border-orange-200 rounded-2xl p-4">
+    <div className="bg-[#e6f3ee]/40 border border-[#b9d9cf] rounded-2xl p-4">
       <div className="flex items-center justify-between">
         <p className="text-[11px] font-semibold text-gray-600">{label}</p>
-        <div className="w-8 h-8 rounded-xl bg-white border border-orange-200 flex items-center justify-center text-gray-700">
+        <div className="w-8 h-8 rounded-xl bg-white border border-[#b9d9cf] flex items-center justify-center text-gray-700">
           {icon}
         </div>
       </div>

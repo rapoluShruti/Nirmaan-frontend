@@ -86,7 +86,7 @@
 //                 setSelectedTask(null);
 //               }}
 //               className={`border rounded-lg overflow-hidden ${
-//                 selectedLayout === layout ? "ring-2 ring-orange-400" : ""
+//                 selectedLayout === layout ? "ring-2 ring-teal-300" : ""
 //               }`}
 //             >
 //               <img
@@ -173,7 +173,7 @@
 //     return (
 //       <div className="min-h-screen flex items-center justify-center bg-slate-50">
 //         <div className="text-center">
-//           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
+//           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-700 mx-auto mb-4"></div>
 //           <div className="text-lg text-gray-600">Loading...</div>
 //         </div>
 //       </div>
@@ -187,7 +187,7 @@
 //         <div className="flex items-center justify-between">
 //           <h1 className="text-xl font-bold text-gray-900">Project Layout View</h1>
 //           <select
-//             className="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent min-w-[200px]"
+//             className="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent min-w-[200px]"
 //             value={selectedProjectId}
 //             onChange={(e) => {
 //               setSelectedProjectId(e.target.value);
@@ -260,7 +260,7 @@
 //                         }}
 //                         className={`w-full border rounded-lg overflow-hidden transition-all hover:shadow-md ${
 //                           selectedLayout === layout 
-//                             ? "ring-2 ring-orange-400 border-orange-400" 
+//                             ? "ring-2 ring-teal-300 border-teal-300" 
 //                             : "border-gray-200 hover:border-gray-300"
 //                         }`}
 //                       >
@@ -404,7 +404,7 @@ export default function ManagerProjectLayoutPage() {
         };
       case "inprogress":
         return {
-          color: "bg-blue-100 text-blue-700 border-blue-200",
+          color: "bg-[#e6f3ee] text-teal-800 border-[#b9d9cf]",
           icon: "⟳",
           display: "In Progress"
         };
@@ -440,7 +440,7 @@ export default function ManagerProjectLayoutPage() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-8 h-8 border-4 border-teal-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-slate-600 font-medium">Loading projects...</p>
         </div>
       </div>
@@ -450,12 +450,12 @@ export default function ManagerProjectLayoutPage() {
   const selectedProject = projects.find(p => p.projectId === selectedProjectId);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex flex-col">
+    <div className="min-h-screen bg-[#f4f7f4] flex flex-col">
       
       {/* MODERN HEADER */}
       <header className="bg-white/80 backdrop-blur-sm border-b border-slate-200/60 px-4 md:px-8 flex items-center justify-between shrink-0 sticky top-0 z-50">
         <div className="flex items-center space-x-4 py-4">
-          <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
+          <div className="w-10 h-10 bg-gradient-to-r from-[#102b2a] to-[#0f766e] rounded-xl flex items-center justify-center">
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
@@ -473,7 +473,7 @@ export default function ManagerProjectLayoutPage() {
         <div className="flex items-center space-x-4">
           {/* PROJECT SELECTOR */}
           <select
-            className="bg-white/80 backdrop-blur-sm border border-slate-200/60 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent min-w-[200px] font-medium text-slate-700"
+            className="bg-white/80 backdrop-blur-sm border border-slate-200/60 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent min-w-[200px] font-medium text-slate-700"
             value={selectedProjectId}
             onChange={(e) => {
               setSelectedProjectId(e.target.value);
@@ -496,7 +496,7 @@ export default function ManagerProjectLayoutPage() {
                 onClick={() => setViewMode("layout")}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   viewMode === "layout"
-                    ? "bg-white text-orange-600 shadow-sm"
+                    ? "bg-white text-teal-700 shadow-sm"
                     : "text-slate-600 hover:text-slate-800"
                 }`}
               >
@@ -509,7 +509,7 @@ export default function ManagerProjectLayoutPage() {
                 onClick={() => setViewMode("table")}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   viewMode === "table"
-                    ? "bg-white text-orange-600 shadow-sm"
+                    ? "bg-white text-teal-700 shadow-sm"
                     : "text-slate-600 hover:text-slate-800"
                 }`}
               >
@@ -537,7 +537,7 @@ export default function ManagerProjectLayoutPage() {
             </div>
             <div className="text-center">
               <p className="text-xs text-slate-500 uppercase tracking-wider">In Progress</p>
-              <p className="text-lg font-bold text-blue-600">{taskStats.inProgress}</p>
+              <p className="text-lg font-bold text-teal-700">{taskStats.inProgress}</p>
             </div>
             <div className="text-center">
               <p className="text-xs text-slate-500 uppercase tracking-wider">Pending</p>
@@ -557,7 +557,7 @@ export default function ManagerProjectLayoutPage() {
           // ===== PROJECT SELECTION STATE =====
           <div className="h-full min-h-[500px] flex items-center justify-center p-6">
             <div className="text-center max-w-2xl">
-              <div className="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-gradient-to-r from-[#102b2a] to-[#0f766e] rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
@@ -570,19 +570,19 @@ export default function ManagerProjectLayoutPage() {
                   <button
                     key={project.projectId}
                     onClick={() => setSelectedProjectId(project.projectId)}
-                    className="group bg-white/80 backdrop-blur-sm hover:bg-white border border-slate-200/60 hover:border-orange-300 rounded-2xl p-6 text-left transition-all duration-300 hover:shadow-lg hover:scale-105"
+                    className="group bg-white/80 backdrop-blur-sm hover:bg-white border border-slate-200/60 hover:border-teal-200 rounded-2xl p-6 text-left transition-all duration-300 hover:shadow-lg hover:scale-105"
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-orange-100 to-red-100 rounded-xl flex items-center justify-center group-hover:from-orange-200 group-hover:to-red-200 transition-all duration-300">
-                        <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#e6f3ee] to-red-100 rounded-xl flex items-center justify-center group-hover:from-[#d7ebe2] group-hover:to-red-200 transition-all duration-300">
+                        <svg className="w-6 h-6 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
                       </div>
-                      <svg className="w-5 h-5 text-slate-400 group-hover:text-orange-500 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-slate-400 group-hover:text-teal-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </div>
-                    <h3 className="font-bold text-slate-800 mb-2 group-hover:text-orange-600 transition-colors duration-300">
+                    <h3 className="font-bold text-slate-800 mb-2 group-hover:text-teal-700 transition-colors duration-300">
                       {project.projectName}
                     </h3>
                     <div className="flex items-center justify-between text-sm">
@@ -629,8 +629,8 @@ export default function ManagerProjectLayoutPage() {
                       }}
                       className={`min-w-[140px] md:min-w-0 border rounded-xl overflow-hidden transition-all duration-300 group ${
                         selectedLayout === layout 
-                          ? "border-orange-500 ring-2 ring-orange-200 shadow-lg scale-105" 
-                          : "border-slate-200 hover:border-orange-400 hover:shadow-md hover:scale-102"
+                          ? "border-teal-600 ring-2 ring-teal-200 shadow-lg scale-105" 
+                          : "border-slate-200 hover:border-teal-300 hover:shadow-md hover:scale-102"
                       }`}
                     >
                       <div className="relative">
@@ -647,7 +647,7 @@ export default function ManagerProjectLayoutPage() {
                           Layout {index + 1}
                         </div>
                         {selectedLayout === layout && (
-                          <div className="absolute top-2 right-2 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                          <div className="absolute top-2 right-2 w-6 h-6 bg-teal-700 rounded-full flex items-center justify-center">
                             <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
@@ -677,7 +677,7 @@ export default function ManagerProjectLayoutPage() {
                         <p className="text-xs text-slate-400">Click on task markers to view details</p>
                       </div>
                       <div className="flex items-center space-x-2 text-xs text-slate-500">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        <div className="w-2 h-2 bg-teal-700 rounded-full"></div>
                         <span>
                           {projectTasks.filter(t => t.layoutImage === selectedLayout).length} tasks on this layout
                         </span>
@@ -751,8 +751,8 @@ export default function ManagerProjectLayoutPage() {
                         <tr
                           key={task._id}
                           onClick={() => setSelectedTask(task)}
-                          className={`hover:bg-orange-50/50 transition-all duration-200 cursor-pointer group ${
-                            selectedTask?._id === task._id ? "bg-orange-50/80 ring-1 ring-orange-200" : ""
+                          className={`hover:bg-[#f7fbf8] transition-all duration-200 cursor-pointer group ${
+                            selectedTask?._id === task._id ? "bg-[#e6f3ee] ring-1 ring-teal-200" : ""
                           }`}
                         >
                           <td className="px-6 py-4 text-sm font-medium text-slate-900">
@@ -760,7 +760,7 @@ export default function ManagerProjectLayoutPage() {
                           </td>
                           <td className="px-6 py-4">
                             <div>
-                              <p className="font-semibold text-slate-800 group-hover:text-orange-600 transition-colors">
+                              <p className="font-semibold text-slate-800 group-hover:text-teal-700 transition-colors">
                                 {task.taskName}
                               </p>
                             </div>
@@ -777,7 +777,7 @@ export default function ManagerProjectLayoutPage() {
                                 e.stopPropagation();
                                 setSelectedTask(task);
                               }}
-                              className="text-orange-600 hover:text-orange-700 font-medium text-sm hover:bg-orange-50 px-3 py-1 rounded-lg transition-all duration-200"
+                              className="text-teal-700 hover:text-teal-800 font-medium text-sm hover:bg-[#f7fbf8] px-3 py-1 rounded-lg transition-all duration-200"
                             >
                               View Details
                             </button>

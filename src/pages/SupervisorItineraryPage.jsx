@@ -58,7 +58,7 @@
 
 // // //   if (loading) {
 // // //     return (
-// // //       <div className="h-screen flex items-center justify-center bg-zinc-50">
+// // //       <div className="h-screen flex items-center justify-center bg-[#f4f7f4]">
 // // //         <div className="flex flex-col items-center gap-4">
 // // //           <div className="w-10 lg:w-12 h-10 lg:h-12 border-2 border-zinc-200 border-t-indigo-600 rounded-full animate-spin"></div>
 // // //           <span className="text-xs lg:text-sm text-zinc-500 font-mono tracking-wider">INITIALIZING WORKSPACE</span>
@@ -117,13 +117,13 @@
 // // //   };
 
 // // //   return (
-// // //     <div className="min-h-screen bg-zinc-50">
+// // //     <div className="min-h-screen bg-[#f4f7f4]">
       
 // // //       {/* POPUP MODAL */}
 // // //       {showPopup && popupData && (
 // // //         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
 // // //           <div className="bg-white rounded-lg shadow-2xl max-w-md w-full border-2 border-amber-300">
-// // //             <div className="bg-gradient-to-r from-amber-500 to-orange-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
+// // //             <div className="bg-gradient-to-r from-amber-500 to-teal-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
 // // //               <div className="flex items-center justify-between">
 // // //                 <h3 className="text-white font-bold text-base lg:text-lg">Request Sent for Approval</h3>
 // // //                 <button 
@@ -162,8 +162,8 @@
 // // //                         <div className="bg-red-50 border border-red-200 rounded px-2 py-1">
 // // //                           <span className="text-red-600 font-mono">In Stock: {mat.inStock}</span>
 // // //                         </div>
-// // //                         <div className="bg-blue-50 border border-blue-200 rounded px-2 py-1">
-// // //                           <span className="text-blue-600 font-mono">Required: {mat.required}</span>
+// // //                         <div className="bg-teal-50 border border-teal-200 rounded px-2 py-1">
+// // //                           <span className="text-teal-600 font-mono">Required: {mat.required}</span>
 // // //                         </div>
 // // //                       </div>
 // // //                     </div>
@@ -173,7 +173,7 @@
               
 // // //               <button 
 // // //                 onClick={() => setShowPopup(false)}
-// // //                 className="w-full px-4 py-2.5 lg:py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold rounded-lg transition-all text-sm lg:text-base"
+// // //                 className="w-full px-4 py-2.5 lg:py-3 bg-gradient-to-r from-amber-600 to-teal-600 hover:from-amber-700 hover:to-teal-700 text-white font-bold rounded-lg transition-all text-sm lg:text-base"
 // // //               >
 // // //                 Close
 // // //               </button>
@@ -202,7 +202,7 @@
 // // //           <div className="flex items-center gap-2 lg:gap-6">
 // // //             <div className="hidden sm:flex items-center gap-2 lg:gap-4 px-2 lg:px-4 py-1.5 lg:py-2 bg-zinc-100 border border-zinc-200 rounded">
 // // //               <div className="flex items-center gap-1.5 lg:gap-2">
-// // //                 <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-indigo-600 rounded-full animate-pulse"></div>
+// // //                 <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-teal-600 rounded-full animate-pulse"></div>
 // // //                 <span className="text-zinc-600 text-[10px] lg:text-xs font-mono">LIVE</span>
 // // //               </div>
 // // //               <div className="w-px h-3 lg:h-4 bg-zinc-300"></div>
@@ -256,14 +256,14 @@
 // // //               <div className="text-zinc-900 text-2xl lg:text-3xl font-mono font-bold">{totalTasks.toString().padStart(2, '0')}</div>
 // // //             </div>
             
-// // //             <div className="bg-indigo-50/30 border border-indigo-100 p-3 lg:p-4 rounded shadow-sm">
+// // //             <div className="bg-teal-50/30 border border-teal-100 p-3 lg:p-4 rounded shadow-sm">
 // // //               <div className="flex items-center justify-between mb-1.5 lg:mb-2">
-// // //                 <span className="text-indigo-700 text-[9px] lg:text-[10px] font-mono tracking-widest">IN PROGRESS</span>
-// // //                 <div className="w-5 lg:w-6 h-5 lg:h-6 bg-indigo-100 flex items-center justify-center rounded">
-// // //                   <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-indigo-600 rounded-full animate-pulse"></div>
+// // //                 <span className="text-teal-700 text-[9px] lg:text-[10px] font-mono tracking-widest">IN PROGRESS</span>
+// // //                 <div className="w-5 lg:w-6 h-5 lg:h-6 bg-teal-100 flex items-center justify-center rounded">
+// // //                   <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-teal-600 rounded-full animate-pulse"></div>
 // // //                 </div>
 // // //               </div>
-// // //               <div className="text-indigo-700 text-2xl lg:text-3xl font-mono font-bold">{inProgressCount.toString().padStart(2, '0')}</div>
+// // //               <div className="text-teal-700 text-2xl lg:text-3xl font-mono font-bold">{inProgressCount.toString().padStart(2, '0')}</div>
 // // //             </div>
             
 // // //             <div className="bg-red-50/30 border border-red-100 p-3 lg:p-4 rounded shadow-sm">
@@ -323,7 +323,7 @@
 // // //                   value={searchText}
 // // //                   onChange={(e) => setSearchText(e.target.value)}
 // // //                   placeholder="Task / location / ID"
-// // //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+// // //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
 // // //                 />
 // // //               </div>
 
@@ -334,7 +334,7 @@
 // // //                 <select
 // // //                   value={filterStatus}
 // // //                   onChange={(e) => setFilterStatus(e.target.value)}
-// // //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+// // //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
 // // //                 >
 // // //                   <option value="ALL">All</option>
 // // //                   <option value="IN_PROGRESS">In Progress</option>
@@ -350,7 +350,7 @@
 // // //                 <select
 // // //                   value={filterDate}
 // // //                   onChange={(e) => setFilterDate(e.target.value)}
-// // //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+// // //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
 // // //                 >
 // // //                   <option value="ALL">All</option>
 // // //                   <option value="TODAY">Today</option>
@@ -456,7 +456,7 @@
 // // //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
               
 // // //               {/* TABLE HEADER - Hidden on mobile, shown as cards */}
-// // //               <div className="hidden lg:block bg-zinc-50 border-b border-zinc-200">
+// // //               <div className="hidden lg:block bg-[#f4f7f4] border-b border-zinc-200">
 // // //                 <div className="grid grid-cols-12 gap-6 px-6 py-4 items-center">
 // // //                   <div className="col-span-1 text-[10px] font-mono text-zinc-500 tracking-widest">#</div>
 // // //                   <div className="col-span-4 text-[10px] font-mono text-zinc-500 tracking-widest">TASK DESCRIPTION</div>
@@ -472,10 +472,10 @@
 // // //                 {Object.entries(grouped).map(([group, list]) => (
 // // //                   <div key={group}>
 // // //                     {/* SECTION DIVIDER */}
-// // //                     <div className="bg-zinc-50/50 border-y border-zinc-200">
+// // //                     <div className="bg-[#f4f7f4]/50 border-y border-zinc-200">
 // // //                       <div className="px-3 lg:px-6 py-2 flex items-center justify-between">
 // // //                         <div className="flex items-center gap-2 lg:gap-3">
-// // //                           <div className={`w-1 h-3 lg:h-4 rounded-full ${group === "Auto Carried Forward" ? "bg-orange-500" : "bg-emerald-500"}`}></div>
+// // //                           <div className={`w-1 h-3 lg:h-4 rounded-full ${group === "Auto Carried Forward" ? "bg-teal-500" : "bg-emerald-500"}`}></div>
 // // //                           <span className="text-[9px] lg:text-[10px] font-mono font-bold tracking-widest text-zinc-700">{group.toUpperCase()}</span>
 // // //                         </div>
 // // //                         <span className="text-[9px] lg:text-[10px] font-mono text-zinc-500 bg-white px-2 lg:px-3 py-0.5 border border-zinc-200 rounded-full">
@@ -504,8 +504,8 @@
 // // //                               }}
 // // //                               className={`hidden lg:grid grid-cols-12 gap-6 px-6 py-4 items-center cursor-pointer transition-all
 // // //                                 ${isSelected 
-// // //                                   ? "bg-indigo-50/50 border-l-4 border-l-indigo-600" 
-// // //                                   : "hover:bg-zinc-50 border-l-4 border-l-transparent"
+// // //                                   ? "bg-teal-50/50 border-l-4 border-l-teal-700" 
+// // //                                   : "hover:bg-[#f4f7f4] border-l-4 border-l-transparent"
 // // //                                 }`}
 // // //                             >
 // // //                               <div className="col-span-1">
@@ -520,8 +520,8 @@
 // // //                               <div className="col-span-2">
 // // //                                 {group === "Auto Carried Forward" ? (
 // // //                                   isInProgress ? (
-// // //                                     <div className="inline-flex items-center gap-2 px-2 py-1 bg-indigo-100 rounded text-indigo-700">
-// // //                                       <div className="w-1 h-1 bg-indigo-600 rounded-full animate-pulse"></div>
+// // //                                     <div className="inline-flex items-center gap-2 px-2 py-1 bg-teal-100 rounded text-teal-700">
+// // //                                       <div className="w-1 h-1 bg-teal-600 rounded-full animate-pulse"></div>
 // // //                                       <span className="text-[9px] font-mono font-bold">IN_PROGRESS</span>
 // // //                                     </div>
 // // //                                   ) : (
@@ -562,8 +562,8 @@
 // // //                               }}
 // // //                               className={`lg:hidden p-3 cursor-pointer transition-all border-l-4 ${
 // // //                                 isSelected 
-// // //                                   ? "bg-indigo-50/50 border-l-indigo-600" 
-// // //                                   : "hover:bg-zinc-50 border-l-transparent"
+// // //                                   ? "bg-teal-50/50 border-l-teal-700" 
+// // //                                   : "hover:bg-[#f4f7f4] border-l-transparent"
 // // //                               }`}
 // // //                             >
 // // //                               <div className="flex items-start justify-between mb-2">
@@ -579,8 +579,8 @@
 // // //                               <div className="flex items-center gap-2 mb-2">
 // // //                                 {group === "Auto Carried Forward" ? (
 // // //                                   isInProgress ? (
-// // //                                     <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-indigo-100 rounded text-indigo-700">
-// // //                                       <div className="w-1 h-1 bg-indigo-600 rounded-full animate-pulse"></div>
+// // //                                     <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-teal-100 rounded text-teal-700">
+// // //                                       <div className="w-1 h-1 bg-teal-600 rounded-full animate-pulse"></div>
 // // //                                       <span className="text-[8px] font-mono font-bold">IN_PROGRESS</span>
 // // //                                     </div>
 // // //                                   ) : (
@@ -615,14 +615,14 @@
             
 // // //             {/* LAYOUT MAP */}
 // // //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-// // //               <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+// // //               <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
 // // //                 <div className="flex items-center justify-between">
 // // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">SITE LAYOUT</span>
 // // //                   <span className="text-[9px] font-mono text-emerald-600 font-bold">● ACTIVE</span>
 // // //                 </div>
 // // //               </div>
 // // //               <div className="p-4">
-// // //                 <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+// // //                 <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
 // // //                   {selectedLayout ? (
 // // //                     <LayoutTaskMap
 // // //                       layoutImage={selectedLayout}
@@ -640,11 +640,11 @@
 
 // // //             {/* TASK DETAILS */}
 // // //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-// // //               <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+// // //               <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
 // // //                 <div className="flex items-center justify-between">
 // // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">PROGRESS LOG</span>
 // // //                   {selectedTask && (
-// // //                     <span className="text-[9px] font-mono text-indigo-600 bg-indigo-50 px-2 py-0.5 border border-indigo-100 rounded">
+// // //                     <span className="text-[9px] font-mono text-teal-600 bg-teal-50 px-2 py-0.5 border border-teal-100 rounded">
 // // //                       #{selectedTask.taskId?.slice(-6).toUpperCase()}
 // // //                     </span>
 // // //                   )}
@@ -672,7 +672,7 @@
 // // //       {showSidePanel && selectedTask && (
 // // //         <div className="lg:hidden fixed inset-0 bg-black/50 z-50 flex items-end">
 // // //           <div className="bg-white w-full max-h-[85vh] rounded-t-2xl overflow-hidden flex flex-col">
-// // //             <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50 flex items-center justify-between">
+// // //             <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4] flex items-center justify-between">
 // // //               <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">TASK DETAILS</span>
 // // //               <button 
 // // //                 onClick={() => setShowSidePanel(false)}
@@ -690,7 +690,7 @@
 // // //                 <div className="mb-2">
 // // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">SITE LAYOUT</span>
 // // //                 </div>
-// // //                 <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+// // //                 <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
 // // //                   {selectedLayout ? (
 // // //                     <LayoutTaskMap
 // // //                       layoutImage={selectedLayout}
@@ -782,7 +782,7 @@
 
 // //   if (loading) {
 // //     return (
-// //       <div className="h-screen flex items-center justify-center bg-zinc-50">
+// //       <div className="h-screen flex items-center justify-center bg-[#f4f7f4]">
 // //         <div className="flex flex-col items-center gap-4">
 // //           <div className="w-10 lg:w-12 h-10 lg:h-12 border-2 border-zinc-200 border-t-indigo-600 rounded-full animate-spin"></div>
 // //           <span className="text-xs lg:text-sm text-zinc-500 font-mono tracking-wider">INITIALIZING WORKSPACE</span>
@@ -841,13 +841,13 @@
 // //   };
 
 // //   return (
-// //     <div className="min-h-screen bg-zinc-50">
+// //     <div className="min-h-screen bg-[#f4f7f4]">
       
 // //       {/* POPUP MODAL */}
 // //       {showPopup && popupData && (
 // //         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
 // //           <div className="bg-white rounded-lg shadow-2xl max-w-md w-full border-2 border-amber-300">
-// //             <div className="bg-gradient-to-r from-amber-500 to-orange-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
+// //             <div className="bg-gradient-to-r from-amber-500 to-teal-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
 // //               <div className="flex items-center justify-between">
 // //                 <h3 className="text-white font-bold text-base lg:text-lg">Request Sent for Approval</h3>
 // //                 <button 
@@ -886,8 +886,8 @@
 // //                         <div className="bg-red-50 border border-red-200 rounded px-2 py-1">
 // //                           <span className="text-red-600 font-mono">In Stock: {mat.inStock}</span>
 // //                         </div>
-// //                         <div className="bg-blue-50 border border-blue-200 rounded px-2 py-1">
-// //                           <span className="text-blue-600 font-mono">Required: {mat.required}</span>
+// //                         <div className="bg-teal-50 border border-teal-200 rounded px-2 py-1">
+// //                           <span className="text-teal-600 font-mono">Required: {mat.required}</span>
 // //                         </div>
 // //                       </div>
 // //                     </div>
@@ -897,7 +897,7 @@
               
 // //               <button 
 // //                 onClick={() => setShowPopup(false)}
-// //                 className="w-full px-4 py-2.5 lg:py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold rounded-lg transition-all text-sm lg:text-base"
+// //                 className="w-full px-4 py-2.5 lg:py-3 bg-gradient-to-r from-amber-600 to-teal-600 hover:from-amber-700 hover:to-teal-700 text-white font-bold rounded-lg transition-all text-sm lg:text-base"
 // //               >
 // //                 Close
 // //               </button>
@@ -926,7 +926,7 @@
 // //           <div className="flex items-center gap-2 lg:gap-6">
 // //             <div className="hidden sm:flex items-center gap-2 lg:gap-4 px-2 lg:px-4 py-1.5 lg:py-2 bg-zinc-100 border border-zinc-200 rounded">
 // //               <div className="flex items-center gap-1.5 lg:gap-2">
-// //                 <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-indigo-600 rounded-full animate-pulse"></div>
+// //                 <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-teal-600 rounded-full animate-pulse"></div>
 // //                 <span className="text-zinc-600 text-[10px] lg:text-xs font-mono">LIVE</span>
 // //               </div>
 // //               <div className="w-px h-3 lg:h-4 bg-zinc-300"></div>
@@ -980,14 +980,14 @@
 // //               <div className="text-zinc-900 text-2xl lg:text-3xl font-mono font-bold">{totalTasks.toString().padStart(2, '0')}</div>
 // //             </div>
             
-// //             <div className="bg-indigo-50/30 border border-indigo-100 p-3 lg:p-4 rounded shadow-sm">
+// //             <div className="bg-teal-50/30 border border-teal-100 p-3 lg:p-4 rounded shadow-sm">
 // //               <div className="flex items-center justify-between mb-1.5 lg:mb-2">
-// //                 <span className="text-indigo-700 text-[9px] lg:text-[10px] font-mono tracking-widest">IN PROGRESS</span>
-// //                 <div className="w-5 lg:w-6 h-5 lg:h-6 bg-indigo-100 flex items-center justify-center rounded">
-// //                   <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-indigo-600 rounded-full animate-pulse"></div>
+// //                 <span className="text-teal-700 text-[9px] lg:text-[10px] font-mono tracking-widest">IN PROGRESS</span>
+// //                 <div className="w-5 lg:w-6 h-5 lg:h-6 bg-teal-100 flex items-center justify-center rounded">
+// //                   <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-teal-600 rounded-full animate-pulse"></div>
 // //                 </div>
 // //               </div>
-// //               <div className="text-indigo-700 text-2xl lg:text-3xl font-mono font-bold">{inProgressCount.toString().padStart(2, '0')}</div>
+// //               <div className="text-teal-700 text-2xl lg:text-3xl font-mono font-bold">{inProgressCount.toString().padStart(2, '0')}</div>
 // //             </div>
             
 // //             <div className="bg-red-50/30 border border-red-100 p-3 lg:p-4 rounded shadow-sm">
@@ -1047,7 +1047,7 @@
 // //                   value={searchText}
 // //                   onChange={(e) => setSearchText(e.target.value)}
 // //                   placeholder="Task / location / ID"
-// //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+// //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                 />
 // //               </div>
 
@@ -1058,7 +1058,7 @@
 // //                 <select
 // //                   value={filterStatus}
 // //                   onChange={(e) => setFilterStatus(e.target.value)}
-// //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+// //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                 >
 // //                   <option value="ALL">All</option>
 // //                   <option value="IN_PROGRESS">In Progress</option>
@@ -1074,7 +1074,7 @@
 // //                 <select
 // //                   value={filterDate}
 // //                   onChange={(e) => setFilterDate(e.target.value)}
-// //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+// //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                 >
 // //                   <option value="ALL">All</option>
 // //                   <option value="TODAY">Today</option>
@@ -1180,7 +1180,7 @@
 // //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
               
 // //               {/* TABLE HEADER - Hidden on mobile, shown as cards */}
-// //               <div className="hidden lg:block bg-zinc-50 border-b border-zinc-200">
+// //               <div className="hidden lg:block bg-[#f4f7f4] border-b border-zinc-200">
 // //                 <div className="grid grid-cols-12 gap-6 px-6 py-4 items-center">
 // //                   <div className="col-span-1 text-[10px] font-mono text-zinc-500 tracking-widest">#</div>
 // //                   <div className="col-span-4 text-[10px] font-mono text-zinc-500 tracking-widest">TASK DESCRIPTION</div>
@@ -1196,10 +1196,10 @@
 // //                 {Object.entries(grouped).map(([group, list]) => (
 // //                   <div key={group}>
 // //                     {/* SECTION DIVIDER */}
-// //                     <div className="bg-zinc-50/50 border-y border-zinc-200">
+// //                     <div className="bg-[#f4f7f4]/50 border-y border-zinc-200">
 // //                       <div className="px-3 lg:px-6 py-2 flex items-center justify-between">
 // //                         <div className="flex items-center gap-2 lg:gap-3">
-// //                           <div className={`w-1 h-3 lg:h-4 rounded-full ${group === "Auto Carried Forward" ? "bg-orange-500" : "bg-emerald-500"}`}></div>
+// //                           <div className={`w-1 h-3 lg:h-4 rounded-full ${group === "Auto Carried Forward" ? "bg-teal-500" : "bg-emerald-500"}`}></div>
 // //                           <span className="text-[9px] lg:text-[10px] font-mono font-bold tracking-widest text-zinc-700">{group.toUpperCase()}</span>
 // //                         </div>
 // //                         <span className="text-[9px] lg:text-[10px] font-mono text-zinc-500 bg-white px-2 lg:px-3 py-0.5 border border-zinc-200 rounded-full">
@@ -1228,8 +1228,8 @@
 // //                               }}
 // //                               className={`hidden lg:grid grid-cols-12 gap-6 px-6 py-4 items-center cursor-pointer transition-all
 // //                                 ${isSelected 
-// //                                   ? "bg-indigo-50/50 border-l-4 border-l-indigo-600" 
-// //                                   : "hover:bg-zinc-50 border-l-4 border-l-transparent"
+// //                                   ? "bg-teal-50/50 border-l-4 border-l-teal-700" 
+// //                                   : "hover:bg-[#f4f7f4] border-l-4 border-l-transparent"
 // //                                 }`}
 // //                             >
 // //                               <div className="col-span-1">
@@ -1244,8 +1244,8 @@
 // //                               <div className="col-span-2">
 // //                                 {group === "Auto Carried Forward" ? (
 // //                                   isInProgress ? (
-// //                                     <div className="inline-flex items-center gap-2 px-2 py-1 bg-indigo-100 rounded text-indigo-700">
-// //                                       <div className="w-1 h-1 bg-indigo-600 rounded-full animate-pulse"></div>
+// //                                     <div className="inline-flex items-center gap-2 px-2 py-1 bg-teal-100 rounded text-teal-700">
+// //                                       <div className="w-1 h-1 bg-teal-600 rounded-full animate-pulse"></div>
 // //                                       <span className="text-[9px] font-mono font-bold">IN_PROGRESS</span>
 // //                                     </div>
 // //                                   ) : (
@@ -1286,8 +1286,8 @@
 // //                               }}
 // //                               className={`lg:hidden p-3 cursor-pointer transition-all border-l-4 ${
 // //                                 isSelected 
-// //                                   ? "bg-indigo-50/50 border-l-indigo-600" 
-// //                                   : "hover:bg-zinc-50 border-l-transparent"
+// //                                   ? "bg-teal-50/50 border-l-teal-700" 
+// //                                   : "hover:bg-[#f4f7f4] border-l-transparent"
 // //                               }`}
 // //                             >
 // //                               <div className="flex items-start justify-between mb-2">
@@ -1303,8 +1303,8 @@
 // //                               <div className="flex items-center gap-2 mb-2">
 // //                                 {group === "Auto Carried Forward" ? (
 // //                                   isInProgress ? (
-// //                                     <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-indigo-100 rounded text-indigo-700">
-// //                                       <div className="w-1 h-1 bg-indigo-600 rounded-full animate-pulse"></div>
+// //                                     <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-teal-100 rounded text-teal-700">
+// //                                       <div className="w-1 h-1 bg-teal-600 rounded-full animate-pulse"></div>
 // //                                       <span className="text-[8px] font-mono font-bold">IN_PROGRESS</span>
 // //                                     </div>
 // //                                   ) : (
@@ -1339,14 +1339,14 @@
             
 // //             {/* LAYOUT MAP */}
 // //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-// //               <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+// //               <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
 // //                 <div className="flex items-center justify-between">
 // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">SITE LAYOUT</span>
 // //                   <span className="text-[9px] font-mono text-emerald-600 font-bold">● ACTIVE</span>
 // //                 </div>
 // //               </div>
 // //               <div className="p-4">
-// //                 <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+// //                 <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
 // //                   {selectedLayout ? (
 // //                     <LayoutTaskMap
 // //                       layoutImage={selectedLayout}
@@ -1364,11 +1364,11 @@
 
 // //             {/* TASK DETAILS */}
 // //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-// //               <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+// //               <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
 // //                 <div className="flex items-center justify-between">
 // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">PROGRESS LOG</span>
 // //                   {selectedTask && (
-// //                     <span className="text-[9px] font-mono text-indigo-600 bg-indigo-50 px-2 py-0.5 border border-indigo-100 rounded">
+// //                     <span className="text-[9px] font-mono text-teal-600 bg-teal-50 px-2 py-0.5 border border-teal-100 rounded">
 // //                       #{selectedTask.taskId?.slice(-6).toUpperCase()}
 // //                     </span>
 // //                   )}
@@ -1396,7 +1396,7 @@
 // //       {showSidePanel && selectedTask && (
 // //         <div className="lg:hidden fixed inset-0 bg-black/50 z-50 flex items-end">
 // //           <div className="bg-white w-full max-h-[85vh] rounded-t-2xl overflow-hidden flex flex-col">
-// //             <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50 flex items-center justify-between">
+// //             <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4] flex items-center justify-between">
 // //               <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">TASK DETAILS</span>
 // //               <button 
 // //                 onClick={() => setShowSidePanel(false)}
@@ -1414,7 +1414,7 @@
 // //                 <div className="mb-2">
 // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">SITE LAYOUT</span>
 // //                 </div>
-// //                 <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+// //                 <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
 // //                   {selectedLayout ? (
 // //                     <LayoutTaskMap
 // //                       layoutImage={selectedLayout}
@@ -1565,7 +1565,7 @@
 
 //   if (loading) {
 //     return (
-//       <div className="h-screen flex items-center justify-center bg-zinc-50">
+//       <div className="h-screen flex items-center justify-center bg-[#f4f7f4]">
 //         <div className="flex flex-col items-center gap-4">
 //           <div className="w-10 lg:w-12 h-10 lg:h-12 border-2 border-zinc-200 border-t-indigo-600 rounded-full animate-spin"></div>
 //           <span className="text-xs lg:text-sm text-zinc-500 font-mono tracking-wider">
@@ -1626,12 +1626,12 @@
 //   };
 
 //   return (
-//     <div className="min-h-screen bg-zinc-50">
+//     <div className="min-h-screen bg-[#f4f7f4]">
 //       {/* POPUP MODAL */}
 //       {showPopup && popupData && (
 //         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
 //           <div className="bg-white rounded-lg shadow-2xl max-w-md w-full border-2 border-amber-300">
-//             <div className="bg-gradient-to-r from-amber-500 to-orange-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
+//             <div className="bg-gradient-to-r from-amber-500 to-teal-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
 //               <div className="flex items-center justify-between">
 //                 <h3 className="text-white font-bold text-base lg:text-lg">Request Sent for Approval</h3>
 //                 <button onClick={() => setShowPopup(false)} className="text-white hover:text-amber-100">
@@ -1662,8 +1662,8 @@
 //                         <div className="bg-red-50 border border-red-200 rounded px-2 py-1">
 //                           <span className="text-red-600 font-mono">In Stock: {mat.inStock}</span>
 //                         </div>
-//                         <div className="bg-blue-50 border border-blue-200 rounded px-2 py-1">
-//                           <span className="text-blue-600 font-mono">Required: {mat.required}</span>
+//                         <div className="bg-teal-50 border border-teal-200 rounded px-2 py-1">
+//                           <span className="text-teal-600 font-mono">Required: {mat.required}</span>
 //                         </div>
 //                       </div>
 //                     </div>
@@ -1673,7 +1673,7 @@
 
 //               <button
 //                 onClick={() => setShowPopup(false)}
-//                 className="w-full px-4 py-2.5 bg-gradient-to-r from-amber-600 to-orange-600 text-white font-bold rounded-lg"
+//                 className="w-full px-4 py-2.5 bg-gradient-to-r from-amber-600 to-teal-600 text-white font-bold rounded-lg"
 //               >
 //                 Close
 //               </button>
@@ -1786,7 +1786,7 @@
 //               <div className="divide-y divide-zinc-100">
 //                 {Object.entries(grouped).map(([group, list]) => (
 //                   <div key={group}>
-//                     <div className="bg-zinc-50 border-y border-zinc-200 px-4 py-2 flex items-center justify-between">
+//                     <div className="bg-[#f4f7f4] border-y border-zinc-200 px-4 py-2 flex items-center justify-between">
 //                       <span className="text-[10px] font-mono font-bold tracking-widest text-zinc-700">
 //                         {group.toUpperCase()}
 //                       </span>
@@ -1811,7 +1811,7 @@
 //                               setShowSidePanel(true);
 //                             }}
 //                             className={`px-4 py-3 cursor-pointer transition-all border-l-4 ${
-//                               isSelected ? "bg-indigo-50 border-l-indigo-600" : "hover:bg-zinc-50 border-l-transparent"
+//                               isSelected ? "bg-teal-50 border-l-teal-700" : "hover:bg-[#f4f7f4] border-l-transparent"
 //                             } ${isHighRisk ? "bg-red-50/60" : ""}`}
 //                           >
 //                             <div className="flex items-start justify-between">
@@ -1849,13 +1849,13 @@
 //           {/* SIDE PANEL DESKTOP */}
 //           <div className="hidden lg:block lg:col-span-1 space-y-6">
 //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-//               <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+//               <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
 //                 <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">
 //                   SITE LAYOUT
 //                 </span>
 //               </div>
 //               <div className="p-4">
-//                 <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+//                 <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
 //                   {selectedLayout ? (
 //                     <LayoutTaskMap
 //                       layoutImage={selectedLayout}
@@ -1872,7 +1872,7 @@
 //             </div>
 
 //             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-//               <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+//               <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
 //                 <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">
 //                   TASK DETAILS
 //                 </span>
@@ -1889,7 +1889,7 @@
 //       {showSidePanel && selectedTask && (
 //         <div className="lg:hidden fixed inset-0 bg-black/50 z-50 flex items-end">
 //           <div className="bg-white w-full max-h-[85vh] rounded-t-2xl overflow-hidden flex flex-col">
-//             <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50 flex items-center justify-between">
+//             <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4] flex items-center justify-between">
 //               <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">
 //                 TASK DETAILS
 //               </span>
@@ -2175,7 +2175,7 @@ export default function SupervisorItineraryPage() {
 
   if (loading) {
     return (
-      <div className="h-screen flex items-center justify-center bg-zinc-50">
+      <div className="h-screen flex items-center justify-center bg-[#f4f7f4]">
         <div className="flex flex-col items-center gap-4">
           <div className="w-10 lg:w-12 h-10 lg:h-12 border-2 border-zinc-200 border-t-indigo-600 rounded-full animate-spin"></div>
           <span className="text-xs lg:text-sm text-zinc-500 font-mono tracking-wider">
@@ -2187,12 +2187,12 @@ export default function SupervisorItineraryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50">
+    <div className="min-h-screen bg-[#f4f7f4]">
       {/* POPUP MODAL (Material request) */}
       {showPopup && popupData && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-2xl max-w-md w-full border-2 border-amber-300">
-            <div className="bg-gradient-to-r from-amber-500 to-orange-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
+            <div className="bg-gradient-to-r from-amber-500 to-teal-500 px-4 lg:px-6 py-3 lg:py-4 rounded-t-lg">
               <div className="flex items-center justify-between">
                 <h3 className="text-white font-bold text-base lg:text-lg">Request Sent for Approval</h3>
                 <button
@@ -2241,8 +2241,8 @@ export default function SupervisorItineraryPage() {
                         <div className="bg-red-50 border border-red-200 rounded px-2 py-1">
                           <span className="text-red-600 font-mono">In Stock: {mat.inStock}</span>
                         </div>
-                        <div className="bg-blue-50 border border-blue-200 rounded px-2 py-1">
-                          <span className="text-blue-600 font-mono">Required: {mat.required}</span>
+                        <div className="bg-teal-50 border border-teal-200 rounded px-2 py-1">
+                          <span className="text-teal-600 font-mono">Required: {mat.required}</span>
                         </div>
                       </div>
                     </div>
@@ -2252,7 +2252,7 @@ export default function SupervisorItineraryPage() {
 
               <button
                 onClick={() => setShowPopup(false)}
-                className="w-full px-4 py-2.5 lg:py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold rounded-lg transition-all text-sm lg:text-base"
+                className="w-full px-4 py-2.5 lg:py-3 bg-gradient-to-r from-amber-600 to-teal-600 hover:from-amber-700 hover:to-teal-700 text-white font-bold rounded-lg transition-all text-sm lg:text-base"
               >
                 Close
               </button>
@@ -2285,7 +2285,7 @@ export default function SupervisorItineraryPage() {
           <div className="flex items-center gap-2 lg:gap-6">
             <div className="hidden sm:flex items-center gap-2 lg:gap-4 px-2 lg:px-4 py-1.5 lg:py-2 bg-zinc-100 border border-zinc-200 rounded">
               <div className="flex items-center gap-1.5 lg:gap-2">
-                <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-indigo-600 rounded-full animate-pulse"></div>
+                <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-teal-600 rounded-full animate-pulse"></div>
                 <span className="text-zinc-600 text-[10px] lg:text-xs font-mono">LIVE</span>
               </div>
               <div className="w-px h-3 lg:h-4 bg-zinc-300"></div>
@@ -2346,16 +2346,16 @@ export default function SupervisorItineraryPage() {
               </div>
             </div>
 
-            <div className="bg-indigo-50/30 border border-indigo-100 p-3 lg:p-4 rounded shadow-sm">
+            <div className="bg-teal-50/30 border border-teal-100 p-3 lg:p-4 rounded shadow-sm">
               <div className="flex items-center justify-between mb-1.5 lg:mb-2">
-                <span className="text-indigo-700 text-[9px] lg:text-[10px] font-mono tracking-widest">
+                <span className="text-teal-700 text-[9px] lg:text-[10px] font-mono tracking-widest">
                   IN PROGRESS
                 </span>
-                <div className="w-5 lg:w-6 h-5 lg:h-6 bg-indigo-100 flex items-center justify-center rounded">
-                  <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-indigo-600 rounded-full animate-pulse"></div>
+                <div className="w-5 lg:w-6 h-5 lg:h-6 bg-teal-100 flex items-center justify-center rounded">
+                  <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-teal-600 rounded-full animate-pulse"></div>
                 </div>
               </div>
-              <div className="text-indigo-700 text-2xl lg:text-3xl font-mono font-bold">
+              <div className="text-teal-700 text-2xl lg:text-3xl font-mono font-bold">
                 {inProgressCount.toString().padStart(2, "0")}
               </div>
             </div>
@@ -2424,7 +2424,7 @@ export default function SupervisorItineraryPage() {
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
                   placeholder="Task / location / ID"
-                  className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
                 />
               </div>
 
@@ -2435,7 +2435,7 @@ export default function SupervisorItineraryPage() {
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
-                  className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
                 >
                   <option value="ALL">All</option>
                   <option value="IN_PROGRESS">In Progress</option>
@@ -2451,7 +2451,7 @@ export default function SupervisorItineraryPage() {
                 <select
                   value={filterDate}
                   onChange={(e) => setFilterDate(e.target.value)}
-                  className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
                 >
                   <option value="ALL">All</option>
                   <option value="TODAY">Today</option>
@@ -2570,7 +2570,7 @@ export default function SupervisorItineraryPage() {
           {/* TASK TABLE */}
           <div className="lg:col-span-2">
             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-              <div className="hidden lg:block bg-zinc-50 border-b border-zinc-200">
+              <div className="hidden lg:block bg-[#f4f7f4] border-b border-zinc-200">
                 <div className="grid grid-cols-12 gap-6 px-6 py-4 items-center">
                   <div className="col-span-1 text-[10px] font-mono text-zinc-500 tracking-widest">#</div>
                   <div className="col-span-4 text-[10px] font-mono text-zinc-500 tracking-widest">
@@ -2597,12 +2597,12 @@ export default function SupervisorItineraryPage() {
 
                   return (
                     <div key={group}>
-                      <div className="bg-zinc-50/50 border-y border-zinc-200">
+                      <div className="bg-[#f4f7f4]/50 border-y border-zinc-200">
                         <div className="px-3 lg:px-6 py-2 flex items-center justify-between">
                           <div className="flex items-center gap-2 lg:gap-3">
                             <div
                               className={`w-1 h-3 lg:h-4 rounded-full ${
-                                group === "Auto Carried Forward" ? "bg-orange-500" : "bg-emerald-500"
+                                group === "Auto Carried Forward" ? "bg-teal-500" : "bg-emerald-500"
                               }`}
                             ></div>
                             <span className="text-[9px] lg:text-[10px] font-mono font-bold tracking-widest text-zinc-700">
@@ -2641,7 +2641,7 @@ export default function SupervisorItineraryPage() {
                                   setShowSidePanel(true);
                                 }}
                                 className={`hidden lg:grid grid-cols-12 gap-6 px-6 py-4 items-center cursor-pointer transition-all border-l-4
-                                  ${isSelected ? "bg-indigo-50/50 border-l-indigo-600" : `hover:bg-zinc-50 ${riskBg} ${riskBorder}`}
+                                  ${isSelected ? "bg-teal-50/50 border-l-teal-700" : `hover:bg-[#f4f7f4] ${riskBg} ${riskBorder}`}
                                 `}
                               >
                                 <div className="col-span-1">
@@ -2674,8 +2674,8 @@ export default function SupervisorItineraryPage() {
                                 <div className="col-span-2">
                                   {group === "Auto Carried Forward" ? (
                                     isInProgress ? (
-                                      <div className="inline-flex items-center gap-2 px-2 py-1 bg-indigo-100 rounded text-indigo-700">
-                                        <div className="w-1 h-1 bg-indigo-600 rounded-full animate-pulse"></div>
+                                      <div className="inline-flex items-center gap-2 px-2 py-1 bg-teal-100 rounded text-teal-700">
+                                        <div className="w-1 h-1 bg-teal-600 rounded-full animate-pulse"></div>
                                         <span className="text-[9px] font-mono font-bold">IN_PROGRESS</span>
                                       </div>
                                     ) : (
@@ -2720,8 +2720,8 @@ export default function SupervisorItineraryPage() {
                                 }}
                                 className={`lg:hidden p-3 cursor-pointer transition-all border-l-4 ${
                                   isSelected
-                                    ? "bg-indigo-50/50 border-l-indigo-600"
-                                    : `${isHighRisk ? "bg-red-50/60 border-l-red-500" : "hover:bg-zinc-50 border-l-transparent"}`
+                                    ? "bg-teal-50/50 border-l-teal-700"
+                                    : `${isHighRisk ? "bg-red-50/60 border-l-red-500" : "hover:bg-[#f4f7f4] border-l-transparent"}`
                                 }`}
                               >
                                 <div className="flex items-start justify-between mb-2">
@@ -2748,8 +2748,8 @@ export default function SupervisorItineraryPage() {
                                 <div className="flex items-center gap-2 mb-2">
                                   {group === "Auto Carried Forward" ? (
                                     isInProgress ? (
-                                      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-indigo-100 rounded text-indigo-700">
-                                        <div className="w-1 h-1 bg-indigo-600 rounded-full animate-pulse"></div>
+                                      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-teal-100 rounded text-teal-700">
+                                        <div className="w-1 h-1 bg-teal-600 rounded-full animate-pulse"></div>
                                         <span className="text-[8px] font-mono font-bold">IN_PROGRESS</span>
                                       </div>
                                     ) : (
@@ -2784,7 +2784,7 @@ export default function SupervisorItineraryPage() {
           {/* RIGHT SIDE PANELS (desktop) */}
           <div className="hidden lg:block lg:col-span-1 space-y-6">
             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-              <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+              <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">
                     SITE LAYOUT
@@ -2793,7 +2793,7 @@ export default function SupervisorItineraryPage() {
                 </div>
               </div>
               <div className="p-4">
-                <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+                <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
                   {selectedLayout ? (
                     <LayoutTaskMap
                       layoutImage={selectedLayout}
@@ -2810,13 +2810,13 @@ export default function SupervisorItineraryPage() {
             </div>
 
             <div className="bg-white border border-zinc-200 rounded shadow-sm overflow-hidden">
-              <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50">
+              <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4]">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">
                     PROGRESS LOG
                   </span>
                   {selectedTask && (
-                    <span className="text-[9px] font-mono text-indigo-600 bg-indigo-50 px-2 py-0.5 border border-indigo-100 rounded">
+                    <span className="text-[9px] font-mono text-teal-600 bg-teal-50 px-2 py-0.5 border border-teal-100 rounded">
                       #{selectedTask.taskId?.slice(-6).toUpperCase()}
                     </span>
                   )}
@@ -2842,7 +2842,7 @@ export default function SupervisorItineraryPage() {
       {showSidePanel && selectedTask && (
         <div className="lg:hidden fixed inset-0 bg-black/50 z-50 flex items-end">
           <div className="bg-white w-full max-h-[88vh] rounded-t-2xl overflow-hidden flex flex-col">
-            <div className="border-b border-zinc-200 px-4 py-3 bg-zinc-50 flex items-center justify-between">
+            <div className="border-b border-zinc-200 px-4 py-3 bg-[#f4f7f4] flex items-center justify-between">
               <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">TASK DETAILS</span>
               <button
                 onClick={() => setShowSidePanel(false)}
@@ -2859,7 +2859,7 @@ export default function SupervisorItineraryPage() {
                 <div className="mb-2">
                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">SITE LAYOUT</span>
                 </div>
-                <div className="aspect-video bg-zinc-50 border border-zinc-200 rounded overflow-hidden">
+                <div className="aspect-video bg-[#f4f7f4] border border-zinc-200 rounded overflow-hidden">
                   {selectedLayout ? (
                     <LayoutTaskMap
                       layoutImage={selectedLayout}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Wallet, ReceiptText, MapPin, Plus, ArrowUpRight, ShieldCheck, RefreshCw, CalendarDays, Clock3, Paperclip, CheckCircle2, MapPinned, TrendingDown } from 'lucide-react';
 
 const PettyCashWallet = () => {
   const [balance, setBalance] = useState(1500.00);
@@ -254,447 +255,134 @@ const PettyCashWallet = () => {
     return filteredExpenses.reduce((sum, exp) => sum + parseFloat(exp.amount), 0);
   };
 
+  const filteredExpenses = dateFilter ? expenses.filter((exp) => new Date(exp.date).toISOString().split('T')[0] === dateFilter) : expenses;
   const grandTotal = expenses.reduce((sum, exp) => sum + parseFloat(exp.amount), 0);
   const dailyTotal = calculateDailyTotal();
 
   return (
-    <div style={{ 
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-      maxWidth: '1200px',
-      margin: '0 auto',
-      padding: '20px',
-      background: '#f5f5f5',
-      minHeight: '100vh'
-    }}>
-      {/* Header */}
-      <div style={{
-        background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
-        color: 'white',
-        padding: '30px',
-        borderRadius: '12px',
-        marginBottom: '20px',
-        boxShadow: '0 4px 12px rgba(255, 107, 53, 0.3)'
-      }}>
-        <h1 style={{ margin: '0 0 8px 0', fontSize: '28px', fontWeight: '700' }}>
-          Petty Cash Management
-        </h1>
-        <p style={{ margin: 0, opacity: 0.95, fontSize: '15px' }}>
-          Track and manage expenses with GPS verification
-        </p>
-      </div>
-
-      {/* Available Balance */}
-      <div style={{
-        background: 'white',
-        padding: '25px',
-        borderRadius: '10px',
-        marginBottom: '20px',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-        textAlign: 'center'
-      }}>
-       
-      </div>
-
-      {/* GPS Status */}
-      <div style={{
-        background: gpsActive ? '#e8f5e9' : '#ffebee',
-        padding: '14px 18px',
-        borderRadius: '8px',
-        marginBottom: '20px',
-        fontSize: '14px',
-        color: gpsActive ? '#2e7d32' : '#c62828',
-        fontWeight: '600',
-        border: `2px solid ${gpsActive ? '#4caf50' : '#f44336'}`,
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px'
-      }}>
-        <span style={{ fontSize: '20px' }}>{gpsActive ? '✅' : '❌'}</span>
-        {gpsActive 
-          ? `GPS Location Active (±${currentLocation?.accuracy.toFixed(0)}m accuracy)` 
-          : 'GPS Location Required - Please enable location services to add expenses'}
-      </div>
-
-      {/* Add Expense */}
-      <div style={{
-        background: 'white',
-        padding: '25px',
-        borderRadius: '10px',
-        marginBottom: '20px',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-        opacity: gpsActive ? 1 : 0.6,
-        pointerEvents: gpsActive ? 'auto' : 'none'
-      }}>
-        <h2 style={{ margin: '0 0 20px 0', fontSize: '20px', fontWeight: '600', color: '#333' }}>
-          Add Expense
-        </h2>
-        
-        <div style={{ marginBottom: '16px' }}>
-          <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#555' }}>
-            Description *
-          </label>
-          <input
-            type="text"
-            value={activityName}
-            onChange={(e) => setActivityName(e.target.value)}
-            placeholder="Enter expense description"
-            disabled={!gpsActive}
-            style={{
-              width: '100%',
-              padding: '10px 14px',
-              border: '1px solid #e0e0e0',
-              borderRadius: '6px',
-              fontSize: '14px',
-              outline: 'none',
-              transition: 'border-color 0.2s'
-            }}
-            onFocus={(e) => e.target.style.borderColor = '#ff6b35'}
-            onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
-          />
-        </div>
-
-        <div style={{ marginBottom: '16px' }}>
-          <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#555' }}>
-            Amount *
-          </label>
-          <input
-            type="number"
-            value={activityAmount}
-            onChange={(e) => setActivityAmount(e.target.value)}
-            placeholder="0.00"
-            step="0.01"
-            min="0"
-            disabled={!gpsActive}
-            style={{
-              width: '100%',
-              padding: '10px 14px',
-              border: '1px solid #e0e0e0',
-              borderRadius: '6px',
-              fontSize: '14px',
-              outline: 'none'
-            }}
-            onFocus={(e) => e.target.style.borderColor = '#ff6b35'}
-            onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
-          />
-        </div>
-
-        <div style={{ marginBottom: '20px' }}>
-          <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500', color: '#555' }}>
-            Receipt / Payment Screenshot * (Required)
-          </label>
-          <div style={{
-            border: '2px dashed #ff6b35',
-            borderRadius: '8px',
-            padding: '20px',
-            textAlign: 'center',
-            background: '#fff8f5'
-          }}>
-            <div style={{ fontSize: '40px', marginBottom: '10px' }}>📸</div>
-            <input
-              type="file"
-              onChange={(e) => setReceiptFile(e.target.files[0])}
-              accept="image/*"
-              disabled={!gpsActive}
-              style={{
-                width: '100%',
-                padding: '10px',
-                border: '1px solid #e0e0e0',
-                borderRadius: '6px',
-                fontSize: '13px',
-                cursor: 'pointer'
-              }}
-            />
-            <p style={{ margin: '10px 0 0 0', fontSize: '12px', color: '#666' }}>
-              Upload bill receipt or payment screenshot
-            </p>
+    <div className="petty-cash-page min-h-screen bg-[#f4f7f4] px-4 py-6 md:px-8 md:py-8 text-[#183a35]">
+      <div className="mx-auto max-w-7xl space-y-6">
+        <header className="relative overflow-hidden rounded-[28px] bg-[#102b2a] p-6 text-white shadow-xl md:p-9">
+          <div className="absolute -right-10 -top-16 h-64 w-64 rounded-full border-[36px] border-white/5" />
+          <div className="absolute right-24 top-20 h-24 w-24 rounded-full bg-teal-400/10 blur-2xl" />
+          <div className="relative flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold tracking-wide text-teal-100">
+                <ShieldCheck size={14} /> VERIFIED SITE EXPENSES
+              </div>
+              <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Petty cash</h1>
+              <p className="mt-2 max-w-xl text-sm leading-6 text-slate-300 md:text-base">A clear view of site spending, receipts and GPS-verified transactions.</p>
+            </div>
+            <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/10 px-4 py-3">
+              <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${gpsActive ? "bg-emerald-400/15 text-emerald-300" : "bg-amber-400/15 text-amber-200"}`}><MapPinned size={20} /></span>
+              <div>
+                <p className="text-xs text-slate-300">Location verification</p>
+                <p className="mt-0.5 text-sm font-semibold">{gpsActive ? "GPS connected" : "GPS required"}</p>
+              </div>
+              {!gpsActive && <button onClick={getLocation} className="ml-2 rounded-lg bg-white px-3 py-2 text-xs font-bold text-[#102b2a]">Retry</button>}
+            </div>
           </div>
-        </div>
+        </header>
 
-        <button
-          onClick={addManualExpense}
-          disabled={!gpsActive}
-          style={{
-            width: '100%',
-            padding: '14px',
-            background: gpsActive ? '#ff6b35' : '#ccc',
-            color: 'white',
-            border: 'none',
-            borderRadius: '6px',
-            fontSize: '15px',
-            fontWeight: '600',
-            cursor: gpsActive ? 'pointer' : 'not-allowed',
-            transition: 'background 0.2s'
-          }}
-          onMouseOver={(e) => gpsActive && (e.target.style.background = '#e85a28')}
-          onMouseOut={(e) => gpsActive && (e.target.style.background = '#ff6b35')}
-        >
-          {gpsActive ? 'Add Expense' : 'Enable GPS to Add Expense'}
-        </button>
-      </div>
-
-      {/* Sync Data */}
-      <div style={{
-        background: 'white',
-        padding: '25px',
-        borderRadius: '10px',
-        marginBottom: '20px',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-        opacity: gpsActive ? 1 : 0.6,
-        pointerEvents: gpsActive ? 'auto' : 'none'
-      }}>
-        <h2 style={{ margin: '0 0 20px 0', fontSize: '20px', fontWeight: '600', color: '#333' }}>
-          Sync External Data
-        </h2>
-        
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <button
-            onClick={syncMaterialRequests}
-            disabled={!gpsActive}
-            style={{
-              flex: '1',
-              minWidth: '200px',
-              padding: '12px 20px',
-              background: 'white',
-              color: '#ff6b35',
-              border: '2px solid #ff6b35',
-              borderRadius: '6px',
-              fontSize: '14px',
-              fontWeight: '600',
-              cursor: gpsActive ? 'pointer' : 'not-allowed',
-              transition: 'all 0.2s'
-            }}
-            onMouseOver={(e) => gpsActive && (e.target.style.background = '#ff6b35', e.target.style.color = 'white')}
-            onMouseOut={(e) => gpsActive && (e.target.style.background = 'white', e.target.style.color = '#ff6b35')}
-          >
-            Sync Material Requests
-          </button>
-
-          <button
-            onClick={syncTransportData}
-            disabled={!gpsActive}
-            style={{
-              flex: '1',
-              minWidth: '200px',
-              padding: '12px 20px',
-              background: 'white',
-              color: '#ff6b35',
-              border: '2px solid #ff6b35',
-              borderRadius: '6px',
-              fontSize: '14px',
-              fontWeight: '600',
-              cursor: gpsActive ? 'pointer' : 'not-allowed',
-              transition: 'all 0.2s'
-            }}
-            onMouseOver={(e) => gpsActive && (e.target.style.background = '#ff6b35', e.target.style.color = 'white')}
-            onMouseOut={(e) => gpsActive && (e.target.style.background = 'white', e.target.style.color = '#ff6b35')}
-          >
-            Sync Transport Data
-          </button>
-        </div>
-
-        {syncStatus && (
-          <div style={{
-            marginTop: '16px',
-            padding: '12px',
-            background: '#e8f5e9',
-            color: '#2e7d32',
-            borderRadius: '6px',
-            fontSize: '14px',
-            fontWeight: '500',
-            border: '1px solid #c8e6c9'
-          }}>
-            {syncStatus}
+        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="rounded-2xl border border-[#dce7e1] bg-white p-5 shadow-sm">
+            <div className="flex items-center justify-between"><span className="text-sm font-medium text-[#6c8179]">Available balance</span><span className="rounded-xl bg-[#e6f3ee] p-2 text-teal-800"><Wallet size={19} /></span></div>
+            <p className="mt-4 text-3xl font-bold tracking-tight tabular-nums">${balance.toFixed(2)}</p>
+            <p className="mt-2 text-xs text-[#71847d]">Remaining petty cash</p>
           </div>
-        )}
-      </div>
-
-      {/* Expenses Table */}
-      <div style={{
-        background: 'white',
-        padding: '25px',
-        borderRadius: '10px',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
-      }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
-          <h2 style={{ margin: 0, fontSize: '20px', fontWeight: '600', color: '#333' }}>
-            Expense History
-          </h2>
-          
-          <input
-            type="date"
-            value={dateFilter}
-            onChange={(e) => setDateFilter(e.target.value)}
-            style={{
-              padding: '8px 12px',
-              border: '1px solid #e0e0e0',
-              borderRadius: '6px',
-              fontSize: '13px',
-              outline: 'none'
-            }}
-            onFocus={(e) => e.target.style.borderColor = '#ff6b35'}
-            onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
-          />
-        </div>
-
-        {dateFilter && (
-          <div style={{
-            padding: '12px 16px',
-            background: '#fff3e0',
-            borderRadius: '6px',
-            marginBottom: '16px',
-            fontSize: '14px',
-            fontWeight: '600',
-            color: '#e65100'
-          }}>
-            Daily Total: ${dailyTotal.toFixed(2)}
+          <div className="rounded-2xl border border-[#dce7e1] bg-white p-5 shadow-sm">
+            <div className="flex items-center justify-between"><span className="text-sm font-medium text-[#6c8179]">Recorded expenses</span><span className="rounded-xl bg-[#eef2f7] p-2 text-slate-700"><ReceiptText size={19} /></span></div>
+            <p className="mt-4 text-3xl font-bold tracking-tight tabular-nums">{expenses.length}</p>
+            <p className="mt-2 text-xs text-[#71847d]">Across all expense sources</p>
           </div>
-        )}
+          <div className="rounded-2xl border border-[#dce7e1] bg-white p-5 shadow-sm">
+            <div className="flex items-center justify-between"><span className="text-sm font-medium text-[#6c8179]">Total recorded</span><span className="rounded-xl bg-[#fff4dd] p-2 text-[#80571a]"><TrendingDown size={19} /></span></div>
+            <p className="mt-4 text-3xl font-bold tracking-tight tabular-nums">${grandTotal.toFixed(2)}</p>
+            <p className="mt-2 text-xs text-[#71847d]">Lifetime expense log</p>
+          </div>
+          <div className="rounded-2xl border border-[#dce7e1] bg-white p-5 shadow-sm">
+            <div className="flex items-center justify-between"><span className="text-sm font-medium text-[#6c8179]">GPS accuracy</span><span className="rounded-xl bg-[#e6f3ee] p-2 text-teal-800"><MapPin size={19} /></span></div>
+            <p className="mt-4 text-3xl font-bold tracking-tight">{gpsActive && currentLocation ? `±${currentLocation.accuracy.toFixed(0)}m` : "—"}</p>
+            <p className="mt-2 text-xs text-[#71847d]">{gpsActive ? "Current location confirmed" : "Enable location to submit"}</p>
+          </div>
+        </section>
 
-        <div style={{
-          padding: '12px 16px',
-          background: '#e3f2fd',
-          borderRadius: '6px',
-          marginBottom: '20px',
-          fontSize: '15px',
-          fontWeight: '700',
-          color: '#1565c0'
-        }}>
-          Grand Total: ${grandTotal.toFixed(2)}
-        </div>
+        <section className="grid grid-cols-1 items-start gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(340px,.9fr)]">
+          <div className="rounded-2xl border border-[#dce7e1] bg-white p-5 shadow-sm md:p-7">
+            <div className="mb-6 flex items-start gap-3">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#e6f3ee] text-teal-800"><Plus size={22} /></span>
+              <div><h2 className="text-xl font-bold">Record an expense</h2><p className="mt-1 text-sm text-[#71847d]">Receipt and current GPS location are required.</p></div>
+            </div>
+            <div className={`mb-5 flex items-start gap-3 rounded-xl border p-4 text-sm ${gpsActive ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-amber-200 bg-amber-50 text-amber-900"}`}>
+              {gpsActive ? <CheckCircle2 size={18} className="mt-0.5 shrink-0" /> : <MapPin size={18} className="mt-0.5 shrink-0" />}
+              <div><p className="font-semibold">{gpsActive ? "Location verified for this session" : "Location access is needed"}</p><p className="mt-1 text-xs leading-5">{gpsActive && currentLocation ? `Accuracy ±${currentLocation.accuracy.toFixed(0)} metres. Expense records will include this location.` : "Allow location access in your browser, then retry. Expense submission stays disabled until GPS is active."}</p></div>
+              {!gpsActive && <button onClick={getLocation} className="shrink-0 rounded-lg border border-amber-300 bg-white px-3 py-2 text-xs font-bold">Retry</button>}
+            </div>
+            <div className="space-y-5">
+              <label className="block"><span className="mb-2 block text-sm font-semibold text-[#36504b]">Expense description <span className="text-rose-600">*</span></span><input type="text" value={activityName} onChange={(e) => setActivityName(e.target.value)} placeholder="e.g. Site transport, safety equipment" disabled={!gpsActive} className="w-full rounded-xl border border-[#dce7e1] bg-[#fbfcfb] px-4 py-3 text-sm outline-none transition focus:border-teal-700 focus:ring-4 focus:ring-teal-700/10 disabled:cursor-not-allowed disabled:opacity-50" /></label>
+              <label className="block"><span className="mb-2 block text-sm font-semibold text-[#36504b]">Amount <span className="text-rose-600">*</span></span><div className="flex overflow-hidden rounded-xl border border-[#dce7e1] bg-[#fbfcfb] focus-within:border-teal-700 focus-within:ring-4 focus-within:ring-teal-700/10"><span className="flex items-center border-r border-[#dce7e1] bg-[#f1f5f2] px-4 text-sm font-semibold text-[#5f756e]">$</span><input type="number" value={activityAmount} onChange={(e) => setActivityAmount(e.target.value)} placeholder="0.00" step="0.01" min="0" disabled={!gpsActive} className="min-w-0 flex-1 bg-transparent px-4 py-3 text-sm outline-none disabled:opacity-50" /></div></label>
+              <div><span className="mb-2 block text-sm font-semibold text-[#36504b]">Receipt or payment screenshot <span className="text-rose-600">*</span></span><label className="flex cursor-pointer flex-col items-center rounded-xl border-2 border-dashed border-[#b9d9cf] bg-[#f7fbf8] px-4 py-6 text-center transition hover:bg-[#eaf5ef]"><span className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-white text-teal-800 shadow-sm"><Paperclip size={20} /></span><span className="text-sm font-semibold text-[#244740]">{receiptFile?.name || "Choose a receipt image"}</span><span className="mt-1 text-xs text-[#71847d]">JPG, PNG or screenshot</span><input type="file" onChange={(e) => setReceiptFile(e.target.files?.[0] || null)} accept="image/*" disabled={!gpsActive} className="mt-3 block w-full max-w-xs text-xs text-[#5f756e] file:mr-3 file:rounded-lg file:border-0 file:bg-[#e6f3ee] file:px-3 file:py-2 file:text-xs file:font-bold file:text-teal-800 disabled:opacity-50" /></label></div>
+              <button onClick={addManualExpense} disabled={!gpsActive} className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#0f766e] px-5 py-3.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#0b5d57] focus:outline-none focus:ring-4 focus:ring-teal-700/20 disabled:cursor-not-allowed disabled:bg-slate-300"><Plus size={17} /> {gpsActive ? "Add expense record" : "Enable GPS to continue"}</button>
+            </div>
+          </div>
 
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr style={{ borderBottom: '2px solid #e0e0e0' }}>
-                <th style={{ padding: '12px', textAlign: 'left', fontSize: '13px', fontWeight: '600', color: '#666' }}>Date & Time</th>
-                <th style={{ padding: '12px', textAlign: 'left', fontSize: '13px', fontWeight: '600', color: '#666' }}>Description</th>
-                <th style={{ padding: '12px', textAlign: 'right', fontSize: '13px', fontWeight: '600', color: '#666' }}>Amount</th>
-                <th style={{ padding: '12px', textAlign: 'left', fontSize: '13px', fontWeight: '600', color: '#666' }}>Location</th>
-                <th style={{ padding: '12px', textAlign: 'center', fontSize: '13px', fontWeight: '600', color: '#666' }}>Receipt</th>
-              </tr>
-            </thead>
-            <tbody>
-              {expenses.length === 0 ? (
-                <tr>
-                  <td colSpan="5" style={{ padding: '40px', textAlign: 'center', color: '#999', fontSize: '14px' }}>
-                    No expenses recorded
-                  </td>
-                </tr>
-              ) : (
-                expenses.map(exp => (
-                  <tr 
-                    key={exp.id}
-                    style={{ borderBottom: '1px solid #f0f0f0', transition: 'background 0.2s' }}
-                    onMouseOver={(e) => e.currentTarget.style.background = '#fafafa'}
-                    onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
-                  >
-                    <td style={{ padding: '16px 12px', fontSize: '13px', color: '#333' }}>
-                      <div style={{ fontWeight: '500' }}>
-                        {new Date(exp.date).toLocaleDateString('en-US', { 
-                          month: 'short', 
-                          day: 'numeric', 
-                          year: 'numeric' 
-                        })}
-                      </div>
-                      <div style={{ fontSize: '12px', color: '#999', marginTop: '2px' }}>
-                        {new Date(exp.date).toLocaleTimeString('en-US', { 
-                          hour: '2-digit', 
-                          minute: '2-digit' 
-                        })}
-                      </div>
-                    </td>
-                    <td style={{ padding: '16px 12px', fontSize: '13px', color: '#333' }}>
-                      <div style={{ fontWeight: '500' }}>{exp.activity}</div>
-                      <div style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>
-                        {exp.type === 'manual' ? '📝 Manual Entry' : 
-                         exp.type === 'material_request' ? '📦 Material Request' : 
-                         exp.type === 'transport' ? '🚗 Transport' : 'Receipt'}
-                        {exp.source && ` • ${exp.source}`}
-                      </div>
-                    </td>
-                    <td style={{ padding: '16px 12px', fontSize: '15px', fontWeight: '600', color: '#ff6b35', textAlign: 'right' }}>
-                      ${exp.amount}
-                    </td>
-                    <td style={{ padding: '16px 12px', fontSize: '12px', color: '#666' }}>
-                      <div>{exp.location.lat.toFixed(4)}, {exp.location.lng.toFixed(4)}</div>
-                      <div style={{ fontSize: '11px', color: '#999', marginTop: '2px' }}>
-                        ±{exp.location.accuracy.toFixed(0)}m
-                      </div>
-                    </td>
-                    <td style={{ padding: '16px 12px', textAlign: 'center' }}>
-                      {exp.receiptImage ? (
-                        <img
-                          onClick={() => openModal(exp.receiptImage)}
-                          src={exp.receiptImage}
-                          alt="Receipt"
-                          style={{
-                            width: '50px',
-                            height: '50px',
-                            objectFit: 'cover',
-                            borderRadius: '6px',
-                            cursor: 'pointer',
-                            border: '1px solid #e0e0e0'
-                          }}
-                        />
-                      ) : (
-                        <div style={{ color: '#ccc', fontSize: '12px' }}>—</div>
-                      )}
-                    </td>
+          <div className="space-y-6">
+            <div className="rounded-2xl border border-[#dce7e1] bg-white p-5 shadow-sm md:p-6">
+              <div className="mb-5 flex items-start gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e6f3ee] text-teal-800"><RefreshCw size={19} /></span><div><h2 className="text-lg font-bold">Import expense sources</h2><p className="mt-1 text-sm text-[#71847d]">Bring material and transport entries into the ledger.</p></div></div>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2">
+                <button onClick={syncMaterialRequests} disabled={!gpsActive} className="flex items-center justify-between gap-3 rounded-xl border border-[#dce7e1] p-4 text-left transition hover:border-teal-300 hover:bg-[#f7fbf8] disabled:opacity-50"><span><span className="block text-sm font-bold">Material requests</span><span className="mt-1 block text-xs text-[#71847d]">{materialRequests.length} available entries</span></span><ArrowUpRight size={17} className="shrink-0 text-teal-800" /></button>
+                <button onClick={syncTransportData} disabled={!gpsActive} className="flex items-center justify-between gap-3 rounded-xl border border-[#dce7e1] p-4 text-left transition hover:border-teal-300 hover:bg-[#f7fbf8] disabled:opacity-50"><span><span className="block text-sm font-bold">Transport records</span><span className="mt-1 block text-xs text-[#71847d]">{transportData.length} available entries</span></span><ArrowUpRight size={17} className="shrink-0 text-teal-800" /></button>
+              </div>
+              {syncStatus && <div className="mt-4 flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm font-semibold text-emerald-800"><CheckCircle2 size={17} />{syncStatus}</div>}
+              <p className="mt-4 text-xs leading-5 text-[#71847d]">Imported entries use the current GPS location and are added to the expense history.</p>
+            </div>
+            <div className="rounded-2xl border border-[#dce7e1] bg-white p-5 shadow-sm md:p-6">
+              <div className="mb-4 flex items-center justify-between gap-3"><div><h2 className="text-lg font-bold">Spending overview</h2><p className="mt-1 text-sm text-[#71847d]">Review totals for a selected day.</p></div><CalendarDays size={20} className="text-teal-800" /></div>
+              <label className="block text-sm font-semibold text-[#36504b]">Filter by date<input type="date" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)} className="mt-2 w-full rounded-xl border border-[#dce7e1] bg-[#fbfcfb] px-4 py-3 text-sm outline-none focus:border-teal-700 focus:ring-4 focus:ring-teal-700/10" /></label>
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2">
+                <div className="rounded-xl bg-[#f4f7f4] p-4"><p className="text-xs font-medium text-[#71847d]">{dateFilter ? "Selected day total" : "Select a date"}</p><p className="mt-2 text-xl font-bold tabular-nums">${dailyTotal.toFixed(2)}</p></div>
+                <div className="rounded-xl bg-[#102b2a] p-4 text-white"><p className="text-xs text-slate-300">All expenses</p><p className="mt-2 text-xl font-bold tabular-nums">${grandTotal.toFixed(2)}</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="overflow-hidden rounded-2xl border border-[#dce7e1] bg-white shadow-sm">
+          <div className="flex flex-col justify-between gap-3 border-b border-[#e5ede8] p-5 md:flex-row md:items-center md:px-7 md:py-6">
+            <div><h2 className="text-xl font-bold">Expense ledger</h2><p className="mt-1 text-sm text-[#71847d]">{filteredExpenses.length} transactions shown · Select a receipt to preview it</p></div>
+            <div className="inline-flex items-center gap-2 self-start rounded-full bg-[#e6f3ee] px-3 py-1.5 text-xs font-bold text-teal-800"><ShieldCheck size={14} /> GPS-verified records</div>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[760px] border-collapse text-left">
+              <thead><tr className="bg-[#f7faf8] text-[11px] uppercase tracking-wider text-[#71847d]"><th className="px-6 py-4 font-bold">Date & time</th><th className="px-6 py-4 font-bold">Expense</th><th className="px-6 py-4 text-right font-bold">Amount</th><th className="px-6 py-4 font-bold">Location</th><th className="px-6 py-4 text-center font-bold">Receipt</th></tr></thead>
+              <tbody className="divide-y divide-[#edf2ee]">
+                {filteredExpenses.length === 0 ? <tr><td colSpan="5" className="px-6 py-14 text-center"><ReceiptText size={28} className="mx-auto mb-3 text-[#9aaca4]" /><p className="font-semibold text-[#36504b]">No expenses found</p><p className="mt-1 text-sm text-[#71847d]">Try another date or add a new record.</p></td></tr> : filteredExpenses.map((exp) => (
+                  <tr key={exp.id} className="transition hover:bg-[#fbfdfb]">
+                    <td className="whitespace-nowrap px-6 py-4"><p className="text-sm font-semibold">{new Date(exp.date).toLocaleDateString("en-IN",{month:"short",day:"numeric",year:"numeric"})}</p><p className="mt-1 flex items-center gap-1.5 text-xs text-[#71847d]"><Clock3 size={12} />{new Date(exp.date).toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"})}</p></td>
+                    <td className="px-6 py-4"><p className="text-sm font-semibold text-[#203c38]">{exp.activity}</p><p className="mt-1 text-xs text-[#71847d]">{exp.type === "manual" ? "Manual entry" : exp.type === "material_request" ? "Material request" : exp.type === "transport" ? "Transport" : "Receipt"}{exp.source ? ` · ${exp.source}` : ""}</p></td>
+                    <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-bold tabular-nums text-[#0f766e]">${Number(exp.amount).toFixed(2)}</td>
+                    <td className="px-6 py-4"><p className="flex items-center gap-1.5 text-xs font-medium text-[#36504b]"><MapPin size={13} />{exp.location ? `${Number(exp.location.lat).toFixed(4)}, ${Number(exp.location.lng).toFixed(4)}` : "Location unavailable"}</p><p className="mt-1 text-xs text-[#71847d]">{exp.location?.accuracy != null ? `±${Number(exp.location.accuracy).toFixed(0)}m accuracy` : "Unverified"}</p></td>
+                    <td className="px-6 py-4 text-center">{exp.receiptImage ? <button onClick={() => openModal(exp.receiptImage)} className="inline-flex items-center gap-2 rounded-lg border border-[#dce7e1] bg-white p-1.5 pr-3 text-xs font-semibold text-teal-800 transition hover:border-teal-300 hover:bg-[#f7fbf8]"><img src={exp.receiptImage} alt="Receipt thumbnail" className="h-9 w-9 rounded-md object-cover" />View</button> : <span className="text-xs text-[#9aaca4]">No receipt</span>}</td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="flex flex-col gap-2 border-t border-[#e5ede8] bg-[#fbfdfb] px-6 py-4 text-xs text-[#71847d] sm:flex-row sm:items-center sm:justify-between"><span>Amounts shown in the ledger's configured currency.</span><span className="font-semibold text-[#36504b]">{expenses.length} total records</span></div>
+        </section>
       </div>
 
-      {/* Modal */}
       {showModal && (
-        <div
-          onClick={closeModal}
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'rgba(0,0,0,0.8)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1000,
-            padding: '20px'
-          }}
-        >
-          <div style={{ position: 'relative', maxWidth: '90%', maxHeight: '90%' }}>
-            <button
-              onClick={closeModal}
-              style={{
-                position: 'absolute',
-                top: '-40px',
-                right: '0',
-                background: 'white',
-                border: 'none',
-                borderRadius: '50%',
-                width: '32px',
-                height: '32px',
-                fontSize: '20px',
-                cursor: 'pointer',
-                fontWeight: 'bold'
-              }}
-            >
-              ×
-            </button>
-            <img
-              src={modalImage}
-              alt="Receipt"
-              style={{ maxWidth: '100%', maxHeight: '80vh', borderRadius: '8px' }}
-            />
+        <div onClick={closeModal} className="fixed inset-0 z-[1000] flex items-center justify-center bg-[#102b2a]/80 p-5 backdrop-blur-sm">
+          <div onClick={(e) => e.stopPropagation()} className="relative max-h-[90vh] max-w-[92vw] rounded-2xl bg-white p-3 shadow-2xl">
+            <button onClick={closeModal} aria-label="Close receipt preview" className="absolute -right-3 -top-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#102b2a] text-xl font-bold text-white shadow-lg">×</button>
+            <img src={modalImage} alt="Receipt preview" className="max-h-[82vh] max-w-full rounded-xl object-contain" />
           </div>
         </div>
       )}
     </div>
   );
+
 };
 
 export default PettyCashWallet;

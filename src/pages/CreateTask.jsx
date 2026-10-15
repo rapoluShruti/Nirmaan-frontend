@@ -85,7 +85,7 @@
 // // //             {selectedProject.layoutImages.map((img, i) => (
 // // //               <img 
 // // //                 key={i} src={img} alt="layout" 
-// // //                 className={`w-24 h-24 cursor-pointer border-2 ${selectedImage === img ? 'border-blue-600' : 'border-gray-200'}`}
+// // //                 className={`w-24 h-24 cursor-pointer border-2 ${selectedImage === img ? 'border-teal-700' : 'border-gray-200'}`}
 // // //                 onClick={() => setSelectedImage(img)}
 // // //               />
 // // //             ))}
@@ -118,7 +118,7 @@
 // // //                 }}
 // // //               >
 // // //                 {/* The Pin Icon */}
-// // //                 <div className={`w-4 h-4 rounded-full border-2 border-white shadow-md ${task.priority === 'High' ? 'bg-red-600' : 'bg-blue-600'}`}></div>
+// // //                 <div className={`w-4 h-4 rounded-full border-2 border-white shadow-md ${task.priority === 'High' ? 'bg-red-600' : 'bg-teal-700'}`}></div>
                 
 // // //                 {/* Hover Tooltip with Task Details */}
 // // //                 <div className="hidden group-hover:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-xs p-2 rounded whitespace-nowrap z-50">
@@ -547,12 +547,12 @@ const CreateTask = () => {
       {/* LEFT PANEL: PROJECT SELECTOR */}
       <div className="w-64 bg-white border-r border-slate-200 flex flex-col z-10">
         <div className="p-6 border-b border-slate-100 bg-slate-900 text-white font-bold italic tracking-tighter flex items-center gap-2">
-          <Layout size={18}/> BUILDMATRIX AI
+          <Layout size={18}/> NIRMAAN WORKSPACE
         </div>
         <div className="flex-1 overflow-y-auto p-4 space-y-6">
           <div>
             <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1">Active Project</label>
-            <select className="w-full mt-2 p-2 bg-slate-50 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-500"
+            <select className="w-full mt-2 p-2 bg-slate-50 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-teal-600"
               onChange={(e) => setSelectedProject(projects.find(p => p._id === e.target.value))}>
               <option value="">-- Select Project --</option>
               {projects.map(p => <option key={p._id} value={p._id}>{p.name}</option>)}
@@ -565,7 +565,7 @@ const CreateTask = () => {
               <div className="grid grid-cols-2 gap-2 mt-2">
                 {selectedProject.layoutImages.map((img, i) => (
                   <img key={i} src={img} onClick={() => setSelectedImage(img)}
-                    className={`aspect-square object-cover rounded-lg cursor-pointer border-2 transition-all ${selectedImage === img ? 'border-blue-600 ring-2 ring-blue-100' : 'border-transparent opacity-60 hover:opacity-100'}`} />
+                    className={`aspect-square object-cover rounded-lg cursor-pointer border-2 transition-all ${selectedImage === img ? 'border-teal-700 ring-2 ring-teal-100' : 'border-transparent opacity-60 hover:opacity-100'}`} />
                 ))}
               </div>
             </div>
@@ -590,8 +590,8 @@ const CreateTask = () => {
                 {tasks.filter(t => t.layoutImage === selectedImage).map(task => (
                   <div key={task._id} 
                     className={`absolute w-7 h-7 -ml-3.5 -mt-3.5 rounded-full border-2 border-white shadow-lg cursor-pointer flex items-center justify-center transition-all 
-                    ${selectedTask?._id === task._id ? 'scale-150 z-50 ring-4 ring-blue-500/20' : 'z-40'} 
-                    ${task.priority === 'High' || task.priority === 'Critical' ? 'bg-red-500' : 'bg-blue-600'}`}
+                    ${selectedTask?._id === task._id ? 'scale-150 z-50 ring-4 ring-teal-600/20' : 'z-40'} 
+                    ${task.priority === 'High' || task.priority === 'Critical' ? 'bg-red-500' : 'bg-teal-700'}`}
                     style={{ left: `${task.coordinates.xPercent}%`, top: `${task.coordinates.yPercent}%` }}
                     onClick={() => setSelectedTask(task)}>
                     <MapPin size={14} className="text-white" />
@@ -621,15 +621,15 @@ const CreateTask = () => {
                     onClick={() => setSelectedTask(task)}
                     className={`p-5 rounded-2xl cursor-pointer border-2 transition-all duration-300 relative overflow-hidden group
                     ${selectedTask?._id === task._id 
-                      ? 'bg-blue-600 border-blue-600 shadow-xl -translate-y-1' 
-                      : 'bg-white border-white hover:border-blue-200 shadow-sm'}`}>
+                      ? 'bg-teal-700 border-teal-700 shadow-xl -translate-y-1' 
+                      : 'bg-white border-white hover:border-[#b9d9cf] shadow-sm'}`}>
                     
                     <div className="flex justify-between items-start mb-4">
-                      <div className={`p-2 rounded-lg ${selectedTask?._id === task._id ? 'bg-blue-500' : 'bg-slate-50'}`}>
-                        <Hammer size={18} className={selectedTask?._id === task._id ? 'text-white' : 'text-blue-600'}/>
+                      <div className={`p-2 rounded-lg ${selectedTask?._id === task._id ? 'bg-[#e6f3ee]0' : 'bg-slate-50'}`}>
+                        <Hammer size={18} className={selectedTask?._id === task._id ? 'text-white' : 'text-teal-700'}/>
                       </div>
                       <span className={`text-[9px] px-2 py-1 rounded-md font-black uppercase tracking-tighter 
-                        ${task.priority === 'High' ? 'bg-red-100 text-red-600' : 'bg-blue-100 text-blue-600'}`}>
+                        ${task.priority === 'High' ? 'bg-red-100 text-red-600' : 'bg-[#e6f3ee] text-teal-700'}`}>
                         {task.priority}
                       </span>
                     </div>
@@ -639,19 +639,19 @@ const CreateTask = () => {
                     </h4>
                     
                     <div className="grid grid-cols-2 gap-y-3">
-                      <div className={`flex items-center gap-2 text-[11px] font-medium ${selectedTask?._id === task._id ? 'text-blue-100' : 'text-slate-500'}`}>
+                      <div className={`flex items-center gap-2 text-[11px] font-medium ${selectedTask?._id === task._id ? 'text-teal-100' : 'text-slate-500'}`}>
                         <Calendar size={12}/> {new Date(task.startDate).toLocaleDateString()}
                       </div>
-                      <div className={`flex items-center gap-2 text-[11px] font-medium ${selectedTask?._id === task._id ? 'text-blue-100' : 'text-slate-500'}`}>
+                      <div className={`flex items-center gap-2 text-[11px] font-medium ${selectedTask?._id === task._id ? 'text-teal-100' : 'text-slate-500'}`}>
                         <Users size={12}/> {task.workersRequired} Men
                       </div>
-                      <div className={`flex items-center gap-2 text-[11px] font-medium col-span-2 ${selectedTask?._id === task._id ? 'text-blue-100' : 'text-slate-500'}`}>
+                      <div className={`flex items-center gap-2 text-[11px] font-medium col-span-2 ${selectedTask?._id === task._id ? 'text-teal-100' : 'text-slate-500'}`}>
                         <HardHat size={12}/> {renderSupervisor(task.assignedSupervisor)}
                       </div>
                     </div>
 
-                    <div className={`mt-4 pt-4 border-t flex justify-between items-center ${selectedTask?._id === task._id ? 'border-blue-400' : 'border-slate-50'}`}>
-                      <div className={`flex items-center gap-1 text-[10px] font-bold uppercase ${selectedTask?._id === task._id ? 'text-blue-200' : 'text-slate-400'}`}>
+                    <div className={`mt-4 pt-4 border-t flex justify-between items-center ${selectedTask?._id === task._id ? 'border-teal-300' : 'border-slate-50'}`}>
+                      <div className={`flex items-center gap-1 text-[10px] font-bold uppercase ${selectedTask?._id === task._id ? 'text-teal-200' : 'text-slate-400'}`}>
                         {task.aiVerified ? <ShieldCheck size={12}/> : <ShieldAlert size={12}/>}
                         {task.aiVerified ? 'AI Verified' : 'Awaiting Audit'}
                       </div>
@@ -669,7 +669,7 @@ const CreateTask = () => {
         <div className="w-96 bg-white border-l border-slate-200 flex flex-col p-8 animate-in slide-in-from-right shadow-2xl z-50">
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></div>
+              <div className="w-2 h-2 rounded-full bg-teal-700 animate-pulse"></div>
               <h3 className="font-black text-slate-900 text-[10px] uppercase tracking-[0.3em]">Data Explorer</h3>
             </div>
             <button onClick={() => setSelectedTask(null)} className="p-2 hover:bg-slate-100 rounded-full text-slate-400 transition-colors"><X size={20}/></button>
@@ -677,7 +677,7 @@ const CreateTask = () => {
           
           <div className="space-y-8 flex-1 overflow-y-auto pr-2 custom-scrollbar">
              <div>
-                <p className="text-[10px] font-black text-blue-600 uppercase mb-2">Primary Category</p>
+                <p className="text-[10px] font-black text-teal-700 uppercase mb-2">Primary Category</p>
                 <h2 className="text-3xl font-black text-slate-900 leading-none tracking-tight">{selectedTask.category}</h2>
                 <p className="text-[10px] font-mono text-slate-400 mt-2">UUID: {selectedTask.taskId}</p>
              </div>
@@ -727,8 +727,8 @@ const CreateTask = () => {
                 </div>
              </div>
 
-             <div className="p-6 bg-blue-600 rounded-[2rem] text-white shadow-xl shadow-blue-200 relative overflow-hidden">
-                <Layers className="absolute -right-4 -bottom-4 text-blue-500 opacity-30" size={100} />
+             <div className="p-6 bg-teal-700 rounded-[2rem] text-white shadow-xl shadow-teal-100 relative overflow-hidden">
+                <Layers className="absolute -right-4 -bottom-4 text-teal-500 opacity-30" size={100} />
                 <p className="text-[10px] font-black uppercase mb-3 opacity-60">Field Instructions</p>
                 <p className="text-sm font-medium leading-relaxed italic relative z-10">
                   "{selectedTask.description?.text || "No manual override instructions provided for this deployment."}"
@@ -750,7 +750,7 @@ const CreateTask = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1">
                 <label className="text-[10px] font-black text-slate-400 uppercase ml-2">Work Category</label>
-                <input type="text" placeholder="e.g. Electrical" className="w-full p-4 bg-slate-50 border-none rounded-2xl text-sm focus:ring-2 focus:ring-blue-500 outline-none" required 
+                <input type="text" placeholder="e.g. Electrical" className="w-full p-4 bg-slate-50 border-none rounded-2xl text-sm focus:ring-2 focus:ring-teal-600 outline-none" required 
                   onChange={e => setFormData({...formData, category: e.target.value})} />
               </div>
               <div className="space-y-1">
@@ -779,7 +779,7 @@ const CreateTask = () => {
               onChange={e => setFormData({...formData, descriptionText: e.target.value})} />
 
             <div className="flex gap-4 pt-4">
-              <button type="submit" className="flex-1 bg-blue-600 text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-blue-700 shadow-lg shadow-blue-200 transition-all">Submit to Field</button>
+              <button type="submit" className="flex-1 bg-teal-700 text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-teal-800 shadow-lg shadow-teal-100 transition-all">Submit to Field</button>
             </div>
           </form>
         </div>

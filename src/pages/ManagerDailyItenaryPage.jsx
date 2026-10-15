@@ -132,7 +132,7 @@
 // // //     return (
 // // //       <div className="flex items-center justify-center h-screen bg-gray-50">
 // // //         <div className="text-center">
-// // //           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
+// // //           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
 // // //           <div className="text-lg text-gray-600">Loading...</div>
 // // //         </div>
 // // //       </div>
@@ -179,13 +179,13 @@
 // // //         key={task._id}
 // // //         onClick={() => setSelectedTask(task)}
 // // //         className={`cursor-pointer transition-colors border-b ${
-// // //           isSelected ? "bg-orange-50" : "hover:bg-gray-50"
+// // //           isSelected ? "bg-[#e6f3ee]" : "hover:bg-gray-50"
 // // //         }`}
 // // //       >
 // // //         <td className="px-4 py-3 text-sm text-gray-900">{index + 1}</td>
 // // //         <td className="px-4 py-3">
 // // //           <div className="flex items-center gap-2">
-// // //             <div className="w-8 h-8 rounded bg-orange-100 flex items-center justify-center text-orange-600 font-semibold text-xs">
+// // //             <div className="w-8 h-8 rounded bg-[#e6f3ee] flex items-center justify-center text-teal-700 font-semibold text-xs">
 // // //               {task.taskId?.substring(0, 2).toUpperCase()}
 // // //             </div>
 // // //             <div>
@@ -212,7 +212,7 @@
 // // //             </span>
 // // //           )}
 // // //           {type === "progress" && (
-// // //             <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-orange-100 text-orange-700">
+// // //             <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-[#e6f3ee] text-teal-800">
 // // //               In Progress
 // // //             </span>
 // // //           )}
@@ -382,7 +382,7 @@
 // // //   };
 
 // // //   return (
-// // //     <div className="h-screen flex flex-col bg-gray-50">
+// // //     <div className="min-h-screen flex flex-col bg-[#f4f7f4]">
 // // //       {/* Header */}
 // // //       <div className="bg-white border-b px-6 py-4">
 // // //         <div className="max-w-7xl mx-auto">
@@ -404,7 +404,7 @@
 // // //                 placeholder="Search tasks..."
 // // //                 value={searchQuery}
 // // //                 onChange={(e) => setSearchQuery(e.target.value)}
-// // //                 className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-64"
+// // //                 className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-600 w-64"
 // // //               />
 // // //               <select
 // // //                 value={selectedProject}
@@ -412,7 +412,7 @@
 // // //                   setSelectedProject(e.target.value);
 // // //                   setSelectedTask(null);
 // // //                 }}
-// // //                 className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+// // //                 className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
 // // //               >
 // // //                 <option value="">Select Project</option>
 // // //                 {projects.map((project) => (
@@ -442,9 +442,9 @@
 // // //                 <span className="font-semibold text-red-600">{overdueTasks.length}</span>
 // // //               </div>
 // // //               <div className="flex items-center gap-2">
-// // //                 <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+// // //                 <span className="w-2 h-2 bg-teal-700 rounded-full"></span>
 // // //                 <span className="text-gray-600">In Progress:</span>
-// // //                 <span className="font-semibold text-orange-600">{inProgressTasks.length}</span>
+// // //                 <span className="font-semibold text-teal-700">{inProgressTasks.length}</span>
 // // //               </div>
 // // //             </div>
 // // //           )}
@@ -537,9 +537,9 @@
 // // //                 {/* In Progress Section */}
 // // //                 {filterTasks(inProgressTasks).length > 0 && (
 // // //                   <div>
-// // //                     <div className="bg-orange-50 px-4 py-2 border-b flex items-center justify-between sticky top-0 z-10">
-// // //                       <h3 className="font-semibold text-orange-700 text-sm">In Progress</h3>
-// // //                       <span className="bg-orange-600 text-white px-2 py-0.5 rounded text-xs font-medium">
+// // //                     <div className="bg-[#e6f3ee] px-4 py-2 border-b flex items-center justify-between sticky top-0 z-10">
+// // //                       <h3 className="font-semibold text-teal-800 text-sm">In Progress</h3>
+// // //                       <span className="bg-teal-700 text-white px-2 py-0.5 rounded text-xs font-medium">
 // // //                         {filterTasks(inProgressTasks).length}
 // // //                       </span>
 // // //                     </div>
@@ -617,10 +617,10 @@
 // // //                     <button onClick={() => callStore(store.phone)} className="bg-green-600 hover:bg-green-700 text-white py-2 rounded text-sm font-medium transition-colors">
 // // //                       Call
 // // //                     </button>
-// // //                     <button onClick={() => getDirections(store.lat, store.lng)} className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded text-sm font-medium transition-colors">
+// // //                     <button onClick={() => getDirections(store.lat, store.lng)} className="bg-teal-700 hover:bg-teal-800 text-white py-2 rounded text-sm font-medium transition-colors">
 // // //                       Navigate
 // // //                     </button>
-// // //                     <button onClick={() => openGoogleMaps(store.lat, store.lng, store.name)} className="bg-orange-600 hover:bg-orange-700 text-white py-2 rounded text-sm font-medium transition-colors">
+// // //                     <button onClick={() => openGoogleMaps(store.lat, store.lng, store.name)} className="bg-teal-700 hover:bg-teal-800 text-white py-2 rounded text-sm font-medium transition-colors">
 // // //                       Map
 // // //                     </button>
 // // //                   </div>
@@ -831,7 +831,7 @@
 // //     return (
 // //       <div className="flex items-center justify-center h-screen bg-gray-50">
 // //         <div className="text-center">
-// //           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
+// //           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
 // //           <div className="text-lg text-gray-600">Loading...</div>
 // //         </div>
 // //       </div>
@@ -878,13 +878,13 @@
 // //         key={task._id}
 // //         onClick={() => setSelectedTask(task)}
 // //         className={`cursor-pointer transition-colors border-b ${
-// //           isSelected ? "bg-orange-50" : "hover:bg-gray-50"
+// //           isSelected ? "bg-[#e6f3ee]" : "hover:bg-gray-50"
 // //         }`}
 // //       >
 // //         <td className="px-4 py-3 text-sm text-gray-900">{index + 1}</td>
 // //         <td className="px-4 py-3">
 // //           <div className="flex items-center gap-2">
-// //             <div className="w-8 h-8 rounded bg-orange-100 flex items-center justify-center text-orange-600 font-semibold text-xs">
+// //             <div className="w-8 h-8 rounded bg-[#e6f3ee] flex items-center justify-center text-teal-700 font-semibold text-xs">
 // //               {task.taskId?.substring(0, 2).toUpperCase()}
 // //             </div>
 // //             <div>
@@ -911,7 +911,7 @@
 // //             </span>
 // //           )}
 // //           {type === "progress" && (
-// //             <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-orange-100 text-orange-700">
+// //             <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-[#e6f3ee] text-teal-800">
 // //               In Progress
 // //             </span>
 // //           )}
@@ -1078,7 +1078,7 @@
 // //   };
 
 // //   return (
-// //     <div className="h-screen flex flex-col bg-gray-50">
+// //     <div className="min-h-screen flex flex-col bg-[#f4f7f4]">
 // //       {/* Header */}
 // //       <div className="bg-white border-b px-6 py-4">
 // //         <div className="max-w-7xl mx-auto">
@@ -1100,7 +1100,7 @@
 // //                 placeholder="Search tasks..."
 // //                 value={searchQuery}
 // //                 onChange={(e) => setSearchQuery(e.target.value)}
-// //                 className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-64"
+// //                 className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-600 w-64"
 // //               />
 // //               <select
 // //                 value={selectedProject}
@@ -1108,7 +1108,7 @@
 // //                   setSelectedProject(e.target.value);
 // //                   setSelectedTask(null);
 // //                 }}
-// //                 className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+// //                 className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
 // //               >
 // //                 <option value="">Select Project</option>
 // //                 {projects.map((project) => (
@@ -1138,9 +1138,9 @@
 // //                 <span className="font-semibold text-red-600">{overdueTasks.length}</span>
 // //               </div>
 // //               <div className="flex items-center gap-2">
-// //                 <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+// //                 <span className="w-2 h-2 bg-teal-700 rounded-full"></span>
 // //                 <span className="text-gray-600">In Progress:</span>
-// //                 <span className="font-semibold text-orange-600">{inProgressTasks.length}</span>
+// //                 <span className="font-semibold text-teal-700">{inProgressTasks.length}</span>
 // //               </div>
 // //             </div>
 // //           )}
@@ -1233,9 +1233,9 @@
 // //                 {/* In Progress Section */}
 // //                 {filterTasks(inProgressTasks).length > 0 && (
 // //                   <div>
-// //                     <div className="bg-orange-50 px-4 py-2 border-b flex items-center justify-between sticky top-0 z-10">
-// //                       <h3 className="font-semibold text-orange-700 text-sm">In Progress</h3>
-// //                       <span className="bg-orange-600 text-white px-2 py-0.5 rounded text-xs font-medium">
+// //                     <div className="bg-[#e6f3ee] px-4 py-2 border-b flex items-center justify-between sticky top-0 z-10">
+// //                       <h3 className="font-semibold text-teal-800 text-sm">In Progress</h3>
+// //                       <span className="bg-teal-700 text-white px-2 py-0.5 rounded text-xs font-medium">
 // //                         {filterTasks(inProgressTasks).length}
 // //                       </span>
 // //                     </div>
@@ -1291,7 +1291,7 @@
 // //           <h2 className="text-xl font-semibold text-gray-900">Nearby Vendors</h2>
 // //         </div>
 // //         <div className="flex items-center gap-3">
-// //           <button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors">
+// //           <button className="bg-teal-700 hover:bg-teal-800 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors">
 // //             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 // //               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
 // //             </svg>
@@ -1323,7 +1323,7 @@
 // //                 placeholder="Search vendors..."
 // //                 value={storeSearchQuery}
 // //                 onChange={(e) => setStoreSearchQuery(e.target.value)}
-// //                 className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
+// //                 className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent text-sm"
 // //               />
 // //             </div>
 // //           </div>
@@ -1355,7 +1355,7 @@
 // //                         </button>
 // //                         <button 
 // //                           onClick={() => getDirections(store.lat, store.lng)}
-// //                           className="bg-blue-600 text-white px-2 py-1 rounded text-xs"
+// //                           className="bg-teal-700 text-white px-2 py-1 rounded text-xs"
 // //                         >
 // //                           Navigate
 // //                         </button>
@@ -1394,12 +1394,12 @@
 // //                 <div className="flex items-start justify-between mb-4">
 // //                   <div className="flex-1">
 // //                     <h3 className="text-lg font-semibold text-gray-900 mb-1">{store.name}</h3>
-// //                     <p className="text-sm text-orange-600 font-medium">{store.category}</p>
+// //                     <p className="text-sm text-teal-700 font-medium">{store.category}</p>
 // //                   </div>
 // //                   <div className="flex items-center gap-2">
 // //                     <button 
 // //                       onClick={() => callStore(store.phone)}
-// //                       className="p-2 bg-orange-100 hover:bg-orange-200 text-orange-600 rounded-lg transition-colors"
+// //                       className="p-2 bg-[#e6f3ee] hover:bg-[#d7ebe2] text-teal-700 rounded-lg transition-colors"
 // //                     >
 // //                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 // //                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -1407,7 +1407,7 @@
 // //                     </button>
 // //                     <button 
 // //                       onClick={() => sendEmail(store.email)}
-// //                       className="p-2 bg-orange-100 hover:bg-orange-200 text-orange-600 rounded-lg transition-colors"
+// //                       className="p-2 bg-[#e6f3ee] hover:bg-[#d7ebe2] text-teal-700 rounded-lg transition-colors"
 // //                     >
 // //                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 // //                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -1448,8 +1448,8 @@
 // //                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
 // //                     </svg>
 // //                     <span>{store.address}</span>
-// //                     <span className="text-orange-600 font-medium ml-2">{store.distance}</span>
-// //                     <button className="text-blue-600 hover:text-blue-700 text-xs underline ml-2">
+// //                     <span className="text-teal-700 font-medium ml-2">{store.distance}</span>
+// //                     <button className="text-teal-700 hover:text-teal-800 text-xs underline ml-2">
 // //                       mail+
 // //                     </button>
 // //                   </div>
@@ -1484,7 +1484,7 @@
 // //                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
 // //                 </svg>
 // //               </button>
-// //               <button className="w-8 h-8 bg-orange-600 text-white rounded text-sm font-medium">1</button>
+// //               <button className="w-8 h-8 bg-teal-700 text-white rounded text-sm font-medium">1</button>
 // //               <button className="w-8 h-8 text-gray-600 hover:bg-gray-100 rounded text-sm">2</button>
 // //               <button className="w-8 h-8 text-gray-600 hover:bg-gray-100 rounded text-sm">3</button>
 // //               <button className="w-8 h-8 text-gray-600 hover:bg-gray-100 rounded text-sm">4</button>
@@ -1802,12 +1802,12 @@
 //       <tr
 //         key={task._id}
 //         onClick={() => setSelectedTask(task)}
-//         className={`cursor-pointer transition-colors border-b ${isSelected ? "bg-orange-50" : "hover:bg-gray-50"}`}
+//         className={`cursor-pointer transition-colors border-b ${isSelected ? "bg-[#e6f3ee]" : "hover:bg-gray-50"}`}
 //       >
 //         <td className="px-4 py-3 text-sm text-gray-900">{index + 1}</td>
 //         <td className="px-4 py-3">
 //           <div className="flex items-center gap-2">
-//             <div className="w-8 h-8 rounded bg-orange-100 flex items-center justify-center text-orange-600 font-semibold text-xs">
+//             <div className="w-8 h-8 rounded bg-[#e6f3ee] flex items-center justify-center text-teal-700 font-semibold text-xs">
 //               {task.taskId?.substring(0, 2).toUpperCase()}
 //             </div>
 //             <div>
@@ -1834,7 +1834,7 @@
 //             </span>
 //           )}
 //           {type === "progress" && (
-//             <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-orange-100 text-orange-700">
+//             <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-[#e6f3ee] text-teal-800">
 //               In Progress
 //             </span>
 //           )}
@@ -1993,7 +1993,7 @@
 //     return (
 //       <div className="flex items-center justify-center h-screen bg-gray-50">
 //         <div className="text-center">
-//           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
+//           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
 //           <div className="text-lg text-gray-600">Loading...</div>
 //         </div>
 //       </div>
@@ -2001,7 +2001,7 @@
 //   }
 
 //   return (
-//     <div className="h-screen flex flex-col bg-gray-50">
+//     <div className="min-h-screen flex flex-col bg-[#f4f7f4]">
 //       {/* OTP MODAL (Dummy Gmail OTP) */}
 //       {otpModalOpen && (
 //         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
@@ -2061,7 +2061,7 @@
 //                 placeholder="Search tasks..."
 //                 value={searchQuery}
 //                 onChange={(e) => setSearchQuery(e.target.value)}
-//                 className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-64"
+//                 className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-600 w-64"
 //               />
 //               <select
 //                 value={selectedProject}
@@ -2069,7 +2069,7 @@
 //                   setSelectedProject(e.target.value);
 //                   setSelectedTask(null);
 //                 }}
-//                 className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+//                 className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
 //               >
 //                 <option value="">Select Project</option>
 //                 {projects.map((project) => (
@@ -2141,9 +2141,9 @@
 //                 <span className="font-semibold text-red-600">{overdueTasks.length}</span>
 //               </div>
 //               <div className="flex items-center gap-2">
-//                 <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+//                 <span className="w-2 h-2 bg-teal-700 rounded-full"></span>
 //                 <span className="text-gray-600">In Progress:</span>
-//                 <span className="font-semibold text-orange-600">{inProgressTasks.length}</span>
+//                 <span className="font-semibold text-teal-700">{inProgressTasks.length}</span>
 //               </div>
 //             </div>
 //           )}
@@ -2235,9 +2235,9 @@
 //                 {/* In Progress */}
 //                 {filterTasks(inProgressTasks).length > 0 && (
 //                   <div>
-//                     <div className="bg-orange-50 px-4 py-2 border-b flex items-center justify-between sticky top-0 z-10">
-//                       <h3 className="font-semibold text-orange-700 text-sm">In Progress</h3>
-//                       <span className="bg-orange-600 text-white px-2 py-0.5 rounded text-xs font-medium">
+//                     <div className="bg-[#e6f3ee] px-4 py-2 border-b flex items-center justify-between sticky top-0 z-10">
+//                       <h3 className="font-semibold text-teal-800 text-sm">In Progress</h3>
+//                       <span className="bg-teal-700 text-white px-2 py-0.5 rounded text-xs font-medium">
 //                         {filterTasks(inProgressTasks).length}
 //                       </span>
 //                     </div>
@@ -2287,7 +2287,7 @@
 //                 <h2 className="text-xl font-semibold text-gray-900">Nearby Vendors</h2>
 //               </div>
 //               <div className="flex items-center gap-3">
-//                 <button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors">
+//                 <button className="bg-teal-700 hover:bg-teal-800 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors">
 //                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 //                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
 //                   </svg>
@@ -2313,7 +2313,7 @@
 //                       placeholder="Search vendors..."
 //                       value={storeSearchQuery}
 //                       onChange={(e) => setStoreSearchQuery(e.target.value)}
-//                       className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
+//                       className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent text-sm"
 //                     />
 //                   </div>
 //                 </div>
@@ -2335,7 +2335,7 @@
 //                               <button onClick={() => callStore(store.phone)} className="bg-green-600 text-white px-2 py-1 rounded text-xs">
 //                                 Call
 //                               </button>
-//                               <button onClick={() => getDirections(store.lat, store.lng)} className="bg-blue-600 text-white px-2 py-1 rounded text-xs">
+//                               <button onClick={() => getDirections(store.lat, store.lng)} className="bg-teal-700 text-white px-2 py-1 rounded text-xs">
 //                                 Navigate
 //                               </button>
 //                             </div>
@@ -2365,18 +2365,18 @@
 //                       <div className="flex items-start justify-between mb-4">
 //                         <div className="flex-1">
 //                           <h3 className="text-lg font-semibold text-gray-900 mb-1">{store.name}</h3>
-//                           <p className="text-sm text-orange-600 font-medium">{store.category}</p>
+//                           <p className="text-sm text-teal-700 font-medium">{store.category}</p>
 //                         </div>
 //                         <div className="flex items-center gap-2">
 //                           <button
 //                             onClick={() => callStore(store.phone)}
-//                             className="p-2 bg-orange-100 hover:bg-orange-200 text-orange-600 rounded-lg transition-colors"
+//                             className="p-2 bg-[#e6f3ee] hover:bg-[#d7ebe2] text-teal-700 rounded-lg transition-colors"
 //                           >
 //                             📞
 //                           </button>
 //                           <button
 //                             onClick={() => sendEmail(store.email)}
-//                             className="p-2 bg-orange-100 hover:bg-orange-200 text-orange-600 rounded-lg transition-colors"
+//                             className="p-2 bg-[#e6f3ee] hover:bg-[#d7ebe2] text-teal-700 rounded-lg transition-colors"
 //                           >
 //                             ✉️
 //                           </button>
@@ -2392,7 +2392,7 @@
 //                         </div>
 //                         <div>
 //                           <span className="font-medium">Address:</span> {store.address}{" "}
-//                           <span className="text-orange-600 font-medium ml-2">{store.distance}</span>
+//                           <span className="text-teal-700 font-medium ml-2">{store.distance}</span>
 //                         </div>
 //                         <div>
 //                           <span className="font-medium">Email:</span> {store.email}
@@ -2422,6 +2422,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import api from "../api/axiosConfig";
 import TaskDetailsPanel from "../components/TaskDetailsPanel";
+import { CalendarDays, ClipboardCheck, Clock3, Image as ImageIcon, Search, ShieldAlert, RefreshCw } from "lucide-react";
 
 // Fix markers
 delete L.Icon.Default.prototype._getIconUrl;
@@ -2449,6 +2450,21 @@ const saveSessionObj = (key, obj) => {
 };
 
 const generateOtp = () => String(Math.floor(100000 + Math.random() * 900000));
+
+const resolveMediaUrl = (value) => {
+  if (!value || typeof value !== "string") return "";
+  const trimmed = value.trim();
+  if (/^(https?:|data:|blob:)/i.test(trimmed)) return trimmed;
+  const backendBase = (import.meta.env.VITE_BACKEND_URL || "").replace(/\/+$/, "");
+  const mediaPath = trimmed.startsWith("/") ? trimmed : "/" + trimmed;
+  return backendBase ? backendBase + mediaPath : mediaPath;
+};
+
+const getBeforePhoto = (task) =>
+  task?.beforePhotoUrl || task?.beforePhoto || task?.beforePhotoPath || "";
+
+const getAfterPhoto = (task) =>
+  task?.afterPhotoUrl || task?.afterPhoto || task?.afterPhotoPath || task?.completionPhotoUrl || "";
 
 const isHighRiskTask = (task, index) => {
   if (task?.isHighRisk === true) return true;
@@ -2661,7 +2677,7 @@ export default function ManagerDailyItineraryPage() {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-50">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
           <div className="text-lg text-gray-600">Loading...</div>
         </div>
       </div>
@@ -2674,7 +2690,7 @@ export default function ManagerDailyItineraryPage() {
   const projectFilteredTasks = selectedProject ? tasks.filter((t) => t.projectId === selectedProject) : tasks;
 
   const pendingApprovalTasks = projectFilteredTasks.filter(
-    (t) => t.status === "COMPLETED" && t.approved === false && t.afterPhotoUrl
+    (t) => t.status === "COMPLETED" && t.approved === false && getAfterPhoto(t)
   );
 
   const overdueTasks = projectFilteredTasks.filter(
@@ -2707,7 +2723,7 @@ export default function ManagerDailyItineraryPage() {
       badge === "SAFETY" ? "bg-amber-100 text-amber-800" :
       badge === "APPROVAL" ? "bg-green-100 text-green-700" :
       badge === "OVERDUE" ? "bg-red-100 text-red-700" :
-      "bg-orange-100 text-orange-700";
+      "bg-[#e6f3ee] text-teal-800";
 
     const badgeText =
       badge === "SAFETY" ? "Safety Approval" :
@@ -2720,13 +2736,13 @@ export default function ManagerDailyItineraryPage() {
         key={task._id}
         onClick={() => setSelectedTask(task)}
         className={`cursor-pointer transition-colors border-b ${
-          isSelected ? "bg-orange-50" : "hover:bg-gray-50"
+          isSelected ? "bg-[#e6f3ee]" : "hover:bg-gray-50"
         }`}
       >
         <td className="px-4 py-3 text-sm text-gray-900">{index + 1}</td>
         <td className="px-4 py-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded bg-orange-100 flex items-center justify-center text-orange-600 font-semibold text-xs">
+            <div className="w-8 h-8 rounded bg-[#e6f3ee] flex items-center justify-center text-teal-700 font-semibold text-xs">
               {task.taskId?.substring(0, 2).toUpperCase()}
             </div>
             <div>
@@ -2800,7 +2816,7 @@ export default function ManagerDailyItineraryPage() {
     }
 
     const isPendingApproval =
-      selectedTask.status === "COMPLETED" && selectedTask.approved === false && selectedTask.afterPhotoUrl;
+      selectedTask.status === "COMPLETED" && selectedTask.approved === false && getAfterPhoto(selectedTask);
 
     const isOverdue = selectedTask.status === "CREATED" && selectedTask.endDate && new Date(selectedTask.endDate) < today;
 
@@ -2826,7 +2842,7 @@ export default function ManagerDailyItineraryPage() {
           <p className="text-sm text-gray-700">{selectedTask.description}</p>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-6 space-y-6">
+        <div className="max-h-[65vh] space-y-6 overflow-y-auto p-4 sm:p-6">
           {/* Safety Request Panel */}
           {selectedTask.isHighRisk && (
             <div className="border rounded-lg p-4 bg-red-50 border-red-200">
@@ -2896,24 +2912,28 @@ export default function ManagerDailyItineraryPage() {
           )}
 
           {/* Photos */}
-          {selectedTask.beforePhotoUrl && (
+          {getBeforePhoto(selectedTask) && (
             <div>
               <div className="text-sm font-medium text-gray-700 mb-2">Before Photo</div>
               <img
-                src={`${import.meta.env.VITE_BACKEND_URL}${selectedTask.beforePhotoUrl}`}
-                alt="Before"
-                className="w-full rounded border"
+                src={resolveMediaUrl(getBeforePhoto(selectedTask))}
+                alt="Before work evidence"
+                loading="lazy"
+                className="max-h-[420px] w-full rounded-xl border border-[#dce7e1] bg-[#f4f7f4] object-contain"
+                onError={(event) => { event.currentTarget.style.display = "none"; }}
               />
             </div>
           )}
 
-          {selectedTask.afterPhotoUrl && (
+          {getAfterPhoto(selectedTask) && (
             <div>
               <div className="text-sm font-medium text-gray-700 mb-2">After Photo</div>
               <img
-                src={`${import.meta.env.VITE_BACKEND_URL}${selectedTask.afterPhotoUrl}`}
-                alt="After"
-                className="w-full rounded border"
+                src={resolveMediaUrl(getAfterPhoto(selectedTask))}
+                alt="After work completion evidence"
+                loading="lazy"
+                className="max-h-[420px] w-full rounded-xl border border-[#dce7e1] bg-[#f4f7f4] object-contain"
+                onError={(event) => { event.currentTarget.style.display = "none"; }}
               />
             </div>
           )}
@@ -2943,86 +2963,72 @@ export default function ManagerDailyItineraryPage() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b px-6 py-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">Daily Itinerary</h1>
-              <p className="text-sm text-gray-600 mt-1">
-                {new Date().toLocaleDateString("en-IN", {
-                  weekday: "long",
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}
+    <div className="min-h-screen flex flex-col bg-[#f4f7f4]">
+      {/* Manager Today header */}
+      <header className="relative overflow-hidden bg-[#102b2a] text-white">
+        <div className="pointer-events-none absolute -right-20 -top-28 h-80 w-80 rounded-full border-[42px] border-white/[0.04]" />
+        <div className="pointer-events-none absolute right-24 top-16 h-44 w-44 rounded-full bg-teal-500/10 blur-3xl" />
+        <div className="relative mx-auto max-w-[1500px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+          <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+            <div className="min-w-0">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-teal-100">
+                <CalendarDays size={14} /> Manager workspace <span className="text-white/35">/</span> Daily operations
+              </div>
+              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Today at your sites</h1>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
+                Review site progress, safety requests and completion photos. Take action without chasing updates.
+              </p>
+              <p className="mt-4 flex items-center gap-2 text-xs font-medium text-teal-100/80 sm:text-sm">
+                <CalendarDays size={15} /> {new Date().toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
               </p>
             </div>
-            <div className="flex items-center gap-3">
-              <input
-                type="text"
-                placeholder="Search tasks..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 w-64"
-              />
-              <select
-                value={selectedProject}
-                onChange={(e) => {
-                  setSelectedProject(e.target.value);
-                  setSelectedTask(null);
-                }}
-                className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >
-                <option value="">Select Project</option>
-                {projects.map((project) => (
-                  <option key={project._id} value={project.projectId}>
-                    {project.name}
-                  </option>
-                ))}
-              </select>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(220px,1fr)_minmax(190px,auto)] xl:w-[560px]">
+              <label className="block min-w-0">
+                <span className="mb-1.5 block text-xs font-semibold text-slate-300">Search work</span>
+                <span className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-3.5 py-3 focus-within:border-teal-300">
+                  <Search size={17} className="shrink-0 text-teal-100" />
+                  <input type="search" placeholder="Task, description, supervisor…" value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full min-w-0 bg-transparent text-sm text-white outline-none placeholder:text-slate-400" />
+                </span>
+              </label>
+              <label className="block min-w-0">
+                <span className="mb-1.5 block text-xs font-semibold text-slate-300">Project</span>
+                <select value={selectedProject}
+                  onChange={(e) => { setSelectedProject(e.target.value); setSelectedTask(null); }}
+                  className="w-full min-w-0 rounded-xl border border-white/15 bg-[#183b38] px-3.5 py-3 text-sm text-white outline-none focus:border-teal-300">
+                  <option value="">Select project</option>
+                  {projects.map((project) => <option key={project._id} value={project.projectId}>{project.name}</option>)}
+                </select>
+              </label>
             </div>
           </div>
-
-          {/* Quick Stats */}
-          {selectedProject && (
-            <div className="flex items-center gap-6 text-sm flex-wrap">
-              <div className="flex items-center gap-2">
-                <span className="text-gray-600">Total:</span>
-                <span className="font-semibold">{projectFilteredTasks.length}</span>
+          <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-5">
+            {[
+              { label: "Tasks in project", value: projectFilteredTasks.length, icon: ClipboardCheck, note: "All tracked work", tone: "text-white" },
+              { label: "Safety review", value: safetyRequests.length, icon: ShieldAlert, note: "Needs manager action", tone: "text-amber-200" },
+              { label: "Ready to approve", value: pendingApprovalTasks.length, icon: ImageIcon, note: "Completion evidence", tone: "text-emerald-200" },
+              { label: "Overdue", value: overdueTasks.length, icon: Clock3, note: "Past due date", tone: "text-rose-200" },
+              { label: "In progress", value: inProgressTasks.length, icon: RefreshCw, note: "Active on site", tone: "text-teal-200" },
+            ].map(({ label, value, icon: Icon, note, tone }) => (
+              <div key={label} className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.06] p-4 backdrop-blur-sm">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-xs font-medium leading-4 text-slate-300 sm:text-sm">{label}</span>
+                  <Icon size={17} className={tone} />
+                </div>
+                <div className="mt-3 flex items-end justify-between gap-2">
+                  <span className="text-3xl font-bold tracking-tight text-white">{value}</span>
+                  {value > 0 && label !== "Tasks in project" && <span className="mb-1 h-2 w-2 shrink-0 rounded-full bg-teal-300 shadow-[0_0_0_4px_rgba(94,234,212,0.1)]" />}
+                </div>
+                <p className="mt-1 text-[11px] leading-4 text-slate-400">{note}</p>
               </div>
-
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
-                <span className="text-gray-600">Safety Requests:</span>
-                <span className="font-semibold text-yellow-700">{safetyRequests.length}</span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                <span className="text-gray-600">Approval:</span>
-                <span className="font-semibold text-green-600">{pendingApprovalTasks.length}</span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-red-500 rounded-full"></span>
-                <span className="text-gray-600">Overdue:</span>
-                <span className="font-semibold text-red-600">{overdueTasks.length}</span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
-                <span className="text-gray-600">In Progress:</span>
-                <span className="font-semibold text-orange-600">{inProgressTasks.length}</span>
-              </div>
-            </div>
-          )}
+            ))}
+          </div>
         </div>
-      </div>
+      </header>
 
       {/* Content */}
-      <div className="flex-1 overflow-hidden">
+      <div className="min-h-[60vh] flex-1">
         {!selectedProject ? (
           <div className="h-full flex items-center justify-center">
             <div className="text-center max-w-md">
@@ -3048,9 +3054,9 @@ export default function ManagerDailyItineraryPage() {
             </div>
           </div>
         ) : (
-          <div className="h-full max-w-7xl mx-auto p-6 grid grid-cols-12 gap-6">
-            <div className="col-span-7 bg-white rounded-lg border overflow-hidden flex flex-col">
-              <div className="overflow-auto flex-1">
+          <div className="mx-auto grid w-full max-w-[1500px] grid-cols-1 items-start gap-5 px-4 py-5 sm:px-6 lg:px-8 xl:grid-cols-12">
+            <div className="min-w-0 overflow-hidden rounded-2xl border border-[#dce7e1] bg-white shadow-sm xl:col-span-7">
+              <div className="min-w-0 overflow-auto">
                 {/* Safety Requests */}
                 {filterTasks(safetyRequests).length > 0 && (
                   <div className="border-b">
@@ -3132,9 +3138,9 @@ export default function ManagerDailyItineraryPage() {
                 {/* In Progress */}
                 {filterTasks(inProgressTasks).length > 0 && (
                   <div>
-                    <div className="bg-orange-50 px-4 py-2 border-b flex items-center justify-between sticky top-0 z-10">
-                      <h3 className="font-semibold text-orange-700 text-sm">In Progress</h3>
-                      <span className="bg-orange-600 text-white px-2 py-0.5 rounded text-xs font-medium">
+                    <div className="bg-[#e6f3ee] px-4 py-2 border-b flex items-center justify-between sticky top-0 z-10">
+                      <h3 className="font-semibold text-teal-800 text-sm">In Progress</h3>
+                      <span className="bg-teal-700 text-white px-2 py-0.5 rounded text-xs font-medium">
                         {filterTasks(inProgressTasks).length}
                       </span>
                     </div>
@@ -3169,7 +3175,7 @@ export default function ManagerDailyItineraryPage() {
               </div>
             </div>
 
-            <div className="col-span-5 bg-white rounded-lg border overflow-hidden">
+            <div className="min-w-0 overflow-hidden rounded-2xl border border-[#dce7e1] bg-white shadow-sm xl:col-span-5 xl:sticky xl:top-4">
               {renderDetailPanel()}
             </div>
           </div>
@@ -3202,7 +3208,7 @@ export default function ManagerDailyItineraryPage() {
                     placeholder="Search vendors..."
                     value={storeSearchQuery}
                     onChange={(e) => setStoreSearchQuery(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent text-sm"
                   />
                 </div>
 
@@ -3228,7 +3234,7 @@ export default function ManagerDailyItineraryPage() {
                               </button>
                               <button
                                 onClick={() => getDirections(store.lat, store.lng)}
-                                className="bg-blue-600 text-white px-2 py-1 rounded text-xs"
+                                className="bg-teal-700 text-white px-2 py-1 rounded text-xs"
                               >
                                 Navigate
                               </button>
@@ -3250,7 +3256,7 @@ export default function ManagerDailyItineraryPage() {
                   {filteredStores.map((store) => (
                     <div key={store.id} className="p-6 border-b hover:bg-gray-50 transition-colors">
                       <h3 className="text-lg font-semibold text-gray-900 mb-1">{store.name}</h3>
-                      <p className="text-sm text-orange-600 font-medium mb-3">{store.category}</p>
+                      <p className="text-sm text-teal-700 font-medium mb-3">{store.category}</p>
 
                       <div className="text-sm text-gray-700 mb-2">
                         <b>Contact:</b> {store.contact}
@@ -3262,7 +3268,7 @@ export default function ManagerDailyItineraryPage() {
                         <b>Email:</b> {store.email}
                       </div>
                       <div className="text-sm text-gray-700">
-                        <b>Address:</b> {store.address} <span className="text-orange-600 font-medium">({store.distance})</span>
+                        <b>Address:</b> {store.address} <span className="text-teal-700 font-medium">({store.distance})</span>
                       </div>
                     </div>
                   ))}

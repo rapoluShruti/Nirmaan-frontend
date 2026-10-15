@@ -106,7 +106,7 @@
 //   const TaskDetailView = ({ task }) => (
 //     <div className="fixed inset-0 bg-gradient-to-b from-slate-50 to-slate-100 z-50 overflow-y-auto">
 //       {/* Header */}
-//       <div className="sticky top-0 bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-xl z-10">
+//       <div className="sticky top-0 bg-gradient-to-r from-teal-600 to-teal-500 text-white shadow-xl z-10">
 //         <div className="p-5">
 //           <button 
 //             onClick={() => setSelectedTask(null)} 
@@ -127,7 +127,7 @@
 //       <div className="px-4 py-5 -mt-4">
 //         <div className="grid grid-cols-3 gap-3">
 //           <div className="bg-white rounded-2xl shadow-lg p-4 text-center border border-slate-100">
-//             <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-2">
+//             <div className="bg-gradient-to-br from-teal-500 to-teal-600 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-2">
 //               <Users size={24} className="text-white" strokeWidth={2.5} />
 //             </div>
 //             <p className="text-2xl font-bold text-slate-800 mb-1">{task.workersRequired}</p>
@@ -153,12 +153,12 @@
 //       {/* System Note */}
 //       {task.systemNote && (
 //         <div className="mx-4 mb-5">
-//           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 rounded-xl p-4 shadow-sm">
+//           <div className="bg-gradient-to-r from-teal-50 to-teal-50 border-l-4 border-teal-500 rounded-xl p-4 shadow-sm">
 //             <div className="flex gap-3">
-//               <div className="bg-blue-500 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5">
+//               <div className="bg-teal-500 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5">
 //                 <span className="text-white text-xs font-bold">i</span>
 //               </div>
-//               <p className="text-sm text-blue-900 leading-relaxed">{task.systemNote}</p>
+//               <p className="text-sm text-teal-900 leading-relaxed">{task.systemNote}</p>
 //             </div>
 //           </div>
 //         </div>
@@ -167,14 +167,14 @@
 //       {/* Photo Upload Section */}
 //       <div className="px-4 pb-6">
 //         <h3 className="font-bold text-lg text-slate-800 mb-4 flex items-center gap-2">
-//           <Camera size={20} className="text-orange-600" />
+//           <Camera size={20} className="text-teal-600" />
 //           Upload Photos
 //         </h3>
         
 //         {/* Before Photo */}
 //         <div className="mb-5">
 //           <label className="block text-sm font-semibold text-slate-700 mb-3">Before Photo</label>
-//           <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-dashed border-slate-200 hover:border-orange-400 transition-colors">
+//           <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-dashed border-slate-200 hover:border-teal-400 transition-colors">
 //             {beforePhoto ? (
 //               <div className="relative">
 //                 <img src={beforePhoto} alt="Before" className="w-full h-56 object-cover" />
@@ -206,7 +206,7 @@
 //         {/* After Photo */}
 //         <div className="mb-5">
 //           <label className="block text-sm font-semibold text-slate-700 mb-3">After Photo</label>
-//           <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-dashed border-slate-200 hover:border-orange-400 transition-colors">
+//           <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-dashed border-slate-200 hover:border-teal-400 transition-colors">
 //             {afterPhoto ? (
 //               <div className="relative">
 //                 <img src={afterPhoto} alt="After" className="w-full h-56 object-cover" />
@@ -238,7 +238,7 @@
 //         {/* Note Section */}
 //         <div className="mb-5">
 //           <label className="block text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
-//             <Mic size={16} className="text-orange-600" />
+//             <Mic size={16} className="text-teal-600" />
 //             Add Note (Optional)
 //           </label>
 //           <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
@@ -248,7 +248,7 @@
 //               placeholder="Any comments, issues, or observations..."
 //               className="w-full p-4 pr-14 min-h-32 text-slate-700 text-base resize-none focus:outline-none"
 //             />
-//             <button className="absolute bottom-4 right-4 bg-gradient-to-br from-orange-500 to-orange-600 text-white p-3 rounded-xl shadow-md active:scale-95 transition-transform">
+//             <button className="absolute bottom-4 right-4 bg-gradient-to-br from-teal-500 to-teal-600 text-white p-3 rounded-xl shadow-md active:scale-95 transition-transform">
 //               <Mic size={20} strokeWidth={2.5} />
 //             </button>
 //           </div>
@@ -257,7 +257,7 @@
 //         {/* Status Update */}
 //         <div className="mb-6">
 //           <label className="block text-sm font-semibold text-slate-700 mb-3">Update Status</label>
-//           <select className="w-full bg-white border-2 border-slate-200 rounded-2xl p-4 text-base font-medium text-slate-700 shadow-lg focus:outline-none focus:border-orange-500 appearance-none bg-no-repeat bg-right pr-12" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23475569\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'%3E%3C/polyline%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundSize: '1.5rem'}}>
+//           <select className="w-full bg-white border-2 border-slate-200 rounded-2xl p-4 text-base font-medium text-slate-700 shadow-lg focus:outline-none focus:border-teal-500 appearance-none bg-no-repeat bg-right pr-12" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23475569\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'%3E%3C/polyline%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundSize: '1.5rem'}}>
 //             <option value="not-started">Not Started</option>
 //             <option value="in-progress">In Progress</option>
 //             <option value="completed">Completed</option>
@@ -266,7 +266,7 @@
 //         </div>
 
 //         {/* Save Button */}
-//         <button className="w-full bg-gradient-to-r from-orange-600 to-orange-500 text-white py-5 rounded-2xl font-bold text-lg shadow-2xl active:scale-98 transition-transform flex items-center justify-center gap-2">
+//         <button className="w-full bg-gradient-to-r from-teal-600 to-teal-500 text-white py-5 rounded-2xl font-bold text-lg shadow-2xl active:scale-98 transition-transform flex items-center justify-center gap-2">
 //           <CheckCircle size={24} strokeWidth={2.5} />
 //           Save & Update Task
 //         </button>
@@ -281,7 +281,7 @@
 //   return (
 //     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 pb-20">
 //       {/* Header */}
-//       <div className="bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-2xl">
+//       <div className="bg-gradient-to-r from-teal-600 to-teal-500 text-white shadow-2xl">
 //         <div className="p-5">
 //           <div className="flex items-center gap-2 mb-2">
 //             <div className="bg-white/20 p-2 rounded-lg">
@@ -294,7 +294,7 @@
 //               <Calendar size={16} strokeWidth={2.5} />
 //               <span className="text-sm font-semibold">{projectInfo.date}</span>
 //             </div>
-//             <span className="bg-white text-orange-600 px-4 py-2 rounded-full text-sm font-bold shadow-md">
+//             <span className="bg-white text-teal-600 px-4 py-2 rounded-full text-sm font-bold shadow-md">
 //               {projectInfo.role}
 //             </span>
 //           </div>
@@ -335,7 +335,7 @@
 //       {/* Carried Forward Work */}
 //       <div className="p-5">
 //         <div className="flex items-center gap-3 mb-4">
-//           <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-2.5 rounded-xl shadow-md">
+//           <div className="bg-gradient-to-br from-teal-500 to-teal-600 p-2.5 rounded-xl shadow-md">
 //             <Repeat size={24} className="text-white" strokeWidth={2.5} />
 //           </div>
 //           <h2 className="text-xl font-bold text-slate-800">Carried Forward Work</h2>
@@ -344,7 +344,7 @@
 //           <div 
 //             key={task.id} 
 //             onClick={() => setSelectedTask(task)}
-//             className="bg-white rounded-2xl p-5 mb-4 shadow-xl border-l-4 border-orange-500 active:scale-98 transition-transform cursor-pointer"
+//             className="bg-white rounded-2xl p-5 mb-4 shadow-xl border-l-4 border-teal-500 active:scale-98 transition-transform cursor-pointer"
 //           >
 //             <div className="flex justify-between items-start mb-3">
 //               <div className="flex-1">
@@ -352,23 +352,23 @@
 //                   <span className="bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-md">
 //                     HIGH PRIORITY
 //                   </span>
-//                   <span className="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-md">
+//                   <span className="bg-gradient-to-r from-teal-400 to-teal-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-md">
 //                     Auto Carried
 //                   </span>
 //                 </div>
 //                 <h3 className="font-bold text-slate-900 text-base leading-tight mb-2">{task.name}</h3>
 //                 <p className="text-sm text-slate-500 font-medium bg-slate-100 inline-block px-3 py-1 rounded-lg">{task.id}</p>
 //               </div>
-//               <ChevronRight className="text-orange-500 flex-shrink-0 ml-3" size={24} strokeWidth={2.5} />
+//               <ChevronRight className="text-teal-500 flex-shrink-0 ml-3" size={24} strokeWidth={2.5} />
 //             </div>
             
 //             <div className="flex items-start gap-2 text-sm text-slate-600 mb-3 bg-slate-50 p-3 rounded-xl">
-//               <MapPin size={16} className="flex-shrink-0 mt-0.5 text-orange-500" strokeWidth={2.5} />
+//               <MapPin size={16} className="flex-shrink-0 mt-0.5 text-teal-500" strokeWidth={2.5} />
 //               <span className="font-medium">{task.location}</span>
 //             </div>
 
 //             <div className="flex items-center justify-between pt-3 border-t-2 border-slate-100">
-//               <div className="flex items-center gap-2 bg-gradient-to-br from-blue-500 to-blue-600 px-4 py-2 rounded-xl shadow-md">
+//               <div className="flex items-center gap-2 bg-gradient-to-br from-teal-500 to-teal-600 px-4 py-2 rounded-xl shadow-md">
 //                 <Users size={18} className="text-white" strokeWidth={2.5} />
 //                 <span className="text-sm font-bold text-white">{task.workersRequired} Workers</span>
 //               </div>
@@ -378,8 +378,8 @@
 //             </div>
 
 //             <div className="mt-3 pt-3 border-t-2 border-slate-100">
-//               <p className="text-xs text-orange-800 font-semibold">
-//                 <span className="text-orange-600">● </span>Reason: {task.reason}
+//               <p className="text-xs text-teal-800 font-semibold">
+//                 <span className="text-teal-600">● </span>Reason: {task.reason}
 //               </p>
 //             </div>
 //           </div>
@@ -425,11 +425,11 @@
 
 //             {task.systemNote && (
 //               <div className="mt-3 pt-3 border-t-2 border-slate-100">
-//                 <div className="flex items-start gap-2 bg-blue-50 px-3 py-2 rounded-xl">
-//                   <div className="bg-blue-500 rounded-full w-4 h-4 flex items-center justify-center flex-shrink-0 mt-0.5">
+//                 <div className="flex items-start gap-2 bg-teal-50 px-3 py-2 rounded-xl">
+//                   <div className="bg-teal-500 rounded-full w-4 h-4 flex items-center justify-center flex-shrink-0 mt-0.5">
 //                     <span className="text-white text-xs font-bold">i</span>
 //                   </div>
-//                   <p className="text-xs text-blue-800 font-medium leading-relaxed">{task.systemNote}</p>
+//                   <p className="text-xs text-teal-800 font-medium leading-relaxed">{task.systemNote}</p>
 //                 </div>
 //               </div>
 //             )}
@@ -567,7 +567,7 @@ const DailyItinerary = () => {
   const TaskDetailView = ({ task }) => (
     <div className="fixed inset-0 bg-slate-50 z-50 overflow-y-auto">
       {/* Header */}
-      <div className="sticky top-0 bg-orange-600 text-white border-b border-orange-700">
+      <div className="sticky top-0 bg-teal-600 text-white border-b border-teal-700">
         <div className="p-4">
           <button
             onClick={() => setSelectedTask(null)}
@@ -608,7 +608,7 @@ const DailyItinerary = () => {
         </div>
 
         {task.systemNote && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-xs text-blue-800">
+          <div className="bg-teal-50 border border-teal-200 rounded-lg p-3 text-xs text-teal-800">
             {task.systemNote}
           </div>
         )}
@@ -665,7 +665,7 @@ const DailyItinerary = () => {
           <option>Blocked</option>
         </select>
 
-        <button className="w-full bg-orange-600 hover:bg-orange-700 text-white rounded-lg py-3 text-sm font-semibold flex items-center justify-center gap-2">
+        <button className="w-full bg-teal-600 hover:bg-teal-700 text-white rounded-lg py-3 text-sm font-semibold flex items-center justify-center gap-2">
           <CheckCircle size={18} />
           Save & Update Task
         </button>
@@ -678,15 +678,15 @@ const DailyItinerary = () => {
   /* ------------------ MAIN LIST VIEW ------------------ */
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#f4f7f4]">
       {/* Header */}
-      <div className="bg-orange-600 text-white border-b border-orange-700">
+      <div className="bg-teal-600 text-white border-b border-teal-700">
         <div className="p-4 flex justify-between items-center">
           <div>
             <h1 className="text-base font-semibold">{projectInfo.name}</h1>
             <p className="text-xs opacity-90">{projectInfo.date}</p>
           </div>
-          <span className="bg-white text-orange-600 px-3 py-1 rounded-md text-xs font-semibold">
+          <span className="bg-white text-teal-600 px-3 py-1 rounded-md text-xs font-semibold">
             {projectInfo.role}
           </span>
         </div>
@@ -738,7 +738,7 @@ const DailyItinerary = () => {
           <div
             key={task.id}
             onClick={() => setSelectedTask(task)}
-            className="bg-white border rounded-lg p-4 mb-3 shadow-sm cursor-pointer hover:border-orange-400"
+            className="bg-white border rounded-lg p-4 mb-3 shadow-sm cursor-pointer hover:border-teal-400"
           >
             <p className="font-semibold text-sm">{task.name}</p>
             <p className="text-xs text-slate-500">{task.location}</p>
@@ -750,7 +750,7 @@ const DailyItinerary = () => {
               </span>
             </div>
 
-            <p className="text-xs text-orange-700 mt-2">
+            <p className="text-xs text-teal-700 mt-2">
               Reason: {task.reason}
             </p>
           </div>
@@ -765,7 +765,7 @@ const DailyItinerary = () => {
           <div
             key={task.id}
             onClick={() => setSelectedTask(task)}
-            className="bg-white border rounded-lg p-4 mb-3 shadow-sm cursor-pointer hover:border-orange-400"
+            className="bg-white border rounded-lg p-4 mb-3 shadow-sm cursor-pointer hover:border-teal-400"
           >
             <p className="font-semibold text-sm">{task.name}</p>
             <p className="text-xs text-slate-500">{task.location}</p>
@@ -778,7 +778,7 @@ const DailyItinerary = () => {
             </div>
 
             {task.systemNote && (
-              <p className="text-xs text-blue-700 mt-2">
+              <p className="text-xs text-teal-700 mt-2">
                 {task.systemNote}
               </p>
             )}

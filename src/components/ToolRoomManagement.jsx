@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import QRCode from "react-qr-code";
 import {
   Hammer,
   Wrench,
@@ -23,6 +24,7 @@ export default function ToolRoomManagement() {
   const [activeTab, setActiveTab] = useState("light");
   const [selectedType, setSelectedType] = useState(null);
   const [selectedTool, setSelectedTool] = useState(null);
+  const [allocatedTool, setAllocatedTool] = useState(null);
   const [showHistory, setShowHistory] = useState(false);
 
   const workers = ["Raj Kumar", "Amit Sharma", "Vikas Patel", "Team A"];
@@ -96,8 +98,9 @@ export default function ToolRoomManagement() {
       ],
     };
 
-    setTools([...tools, newTool]);
-    finishAction();
+    setTools((prev) => [...prev, newTool]);
+    setAllocatedTool(newTool);
+    setScreen("success");
   };
 
   /* ---------------- RETURN ---------------- */
@@ -186,7 +189,7 @@ export default function ToolRoomManagement() {
               key={t}
               onClick={() => setActiveTab(t)}
               className={`px-4 py-2 rounded-xl border font-semibold ${
-                activeTab === t ? "bg-orange-600 text-white" : ""
+                activeTab === t ? "bg-teal-700 text-white" : ""
               }`}
             >
               {t.toUpperCase()}
@@ -204,7 +207,7 @@ export default function ToolRoomManagement() {
                 return (
                   <div key={t.name} className="border rounded-2xl p-4 flex justify-between">
                     <div className="flex gap-3 items-center">
-                      <Icon className="w-6 h-6 text-orange-600" />
+                      <Icon className="w-6 h-6 text-teal-700" />
                       <div>
                         <p className="font-bold">{t.name}</p>
                         <p className="text-xs text-gray-500">
@@ -218,7 +221,7 @@ export default function ToolRoomManagement() {
                         setSelectedType(t);
                         setScreen("allocate");
                       }}
-                      className="px-4 py-2 bg-orange-600 text-white rounded-xl"
+                      className="px-4 py-2 bg-teal-700 text-white rounded-xl"
                     >
                       Allocate
                     </button>
@@ -341,7 +344,7 @@ export default function ToolRoomManagement() {
 
         <button
           onClick={allocateTool}
-          className="mt-4 w-full bg-orange-600 text-white py-3 rounded-xl"
+          className="mt-4 w-full bg-teal-700 text-white py-3 rounded-xl"
         >
           Generate ID & Allocate
         </button>
@@ -368,7 +371,7 @@ export default function ToolRoomManagement() {
               key={c}
               onClick={() => setReturnCondition(c)}
               className={`flex-1 py-3 rounded-xl border ${
-                returnCondition === c ? "bg-orange-600 text-white" : ""
+                returnCondition === c ? "bg-teal-700 text-white" : ""
               }`}
             >
               {c.toUpperCase()}
@@ -398,7 +401,7 @@ export default function ToolRoomManagement() {
 
         <button
           onClick={returnTool}
-          className="mt-4 w-full bg-orange-600 text-white py-3 rounded-xl"
+          className="mt-4 w-full bg-teal-700 text-white py-3 rounded-xl"
         >
           Confirm Return
         </button>
@@ -410,13 +413,54 @@ export default function ToolRoomManagement() {
 
   if (screen === "success") {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="p-6 border rounded-3xl shadow-xl text-center">
-          <CheckCircle2 className="mx-auto text-orange-600 w-8 h-8" />
-          <p className="mt-3 font-bold">Action Completed</p>
-          <p className="text-sm text-gray-500">
-            Tool record updated successfully
-          </p>
+      <div className="min-h-screen bg-[#f4f7f4] px-4 py-10 text-[#183a35] md:px-8">
+        <div className="mx-auto max-w-3xl">
+          <div className="overflow-hidden rounded-3xl border border-[#dce7e1] bg-white shadow-xl">
+            <div className="bg-[#102b2a] px-6 py-7 text-white md:px-8">
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="h-9 w-9 text-emerald-300" />
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[.18em] text-teal-100">Allocation complete</p>
+                  <h1 className="mt-1 text-2xl font-bold">Tool issued successfully</h1>
+                </div>
+              </div>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-slate-300">A unique tool ID and QR label have been generated. Print or scan this label to identify the issued tool and its assignment.</p>
+            </div>
+            {allocatedTool ? (
+              <div className="grid gap-6 p-6 md:grid-cols-[minmax(0,1fr)_240px] md:p-8">
+                <div>
+                  <div className="rounded-2xl border border-[#dce7e1] bg-[#f7faf8] p-5">
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#71847d]">Unique tool ID</p>
+                    <p className="mt-2 font-mono text-3xl font-bold tracking-tight text-[#102b2a]">{allocatedTool.id}</p>
+                    <div className="mt-5 grid grid-cols-2 gap-4">
+                      <div><p className="text-xs text-[#71847d]">Tool</p><p className="mt-1 font-semibold">{allocatedTool.name}</p></div>
+                      <div><p className="text-xs text-[#71847d]">Category</p><p className="mt-1 font-semibold">{allocatedTool.category}</p></div>
+                      <div><p className="text-xs text-[#71847d]">Assigned to</p><p className="mt-1 font-semibold">{allocatedTool.issuedTo}</p></div>
+                      <div><p className="text-xs text-[#71847d]">Site zone</p><p className="mt-1 font-semibold">{allocatedTool.zone}</p></div>
+                    </div>
+                    <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-800"><CheckCircle2 size={14} /> Issued · Working condition</div>
+                  </div>
+                  <p className="mt-4 text-xs leading-5 text-[#71847d]">QR content identifies this tool and assignment in the current app. This is a client-generated label; backend persistence and a dedicated scan workflow are separate integrations.</p>
+                </div>
+                <div className="tool-qr-print flex flex-col items-center justify-center rounded-2xl border border-[#dce7e1] p-5 text-center">
+                  <div className="rounded-xl bg-white p-3"><QRCode value={JSON.stringify({ app: "NIRMAAN", type: "tool", id: allocatedTool.id, name: allocatedTool.name, assignedTo: allocatedTool.issuedTo, zone: allocatedTool.zone })} size={180} level="M" /></div>
+                  <p className="mt-4 text-sm font-bold">Tool QR label</p>
+                  <p className="mt-1 font-mono text-xs font-bold text-[#244740]">{allocatedTool.id}</p>
+                  <p className="mt-1 text-xs text-[#71847d]">{allocatedTool.issuedTo} · {allocatedTool.zone}</p>
+                  <p className="mt-1 text-xs text-[#71847d]">Keep with the equipment</p>
+                  <button onClick={() => window.print()} className="mt-4 w-full rounded-xl border border-[#dce7e1] px-4 py-2.5 text-sm font-bold text-[#244740] transition hover:bg-[#f4f7f4]">Print label</button>
+                </div>
+                <div className="md:col-span-2">
+                  <button onClick={() => { setScreen("list"); setSelectedType(null); setSelectedTool(null); setAllocatedTool(null); setAllocateForm({ worker: "", zone: "" }); }} className="w-full rounded-xl bg-[#0f766e] px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#0b5d57]">Return to tool room</button>
+                </div>
+              </div>
+            ) : (
+              <div className="p-8 text-center">
+                <p className="font-semibold">Tool record updated successfully.</p>
+                <button onClick={() => setScreen("list")} className="mt-5 rounded-xl bg-[#0f766e] px-5 py-3 text-sm font-bold text-white">Return to tool room</button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { HardHat, Mail, Lock } from "lucide-react";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { HardHat, Mail, Lock, ArrowUpRight, ShieldCheck, Building2, CheckCircle2 } from "lucide-react";
 import API from "../api/axiosConfig";
 
 export default function Login() {
@@ -8,45 +8,20 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  /* ======================
-     REDIRECT ONLY IF ALREADY LOGGED IN
-     TEMPORARILY DISABLED FOR TESTING
-  ====================== */
-  // useEffect(() => {
-  //   const user = JSON.parse(localStorage.getItem("user"));
-  //   if (!user) return;
-
-  //   if (user.role === "MANAGER") {
-  //     navigate("/quick-view", { replace: true });
-  //   } else if (user.role === "SITE_ENGINEER") {
-  //     navigate("/task", { replace: true });
-  //   } else if (user.role === "SUPERVISOR") {
-  //     navigate("/iop", { replace: true });
-  //   }
-  // }, [navigate]);
-
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
     try {
       const { data } = await API.post("/auth/login", form);
-
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-
       const role = data.user.role;
-
-      if (role === "MANAGER") {
-        navigate("/quick-view", { replace: true });
-      } else if (role === "SITE_ENGINEER") {
-        navigate("/task", { replace: true });
-      } else if (role === "SUPERVISOR") {
-        navigate("/iop", { replace: true });
-      }
+      if (role === "MANAGER") navigate("/quick-view", { replace: true });
+      else if (role === "SITE_ENGINEER") navigate("/task", { replace: true });
+      else if (role === "SUPERVISOR") navigate("/iop", { replace: true });
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
     } finally {
@@ -55,83 +30,42 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-100 px-4">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-xl border border-zinc-200">
-        {/* Header */}
-        <div className="flex flex-col items-center gap-3 border-b border-zinc-200 px-8 py-6">
-          <div className="bg-orange-500 text-white p-3 rounded-lg">
-            <HardHat size={28} />
-          </div>
-          <h1 className="text-2xl font-extrabold tracking-tight text-black">
-            NIRMAAN
-          </h1>
-          <p className="text-sm text-zinc-500">
-            Construction Management System
-          </p>
+    <div className="nirmaan-auth">
+      <aside className="nirmaan-auth-aside">
+        <div className="nirmaan-auth-brand">
+          <span className="nirmaan-brand-mark"><HardHat size={23} /></span>
+          <span>NIRMAAN<span className="nirmaan-brand-period">.</span></span>
         </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="px-8 py-8 space-y-5">
-          {/* Email */}
-          <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-1">
-              Email
-            </label>
-            <div className="relative">
-              <Mail
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"
-                size={18}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="you@company.com"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full rounded-md border border-zinc-300 pl-10 pr-3 py-2.5 text-sm focus:outline-none focus:border-orange-500"
-              />
-            </div>
+        <div className="nirmaan-auth-copy">
+          <span className="nirmaan-eyebrow"><span /> BUILT FOR THE FIELD</span>
+          <h1>Build with<br />clarity.</h1>
+          <p>One calm, connected workspace for your projects, people, materials and progress on site.</p>
+          <div className="nirmaan-auth-proof">
+            <div className="nirmaan-proof-icon"><CheckCircle2 size={18} /></div>
+            <div><strong>Every site. One source of truth.</strong><span>Plans, updates and decisions in sync.</span></div>
           </div>
-
-          {/* Password */}
-          <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-1">
-              Password
-            </label>
-            <div className="relative">
-              <Lock
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"
-                size={18}
-              />
-              <input
-                type="password"
-                name="password"
-                placeholder="••••••••"
-                value={form.password}
-                onChange={handleChange}
-                required
-                className="w-full rounded-md border border-zinc-300 pl-10 pr-3 py-2.5 text-sm focus:outline-none focus:border-orange-500"
-              />
-            </div>
-          </div>
-
-          {/* Button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-md bg-black py-3 text-sm font-bold text-white hover:bg-zinc-800 transition disabled:opacity-60"
-          >
-            {loading ? "Signing in..." : "Sign In"}
-          </button>
-        </form>
-
-        {/* Footer */}
-        <div className="border-t border-zinc-200 px-8 py-4 text-center">
-          <p className="text-xs text-zinc-500">
-            Authorized personnel only. All actions are logged.
-          </p>
         </div>
+        <div className="nirmaan-auth-aside-foot"><span>PROJECTS · PEOPLE · PROGRESS</span><span>01 / WORKSPACE</span></div>
+        <div className="nirmaan-auth-orbit nirmaan-orbit-one" />
+        <div className="nirmaan-auth-orbit nirmaan-orbit-two" />
+      </aside>
+
+      <div className="nirmaan-auth-main">
+        <div className="nirmaan-auth-topline"><span>Already part of a team?</span><Link to="/register">Create an account <ArrowUpRight size={15} /></Link></div>
+        <section className="nirmaan-auth-panel">
+          <div className="nirmaan-form-kicker"><span className="nirmaan-form-kicker-icon"><Building2 size={17} /></span> YOUR WORKSPACE</div>
+          <h2>Welcome back</h2>
+          <p className="nirmaan-form-subtitle">Sign in to pick up where your team left off.</p>
+          <form onSubmit={handleSubmit} className="nirmaan-auth-form">
+            <label htmlFor="login-email">Work email</label>
+            <div className="nirmaan-input-wrap"><Mail size={18} /><input id="login-email" type="email" name="email" placeholder="you@company.com" value={form.email} onChange={handleChange} autoComplete="username" required /></div>
+            <div className="nirmaan-password-label"><label htmlFor="login-password">Password</label><span>Secure access</span></div>
+            <div className="nirmaan-input-wrap"><Lock size={18} /><input id="login-password" type="password" name="password" placeholder="Enter your password" value={form.password} onChange={handleChange} autoComplete="current-password" required /></div>
+            <button type="submit" disabled={loading} className="nirmaan-submit">{loading ? "Signing in…" : "Sign in to Nirmaan"} <ArrowUpRight size={17} /></button>
+          </form>
+          <div className="nirmaan-secure-note"><ShieldCheck size={16} /><span>Your workspace is protected with secure sign-in.</span></div>
+        </section>
+        <footer className="nirmaan-auth-footer">© NIRMAAN <span>·</span> Construction operations, thoughtfully connected.</footer>
       </div>
     </div>
   );
