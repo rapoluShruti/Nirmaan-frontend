@@ -1589,3 +1589,25 @@ main [class~="hover:bg-orange-700"]:hover,
 main [class~="hover:bg-orange-600"]:hover { background-color: #0b5d57 !important; }
 main [class~="focus:ring-orange-500"]:focus { --tw-ring-color: rgba(15, 118, 110, .28) !important; }
 main [class~="focus:border-orange-500"]:focus { border-color: #0f766e !important; }
+
+
+/* Print only the QR label, not the surrounding tool-management screen. */
+@media print {
+  body * { visibility: hidden !important; }
+  .tool-qr-print, .tool-qr-print * { visibility: visible !important; }
+  .tool-qr-print {
+    position: fixed !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 260px !important;
+    max-width: 90vw !important;
+    padding: 20px !important;
+    border: 1px solid #dce7e1 !important;
+    border-radius: 12px !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+  }
+  .tool-qr-print button { display: none !important; }
+}
