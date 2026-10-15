@@ -1411,3 +1411,150 @@ header.w-full.bg-white.border-b button { color: var(--nm-ink); }
   .nm-footer__bottom { width: min(100% - 2rem, 1280px); align-items: flex-start; flex-direction: column; }
   .nm-footer__bottom-right { text-align: left; }
 }
+
+
+/* =========================================================
+   FINAL CROSS-ROUTE POLISH
+   Applies to all routed screens and shared feature components.
+   Semantic success/warning/error colors are intentionally preserved.
+========================================================= */
+main.flex-grow {
+  min-width: 0;
+  background: #f4f7f4;
+}
+main.flex-grow > * { min-width: 0; }
+main .bg-gray-50, main .bg-slate-50, main .bg-zinc-50,
+main .bg-stone-50, main .bg-neutral-50 {
+  background-color: #f4f7f4;
+}
+main .bg-gray-100, main .bg-slate-100, main .bg-zinc-100,
+main .bg-stone-100, main .bg-neutral-100 {
+  background-color: #eaf0ec;
+}
+main .text-gray-900, main .text-slate-900, main .text-zinc-900,
+main .text-neutral-900, main .text-stone-900 {
+  color: #102b2a;
+}
+main .text-gray-800, main .text-slate-800, main .text-zinc-800,
+main .text-neutral-800, main .text-stone-800 {
+  color: #203c38;
+}
+main .text-gray-700, main .text-slate-700, main .text-zinc-700,
+main .text-neutral-700, main .text-stone-700 {
+  color: #36504b;
+}
+main .text-gray-600, main .text-slate-600, main .text-zinc-600,
+main .text-neutral-600, main .text-stone-600 {
+  color: #5f756e;
+}
+main .text-gray-500, main .text-slate-500, main .text-zinc-500,
+main .text-neutral-500, main .text-stone-500 {
+  color: #71847d;
+}
+main .border-gray-100, main .border-slate-100, main .border-zinc-100,
+main .border-gray-200, main .border-slate-200, main .border-zinc-200,
+main .border-neutral-200, main .border-stone-200 {
+  border-color: #dce7e1;
+}
+main .divide-gray-100 > :not([hidden]) ~ :not([hidden]),
+main .divide-gray-200 > :not([hidden]) ~ :not([hidden]),
+main .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+main .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e5ede8;
+}
+main .shadow, main .shadow-sm, main .shadow-md {
+  --tw-shadow: 0 8px 24px rgba(16, 43, 42, .055);
+  --tw-shadow-colored: 0 8px 24px var(--tw-shadow-color);
+  box-shadow: var(--tw-shadow);
+}
+main .rounded-lg, main .rounded-xl, main .rounded-2xl {
+  border-radius: 1rem;
+}
+main .rounded-md { border-radius: .7rem; }
+main button, main a, main input, main select, main textarea {
+  transition-property: color, background-color, border-color, box-shadow, transform;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+main button { font-weight: 650; }
+main button[class*="bg-teal-"], main a[class*="bg-teal-"] {
+  background-color: #0f766e;
+  color: #fff;
+}
+main button[class*="bg-teal-"]:hover, main a[class*="bg-teal-"]:hover {
+  background-color: #0b5d57;
+}
+main button[class*="bg-orange-"], main a[class*="bg-orange-"] {
+  background-color: #0f766e;
+  color: #fff;
+}
+main button[class*="bg-orange-"]:hover, main a[class*="bg-orange-"]:hover {
+  background-color: #0b5d57;
+}
+main button[class*="border-orange-"], main a[class*="border-orange-"] {
+  border-color: #b9d9cf;
+}
+main button[class*="text-orange-"], main a[class*="text-orange-"] {
+  color: #0f766e;
+}
+main .bg-orange-50, main .bg-amber-50 {
+  background-color: #fff4dd;
+}
+main .text-orange-700, main .text-amber-700 {
+  color: #80571a;
+}
+main .border-orange-200, main .border-amber-200 {
+  border-color: #ead5a9;
+}
+main .bg-gradient-to-r.from-orange-200,
+main .bg-gradient-to-r.from-orange-300,
+main .bg-gradient-to-r.from-orange-400,
+main .bg-gradient-to-r.from-orange-500,
+main .bg-gradient-to-br.from-orange-200,
+main .bg-gradient-to-br.from-orange-300,
+main .bg-gradient-to-br.from-orange-400 {
+  background-image: linear-gradient(135deg, #102b2a, #174d46 58%, #0f766e);
+}
+main .bg-gradient-to-r.from-blue-500,
+main .bg-gradient-to-br.from-blue-500,
+main .bg-gradient-to-r.from-indigo-500,
+main .bg-gradient-to-br.from-indigo-500 {
+  background-image: linear-gradient(135deg, #102b2a, #174d46 58%, #0f766e);
+}
+main .overflow-hidden { min-width: 0; }
+main img, main video, main iframe { max-width: 100%; }
+main pre, main code { overflow-wrap: anywhere; }
+main [class*="animate-"] { will-change: auto; }
+main .leaflet-container { z-index: 0; border-radius: 1rem; overflow: hidden; }
+main .leaflet-control, main .leaflet-popup-content-wrapper { color: #203c38; }
+main .leaflet-popup-content-wrapper { border-radius: .8rem; }
+main .leaflet-popup-content { line-height: 1.55; }
+main .leaflet-bar a, main .leaflet-bar a:hover {
+  color: #102b2a;
+  border-color: #dce7e1;
+}
+main .leaflet-bar a:hover { background: #e6f3ee; }
+main .recharts-wrapper, main .recharts-responsive-container { max-width: 100%; }
+main .recharts-cartesian-grid line { stroke: #e4ece7; }
+main .recharts-text { fill: #6b807b; }
+main [role="dialog"], main [aria-modal="true"] {
+  color: #203c38;
+}
+main [role="dialog"] input, main [role="dialog"] select,
+main [role="dialog"] textarea { width: 100%; max-width: 100%; }
+@media (max-width: 768px) {
+  main.flex-grow { overflow-x: clip; }
+  main .max-w-7xl, main .max-w-6xl, main .max-w-5xl,
+  main .max-w-4xl, main .max-w-3xl {
+    max-width: 100%;
+  }
+  main .px-10, main .px-12 { padding-left: 1.25rem; padding-right: 1.25rem; }
+  main .space-x-8 > :not([hidden]) ~ :not([hidden]) { margin-left: 1rem; }
+}
+@media (hover: hover) and (pointer: fine) {
+  main .bg-white.rounded-lg:hover,
+  main .bg-white.rounded-xl:hover,
+  main .bg-white.rounded-2xl:hover {
+    border-color: #d0e1d9;
+  }
+}
