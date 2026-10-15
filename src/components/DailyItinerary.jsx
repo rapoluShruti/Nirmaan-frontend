@@ -153,7 +153,7 @@
 //       {/* System Note */}
 //       {task.systemNote && (
 //         <div className="mx-4 mb-5">
-//           <div className="bg-gradient-to-r from-teal-50 to-indigo-50 border-l-4 border-teal-500 rounded-xl p-4 shadow-sm">
+//           <div className="bg-gradient-to-r from-teal-50 to-teal-50 border-l-4 border-teal-500 rounded-xl p-4 shadow-sm">
 //             <div className="flex gap-3">
 //               <div className="bg-teal-500 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5">
 //                 <span className="text-white text-xs font-bold">i</span>
