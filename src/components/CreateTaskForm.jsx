@@ -308,7 +308,7 @@
 //       <button
 //         onClick={submitTask}
 //         disabled={loading}
-//         className="bg-orange-600 text-white px-4 py-2 rounded disabled:opacity-50"
+//         className="bg-teal-600 text-white px-4 py-2 rounded disabled:opacity-50"
 //       >
 //         {loading ? "Creating..." : "Create Task"}
 //       </button>
@@ -413,7 +413,7 @@ export default function CreateTaskForm({ project, layoutImage, coordinates, onTa
           <div className="space-y-1">
             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Supervisor</label>
             <select
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-orange-500 outline-none transition-all"
+              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-teal-500 outline-none transition-all"
               value={form.assignedSupervisor}
               onChange={(e) => setForm({ ...form, assignedSupervisor: e.target.value })}
             >
@@ -426,7 +426,7 @@ export default function CreateTaskForm({ project, layoutImage, coordinates, onTa
           <div className="space-y-1">
             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Voice Note URL</label>
             <input
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-orange-500 outline-none transition-all"
+              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-teal-500 outline-none transition-all"
               placeholder="https://..."
               value={form.voiceNoteUrl}
               onChange={(e) => setForm({ ...form, voiceNoteUrl: e.target.value })}
@@ -438,7 +438,7 @@ export default function CreateTaskForm({ project, layoutImage, coordinates, onTa
             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Start Date</label>
             <input
               type="date"
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
+              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-teal-500 outline-none"
               value={form.startDate}
               onChange={(e) => setForm({ ...form, startDate: e.target.value })}
             />
@@ -449,7 +449,7 @@ export default function CreateTaskForm({ project, layoutImage, coordinates, onTa
             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">End Date</label>
             <input
               type="date"
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
+              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-teal-500 outline-none"
               value={form.endDate}
               onChange={(e) => setForm({ ...form, endDate: e.target.value })}
             />
@@ -457,13 +457,13 @@ export default function CreateTaskForm({ project, layoutImage, coordinates, onTa
         </div>
 
         {/* Categories Section - Cleaned up */}
-        <div className="mb-8 p-6 bg-orange-50/50 rounded-2xl border border-orange-100">
+        <div className="mb-8 rounded-2xl border border-[#dce7e1] bg-[#f7fbf8] p-6">
           <div className="flex justify-between items-center mb-4">
             <span className="font-bold text-gray-700">Labor Categories</span>
             <button
               type="button"
               onClick={addCategory}
-              className="text-xs bg-orange-500 hover:bg-orange-600 text-white px-4 py-1.5 rounded-full transition-all"
+              className="text-xs bg-teal-700 hover:bg-teal-800 text-white px-4 py-1.5 rounded-full transition-all"
             >
               + Add Category
             </button>
@@ -505,7 +505,7 @@ export default function CreateTaskForm({ project, layoutImage, coordinates, onTa
           <div className="space-y-1">
             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Description</label>
             <textarea
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm h-24 focus:ring-2 focus:ring-orange-500 outline-none resize-none"
+              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm h-24 focus:ring-2 focus:ring-teal-500 outline-none resize-none"
               placeholder="Describe the task details..."
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
@@ -528,7 +528,7 @@ export default function CreateTaskForm({ project, layoutImage, coordinates, onTa
 
             <div className="flex-1">
                <input
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-teal-500 outline-none"
                 placeholder="Materials Required (comma separated)"
                 value={form.materialsRequired}
                 onChange={(e) => setForm({ ...form, materialsRequired: e.target.value })}
@@ -549,7 +549,7 @@ export default function CreateTaskForm({ project, layoutImage, coordinates, onTa
         <button
           onClick={submitTask}
           disabled={loading}
-          className="flex-1 bg-orange-600 py-3 rounded-xl font-bold text-white hover:bg-orange-700 disabled:opacity-50 transition-all shadow-lg shadow-orange-100"
+          className="flex-1 bg-teal-600 py-3 rounded-xl font-bold text-white hover:bg-teal-700 disabled:opacity-50 transition-all shadow-md shadow-teal-100"
         >
           {loading ? "Processing..." : "Create Task"}
         </button>
