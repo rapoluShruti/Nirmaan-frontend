@@ -763,7 +763,7 @@
 // //           <div>
 // //             <label className="block text-sm text-gray-700 mb-2">Select Approved Task</label>
 // //             <select
-// //               className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+// //               className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
 // //               value={currentRequest.taskId}
 // //               onChange={(e) => setCurrentRequest({ ...currentRequest, taskId: e.target.value })}
 // //             >
@@ -779,7 +779,7 @@
 // //           </div>
 
 // //           {currentRequest.taskId && (
-// //             <div className="p-4 bg-blue-50 rounded-lg border border-blue-100">
+// //             <div className="p-4 bg-teal-50 rounded-lg border border-teal-100">
 // //               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
 // //                 <div>
 // //                   <span className="text-xs text-gray-600 uppercase tracking-wider">Project</span>
@@ -818,7 +818,7 @@
 // //                     <div className="md:col-span-3">
 // //                       <label className="block text-xs text-gray-500 uppercase tracking-wider font-medium mb-2">Material</label>
 // //                       <select
-// //                         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+// //                         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
 // //                         value={it.materialId}
 // //                         onChange={(e) => updateRequestItem(idx, "materialId", e.target.value)}
 // //                       >
@@ -835,7 +835,7 @@
 // //                       <label className="block text-xs text-gray-500 uppercase tracking-wider font-medium mb-2">Quantity</label>
 // //                       <input
 // //                         type="number"
-// //                         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+// //                         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
 // //                         value={it.quantity}
 // //                         onChange={(e) => updateRequestItem(idx, "quantity", e.target.value)}
 // //                         placeholder="Qty"
@@ -877,13 +877,13 @@
 // //             <label className="block text-sm text-gray-700 mb-2">Required Date</label>
 // //             <input
 // //               type="date"
-// //               className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+// //               className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
 // //               value={currentRequest.requiredDate}
 // //               onChange={(e) => setCurrentRequest({ ...currentRequest, requiredDate: e.target.value })}
 // //             />
 // //           </div>
 
-// //           <button onClick={createRequest} className="w-full bg-orange-600 text-white py-3.5 rounded-lg font-medium hover:bg-orange-700 transition-colors">
+// //           <button onClick={createRequest} className="w-full bg-teal-600 text-white py-3.5 rounded-lg font-medium hover:bg-teal-700 transition-colors">
 // //             Create Material Request
 // //           </button>
 // //         </div>
@@ -1007,7 +1007,7 @@
 // //                   <div className="flex flex-wrap gap-2 items-center">
 // //                     <button
 // //                       onClick={() => showHistory(req.taskId)}
-// //                       className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium hover:bg-blue-100 transition-colors flex items-center gap-1.5 uppercase"
+// //                       className="px-3 py-1.5 bg-teal-50 text-teal-700 rounded-lg text-xs font-medium hover:bg-teal-100 transition-colors flex items-center gap-1.5 uppercase"
 // //                     >
 // //                       <History size={14} /> History
 // //                     </button>
@@ -1047,7 +1047,7 @@
 // //                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
 // //                   <button
 // //                     onClick={() => openPOFromRequest(req)}
-// //                     className="bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+// //                     className="bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
 // //                   >
 // //                     <FileText size={18} /> View PO
 // //                   </button>
@@ -1123,7 +1123,7 @@
 // //                 <select
 // //                   value={poDraft.vendorId || ""}
 // //                   onChange={(e) => updatePODraftVendor(e.target.value)}
-// //                   className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+// //                   className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
 // //                 >
 // //                   <option value="">-- Select Vendor --</option>
 // //                   {vendors
@@ -1161,7 +1161,7 @@
 // //                 <h4 className="text-lg font-bold text-gray-900 uppercase">PO Items</h4>
 // //                 <p className="text-sm text-gray-600 mt-0.5">Modify approved quantity if needed</p>
 // //               </div>
-// //               <span className="text-xs px-3 py-1 rounded-full bg-blue-100 text-blue-800 font-bold uppercase">{poDraft.items.length} items</span>
+// //               <span className="text-xs px-3 py-1 rounded-full bg-teal-100 text-teal-800 font-bold uppercase">{poDraft.items.length} items</span>
 // //             </div>
 
 // //             <div className="block lg:hidden p-4 space-y-3">
@@ -1180,7 +1180,7 @@
 // //                         type="number"
 // //                         value={it.approvedQty}
 // //                         onChange={(e) => updatePODraftQty(idx, e.target.value)}
-// //                         className="w-full text-center px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+// //                         className="w-full text-center px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                         min={0}
 // //                       />
 // //                     </div>
@@ -1214,7 +1214,7 @@
 // //                           type="number"
 // //                           value={it.approvedQty}
 // //                           onChange={(e) => updatePODraftQty(idx, e.target.value)}
-// //                           className="w-28 text-center px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+// //                           className="w-28 text-center px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                           min={0}
 // //                         />
 // //                         <div className="text-xs text-gray-500 mt-1">{it.unit}</div>
@@ -1231,10 +1231,10 @@
 // //             <button className="bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
 // //               <Phone size={18} /> Send WhatsApp (demo)
 // //             </button>
-// //             <button className="bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
+// //             <button className="bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
 // //               <Mail size={18} /> Send Email (demo)
 // //             </button>
-// //             <button onClick={approvePO} className="bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
+// //             <button onClick={approvePO} className="bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
 // //               <CheckCircle size={18} /> Approve PO
 // //             </button>
 // //             <button
@@ -1259,7 +1259,7 @@
 // //               <input
 // //                 value={newVendor.name}
 // //                 onChange={(e) => setNewVendor((p) => ({ ...p, name: e.target.value }))}
-// //                 className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+// //                 className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                 placeholder="Enter vendor name"
 // //               />
 // //             </div>
@@ -1269,13 +1269,13 @@
 // //               <input
 // //                 value={newVendor.gstin}
 // //                 onChange={(e) => setNewVendor((p) => ({ ...p, gstin: e.target.value }))}
-// //                 className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+// //                 className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                 placeholder="Enter GSTIN"
 // //               />
 // //             </div>
 
 // //             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-// //               <button onClick={addVendor} className="bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors uppercase text-sm">
+// //               <button onClick={addVendor} className="bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors uppercase text-sm">
 // //                 Add Vendor
 // //               </button>
 // //               <button onClick={() => setShowAddVendorModal(false)} className="bg-gray-200 text-gray-800 py-3 rounded-lg font-medium hover:bg-gray-300 transition-colors uppercase text-sm">
@@ -1310,7 +1310,7 @@
 // //                   <div>
 // //                     <h3 className="text-xl font-bold text-green-600 break-all">{token.token}</h3>
 // //                     <p className="text-sm text-gray-600 mt-1">Approved: {new Date(token.approvedAt).toLocaleString()}</p>
-// //                     {token.poNumber && <p className="text-xs text-blue-600 mt-1 font-medium">PO: {token.poNumber}</p>}
+// //                     {token.poNumber && <p className="text-xs text-teal-600 mt-1 font-medium">PO: {token.poNumber}</p>}
 // //                   </div>
 // //                   <span className="px-3 py-1.5 bg-green-100 text-green-800 rounded-lg text-xs font-bold uppercase w-fit">Active</span>
 // //                 </div>
@@ -1335,7 +1335,7 @@
 // //                       <label className="block text-xs font-medium text-gray-700 mb-2 uppercase tracking-wide">Received Quantity</label>
 // //                       <input
 // //                         type="number"
-// //                         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+// //                         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                         placeholder="Enter received quantity"
 // //                         value={redemptionQty}
 // //                         onChange={(e) => setRedemptionQty(e.target.value)}
@@ -1346,7 +1346,7 @@
 
 // //                     <div className="border border-gray-200 rounded-lg bg-white p-4">
 // //                       <p className="text-xs font-bold uppercase text-gray-700 mb-2 flex items-center gap-2">
-// //                         <MapPin size={14} className="text-orange-600" />
+// //                         <MapPin size={14} className="text-teal-600" />
 // //                         GPS Verification
 // //                       </p>
 
@@ -1363,7 +1363,7 @@
 
 // //                       <button
 // //                         onClick={fakeGPSVerify}
-// //                         className="mt-3 w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 transition-colors text-xs font-bold uppercase"
+// //                         className="mt-3 w-full bg-teal-600 text-white py-2.5 rounded-lg hover:bg-teal-700 transition-colors text-xs font-bold uppercase"
 // //                       >
 // //                         Verify GPS
 // //                       </button>
@@ -1373,7 +1373,7 @@
 // //                   {/* Photos */}
 // //                   <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 bg-white">
 // //                     <label className="block text-sm font-medium text-gray-700 mb-3 uppercase tracking-wide flex items-center gap-2">
-// //                       <Camera size={18} className="text-orange-600" />
+// //                       <Camera size={18} className="text-teal-600" />
 // //                       Upload Material Photos (Required)
 // //                     </label>
 
@@ -1381,10 +1381,10 @@
 
 // //                     <label
 // //                       htmlFor={`photo-upload-${token.token}`}
-// //                       className="cursor-pointer bg-blue-50 hover:bg-blue-100 border-2 border-blue-300 rounded-lg p-6 block text-center transition-colors"
+// //                       className="cursor-pointer bg-teal-50 hover:bg-teal-100 border-2 border-teal-300 rounded-lg p-6 block text-center transition-colors"
 // //                     >
-// //                       <Upload className="mx-auto mb-2 text-blue-600" size={32} />
-// //                       <p className="text-sm text-blue-600 font-medium">Click to upload photos</p>
+// //                       <Upload className="mx-auto mb-2 text-teal-600" size={32} />
+// //                       <p className="text-sm text-teal-600 font-medium">Click to upload photos</p>
 // //                       <p className="text-xs text-gray-500 mt-1">Multiple files allowed</p>
 // //                     </label>
 
@@ -1408,17 +1408,17 @@
 // //                   {/* Vendor Bill */}
 // //                   <div className="bg-white rounded-lg border border-gray-200 p-4">
 // //                     <p className="text-xs font-bold uppercase text-gray-700 mb-3 flex items-center gap-2">
-// //                       <FileText size={14} className="text-orange-600" />
+// //                       <FileText size={14} className="text-teal-600" />
 // //                       Vendor Bill Upload (Mandatory)
 // //                     </p>
 
 // //                     <input type="file" accept="image/*,.pdf" onChange={handleVendorBillUpload} className="hidden" id={`bill-upload-${token.token}`} />
 // //                     <label
 // //                       htmlFor={`bill-upload-${token.token}`}
-// //                       className="cursor-pointer bg-orange-50 hover:bg-orange-100 border-2 border-orange-300 rounded-lg p-5 block text-center transition-colors"
+// //                       className="cursor-pointer bg-teal-50 hover:bg-teal-100 border-2 border-teal-300 rounded-lg p-5 block text-center transition-colors"
 // //                     >
-// //                       <Upload className="mx-auto mb-2 text-orange-700" size={28} />
-// //                       <p className="text-sm text-orange-700 font-medium">Upload vendor bill</p>
+// //                       <Upload className="mx-auto mb-2 text-teal-700" size={28} />
+// //                       <p className="text-sm text-teal-700 font-medium">Upload vendor bill</p>
 // //                     </label>
 
 // //                     {vendorBillFile && (
@@ -1461,7 +1461,7 @@
 // //                         <textarea
 // //                           value={damageNotes}
 // //                           onChange={(e) => setDamageNotes(e.target.value)}
-// //                           className="w-full min-h-[90px] px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+// //                           className="w-full min-h-[90px] px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                           placeholder="Enter damage notes..."
 // //                         />
 // //                       </div>
@@ -1490,7 +1490,7 @@
 // //                       setDamageNotes("");
 // //                       setVendorBillFile(null);
 // //                     }}
-// //                     className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+// //                     className="w-full bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
 // //                   >
 // //                     <CheckCircle size={18} /> Receive Material
 // //                   </button>
@@ -1519,7 +1519,7 @@
 // //           </div>
 
 // //           <div className="p-6 bg-gray-50 border-t border-gray-200">
-// //             <button onClick={confirmRedemption} className="w-full bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
+// //             <button onClick={confirmRedemption} className="w-full bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
 // //               <CheckCircle size={18} /> Confirm Redemptions
 // //             </button>
 // //           </div>
@@ -1532,8 +1532,8 @@
 // //     <div className="space-y-6">
 // //       <div className="bg-white rounded-lg border border-gray-200 p-6">
 // //         <div className="flex items-center gap-3">
-// //           <div className="p-3 bg-orange-50 rounded-lg">
-// //             <Warehouse size={22} className="text-orange-600" />
+// //           <div className="p-3 bg-teal-50 rounded-lg">
+// //             <Warehouse size={22} className="text-teal-600" />
 // //           </div>
 // //           <div>
 // //             <h2 className="text-2xl font-bold text-gray-900">Material Stock / Inventory</h2>
@@ -1663,28 +1663,28 @@
 // //             onClick={() => setBillingCategory("material")}
 // //             title="Material"
 // //             subtitle="Construction materials"
-// //             icon={<Package className="mx-auto mb-3 text-orange-600" size={32} />}
+// //             icon={<Package className="mx-auto mb-3 text-teal-600" size={32} />}
 // //           />
 // //           <CategoryCard
 // //             active={billingCategory === "labour"}
 // //             onClick={() => setBillingCategory("labour")}
 // //             title="Labour"
 // //             subtitle="Workers & contractors"
-// //             icon={<FileText className="mx-auto mb-3 text-orange-600" size={32} />}
+// //             icon={<FileText className="mx-auto mb-3 text-teal-600" size={32} />}
 // //           />
 // //           <CategoryCard
 // //             active={billingCategory === "equipment"}
 // //             onClick={() => setBillingCategory("equipment")}
 // //             title="Equipment"
 // //             subtitle="Machinery rental"
-// //             icon={<FileText className="mx-auto mb-3 text-orange-600" size={32} />}
+// //             icon={<FileText className="mx-auto mb-3 text-teal-600" size={32} />}
 // //           />
 // //           <CategoryCard
 // //             active={billingCategory === "transport"}
 // //             onClick={() => setBillingCategory("transport")}
 // //             title="Transport"
 // //             subtitle="Logistics & delivery"
-// //             icon={<FileText className="mx-auto mb-3 text-orange-600" size={32} />}
+// //             icon={<FileText className="mx-auto mb-3 text-teal-600" size={32} />}
 // //           />
 // //         </div>
 
@@ -1696,10 +1696,10 @@
 // //               <button
 // //                 onClick={() => setBillingDateType("today")}
 // //                 className={`p-4 rounded-lg border-2 transition-all ${
-// //                   billingDateType === "today" ? "border-orange-600 bg-orange-50" : "border-gray-300 hover:border-orange-400 hover:bg-gray-50"
+// //                   billingDateType === "today" ? "border-teal-600 bg-teal-50" : "border-gray-300 hover:border-teal-400 hover:bg-gray-50"
 // //                 }`}
 // //               >
-// //                 <Calendar className="mx-auto mb-2 text-orange-600" size={24} />
+// //                 <Calendar className="mx-auto mb-2 text-teal-600" size={24} />
 // //                 <p className="font-bold text-gray-900 uppercase text-sm">Today's Invoice</p>
 // //                 <p className="text-xs text-gray-500 mt-1">December 2, 2026</p>
 // //               </button>
@@ -1707,10 +1707,10 @@
 // //               <button
 // //                 onClick={() => setBillingDateType("custom")}
 // //                 className={`p-4 rounded-lg border-2 transition-all ${
-// //                   billingDateType === "custom" ? "border-orange-600 bg-orange-50" : "border-gray-300 hover:border-orange-400 hover:bg-gray-50"
+// //                   billingDateType === "custom" ? "border-teal-600 bg-teal-50" : "border-gray-300 hover:border-teal-400 hover:bg-gray-50"
 // //                 }`}
 // //               >
-// //                 <Calendar className="mx-auto mb-2 text-orange-600" size={24} />
+// //                 <Calendar className="mx-auto mb-2 text-teal-600" size={24} />
 // //                 <p className="font-bold text-gray-900 uppercase text-sm">Custom Date</p>
 // //                 <p className="text-xs text-gray-500 mt-1">Select specific date</p>
 // //               </button>
@@ -1721,7 +1721,7 @@
 // //                 <label className="block text-xs font-medium text-gray-700 mb-2 uppercase tracking-wide">Select Date</label>
 // //                 <input
 // //                   type="date"
-// //                   className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+// //                   className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                   value={customBillingDate}
 // //                   onChange={(e) => setCustomBillingDate(e.target.value)}
 // //                 />
@@ -1731,7 +1731,7 @@
 // //             {billingDateType && (
 // //               <button
 // //                 onClick={generateInvoiceForCategory}
-// //                 className="w-full bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+// //                 className="w-full bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
 // //               >
 // //                 <FileText size={18} /> Generate Invoice
 // //               </button>
@@ -1787,7 +1787,7 @@
 // //           <div className="flex flex-col sm:flex-row gap-2">
 // //             <button
 // //               onClick={() => window.print()}
-// //               className="bg-blue-600 text-white px-4 py-2.5 rounded-lg hover:bg-blue-700 flex items-center justify-center gap-2 text-sm font-medium"
+// //               className="bg-teal-600 text-white px-4 py-2.5 rounded-lg hover:bg-teal-700 flex items-center justify-center gap-2 text-sm font-medium"
 // //             >
 // //               <Printer size={18} /> Print
 // //             </button>
@@ -2013,7 +2013,7 @@
 
 // // function TabButton({ label, active, onClick }) {
 // //   return (
-// //     <button onClick={onClick} className={`py-4 px-3 text-sm font-medium transition-colors ${active ? "bg-orange-600 text-white" : "text-gray-600 hover:bg-gray-50"}`}>
+// //     <button onClick={onClick} className={`py-4 px-3 text-sm font-medium transition-colors ${active ? "bg-teal-600 text-white" : "text-gray-600 hover:bg-gray-50"}`}>
 // //       {label}
 // //     </button>
 // //   );
@@ -2023,7 +2023,7 @@
 // //   const colors = {
 // //     gray: "text-gray-900",
 // //     yellow: "text-yellow-600",
-// //     blue: "text-blue-600",
+// //     blue: "text-teal-600",
 // //     red: "text-red-600",
 // //   };
 
@@ -2052,7 +2052,7 @@
 // //     status === "pending"
 // //       ? "bg-yellow-100 text-yellow-800"
 // //       : status === "po_created"
-// //       ? "bg-blue-100 text-blue-800"
+// //       ? "bg-teal-100 text-teal-800"
 // //       : status === "rejected"
 // //       ? "bg-red-100 text-red-800"
 // //       : "bg-gray-100 text-gray-800";
@@ -2062,7 +2062,7 @@
 
 // // function CategoryCard({ active, onClick, title, subtitle, icon }) {
 // //   return (
-// //     <button onClick={onClick} className={`p-6 rounded-lg border-2 transition-all ${active ? "border-orange-600 bg-orange-50" : "border-gray-300 hover:border-orange-400 hover:bg-gray-50"}`}>
+// //     <button onClick={onClick} className={`p-6 rounded-lg border-2 transition-all ${active ? "border-teal-600 bg-teal-50" : "border-gray-300 hover:border-teal-400 hover:bg-gray-50"}`}>
 // //       {icon}
 // //       <p className="font-bold text-gray-900 uppercase text-sm">{title}</p>
 // //       <p className="text-xs text-gray-500 mt-1">{subtitle}</p>
@@ -2818,7 +2818,7 @@
 //           <div>
 //             <label className="block text-sm text-gray-700 mb-2">Select Approved Task</label>
 //             <select
-//               className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+//               className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
 //               value={currentRequest.taskId}
 //               onChange={(e) => setCurrentRequest({ ...currentRequest, taskId: e.target.value })}
 //             >
@@ -2834,7 +2834,7 @@
 //           </div>
 
 //           {currentRequest.taskId && (
-//             <div className="p-4 bg-blue-50 rounded-lg border border-blue-100">
+//             <div className="p-4 bg-teal-50 rounded-lg border border-teal-100">
 //               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
 //                 <div>
 //                   <span className="text-xs text-gray-600 uppercase tracking-wider">Project</span>
@@ -2873,7 +2873,7 @@
 //                     <div className="md:col-span-3">
 //                       <label className="block text-xs text-gray-500 uppercase tracking-wider font-medium mb-2">Material</label>
 //                       <select
-//                         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+//                         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
 //                         value={it.materialId}
 //                         onChange={(e) => updateRequestItem(idx, "materialId", e.target.value)}
 //                       >
@@ -2890,7 +2890,7 @@
 //                       <label className="block text-xs text-gray-500 uppercase tracking-wider font-medium mb-2">Quantity</label>
 //                       <input
 //                         type="number"
-//                         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+//                         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
 //                         value={it.quantity}
 //                         onChange={(e) => updateRequestItem(idx, "quantity", e.target.value)}
 //                         placeholder="Qty"
@@ -2932,7 +2932,7 @@
 //             <label className="block text-sm text-gray-700 mb-2">Required Date</label>
 //             <input
 //               type="date"
-//               className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+//               className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
 //               value={currentRequest.requiredDate}
 //               onChange={(e) => setCurrentRequest({ ...currentRequest, requiredDate: e.target.value })}
 //             />
@@ -2940,7 +2940,7 @@
 
 //           <button
 //             onClick={createRequest}
-//             className="w-full bg-orange-600 text-white py-3.5 rounded-lg font-medium hover:bg-orange-700 transition-colors"
+//             className="w-full bg-teal-600 text-white py-3.5 rounded-lg font-medium hover:bg-teal-700 transition-colors"
 //           >
 //             Create Material Request
 //           </button>
@@ -3064,7 +3064,7 @@
 //                   <div className="flex flex-wrap gap-2 items-center">
 //                     <button
 //                       onClick={() => showHistory(req.taskId)}
-//                       className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium hover:bg-blue-100 transition-colors flex items-center gap-1.5 uppercase"
+//                       className="px-3 py-1.5 bg-teal-50 text-teal-700 rounded-lg text-xs font-medium hover:bg-teal-100 transition-colors flex items-center gap-1.5 uppercase"
 //                     >
 //                       <History size={14} /> History
 //                     </button>
@@ -3104,7 +3104,7 @@
 //                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
 //                   <button
 //                     onClick={() => openPOFromRequest(req)}
-//                     className="bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+//                     className="bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
 //                   >
 //                     <FileText size={18} /> View PO
 //                   </button>
@@ -3179,7 +3179,7 @@
 //                 <select
 //                   value={poDraft.vendorId || ""}
 //                   onChange={(e) => updatePODraftVendor(e.target.value)}
-//                   className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+//                   className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
 //                 >
 //                   <option value="">-- Select Vendor --</option>
 //                   {vendors
@@ -3225,7 +3225,7 @@
 //                 <h4 className="text-lg font-bold text-gray-900 uppercase">PO Items</h4>
 //                 <p className="text-sm text-gray-600 mt-0.5">Modify approved quantity if needed</p>
 //               </div>
-//               <span className="text-xs px-3 py-1 rounded-full bg-blue-100 text-blue-800 font-bold uppercase">{poDraft.items.length} items</span>
+//               <span className="text-xs px-3 py-1 rounded-full bg-teal-100 text-teal-800 font-bold uppercase">{poDraft.items.length} items</span>
 //             </div>
 
 //             <div className="block lg:hidden p-4 space-y-3">
@@ -3244,7 +3244,7 @@
 //                         type="number"
 //                         value={it.approvedQty}
 //                         onChange={(e) => updatePODraftQty(idx, e.target.value)}
-//                         className="w-full text-center px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+//                         className="w-full text-center px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 //                         min={0}
 //                       />
 //                     </div>
@@ -3278,7 +3278,7 @@
 //                           type="number"
 //                           value={it.approvedQty}
 //                           onChange={(e) => updatePODraftQty(idx, e.target.value)}
-//                           className="w-28 text-center px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+//                           className="w-28 text-center px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 //                           min={0}
 //                         />
 //                         <div className="text-xs text-gray-500 mt-1">{it.unit}</div>
@@ -3296,7 +3296,7 @@
 //             <textarea
 //               value={poDraft.terms}
 //               onChange={(e) => setPoDraft((prev) => (prev ? { ...prev, terms: e.target.value } : prev))}
-//               className="w-full min-h-[90px] px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+//               className="w-full min-h-[90px] px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 //             />
 //           </div>
 
@@ -3305,12 +3305,12 @@
 //             <button className="bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
 //               <Phone size={18} /> Send WhatsApp (demo)
 //             </button>
-//             <button className="bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
+//             <button className="bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
 //               <Mail size={18} /> Send Email (demo)
 //             </button>
 //             <button
 //               onClick={approvePO}
-//               className="bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+//               className="bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
 //             >
 //               <CheckCircle size={18} /> Approve PO
 //             </button>
@@ -3336,7 +3336,7 @@
 //               <input
 //                 value={newVendor.name}
 //                 onChange={(e) => setNewVendor((p) => ({ ...p, name: e.target.value }))}
-//                 className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+//                 className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 //                 placeholder="Enter vendor name"
 //               />
 //             </div>
@@ -3346,13 +3346,13 @@
 //               <input
 //                 value={newVendor.gstin}
 //                 onChange={(e) => setNewVendor((p) => ({ ...p, gstin: e.target.value }))}
-//                 className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+//                 className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 //                 placeholder="Enter GSTIN"
 //               />
 //             </div>
 
 //             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-//               <button onClick={addVendor} className="bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors uppercase text-sm">
+//               <button onClick={addVendor} className="bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors uppercase text-sm">
 //                 Add Vendor
 //               </button>
 //               <button onClick={() => setShowAddVendorModal(false)} className="bg-gray-200 text-gray-800 py-3 rounded-lg font-medium hover:bg-gray-300 transition-colors uppercase text-sm">
@@ -3388,7 +3388,7 @@
 //                   <div>
 //                     <h3 className="text-xl font-bold text-green-600 break-all">{token.token}</h3>
 //                     <p className="text-sm text-gray-600 mt-1">Approved: {new Date(token.approvedAt).toLocaleString()}</p>
-//                     {token.poNumber && <p className="text-xs text-blue-600 mt-1 font-medium">PO: {token.poNumber}</p>}
+//                     {token.poNumber && <p className="text-xs text-teal-600 mt-1 font-medium">PO: {token.poNumber}</p>}
 //                   </div>
 //                   <span className="px-3 py-1.5 bg-green-100 text-green-800 rounded-lg text-xs font-bold uppercase w-fit">Active</span>
 //                 </div>
@@ -3413,7 +3413,7 @@
 //                       <label className="block text-xs font-medium text-gray-700 mb-2 uppercase tracking-wide">Received Quantity</label>
 //                       <input
 //                         type="number"
-//                         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+//                         className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 //                         placeholder="Enter received quantity"
 //                         value={redemptionQty}
 //                         onChange={(e) => setRedemptionQty(e.target.value)}
@@ -3424,7 +3424,7 @@
 
 //                     <div className="border border-gray-200 rounded-lg bg-white p-4">
 //                       <p className="text-xs font-bold uppercase text-gray-700 mb-2 flex items-center gap-2">
-//                         <MapPin size={14} className="text-orange-600" />
+//                         <MapPin size={14} className="text-teal-600" />
 //                         GPS Verification
 //                       </p>
 
@@ -3441,7 +3441,7 @@
 
 //                       <button
 //                         onClick={fakeGPSVerify}
-//                         className="mt-3 w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 transition-colors text-xs font-bold uppercase"
+//                         className="mt-3 w-full bg-teal-600 text-white py-2.5 rounded-lg hover:bg-teal-700 transition-colors text-xs font-bold uppercase"
 //                       >
 //                         Verify GPS
 //                       </button>
@@ -3451,7 +3451,7 @@
 //                   {/* Photos */}
 //                   <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 bg-white">
 //                     <label className="block text-sm font-medium text-gray-700 mb-3 uppercase tracking-wide flex items-center gap-2">
-//                       <Camera size={18} className="text-orange-600" />
+//                       <Camera size={18} className="text-teal-600" />
 //                       Upload Material Photos (Required)
 //                     </label>
 
@@ -3459,10 +3459,10 @@
 
 //                     <label
 //                       htmlFor={`photo-upload-${token.token}`}
-//                       className="cursor-pointer bg-blue-50 hover:bg-blue-100 border-2 border-blue-300 rounded-lg p-6 block text-center transition-colors"
+//                       className="cursor-pointer bg-teal-50 hover:bg-teal-100 border-2 border-teal-300 rounded-lg p-6 block text-center transition-colors"
 //                     >
-//                       <Upload className="mx-auto mb-2 text-blue-600" size={32} />
-//                       <p className="text-sm text-blue-600 font-medium">Click to upload photos</p>
+//                       <Upload className="mx-auto mb-2 text-teal-600" size={32} />
+//                       <p className="text-sm text-teal-600 font-medium">Click to upload photos</p>
 //                       <p className="text-xs text-gray-500 mt-1">Multiple files allowed</p>
 //                     </label>
 
@@ -3486,17 +3486,17 @@
 //                   {/* Vendor Bill */}
 //                   <div className="bg-white rounded-lg border border-gray-200 p-4">
 //                     <p className="text-xs font-bold uppercase text-gray-700 mb-3 flex items-center gap-2">
-//                       <FileText size={14} className="text-orange-600" />
+//                       <FileText size={14} className="text-teal-600" />
 //                       Vendor Bill Upload (Mandatory)
 //                     </p>
 
 //                     <input type="file" accept="image/*,.pdf" onChange={handleVendorBillUpload} className="hidden" id={`bill-upload-${token.token}`} />
 //                     <label
 //                       htmlFor={`bill-upload-${token.token}`}
-//                       className="cursor-pointer bg-orange-50 hover:bg-orange-100 border-2 border-orange-300 rounded-lg p-5 block text-center transition-colors"
+//                       className="cursor-pointer bg-teal-50 hover:bg-teal-100 border-2 border-teal-300 rounded-lg p-5 block text-center transition-colors"
 //                     >
-//                       <Upload className="mx-auto mb-2 text-orange-700" size={28} />
-//                       <p className="text-sm text-orange-700 font-medium">Upload vendor bill</p>
+//                       <Upload className="mx-auto mb-2 text-teal-700" size={28} />
+//                       <p className="text-sm text-teal-700 font-medium">Upload vendor bill</p>
 //                     </label>
 
 //                     {vendorBillFile && (
@@ -3534,7 +3534,7 @@
 //                       setDamageNotes("");
 //                       setVendorBillFile(null);
 //                     }}
-//                     className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+//                     className="w-full bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
 //                   >
 //                     <CheckCircle size={18} /> Receive Material
 //                   </button>
@@ -3566,7 +3566,7 @@
 //           <div className="p-6 bg-gray-50 border-t border-gray-200">
 //             <button
 //               onClick={confirmRedemption}
-//               className="w-full bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+//               className="w-full bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
 //             >
 //               <CheckCircle size={18} /> Confirm Redemptions
 //             </button>
@@ -3581,8 +3581,8 @@
 //     <div className="space-y-6">
 //       <div className="bg-white rounded-lg border border-gray-200 p-6">
 //         <div className="flex items-center gap-3">
-//           <div className="p-3 bg-orange-50 rounded-lg">
-//             <Warehouse size={22} className="text-orange-600" />
+//           <div className="p-3 bg-teal-50 rounded-lg">
+//             <Warehouse size={22} className="text-teal-600" />
 //           </div>
 //           <div>
 //             <h2 className="text-2xl font-bold text-gray-900">Material Stock / Inventory</h2>
@@ -3711,28 +3711,28 @@
 //             onClick={() => setBillingCategory("material")}
 //             title="Material"
 //             subtitle="Construction materials"
-//             icon={<Package className="mx-auto mb-3 text-orange-600" size={32} />}
+//             icon={<Package className="mx-auto mb-3 text-teal-600" size={32} />}
 //           />
 //           <CategoryCard
 //             active={billingCategory === "labour"}
 //             onClick={() => setBillingCategory("labour")}
 //             title="Labour"
 //             subtitle="Workers & contractors"
-//             icon={<FileText className="mx-auto mb-3 text-orange-600" size={32} />}
+//             icon={<FileText className="mx-auto mb-3 text-teal-600" size={32} />}
 //           />
 //           <CategoryCard
 //             active={billingCategory === "equipment"}
 //             onClick={() => setBillingCategory("equipment")}
 //             title="Equipment"
 //             subtitle="Machinery rental"
-//             icon={<FileText className="mx-auto mb-3 text-orange-600" size={32} />}
+//             icon={<FileText className="mx-auto mb-3 text-teal-600" size={32} />}
 //           />
 //           <CategoryCard
 //             active={billingCategory === "transport"}
 //             onClick={() => setBillingCategory("transport")}
 //             title="Transport"
 //             subtitle="Logistics & delivery"
-//             icon={<FileText className="mx-auto mb-3 text-orange-600" size={32} />}
+//             icon={<FileText className="mx-auto mb-3 text-teal-600" size={32} />}
 //           />
 //         </div>
 
@@ -3745,11 +3745,11 @@
 //                 onClick={() => setBillingDateType("today")}
 //                 className={`p-4 rounded-lg border-2 transition-all ${
 //                   billingDateType === "today"
-//                     ? "border-orange-600 bg-orange-50"
-//                     : "border-gray-300 hover:border-orange-400 hover:bg-gray-50"
+//                     ? "border-teal-600 bg-teal-50"
+//                     : "border-gray-300 hover:border-teal-400 hover:bg-gray-50"
 //                 }`}
 //               >
-//                 <Calendar className="mx-auto mb-2 text-orange-600" size={24} />
+//                 <Calendar className="mx-auto mb-2 text-teal-600" size={24} />
 //                 <p className="font-bold text-gray-900 uppercase text-sm">Today's Invoice</p>
 //                 <p className="text-xs text-gray-500 mt-1">December 2, 2026</p>
 //               </button>
@@ -3758,11 +3758,11 @@
 //                 onClick={() => setBillingDateType("custom")}
 //                 className={`p-4 rounded-lg border-2 transition-all ${
 //                   billingDateType === "custom"
-//                     ? "border-orange-600 bg-orange-50"
-//                     : "border-gray-300 hover:border-orange-400 hover:bg-gray-50"
+//                     ? "border-teal-600 bg-teal-50"
+//                     : "border-gray-300 hover:border-teal-400 hover:bg-gray-50"
 //                 }`}
 //               >
-//                 <Calendar className="mx-auto mb-2 text-orange-600" size={24} />
+//                 <Calendar className="mx-auto mb-2 text-teal-600" size={24} />
 //                 <p className="font-bold text-gray-900 uppercase text-sm">Custom Date</p>
 //                 <p className="text-xs text-gray-500 mt-1">Select specific date</p>
 //               </button>
@@ -3773,7 +3773,7 @@
 //                 <label className="block text-xs font-medium text-gray-700 mb-2 uppercase tracking-wide">Select Date</label>
 //                 <input
 //                   type="date"
-//                   className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+//                   className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
 //                   value={customBillingDate}
 //                   onChange={(e) => setCustomBillingDate(e.target.value)}
 //                 />
@@ -3783,7 +3783,7 @@
 //             {billingDateType && (
 //               <button
 //                 onClick={generateInvoiceForCategory}
-//                 className="w-full bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+//                 className="w-full bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
 //               >
 //                 <FileText size={18} /> Generate Invoice
 //               </button>
@@ -3852,7 +3852,7 @@
 //           GST Compliant Invoice as per Indian Tax Laws
 //         </p>
 
-//         <p className="mt-2 text-sm font-bold text-orange-600 uppercase">
+//         <p className="mt-2 text-sm font-bold text-teal-600 uppercase">
 //           Category: {invoice.category}
 //         </p>
 
@@ -4023,7 +4023,7 @@
 //     <button
 //       onClick={onClick}
 //       className={`py-4 px-3 text-sm font-medium transition-colors ${
-//         active ? "bg-orange-600 text-white" : "text-gray-600 hover:bg-gray-50"
+//         active ? "bg-teal-600 text-white" : "text-gray-600 hover:bg-gray-50"
 //       }`}
 //     >
 //       {label}
@@ -4035,7 +4035,7 @@
 //   const colors = {
 //     gray: "text-gray-900",
 //     yellow: "text-yellow-600",
-//     blue: "text-blue-600",
+//     blue: "text-teal-600",
 //     red: "text-red-600",
 //   };
 
@@ -4064,7 +4064,7 @@
 //     status === "pending"
 //       ? "bg-yellow-100 text-yellow-800"
 //       : status === "po_created"
-//       ? "bg-blue-100 text-blue-800"
+//       ? "bg-teal-100 text-teal-800"
 //       : status === "rejected"
 //       ? "bg-red-100 text-red-800"
 //       : "bg-gray-100 text-gray-800";
@@ -4077,7 +4077,7 @@
 //     <button
 //       onClick={onClick}
 //       className={`p-6 rounded-lg border-2 transition-all ${
-//         active ? "border-orange-600 bg-orange-50" : "border-gray-300 hover:border-orange-400 hover:bg-gray-50"
+//         active ? "border-teal-600 bg-teal-50" : "border-gray-300 hover:border-teal-400 hover:bg-gray-50"
 //       }`}
 //     >
 //       {icon}
@@ -4884,7 +4884,7 @@ export default function MaterialManagementSystem() {
           <div>
             <label className="block text-sm text-gray-700 mb-2">Select Approved Task</label>
             <select
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               value={currentRequest.taskId}
               onChange={(e) => setCurrentRequest({ ...currentRequest, taskId: e.target.value })}
             >
@@ -4900,7 +4900,7 @@ export default function MaterialManagementSystem() {
           </div>
 
           {currentRequest.taskId && (
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-100">
+            <div className="p-4 bg-teal-50 rounded-lg border border-teal-100">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                 <div>
                   <span className="text-xs text-gray-600 uppercase tracking-wider">Project</span>
@@ -4947,7 +4947,7 @@ export default function MaterialManagementSystem() {
                         Material
                       </label>
                       <select
-                        className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                         value={it.materialId}
                         onChange={(e) => updateRequestItem(idx, "materialId", e.target.value)}
                       >
@@ -4966,7 +4966,7 @@ export default function MaterialManagementSystem() {
                       </label>
                       <input
                         type="number"
-                        className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                         value={it.quantity}
                         onChange={(e) => updateRequestItem(idx, "quantity", e.target.value)}
                         placeholder="Qty"
@@ -5008,7 +5008,7 @@ export default function MaterialManagementSystem() {
             <label className="block text-sm text-gray-700 mb-2">Required Date</label>
             <input
               type="date"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               value={currentRequest.requiredDate}
               onChange={(e) => setCurrentRequest({ ...currentRequest, requiredDate: e.target.value })}
             />
@@ -5016,7 +5016,7 @@ export default function MaterialManagementSystem() {
 
           <button
             onClick={createRequest}
-            className="w-full bg-orange-600 text-white py-3.5 rounded-lg font-medium hover:bg-orange-700 transition-colors"
+            className="w-full bg-teal-600 text-white py-3.5 rounded-lg font-medium hover:bg-teal-700 transition-colors"
           >
             Create Material Request
           </button>
@@ -5139,7 +5139,7 @@ export default function MaterialManagementSystem() {
                   <div className="flex flex-wrap gap-2 items-center">
                     <button
                       onClick={() => showHistory(req.taskId)}
-                      className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium hover:bg-blue-100 transition-colors flex items-center gap-1.5 uppercase"
+                      className="px-3 py-1.5 bg-teal-50 text-teal-700 rounded-lg text-xs font-medium hover:bg-teal-100 transition-colors flex items-center gap-1.5 uppercase"
                     >
                       <History size={14} /> History
                     </button>
@@ -5179,7 +5179,7 @@ export default function MaterialManagementSystem() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <button
                     onClick={() => openPOFromRequest(req)}
-                    className="bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+                    className="bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
                   >
                     <FileText size={18} /> View PO
                   </button>
@@ -5261,7 +5261,7 @@ export default function MaterialManagementSystem() {
                 <select
                   value={poDraft.vendorId || ""}
                   onChange={(e) => updatePODraftVendor(e.target.value)}
-                  className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                 >
                   <option value="">-- Select Vendor --</option>
                   {vendors
@@ -5307,7 +5307,7 @@ export default function MaterialManagementSystem() {
                 <h4 className="text-lg font-bold text-gray-900 uppercase">PO Items</h4>
                 <p className="text-sm text-gray-600 mt-0.5">Modify approved quantity if needed</p>
               </div>
-              <span className="text-xs px-3 py-1 rounded-full bg-blue-100 text-blue-800 font-bold uppercase">
+              <span className="text-xs px-3 py-1 rounded-full bg-teal-100 text-teal-800 font-bold uppercase">
                 {poDraft.items.length} items
               </span>
             </div>
@@ -5337,7 +5337,7 @@ export default function MaterialManagementSystem() {
                           type="number"
                           value={it.approvedQty}
                           onChange={(e) => updatePODraftQty(idx, e.target.value)}
-                          className="w-28 text-center px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                          className="w-28 text-center px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                           min={0}
                         />
                         <div className="text-xs text-gray-500 mt-1">{it.unit}</div>
@@ -5354,12 +5354,12 @@ export default function MaterialManagementSystem() {
             <button className="bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
               <Phone size={18} /> Send WhatsApp (demo)
             </button>
-            <button className="bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
+            <button className="bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm">
               <Mail size={18} /> Send Email (demo)
             </button>
             <button
               onClick={approvePO}
-              className="bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+              className="bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
             >
               <CheckCircle size={18} /> Approve PO
             </button>
@@ -5385,7 +5385,7 @@ export default function MaterialManagementSystem() {
               <input
                 value={newVendor.name}
                 onChange={(e) => setNewVendor((p) => ({ ...p, name: e.target.value }))}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                 placeholder="Enter vendor name"
               />
             </div>
@@ -5395,7 +5395,7 @@ export default function MaterialManagementSystem() {
               <input
                 value={newVendor.gstin}
                 onChange={(e) => setNewVendor((p) => ({ ...p, gstin: e.target.value }))}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                 placeholder="Enter GSTIN"
               />
             </div>
@@ -5403,7 +5403,7 @@ export default function MaterialManagementSystem() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <button
                 onClick={addVendor}
-                className="bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors uppercase text-sm"
+                className="bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors uppercase text-sm"
               >
                 Add Vendor
               </button>
@@ -5442,7 +5442,7 @@ export default function MaterialManagementSystem() {
                   <div>
                     <h3 className="text-xl font-bold text-green-600 break-all">{token.token}</h3>
                     <p className="text-sm text-gray-600 mt-1">Approved: {new Date(token.approvedAt).toLocaleString()}</p>
-                    {token.poNumber && <p className="text-xs text-blue-600 mt-1 font-medium">PO: {token.poNumber}</p>}
+                    {token.poNumber && <p className="text-xs text-teal-600 mt-1 font-medium">PO: {token.poNumber}</p>}
                   </div>
                   <span className="px-3 py-1.5 bg-green-100 text-green-800 rounded-lg text-xs font-bold uppercase w-fit">
                     Active
@@ -5473,7 +5473,7 @@ export default function MaterialManagementSystem() {
                       </label>
                       <input
                         type="number"
-                        className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                         placeholder="Enter received quantity"
                         value={redemptionQty}
                         onChange={(e) => setRedemptionQty(e.target.value)}
@@ -5484,7 +5484,7 @@ export default function MaterialManagementSystem() {
 
                     <div className="border border-gray-200 rounded-lg bg-white p-4">
                       <p className="text-xs font-bold uppercase text-gray-700 mb-2 flex items-center gap-2">
-                        <MapPin size={14} className="text-orange-600" />
+                        <MapPin size={14} className="text-teal-600" />
                         GPS Verification
                       </p>
 
@@ -5501,7 +5501,7 @@ export default function MaterialManagementSystem() {
 
                       <button
                         onClick={fakeGPSVerify}
-                        className="mt-3 w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 transition-colors text-xs font-bold uppercase"
+                        className="mt-3 w-full bg-teal-600 text-white py-2.5 rounded-lg hover:bg-teal-700 transition-colors text-xs font-bold uppercase"
                       >
                         Verify GPS
                       </button>
@@ -5511,7 +5511,7 @@ export default function MaterialManagementSystem() {
                   {/* Photos */}
                   <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 bg-white">
                     <label className="block text-sm font-medium text-gray-700 mb-3 uppercase tracking-wide flex items-center gap-2">
-                      <Camera size={18} className="text-orange-600" />
+                      <Camera size={18} className="text-teal-600" />
                       Upload Material Photos (Required)
                     </label>
 
@@ -5519,10 +5519,10 @@ export default function MaterialManagementSystem() {
 
                     <label
                       htmlFor={`photo-upload-${token.token}`}
-                      className="cursor-pointer bg-blue-50 hover:bg-blue-100 border-2 border-blue-300 rounded-lg p-6 block text-center transition-colors"
+                      className="cursor-pointer bg-teal-50 hover:bg-teal-100 border-2 border-teal-300 rounded-lg p-6 block text-center transition-colors"
                     >
-                      <Upload className="mx-auto mb-2 text-blue-600" size={32} />
-                      <p className="text-sm text-blue-600 font-medium">Click to upload photos</p>
+                      <Upload className="mx-auto mb-2 text-teal-600" size={32} />
+                      <p className="text-sm text-teal-600 font-medium">Click to upload photos</p>
                       <p className="text-xs text-gray-500 mt-1">Multiple files allowed</p>
                     </label>
 
@@ -5546,17 +5546,17 @@ export default function MaterialManagementSystem() {
                   {/* Vendor Bill */}
                   <div className="bg-white rounded-lg border border-gray-200 p-4">
                     <p className="text-xs font-bold uppercase text-gray-700 mb-3 flex items-center gap-2">
-                      <FileText size={14} className="text-orange-600" />
+                      <FileText size={14} className="text-teal-600" />
                       Vendor Bill Upload (Mandatory)
                     </p>
 
                     <input type="file" accept="image/*,.pdf" onChange={handleVendorBillUpload} className="hidden" id={`bill-upload-${token.token}`} />
                     <label
                       htmlFor={`bill-upload-${token.token}`}
-                      className="cursor-pointer bg-orange-50 hover:bg-orange-100 border-2 border-orange-300 rounded-lg p-5 block text-center transition-colors"
+                      className="cursor-pointer bg-teal-50 hover:bg-teal-100 border-2 border-teal-300 rounded-lg p-5 block text-center transition-colors"
                     >
-                      <Upload className="mx-auto mb-2 text-orange-700" size={28} />
-                      <p className="text-sm text-orange-700 font-medium">Upload vendor bill</p>
+                      <Upload className="mx-auto mb-2 text-teal-700" size={28} />
+                      <p className="text-sm text-teal-700 font-medium">Upload vendor bill</p>
                     </label>
 
                     {vendorBillFile && (
@@ -5603,7 +5603,7 @@ export default function MaterialManagementSystem() {
                       setDamageNotes("");
                       setVendorBillFile(null);
                     }}
-                    className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+                    className="w-full bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
                   >
                     <CheckCircle size={18} /> Receive Material
                   </button>
@@ -5634,7 +5634,7 @@ export default function MaterialManagementSystem() {
           <div className="p-6 bg-gray-50 border-t border-gray-200">
             <button
               onClick={confirmRedemption}
-              className="w-full bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+              className="w-full bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
             >
               <CheckCircle size={18} /> Confirm Redemptions
             </button>
@@ -5648,8 +5648,8 @@ export default function MaterialManagementSystem() {
     <div className="space-y-6">
       <div className="bg-white rounded-lg border border-gray-200 p-6">
         <div className="flex items-center gap-3">
-          <div className="p-3 bg-orange-50 rounded-lg">
-            <Warehouse size={22} className="text-orange-600" />
+          <div className="p-3 bg-teal-50 rounded-lg">
+            <Warehouse size={22} className="text-teal-600" />
           </div>
           <div>
             <h2 className="text-2xl font-bold text-gray-900">Material Stock / Inventory</h2>
@@ -5779,28 +5779,28 @@ export default function MaterialManagementSystem() {
             onClick={() => setBillingCategory("material")}
             title="Material"
             subtitle="Construction materials"
-            icon={<Package className="mx-auto mb-3 text-orange-600" size={32} />}
+            icon={<Package className="mx-auto mb-3 text-teal-600" size={32} />}
           />
           <CategoryCard
             active={billingCategory === "labour"}
             onClick={() => setBillingCategory("labour")}
             title="Labour"
             subtitle="Workers & contractors"
-            icon={<FileText className="mx-auto mb-3 text-orange-600" size={32} />}
+            icon={<FileText className="mx-auto mb-3 text-teal-600" size={32} />}
           />
           <CategoryCard
             active={billingCategory === "equipment"}
             onClick={() => setBillingCategory("equipment")}
             title="Equipment"
             subtitle="Machinery rental"
-            icon={<FileText className="mx-auto mb-3 text-orange-600" size={32} />}
+            icon={<FileText className="mx-auto mb-3 text-teal-600" size={32} />}
           />
           <CategoryCard
             active={billingCategory === "transport"}
             onClick={() => setBillingCategory("transport")}
             title="Transport"
             subtitle="Logistics & delivery"
-            icon={<FileText className="mx-auto mb-3 text-orange-600" size={32} />}
+            icon={<FileText className="mx-auto mb-3 text-teal-600" size={32} />}
           />
         </div>
 
@@ -5812,10 +5812,10 @@ export default function MaterialManagementSystem() {
               <button
                 onClick={() => setBillingDateType("today")}
                 className={`p-4 rounded-lg border-2 transition-all ${
-                  billingDateType === "today" ? "border-orange-600 bg-orange-50" : "border-gray-300 hover:border-orange-400 hover:bg-gray-50"
+                  billingDateType === "today" ? "border-teal-600 bg-teal-50" : "border-gray-300 hover:border-teal-400 hover:bg-gray-50"
                 }`}
               >
-                <Calendar className="mx-auto mb-2 text-orange-600" size={24} />
+                <Calendar className="mx-auto mb-2 text-teal-600" size={24} />
                 <p className="font-bold text-gray-900 uppercase text-sm">Today's Invoice</p>
                 <p className="text-xs text-gray-500 mt-1">December 2, 2026</p>
               </button>
@@ -5823,10 +5823,10 @@ export default function MaterialManagementSystem() {
               <button
                 onClick={() => setBillingDateType("custom")}
                 className={`p-4 rounded-lg border-2 transition-all ${
-                  billingDateType === "custom" ? "border-orange-600 bg-orange-50" : "border-gray-300 hover:border-orange-400 hover:bg-gray-50"
+                  billingDateType === "custom" ? "border-teal-600 bg-teal-50" : "border-gray-300 hover:border-teal-400 hover:bg-gray-50"
                 }`}
               >
-                <Calendar className="mx-auto mb-2 text-orange-600" size={24} />
+                <Calendar className="mx-auto mb-2 text-teal-600" size={24} />
                 <p className="font-bold text-gray-900 uppercase text-sm">Custom Date</p>
                 <p className="text-xs text-gray-500 mt-1">Select specific date</p>
               </button>
@@ -5837,7 +5837,7 @@ export default function MaterialManagementSystem() {
                 <label className="block text-xs font-medium text-gray-700 mb-2 uppercase tracking-wide">Select Date</label>
                 <input
                   type="date"
-                  className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                   value={customBillingDate}
                   onChange={(e) => setCustomBillingDate(e.target.value)}
                 />
@@ -5847,7 +5847,7 @@ export default function MaterialManagementSystem() {
             {billingDateType && (
               <button
                 onClick={generateInvoiceForCategory}
-                className="w-full bg-orange-600 text-white py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
+                className="w-full bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 uppercase text-sm"
               >
                 <FileText size={18} /> Generate Invoice
               </button>
@@ -5925,7 +5925,7 @@ export default function MaterialManagementSystem() {
             GST Compliant Invoice as per Indian Tax Laws
           </p>
 
-          <p className="mt-2 text-sm font-bold text-orange-600 uppercase">
+          <p className="mt-2 text-sm font-bold text-teal-600 uppercase">
             CATEGORY: {String(invoice.category).toUpperCase()}
           </p>
 
@@ -6075,7 +6075,7 @@ export default function MaterialManagementSystem() {
                   ? "bg-gray-300 text-gray-700 cursor-not-allowed"
                   : invoice.tallySynced
                   ? "bg-green-600 text-white hover:bg-green-700"
-                  : "bg-orange-600 text-white hover:bg-orange-700"
+                  : "bg-teal-600 text-white hover:bg-teal-700"
               }`}
             >
               <RefreshCw size={16} />
@@ -6162,7 +6162,7 @@ function TabButton({ label, active, onClick }) {
     <button
       onClick={onClick}
       className={`py-4 px-3 text-sm font-medium transition-colors ${
-        active ? "bg-orange-600 text-white" : "text-gray-600 hover:bg-gray-50"
+        active ? "bg-teal-600 text-white" : "text-gray-600 hover:bg-gray-50"
       }`}
     >
       {label}
@@ -6174,7 +6174,7 @@ function StatCard({ label, value, color = "gray" }) {
   const colors = {
     gray: "text-gray-900",
     yellow: "text-yellow-600",
-    blue: "text-blue-600",
+    blue: "text-teal-600",
     red: "text-red-600",
   };
 
@@ -6203,7 +6203,7 @@ function StatusPill({ status }) {
     status === "pending"
       ? "bg-yellow-100 text-yellow-800"
       : status === "po_created"
-      ? "bg-blue-100 text-blue-800"
+      ? "bg-teal-100 text-teal-800"
       : status === "rejected"
       ? "bg-red-100 text-red-800"
       : "bg-gray-100 text-gray-800";
@@ -6220,7 +6220,7 @@ function CategoryCard({ active, onClick, title, subtitle, icon }) {
     <button
       onClick={onClick}
       className={`p-6 rounded-lg border-2 transition-all ${
-        active ? "border-orange-600 bg-orange-50" : "border-gray-300 hover:border-orange-400 hover:bg-gray-50"
+        active ? "border-teal-600 bg-teal-50" : "border-gray-300 hover:border-teal-400 hover:bg-gray-50"
       }`}
     >
       {icon}
