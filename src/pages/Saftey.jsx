@@ -140,11 +140,11 @@ export default function SafetyReporter() {
   // Home Screen
   if (view === 'home') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50 p-4">
+      <div className="min-h-screen bg-[#f4f7f4] p-4">
         <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-lg shadow-lg p-8">
             <div className="text-center mb-8">
-              <AlertTriangle className="text-orange-600 mx-auto mb-4" size={64} />
+              <AlertTriangle className="text-teal-700 mx-auto mb-4" size={64} />
               <h1 className="text-3xl font-bold text-gray-800 mb-2">Construction Safety System</h1>
               <p className="text-gray-600">Register sites & report safety hazards</p>
             </div>
@@ -152,7 +152,7 @@ export default function SafetyReporter() {
             <div className="space-y-4">
               <button
                 onClick={() => setView('report')}
-                className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3 transition"
+                className="w-full bg-teal-700 hover:bg-teal-800 text-white font-semibold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3 transition"
               >
                 <Camera size={24} />
                 Report Safety Issue
@@ -160,7 +160,7 @@ export default function SafetyReporter() {
 
               <button
                 onClick={() => setView('register')}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3 transition"
+                className="w-full bg-teal-700 hover:bg-teal-800 text-white font-semibold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center gap-3 transition"
               >
                 <Building2 size={24} />
                 Register Construction Site
@@ -175,7 +175,7 @@ export default function SafetyReporter() {
               </button>
             </div>
 
-            <div className="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="mt-8 bg-[#e6f3ee] border border-[#b9d9cf] rounded-lg p-4">
               <p className="text-sm text-gray-700">
                 <strong>How it works:</strong><br />
                 1. Construction companies register their sites with legal details<br />
@@ -302,7 +302,7 @@ export default function SafetyReporter() {
 
               <button
                 onClick={handleSiteRegistration}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition mt-6"
+                className="w-full bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-6 rounded-lg transition mt-6"
               >
                 Register Site
               </button>
@@ -417,7 +417,7 @@ export default function SafetyReporter() {
 
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2">Photo of Site Name Board (Recommended)</label>
-                    <div className="border-2 border-dashed border-blue-300 rounded-lg p-6 text-center bg-blue-50">
+                    <div className="border-2 border-dashed border-blue-300 rounded-lg p-6 text-center bg-[#e6f3ee]">
                       <input
                         type="file"
                         accept="image/*"
@@ -475,7 +475,7 @@ export default function SafetyReporter() {
 
                   <button
                     onClick={handleReportSubmit}
-                    className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition mt-6"
+                    className="w-full bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-6 rounded-lg transition mt-6"
                   >
                     Submit Safety Report
                   </button>
@@ -513,7 +513,7 @@ export default function SafetyReporter() {
                   <div key={site.id} className="border border-gray-200 rounded-lg p-4">
                     <div className="flex justify-between items-start mb-2">
                       <div>
-                        <span className="text-xs bg-blue-600 text-white px-2 py-1 rounded font-bold">{site.id}</span>
+                        <span className="text-xs bg-teal-700 text-white px-2 py-1 rounded font-bold">{site.id}</span>
                         <h4 className="text-lg font-bold text-gray-800 mt-1">{site.projectName}</h4>
                         <p className="text-sm text-gray-600">{site.legalName}</p>
                         <p className="text-xs text-gray-500">Registration: {site.registrationNumber}</p>
@@ -540,7 +540,7 @@ export default function SafetyReporter() {
                   <div key={report.id} className="border border-gray-200 rounded-lg p-4">
                     <div className="flex justify-between items-start mb-3">
                       <div className="flex items-center gap-2">
-                        <AlertTriangle className="text-orange-600" size={20} />
+                        <AlertTriangle className="text-teal-700" size={20} />
                         <span className="font-semibold text-gray-800">{report.type}</span>
                       </div>
                       <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Needs Verification</span>
