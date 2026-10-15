@@ -91,7 +91,7 @@ export default function SupervisorLayoutPage() {
         };
       case "inprogress":
         return {
-          color: "bg-blue-100 text-blue-700 border-[#b9d9cf]",
+          color: "bg-[#e6f3ee] text-teal-800 border-[#b9d9cf]",
           icon: "⟳",
           display: "In Progress"
         };
@@ -121,7 +121,7 @@ export default function SupervisorLayoutPage() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-8 h-8 border-4 border-teal-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-slate-600 font-medium">Loading tasks...</p>
         </div>
       </div>
@@ -250,8 +250,8 @@ export default function SupervisorLayoutPage() {
                     }}
                     className={`min-w-[140px] md:min-w-0 border rounded-xl overflow-hidden transition-all duration-300 group ${
                       selectedLayout === layout
-                        ? "border-orange-500 ring-2 ring-teal-200 shadow-lg scale-105"
-                        : "border-slate-200 hover:border-orange-400 hover:shadow-md hover:scale-102"
+                        ? "border-teal-600 ring-2 ring-teal-200 shadow-lg scale-105"
+                        : "border-slate-200 hover:border-teal-300 hover:shadow-md hover:scale-102"
                     }`}
                   >
                     <div className="relative">
