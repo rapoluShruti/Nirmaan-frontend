@@ -128,8 +128,8 @@ export default function BuilderDashboard() {
                   <div className="text-3xl font-black text-green-700">{soldFlats}</div>
                 </div>
                 <div className="bg-[#e6f3ee] border-2 border-[#b9d9cf] rounded-xl p-4">
-                  <div className="text-sm text-orange-700 font-semibold mb-1">Available</div>
-                  <div className="text-3xl font-black text-orange-700">{availableFlats}</div>
+                  <div className="text-sm text-teal-700 font-semibold mb-1">Available</div>
+                  <div className="text-3xl font-black text-teal-700">{availableFlats}</div>
                 </div>
               </div>
 
@@ -250,7 +250,7 @@ export default function BuilderDashboard() {
                       <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
                         selectedFlat.status === 'sold'
                           ? 'bg-green-100 text-green-700'
-                          : 'bg-orange-100 text-orange-700'
+                          : 'bg-teal-100 text-teal-700'
                       }`}>
                         {selectedFlat.status === 'sold' ? '✓ Sold' : '◯ Available'}
                       </span>
@@ -279,8 +279,8 @@ export default function BuilderDashboard() {
                       </div>
 
                       <div className="bg-[#e6f3ee] rounded-lg p-3">
-                        <div className="text-xs text-orange-700 mb-1">Margin per Sq.Ft</div>
-                        <div className="text-xl font-black text-orange-700">
+                        <div className="text-xs text-teal-700 mb-1">Margin per Sq.Ft</div>
+                        <div className="text-xl font-black text-teal-700">
                           {formatRupees(selectedFlat.marginPerSqFt)}
                         </div>
                       </div>
