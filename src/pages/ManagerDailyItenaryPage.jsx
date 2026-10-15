@@ -2916,9 +2916,11 @@ export default function ManagerDailyItineraryPage() {
             <div>
               <div className="text-sm font-medium text-gray-700 mb-2">Before Photo</div>
               <img
-                src={`${import.meta.env.VITE_BACKEND_URL}${selectedTask.beforePhotoUrl}`}
-                alt="Before"
-                className="w-full rounded border"
+                src={resolveMediaUrl(getBeforePhoto(selectedTask))}
+                alt="Before work evidence"
+                loading="lazy"
+                className="max-h-[420px] w-full rounded-xl border border-[#dce7e1] bg-[#f4f7f4] object-contain"
+                onError={(event) => { event.currentTarget.style.display = "none"; }}
               />
             </div>
           )}
@@ -2927,9 +2929,11 @@ export default function ManagerDailyItineraryPage() {
             <div>
               <div className="text-sm font-medium text-gray-700 mb-2">After Photo</div>
               <img
-                src={`${import.meta.env.VITE_BACKEND_URL}${selectedTask.afterPhotoUrl}`}
-                alt="After"
-                className="w-full rounded border"
+                src={resolveMediaUrl(getAfterPhoto(selectedTask))}
+                alt="After work completion evidence"
+                loading="lazy"
+                className="max-h-[420px] w-full rounded-xl border border-[#dce7e1] bg-[#f4f7f4] object-contain"
+                onError={(event) => { event.currentTarget.style.display = "none"; }}
               />
             </div>
           )}
