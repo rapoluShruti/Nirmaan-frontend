@@ -355,3 +355,110 @@ td, th {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* NIRMAAN navigation refresh */
+header:has(> nav), header:has(> nav) {
+  z-index: 40;
+}
+
+header.w-full.bg-white.border-b {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(226, 232, 240, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.035);
+}
+
+header.w-full.bg-white.border-b > nav {
+  min-height: 4.25rem;
+  height: auto;
+  max-width: 1680px;
+  margin-inline: auto;
+  gap: 1rem;
+}
+
+header.w-full.bg-white.border-b > nav > div:first-child {
+  gap: 0.65rem;
+  letter-spacing: -0.025em;
+}
+
+header.w-full.bg-white.border-b > nav > div:first-child svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0.48rem;
+  border-radius: 0.8rem;
+  color: #fff;
+  background: linear-gradient(145deg, #fb923c, #ea580c);
+  box-shadow: 0 5px 12px rgba(234, 88, 12, 0.22);
+}
+
+header.w-full.bg-white.border-b > nav > div:first-child span {
+  font-size: 1.02rem;
+  letter-spacing: 0.09em;
+}
+
+header.w-full.bg-white.border-b > nav > div:nth-child(2) {
+  gap: 0.2rem;
+}
+
+header.w-full.bg-white.border-b > nav > div:nth-child(2) a {
+  border-radius: 0.65rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+header.w-full.bg-white.border-b > nav > div:nth-child(2) a:hover {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+header.w-full.bg-white.border-b > nav > div:nth-child(2) a[class*="text-orange-600"] {
+  background: #fff1e6;
+  color: #c2410c;
+  box-shadow: inset 0 0 0 1px rgba(249, 115, 22, 0.12);
+}
+
+header.w-full.bg-white.border-b select {
+  min-height: 2.5rem;
+  border-radius: 0.75rem;
+  border-color: #e2e8f0;
+  background-color: #fff;
+  font-weight: 600;
+}
+
+header.w-full.bg-white.border-b select:focus {
+  outline: 3px solid rgba(249, 115, 22, 0.14);
+  border-color: #fb923c;
+}
+
+header.w-full.bg-white.border-b button {
+  border-radius: 0.75rem;
+}
+
+@media (max-width: 767px) {
+  header.w-full.bg-white.border-b > nav {
+    padding: 0.65rem 1rem;
+    min-height: 4.2rem;
+  }
+
+  header.w-full.bg-white.border-b > nav > div:nth-child(2) {
+    display: none;
+  }
+
+  header.w-full.bg-white.border-b > div.md\\:hidden {
+    padding: 0 1rem 1rem;
+    background: #fff;
+  }
+
+  header.w-full.bg-white.border-b > div.md\\:hidden > div {
+    border-radius: 1rem;
+    border-color: #e2e8f0;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.07);
+  }
+}
