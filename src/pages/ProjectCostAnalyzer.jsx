@@ -302,7 +302,7 @@ export default function ProjectCostAnalyzer() {
   }, [currentFloor]);
 
   const kpiCard = (title, value, hint, icon, accent = "orange") => {
-    const accentBg = accent === "green" ? "bg-green-50 border-green-200 text-green-700" : "bg-orange-50 border-orange-200 text-orange-700";
+    const accentBg = accent === "green" ? "bg-green-50 border-green-200 text-green-700" : "bg-[#e6f3ee] border-[#b9d9cf] text-orange-700";
     return (
       <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
         <div className="flex items-start justify-between gap-3">
@@ -323,7 +323,7 @@ export default function ProjectCostAnalyzer() {
         className={`inline-flex items-center justify-center px-2.5 py-1 rounded-full text-xs font-extrabold border ${
           status === "sold"
             ? "bg-green-50 text-green-700 border-green-200"
-            : "bg-orange-50 text-orange-700 border-orange-200"
+            : "bg-[#e6f3ee] text-orange-700 border-[#b9d9cf]"
         }`}
       >
         {status === "sold" ? "Sold" : "Available"}
@@ -338,7 +338,7 @@ export default function ProjectCostAnalyzer() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-br from-orange-600 to-orange-700 p-2.5 rounded-xl shadow-sm">
+              <div className="bg-gradient-to-br from-[#102b2a] to-teal-700 p-2.5 rounded-xl shadow-sm">
                 <Calculator className="w-6 h-6 text-white" />
               </div>
 
@@ -390,7 +390,7 @@ export default function ProjectCostAnalyzer() {
               <p className="text-sm text-gray-500">Update expenses to calculate profit automatically</p>
             </div>
 
-            <div className="bg-orange-50 border border-orange-200 rounded-xl px-4 py-3">
+            <div className="bg-[#e6f3ee] border border-[#b9d9cf] rounded-xl px-4 py-3">
               <p className="text-xs text-orange-800 font-semibold">Revenue needed to hit target</p>
               <p className="text-lg font-extrabold text-orange-900">{formatCurrency(totalRevenueNeeded)}</p>
             </div>
@@ -446,7 +446,7 @@ export default function ProjectCostAnalyzer() {
               <p className="mt-1 text-sm text-gray-500">All expenses included</p>
             </div>
 
-            <div className="rounded-2xl border border-orange-200 bg-orange-50 p-5">
+            <div className="rounded-2xl border border-[#b9d9cf] bg-[#e6f3ee] p-5">
               <p className="text-xs font-bold text-orange-800 uppercase tracking-wide">Per Sq.Ft Metrics</p>
               <div className="mt-2 space-y-2">
                 <div className="flex items-center justify-between text-sm">
@@ -489,7 +489,7 @@ export default function ProjectCostAnalyzer() {
                   <h3 className="font-extrabold text-gray-900">{currentFloor.name}</h3>
                   <p className="text-sm text-gray-500">Floor snapshot</p>
                 </div>
-                <div className="p-2.5 rounded-xl bg-orange-50 border border-orange-100 text-orange-700">
+                <div className="p-2.5 rounded-xl bg-[#e6f3ee] border border-orange-100 text-orange-700">
                   <Layers className="w-5 h-5" />
                 </div>
               </div>
@@ -509,7 +509,7 @@ export default function ProjectCostAnalyzer() {
                   <p className="text-xs font-bold text-green-700">Sold</p>
                   <p className="text-lg font-extrabold text-green-900 mt-1">{floorStats.sold}</p>
                 </div>
-                <div className="rounded-2xl border border-orange-200 bg-orange-50 p-4">
+                <div className="rounded-2xl border border-[#b9d9cf] bg-[#e6f3ee] p-4">
                   <p className="text-xs font-bold text-orange-700">Available</p>
                   <p className="text-lg font-extrabold text-orange-900 mt-1">{floorStats.available}</p>
                 </div>
@@ -595,7 +595,7 @@ export default function ProjectCostAnalyzer() {
                             key={flat.id}
                             onClick={() => setSelectedRoom(flat)}
                             className={`cursor-pointer transition ${
-                              isActive ? "bg-orange-50" : "hover:bg-gray-50"
+                              isActive ? "bg-[#e6f3ee]" : "hover:bg-gray-50"
                             }`}
                           >
                             <td className="px-4 py-3 font-extrabold text-gray-900">{flat.id}</td>
@@ -714,7 +714,7 @@ export default function ProjectCostAnalyzer() {
 
                     return (
                       <>
-                        <div className="mt-5 rounded-2xl border border-orange-200 bg-orange-50 p-4">
+                        <div className="mt-5 rounded-2xl border border-[#b9d9cf] bg-[#e6f3ee] p-4">
                           <p className="text-xs font-extrabold text-orange-800 uppercase tracking-wide">
                             Selling Summary
                           </p>
@@ -811,8 +811,8 @@ export default function ProjectCostAnalyzer() {
                 </>
               ) : (
                 <div className="text-center py-12">
-                  <div className="mx-auto w-12 h-12 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center">
-                    <Home className="w-6 h-6 text-orange-600" />
+                  <div className="mx-auto w-12 h-12 rounded-2xl bg-[#e6f3ee] border border-orange-100 flex items-center justify-center">
+                    <Home className="w-6 h-6 text-teal-700" />
                   </div>
                   <h3 className="mt-4 font-extrabold text-gray-900">Select a flat</h3>
                   <p className="text-sm text-gray-500 mt-1">Click any table row to open profitability + sold details</p>
