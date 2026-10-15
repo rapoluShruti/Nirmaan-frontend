@@ -539,7 +539,7 @@
 // // //                   <div>
 // // //                     <div className="bg-[#e6f3ee] px-4 py-2 border-b flex items-center justify-between sticky top-0 z-10">
 // // //                       <h3 className="font-semibold text-teal-800 text-sm">In Progress</h3>
-// // //                       <span className="bg-orange-600 text-white px-2 py-0.5 rounded text-xs font-medium">
+// // //                       <span className="bg-teal-700 text-white px-2 py-0.5 rounded text-xs font-medium">
 // // //                         {filterTasks(inProgressTasks).length}
 // // //                       </span>
 // // //                     </div>
@@ -617,10 +617,10 @@
 // // //                     <button onClick={() => callStore(store.phone)} className="bg-green-600 hover:bg-green-700 text-white py-2 rounded text-sm font-medium transition-colors">
 // // //                       Call
 // // //                     </button>
-// // //                     <button onClick={() => getDirections(store.lat, store.lng)} className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded text-sm font-medium transition-colors">
+// // //                     <button onClick={() => getDirections(store.lat, store.lng)} className="bg-teal-700 hover:bg-teal-800 text-white py-2 rounded text-sm font-medium transition-colors">
 // // //                       Navigate
 // // //                     </button>
-// // //                     <button onClick={() => openGoogleMaps(store.lat, store.lng, store.name)} className="bg-orange-600 hover:bg-orange-700 text-white py-2 rounded text-sm font-medium transition-colors">
+// // //                     <button onClick={() => openGoogleMaps(store.lat, store.lng, store.name)} className="bg-teal-700 hover:bg-teal-800 text-white py-2 rounded text-sm font-medium transition-colors">
 // // //                       Map
 // // //                     </button>
 // // //                   </div>
@@ -1235,7 +1235,7 @@
 // //                   <div>
 // //                     <div className="bg-[#e6f3ee] px-4 py-2 border-b flex items-center justify-between sticky top-0 z-10">
 // //                       <h3 className="font-semibold text-teal-800 text-sm">In Progress</h3>
-// //                       <span className="bg-orange-600 text-white px-2 py-0.5 rounded text-xs font-medium">
+// //                       <span className="bg-teal-700 text-white px-2 py-0.5 rounded text-xs font-medium">
 // //                         {filterTasks(inProgressTasks).length}
 // //                       </span>
 // //                     </div>
@@ -1291,7 +1291,7 @@
 // //           <h2 className="text-xl font-semibold text-gray-900">Nearby Vendors</h2>
 // //         </div>
 // //         <div className="flex items-center gap-3">
-// //           <button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors">
+// //           <button className="bg-teal-700 hover:bg-teal-800 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors">
 // //             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 // //               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
 // //             </svg>
@@ -1355,7 +1355,7 @@
 // //                         </button>
 // //                         <button 
 // //                           onClick={() => getDirections(store.lat, store.lng)}
-// //                           className="bg-blue-600 text-white px-2 py-1 rounded text-xs"
+// //                           className="bg-teal-700 text-white px-2 py-1 rounded text-xs"
 // //                         >
 // //                           Navigate
 // //                         </button>
@@ -1399,7 +1399,7 @@
 // //                   <div className="flex items-center gap-2">
 // //                     <button 
 // //                       onClick={() => callStore(store.phone)}
-// //                       className="p-2 bg-[#e6f3ee] hover:bg-orange-200 text-teal-700 rounded-lg transition-colors"
+// //                       className="p-2 bg-[#e6f3ee] hover:bg-[#d7ebe2] text-teal-700 rounded-lg transition-colors"
 // //                     >
 // //                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 // //                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -1407,7 +1407,7 @@
 // //                     </button>
 // //                     <button 
 // //                       onClick={() => sendEmail(store.email)}
-// //                       className="p-2 bg-[#e6f3ee] hover:bg-orange-200 text-teal-700 rounded-lg transition-colors"
+// //                       className="p-2 bg-[#e6f3ee] hover:bg-[#d7ebe2] text-teal-700 rounded-lg transition-colors"
 // //                     >
 // //                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 // //                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -1449,7 +1449,7 @@
 // //                     </svg>
 // //                     <span>{store.address}</span>
 // //                     <span className="text-teal-700 font-medium ml-2">{store.distance}</span>
-// //                     <button className="text-blue-600 hover:text-blue-700 text-xs underline ml-2">
+// //                     <button className="text-teal-700 hover:text-teal-800 text-xs underline ml-2">
 // //                       mail+
 // //                     </button>
 // //                   </div>
@@ -1484,7 +1484,7 @@
 // //                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
 // //                 </svg>
 // //               </button>
-// //               <button className="w-8 h-8 bg-orange-600 text-white rounded text-sm font-medium">1</button>
+// //               <button className="w-8 h-8 bg-teal-700 text-white rounded text-sm font-medium">1</button>
 // //               <button className="w-8 h-8 text-gray-600 hover:bg-gray-100 rounded text-sm">2</button>
 // //               <button className="w-8 h-8 text-gray-600 hover:bg-gray-100 rounded text-sm">3</button>
 // //               <button className="w-8 h-8 text-gray-600 hover:bg-gray-100 rounded text-sm">4</button>
@@ -2237,7 +2237,7 @@
 //                   <div>
 //                     <div className="bg-[#e6f3ee] px-4 py-2 border-b flex items-center justify-between sticky top-0 z-10">
 //                       <h3 className="font-semibold text-teal-800 text-sm">In Progress</h3>
-//                       <span className="bg-orange-600 text-white px-2 py-0.5 rounded text-xs font-medium">
+//                       <span className="bg-teal-700 text-white px-2 py-0.5 rounded text-xs font-medium">
 //                         {filterTasks(inProgressTasks).length}
 //                       </span>
 //                     </div>
@@ -2287,7 +2287,7 @@
 //                 <h2 className="text-xl font-semibold text-gray-900">Nearby Vendors</h2>
 //               </div>
 //               <div className="flex items-center gap-3">
-//                 <button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors">
+//                 <button className="bg-teal-700 hover:bg-teal-800 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors">
 //                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 //                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
 //                   </svg>
@@ -2335,7 +2335,7 @@
 //                               <button onClick={() => callStore(store.phone)} className="bg-green-600 text-white px-2 py-1 rounded text-xs">
 //                                 Call
 //                               </button>
-//                               <button onClick={() => getDirections(store.lat, store.lng)} className="bg-blue-600 text-white px-2 py-1 rounded text-xs">
+//                               <button onClick={() => getDirections(store.lat, store.lng)} className="bg-teal-700 text-white px-2 py-1 rounded text-xs">
 //                                 Navigate
 //                               </button>
 //                             </div>
@@ -2370,13 +2370,13 @@
 //                         <div className="flex items-center gap-2">
 //                           <button
 //                             onClick={() => callStore(store.phone)}
-//                             className="p-2 bg-[#e6f3ee] hover:bg-orange-200 text-teal-700 rounded-lg transition-colors"
+//                             className="p-2 bg-[#e6f3ee] hover:bg-[#d7ebe2] text-teal-700 rounded-lg transition-colors"
 //                           >
 //                             📞
 //                           </button>
 //                           <button
 //                             onClick={() => sendEmail(store.email)}
-//                             className="p-2 bg-[#e6f3ee] hover:bg-orange-200 text-teal-700 rounded-lg transition-colors"
+//                             className="p-2 bg-[#e6f3ee] hover:bg-[#d7ebe2] text-teal-700 rounded-lg transition-colors"
 //                           >
 //                             ✉️
 //                           </button>
@@ -3134,7 +3134,7 @@ export default function ManagerDailyItineraryPage() {
                   <div>
                     <div className="bg-[#e6f3ee] px-4 py-2 border-b flex items-center justify-between sticky top-0 z-10">
                       <h3 className="font-semibold text-teal-800 text-sm">In Progress</h3>
-                      <span className="bg-orange-600 text-white px-2 py-0.5 rounded text-xs font-medium">
+                      <span className="bg-teal-700 text-white px-2 py-0.5 rounded text-xs font-medium">
                         {filterTasks(inProgressTasks).length}
                       </span>
                     </div>
@@ -3228,7 +3228,7 @@ export default function ManagerDailyItineraryPage() {
                               </button>
                               <button
                                 onClick={() => getDirections(store.lat, store.lng)}
-                                className="bg-blue-600 text-white px-2 py-1 rounded text-xs"
+                                className="bg-teal-700 text-white px-2 py-1 rounded text-xs"
                               >
                                 Navigate
                               </button>
