@@ -55,11 +55,11 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-100 px-4">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-xl border border-zinc-200">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-white to-slate-100 px-4 py-10">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-zinc-200 overflow-hidden">
         {/* Header */}
-        <div className="flex flex-col items-center gap-3 border-b border-zinc-200 px-8 py-6">
-          <div className="bg-orange-500 text-white p-3 rounded-lg">
+        <div className="flex flex-col items-center gap-3 border-b border-zinc-200 px-8 py-8 bg-gradient-to-b from-white to-orange-50/50">
+          <div className="bg-gradient-to-br from-orange-400 to-orange-600 text-white p-3 rounded-2xl shadow-lg shadow-orange-500/20">
             <HardHat size={28} />
           </div>
           <h1 className="text-2xl font-extrabold tracking-tight text-black">
@@ -89,7 +89,7 @@ export default function Login() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full rounded-md border border-zinc-300 pl-10 pr-3 py-2.5 text-sm focus:outline-none focus:border-orange-500"
+                className="w-full rounded-xl border border-zinc-300 pl-10 pr-3 py-3 text-sm focus:outline-none focus:border-orange-500"
               />
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-md bg-black py-3 text-sm font-bold text-white hover:bg-zinc-800 transition disabled:opacity-60"
+            className="w-full rounded-xl bg-orange-500 py-3.5 text-sm font-bold text-white shadow-lg shadow-orange-500/20 hover:bg-orange-600 transition disabled:opacity-60"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
