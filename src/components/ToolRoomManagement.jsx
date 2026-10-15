@@ -442,9 +442,11 @@ export default function ToolRoomManagement() {
                   </div>
                   <p className="mt-4 text-xs leading-5 text-[#71847d]">QR content identifies this tool and assignment in the current app. This is a client-generated label; backend persistence and a dedicated scan workflow are separate integrations.</p>
                 </div>
-                <div className="flex flex-col items-center justify-center rounded-2xl border border-[#dce7e1] p-5 text-center">
+                <div className="tool-qr-print flex flex-col items-center justify-center rounded-2xl border border-[#dce7e1] p-5 text-center">
                   <div className="rounded-xl bg-white p-3"><QRCode value={JSON.stringify({ app: "NIRMAAN", type: "tool", id: allocatedTool.id, name: allocatedTool.name, assignedTo: allocatedTool.issuedTo, zone: allocatedTool.zone })} size={180} level="M" /></div>
                   <p className="mt-4 text-sm font-bold">Tool QR label</p>
+                  <p className="mt-1 font-mono text-xs font-bold text-[#244740]">{allocatedTool.id}</p>
+                  <p className="mt-1 text-xs text-[#71847d]">{allocatedTool.issuedTo} · {allocatedTool.zone}</p>
                   <p className="mt-1 text-xs text-[#71847d]">Keep with the equipment</p>
                   <button onClick={() => window.print()} className="mt-4 w-full rounded-xl border border-[#dce7e1] px-4 py-2.5 text-sm font-bold text-[#244740] transition hover:bg-[#f4f7f4]">Print label</button>
                 </div>
