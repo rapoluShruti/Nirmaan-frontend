@@ -1066,3 +1066,236 @@ main .shadow-orange-500\/20 { --tw-shadow-color: rgba(15,118,110,.18); }
   .relative.bg-white.h-screen.overflow-y-auto > .relative > section:first-of-type h1 { font-size: clamp(2.5rem, 11vw, 3.7rem); }
   .relative.bg-white.h-screen.overflow-y-auto > .relative > section:not(:first-of-type) h2 { font-size: clamp(2rem, 9vw, 3rem); }
 }
+
+
+/* =========================================================
+   NIRMAAN DESIGN SYSTEM — application-wide consistency pass
+   Scope: presentation only. Keep route, form, and API behavior intact.
+========================================================= */
+:root {
+  --nm-ink: #102b2a;
+  --nm-text: #294240;
+  --nm-muted: #6b807b;
+  --nm-line: #dce7e1;
+  --nm-paper: #f4f7f4;
+  --nm-white: #ffffff;
+  --nm-teal: #0f766e;
+  --nm-teal-hover: #0b5d57;
+  --nm-teal-soft: #e6f3ee;
+  --nm-amber: #e9b45e;
+  --nm-amber-soft: #fff4dd;
+  --nm-danger: #b94343;
+  --nm-shadow: 0 2px 5px rgba(16, 43, 42, .025), 0 14px 34px rgba(16, 43, 42, .045);
+  --nm-shadow-hover: 0 8px 18px rgba(16, 43, 42, .055), 0 22px 44px rgba(16, 43, 42, .065);
+}
+html { background: var(--nm-paper); }
+body, #root { color: var(--nm-ink); }
+body { background: var(--nm-paper); }
+#root { min-height: 100vh; }
+a { text-underline-offset: 3px; }
+button, [role="button"], a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline-color: rgba(15, 118, 110, .5); }
+::selection { background: #cce9df; color: var(--nm-ink); }
+
+/* Every authenticated screen shares a calm, readable canvas. */
+main:not(:has(> div.relative.bg-white.h-screen.overflow-y-auto)) {
+  color: var(--nm-text);
+}
+main > div.min-h-screen,
+main > section.min-h-screen,
+main > .min-h-screen {
+  background-color: transparent;
+}
+main .container,
+main [class*="max-w-7xl"],
+main [class*="max-w-6xl"] {
+  min-width: 0;
+}
+main h1, main h2, main h3, main h4 {
+  color: var(--nm-ink);
+  text-wrap: balance;
+}
+main h1 { font-weight: 750; letter-spacing: -.045em; }
+main h2 { font-weight: 700; letter-spacing: -.035em; }
+main h3 { font-weight: 650; letter-spacing: -.025em; }
+
+/* Panels: subtle borders and depth instead of stacks of heavy shadows. */
+main .bg-white.rounded,
+main .bg-white.rounded-md,
+main .bg-white.rounded-lg,
+main .bg-white.rounded-xl,
+main .bg-white.rounded-2xl,
+main .bg-card.rounded,
+main .bg-card.rounded-lg,
+main .bg-card.rounded-xl,
+main .bg-card.rounded-2xl,
+main .dashboard-section,
+main .stat-card {
+  border-color: var(--nm-line);
+  box-shadow: var(--nm-shadow);
+}
+main .bg-white.rounded-lg,
+main .bg-white.rounded-xl,
+main .bg-card.rounded-lg,
+main .bg-card.rounded-xl,
+main .dashboard-section {
+  border-radius: 1rem;
+}
+main .stat-card { border-radius: .95rem; }
+main .stat-card:hover {
+  transform: translateY(-2px);
+  border-color: #bddbd0;
+  box-shadow: var(--nm-shadow-hover);
+}
+main .dashboard-section:hover { border-color: #d0e1d9; }
+
+/* Primary actions use mineral teal; amber is reserved for emphasis. */
+main button[class*="bg-blue-"],
+main a[class*="bg-blue-"],
+main button[class*="bg-orange-"],
+main a[class*="bg-orange-"],
+main button[class*="bg-indigo-"],
+main a[class*="bg-indigo-"] {
+  background-color: var(--nm-teal);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 5px 13px rgba(15, 118, 110, .13);
+}
+main button[class*="bg-blue-"]:hover,
+main a[class*="bg-blue-"]:hover,
+main button[class*="bg-orange-"]:hover,
+main a[class*="bg-orange-"]:hover,
+main button[class*="bg-indigo-"]:hover,
+main a[class*="bg-indigo-"]:hover {
+  background-color: var(--nm-teal-hover);
+}
+main button[class*="bg-amber-"],
+main a[class*="bg-amber-"] {
+  background-color: var(--nm-amber);
+  color: var(--nm-ink);
+}
+main button[class*="text-orange-"],
+main a[class*="text-orange-"],
+main button[class*="text-blue-"],
+main a[class*="text-blue-"] {
+  color: var(--nm-teal);
+}
+main .bg-orange-50, main [class*="bg-orange-50"],
+main .bg-blue-50, main [class*="bg-blue-50"] {
+  background-color: var(--nm-teal-soft);
+}
+main .border-orange-200, main [class*="border-orange-200"],
+main .border-blue-200, main [class*="border-blue-200"] {
+  border-color: #b9d9cf;
+}
+main button:not(:disabled):active,
+main a[class*="inline-flex"]:active {
+  transform: translateY(1px);
+}
+main button:disabled { box-shadow: none; }
+
+/* Forms are consistent, legible, and keyboard-friendly across workflows. */
+main input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+main select, main textarea {
+  color: var(--nm-ink);
+  border-color: #d5e1db;
+  border-radius: .72rem;
+  background-color: #fff;
+  box-shadow: inset 0 1px 1px rgba(16,43,42,.015);
+}
+main input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):hover,
+main select:hover, main textarea:hover { border-color: #b8d1c7; }
+main input:not([type="checkbox"]):not([type="radio"]):focus,
+main select:focus, main textarea:focus {
+  border-color: var(--nm-teal);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, .11);
+  outline: none;
+}
+main input::placeholder, main textarea::placeholder { color: #91a29d; }
+main label { color: #36504b; }
+main input[type="checkbox"], main input[type="radio"] { accent-color: var(--nm-teal); }
+
+/* Data tables, lists and timeline-like sections. */
+main .overflow-x-auto {
+  max-width: 100%;
+  border-color: var(--nm-line);
+  border-radius: .9rem;
+}
+main table { width: 100%; border-collapse: separate; border-spacing: 0; }
+main table thead { background: #f2f6f3; }
+main table th {
+  padding-top: .85rem;
+  padding-bottom: .85rem;
+  color: #607771;
+  font-size: .69rem;
+  font-weight: 750;
+  letter-spacing: .065em;
+  text-transform: uppercase;
+}
+main table td { color: #36504b; }
+main table tbody tr { transition: background-color 140ms ease; }
+main table tbody tr:hover { background: #f6faf7; }
+main table tbody tr:last-child td { border-bottom: 0; }
+
+/* Navigation refinements, including responsive controls. */
+header.w-full.bg-white.border-b {
+  background: rgba(255,255,255,.92);
+  border-color: var(--nm-line);
+  box-shadow: 0 4px 22px rgba(16,43,42,.035);
+}
+header.w-full.bg-white.border-b > nav > div:first-child svg {
+  background: var(--nm-teal);
+  color: #fff;
+  box-shadow: 0 5px 14px rgba(15,118,110,.18);
+}
+header.w-full.bg-white.border-b > nav > div:nth-child(2) a:hover {
+  background: var(--nm-teal-soft);
+  color: var(--nm-teal-hover);
+}
+header.w-full.bg-white.border-b > nav > div:nth-child(2) a[class*="text-orange-600"],
+header.w-full.bg-white.border-b > nav > div:nth-child(2) a[aria-current="page"] {
+  background: var(--nm-teal-soft);
+  color: var(--nm-teal-hover);
+}
+header.w-full.bg-white.border-b select { color: var(--nm-ink); }
+header.w-full.bg-white.border-b button { color: var(--nm-ink); }
+
+/* Keep charts, maps, canvases and safety/status colors semantically distinct. */
+.leaflet-container, canvas, svg { max-width: 100%; }
+.leaflet-container { border: 1px solid var(--nm-line); }
+.status-completed, [class*="text-green-"] { --tw-text-opacity: 1; }
+[role="alert"], .text-red-600, [class*="text-red-"] { overflow-wrap: anywhere; }
+
+/* Responsive cleanup: prevent wide grids and forms from pushing the viewport. */
+@media (max-width: 768px) {
+  main { min-width: 0; }
+  main .grid { min-width: 0; }
+  main .grid.grid-cols-3,
+  main .grid.grid-cols-4,
+  main .grid.grid-cols-5,
+  main .grid.grid-cols-6 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  main .flex.items-center.justify-between { flex-wrap: wrap; }
+  main .overflow-x-auto { overscroll-behavior-x: contain; }
+}
+@media (max-width: 480px) {
+  main .grid.grid-cols-2,
+  main .grid.grid-cols-3,
+  main .grid.grid-cols-4,
+  main .grid.grid-cols-5,
+  main .grid.grid-cols-6 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  main .px-8 { padding-left: 1rem; padding-right: 1rem; }
+  main .p-8 { padding: 1rem; }
+  main .gap-8 { gap: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
