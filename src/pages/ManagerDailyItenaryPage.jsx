@@ -2422,6 +2422,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import api from "../api/axiosConfig";
 import TaskDetailsPanel from "../components/TaskDetailsPanel";
+import { CalendarDays, ClipboardCheck, Clock3, Image as ImageIcon, Search, ShieldAlert, RefreshCw } from "lucide-react";
 
 // Fix markers
 delete L.Icon.Default.prototype._getIconUrl;
@@ -2449,6 +2450,21 @@ const saveSessionObj = (key, obj) => {
 };
 
 const generateOtp = () => String(Math.floor(100000 + Math.random() * 900000));
+
+const resolveMediaUrl = (value) => {
+  if (!value || typeof value !== "string") return "";
+  const trimmed = value.trim();
+  if (/^(https?:|data:|blob:)/i.test(trimmed)) return trimmed;
+  const backendBase = (import.meta.env.VITE_BACKEND_URL || "").replace(/\/+$/, "");
+  const path = trimmed.startsWith("/") ? trimmed : \`/\${trimmed}\`;
+  return backendBase ? \`\${backendBase}\${path}\` : path;
+};
+
+const getBeforePhoto = (task) =>
+  task?.beforePhotoUrl || task?.beforePhoto || task?.beforePhotoPath || "";
+
+const getAfterPhoto = (task) =>
+  task?.afterPhotoUrl || task?.afterPhoto || task?.afterPhotoPath || task?.completionPhotoUrl || "";
 
 const isHighRiskTask = (task, index) => {
   if (task?.isHighRisk === true) return true;
@@ -2674,7 +2690,7 @@ export default function ManagerDailyItineraryPage() {
   const projectFilteredTasks = selectedProject ? tasks.filter((t) => t.projectId === selectedProject) : tasks;
 
   const pendingApprovalTasks = projectFilteredTasks.filter(
-    (t) => t.status === "COMPLETED" && t.approved === false && t.afterPhotoUrl
+    (t) => t.status === "COMPLETED" && t.approved === false && getAfterPhoto(t)
   );
 
   const overdueTasks = projectFilteredTasks.filter(
@@ -2800,7 +2816,7 @@ export default function ManagerDailyItineraryPage() {
     }
 
     const isPendingApproval =
-      selectedTask.status === "COMPLETED" && selectedTask.approved === false && selectedTask.afterPhotoUrl;
+      selectedTask.status === "COMPLETED" && selectedTask.approved === false && getAfterPhoto(selectedTask);
 
     const isOverdue = selectedTask.status === "CREATED" && selectedTask.endDate && new Date(selectedTask.endDate) < today;
 
@@ -2826,7 +2842,7 @@ export default function ManagerDailyItineraryPage() {
           <p className="text-sm text-gray-700">{selectedTask.description}</p>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-6 space-y-6">
+        <div className="max-h-[65vh] space-y-6 overflow-y-auto p-4 sm:p-6">
           {/* Safety Request Panel */}
           {selectedTask.isHighRisk && (
             <div className="border rounded-lg p-4 bg-red-50 border-red-200">
@@ -2896,7 +2912,7 @@ export default function ManagerDailyItineraryPage() {
           )}
 
           {/* Photos */}
-          {selectedTask.beforePhotoUrl && (
+          {getBeforePhoto(selectedTask) && (
             <div>
               <div className="text-sm font-medium text-gray-700 mb-2">Before Photo</div>
               <img
@@ -2907,7 +2923,7 @@ export default function ManagerDailyItineraryPage() {
             </div>
           )}
 
-          {selectedTask.afterPhotoUrl && (
+          {getAfterPhoto(selectedTask) && (
             <div>
               <div className="text-sm font-medium text-gray-700 mb-2">After Photo</div>
               <img
@@ -2944,85 +2960,71 @@ export default function ManagerDailyItineraryPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f4f7f4]">
-      {/* Header */}
-      <div className="bg-white border-b px-6 py-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">Daily Itinerary</h1>
-              <p className="text-sm text-gray-600 mt-1">
-                {new Date().toLocaleDateString("en-IN", {
-                  weekday: "long",
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}
+      {/* Manager Today header */}
+      <header className="relative overflow-hidden bg-[#102b2a] text-white">
+        <div className="pointer-events-none absolute -right-20 -top-28 h-80 w-80 rounded-full border-[42px] border-white/[0.04]" />
+        <div className="pointer-events-none absolute right-24 top-16 h-44 w-44 rounded-full bg-teal-500/10 blur-3xl" />
+        <div className="relative mx-auto max-w-[1500px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+          <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+            <div className="min-w-0">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-teal-100">
+                <CalendarDays size={14} /> Manager workspace <span className="text-white/35">/</span> Daily operations
+              </div>
+              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Today at your sites</h1>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
+                Review site progress, safety requests and completion photos. Take action without chasing updates.
+              </p>
+              <p className="mt-4 flex items-center gap-2 text-xs font-medium text-teal-100/80 sm:text-sm">
+                <CalendarDays size={15} /> {new Date().toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
               </p>
             </div>
-            <div className="flex items-center gap-3">
-              <input
-                type="text"
-                placeholder="Search tasks..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-600 w-64"
-              />
-              <select
-                value={selectedProject}
-                onChange={(e) => {
-                  setSelectedProject(e.target.value);
-                  setSelectedTask(null);
-                }}
-                className="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
-              >
-                <option value="">Select Project</option>
-                {projects.map((project) => (
-                  <option key={project._id} value={project.projectId}>
-                    {project.name}
-                  </option>
-                ))}
-              </select>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(220px,1fr)_minmax(190px,auto)] xl:w-[560px]">
+              <label className="block min-w-0">
+                <span className="mb-1.5 block text-xs font-semibold text-slate-300">Search work</span>
+                <span className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-3.5 py-3 focus-within:border-teal-300">
+                  <Search size={17} className="shrink-0 text-teal-100" />
+                  <input type="search" placeholder="Task, description, supervisor…" value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full min-w-0 bg-transparent text-sm text-white outline-none placeholder:text-slate-400" />
+                </span>
+              </label>
+              <label className="block min-w-0">
+                <span className="mb-1.5 block text-xs font-semibold text-slate-300">Project</span>
+                <select value={selectedProject}
+                  onChange={(e) => { setSelectedProject(e.target.value); setSelectedTask(null); }}
+                  className="w-full min-w-0 rounded-xl border border-white/15 bg-[#183b38] px-3.5 py-3 text-sm text-white outline-none focus:border-teal-300">
+                  <option value="">Select project</option>
+                  {projects.map((project) => <option key={project._id} value={project.projectId}>{project.name}</option>)}
+                </select>
+              </label>
             </div>
           </div>
-
-          {/* Quick Stats */}
-          {selectedProject && (
-            <div className="flex items-center gap-6 text-sm flex-wrap">
-              <div className="flex items-center gap-2">
-                <span className="text-gray-600">Total:</span>
-                <span className="font-semibold">{projectFilteredTasks.length}</span>
+          <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-5">
+            {[
+              { label: "Tasks in project", value: projectFilteredTasks.length, icon: ClipboardCheck, note: "All tracked work", tone: "text-white" },
+              { label: "Safety review", value: safetyRequests.length, icon: ShieldAlert, note: "Needs manager action", tone: "text-amber-200" },
+              { label: "Ready to approve", value: pendingApprovalTasks.length, icon: ImageIcon, note: "Completion evidence", tone: "text-emerald-200" },
+              { label: "Overdue", value: overdueTasks.length, icon: Clock3, note: "Past due date", tone: "text-rose-200" },
+              { label: "In progress", value: inProgressTasks.length, icon: RefreshCw, note: "Active on site", tone: "text-teal-200" },
+            ].map(({ label, value, icon: Icon, note, tone }) => (
+              <div key={label} className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.06] p-4 backdrop-blur-sm">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-xs font-medium leading-4 text-slate-300 sm:text-sm">{label}</span>
+                  <Icon size={17} className={tone} />
+                </div>
+                <div className="mt-3 flex items-end justify-between gap-2">
+                  <span className="text-3xl font-bold tracking-tight text-white">{value}</span>
+                  {value > 0 && label !== "Tasks in project" && <span className="mb-1 h-2 w-2 shrink-0 rounded-full bg-teal-300 shadow-[0_0_0_4px_rgba(94,234,212,0.1)]" />}
+                </div>
+                <p className="mt-1 text-[11px] leading-4 text-slate-400">{note}</p>
               </div>
-
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
-                <span className="text-gray-600">Safety Requests:</span>
-                <span className="font-semibold text-yellow-700">{safetyRequests.length}</span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                <span className="text-gray-600">Approval:</span>
-                <span className="font-semibold text-green-600">{pendingApprovalTasks.length}</span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-red-500 rounded-full"></span>
-                <span className="text-gray-600">Overdue:</span>
-                <span className="font-semibold text-red-600">{overdueTasks.length}</span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-teal-700 rounded-full"></span>
-                <span className="text-gray-600">In Progress:</span>
-                <span className="font-semibold text-teal-700">{inProgressTasks.length}</span>
-              </div>
-            </div>
-          )}
+            ))}
+          </div>
         </div>
-      </div>
+      </header>
 
       {/* Content */}
-      <div className="flex-1 overflow-hidden">
+      <div className="min-h-[60vh] flex-1">
         {!selectedProject ? (
           <div className="h-full flex items-center justify-center">
             <div className="text-center max-w-md">
@@ -3048,9 +3050,9 @@ export default function ManagerDailyItineraryPage() {
             </div>
           </div>
         ) : (
-          <div className="h-full max-w-7xl mx-auto p-6 grid grid-cols-12 gap-6">
-            <div className="col-span-7 bg-white rounded-lg border overflow-hidden flex flex-col">
-              <div className="overflow-auto flex-1">
+          <div className="mx-auto grid w-full max-w-[1500px] grid-cols-1 items-start gap-5 px-4 py-5 sm:px-6 lg:px-8 xl:grid-cols-12">
+            <div className="min-w-0 overflow-hidden rounded-2xl border border-[#dce7e1] bg-white shadow-sm xl:col-span-7">
+              <div className="min-w-0 overflow-auto">
                 {/* Safety Requests */}
                 {filterTasks(safetyRequests).length > 0 && (
                   <div className="border-b">
@@ -3169,7 +3171,7 @@ export default function ManagerDailyItineraryPage() {
               </div>
             </div>
 
-            <div className="col-span-5 bg-white rounded-lg border overflow-hidden">
+            <div className="min-w-0 overflow-hidden rounded-2xl border border-[#dce7e1] bg-white shadow-sm xl:col-span-5 xl:sticky xl:top-4">
               {renderDetailPanel()}
             </div>
           </div>
