@@ -307,7 +307,7 @@ export default function ToolLibrary() {
           <div className="px-5 py-5">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="text-xs font-semibold tracking-wide text-orange-600 uppercase">
+                <p className="text-xs font-semibold tracking-wide text-teal-700 uppercase">
                   Tool Library
                 </p>
                 <h1 className="text-xl font-bold text-gray-900 mt-1">
@@ -318,8 +318,8 @@ export default function ToolLibrary() {
                 </p>
               </div>
 
-              <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center">
-                <Wrench className="w-5 h-5 text-orange-700" />
+              <div className="w-10 h-10 rounded-xl bg-[#e6f3ee] border border-[#b9d9cf] flex items-center justify-center">
+                <Wrench className="w-5 h-5 text-teal-800" />
               </div>
             </div>
 
@@ -345,7 +345,7 @@ export default function ToolLibrary() {
                 />
                 <button
                   onClick={handleOpenAllocateByToolId}
-                  className="px-4 py-3 rounded-xl bg-orange-600 text-white text-sm font-semibold hover:bg-orange-700 transition"
+                  className="px-4 py-3 rounded-xl bg-teal-700 text-white text-sm font-semibold hover:bg-teal-800 transition"
                 >
                   Allocate
                 </button>
@@ -358,7 +358,7 @@ export default function ToolLibrary() {
                 onClick={() => setActiveTab("heavy")}
                 className={`px-4 py-2.5 rounded-xl text-sm font-semibold border transition ${
                   activeTab === "heavy"
-                    ? "bg-orange-600 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-orange-600"
                     : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -369,7 +369,7 @@ export default function ToolLibrary() {
                 onClick={() => setActiveTab("light")}
                 className={`px-4 py-2.5 rounded-xl text-sm font-semibold border transition ${
                   activeTab === "light"
-                    ? "bg-orange-600 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-orange-600"
                     : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -380,7 +380,7 @@ export default function ToolLibrary() {
                 onClick={() => setActiveTab("repair")}
                 className={`px-4 py-2.5 rounded-xl text-sm font-semibold border transition ${
                   activeTab === "repair"
-                    ? "bg-orange-600 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-orange-600"
                     : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -448,7 +448,7 @@ export default function ToolLibrary() {
                             setSelectedTool(t);
                             setScreen("allocate");
                           }}
-                          className="px-3 py-2.5 rounded-xl bg-orange-600 text-white text-sm font-semibold hover:bg-orange-700 transition"
+                          className="px-3 py-2.5 rounded-xl bg-teal-700 text-white text-sm font-semibold hover:bg-teal-800 transition"
                         >
                           Allocate
                         </button>
@@ -501,8 +501,8 @@ export default function ToolLibrary() {
 
             <p className="text-sm font-semibold text-gray-900">Allocate Tool</p>
 
-            <div className="w-8 h-8 rounded-lg bg-orange-50 border border-orange-200 flex items-center justify-center">
-              <Wrench className="w-4 h-4 text-orange-700" />
+            <div className="w-8 h-8 rounded-lg bg-[#e6f3ee] border border-[#b9d9cf] flex items-center justify-center">
+              <Wrench className="w-4 h-4 text-teal-800" />
             </div>
           </div>
         </div>
@@ -571,7 +571,7 @@ export default function ToolLibrary() {
           <button
             onClick={handleAllocate}
             disabled={!allocateForm.worker || !allocateForm.zone}
-            className="w-full py-3.5 rounded-2xl bg-orange-600 text-white font-semibold hover:bg-orange-700 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
+            className="w-full py-3.5 rounded-2xl bg-teal-700 text-white font-semibold hover:bg-teal-800 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
           >
             Confirm Allocation
           </button>
@@ -603,8 +603,8 @@ export default function ToolLibrary() {
 
             <p className="text-sm font-semibold text-gray-900">Return Tool</p>
 
-            <div className="w-8 h-8 rounded-lg bg-orange-50 border border-orange-200 flex items-center justify-center">
-              <Wrench className="w-4 h-4 text-orange-700" />
+            <div className="w-8 h-8 rounded-lg bg-[#e6f3ee] border border-[#b9d9cf] flex items-center justify-center">
+              <Wrench className="w-4 h-4 text-teal-800" />
             </div>
           </div>
         </div>
@@ -631,7 +631,7 @@ export default function ToolLibrary() {
                 onClick={() => setReturnForm({ ...returnForm, condition: "good" })}
                 className={`py-3 rounded-xl border text-sm font-semibold transition ${
                   returnForm.condition === "good"
-                    ? "bg-orange-600 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-orange-600"
                     : "bg-white text-gray-800 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -642,7 +642,7 @@ export default function ToolLibrary() {
                 onClick={() => setReturnForm({ ...returnForm, condition: "damaged" })}
                 className={`py-3 rounded-xl border text-sm font-semibold transition ${
                   returnForm.condition === "damaged"
-                    ? "bg-orange-600 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-orange-600"
                     : "bg-white text-gray-800 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -666,7 +666,7 @@ export default function ToolLibrary() {
 
           <button
             onClick={handleReturnSubmit}
-            className="w-full py-3.5 rounded-2xl bg-orange-600 text-white font-semibold hover:bg-orange-700 transition"
+            className="w-full py-3.5 rounded-2xl bg-teal-700 text-white font-semibold hover:bg-teal-800 transition"
           >
             Confirm Return
           </button>
@@ -698,8 +698,8 @@ export default function ToolLibrary() {
 
             <p className="text-sm font-semibold text-gray-900">Repair Tracking</p>
 
-            <div className="w-8 h-8 rounded-lg bg-orange-50 border border-orange-200 flex items-center justify-center">
-              <Wrench className="w-4 h-4 text-orange-700" />
+            <div className="w-8 h-8 rounded-lg bg-[#e6f3ee] border border-[#b9d9cf] flex items-center justify-center">
+              <Wrench className="w-4 h-4 text-teal-800" />
             </div>
           </div>
         </div>
@@ -732,16 +732,16 @@ export default function ToolLibrary() {
                     <div
                       className={`w-8 h-8 rounded-full border flex items-center justify-center ${
                         done
-                          ? "bg-orange-600 border-orange-600"
+                          ? "bg-teal-700 border-orange-600"
                           : active
-                          ? "bg-orange-50 border-orange-300"
+                          ? "bg-[#e6f3ee] border-orange-300"
                           : "bg-white border-gray-200"
                       }`}
                     >
                       {done ? (
                         <CheckCircle2 className="w-4 h-4 text-white" />
                       ) : (
-                        <span className={`text-xs font-bold ${active ? "text-orange-700" : "text-gray-400"}`}>
+                        <span className={`text-xs font-bold ${active ? "text-teal-800" : "text-gray-400"}`}>
                           {idx + 1}
                         </span>
                       )}
@@ -752,7 +752,7 @@ export default function ToolLibrary() {
                         {s.label}
                       </p>
                       {active && (
-                        <p className="text-xs text-orange-700 font-semibold">Current Stage</p>
+                        <p className="text-xs text-teal-800 font-semibold">Current Stage</p>
                       )}
                     </div>
                   </div>
@@ -804,7 +804,7 @@ export default function ToolLibrary() {
                 resetFlow();
               }, 1600);
             }}
-            className="w-full py-3.5 rounded-2xl bg-orange-600 text-white font-semibold hover:bg-orange-700 transition"
+            className="w-full py-3.5 rounded-2xl bg-teal-700 text-white font-semibold hover:bg-teal-800 transition"
           >
             Save / Update Repair
           </button>
@@ -822,8 +822,8 @@ export default function ToolLibrary() {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center px-5">
         <div className="w-full max-w-md rounded-3xl border border-gray-200 bg-white shadow-xl p-6">
-          <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center">
-            <CheckCircle2 className="w-6 h-6 text-orange-700" />
+          <div className="w-12 h-12 rounded-xl bg-[#e6f3ee] border border-[#b9d9cf] flex items-center justify-center">
+            <CheckCircle2 className="w-6 h-6 text-teal-800" />
           </div>
 
           <p className="mt-4 text-lg font-bold text-gray-900">Action Completed</p>
