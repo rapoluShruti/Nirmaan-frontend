@@ -211,8 +211,8 @@ export default function NirmaanAssistant() {
 
   /* -------------------- UI -------------------- */
   return (
-    <div className="flex flex-col h-screen bg-orange-50">
-      <div className="bg-orange-600 text-white p-4 font-bold">
+    <div className="flex flex-col h-screen bg-[#f4f7f4]">
+      <div className="bg-teal-700 text-white p-4 font-bold">
         🏗️ Nirmaan Assistant
       </div>
 
@@ -222,7 +222,7 @@ export default function NirmaanAssistant() {
             key={i}
             className={`max-w-xl ${
               m.sender === "user"
-                ? "ml-auto bg-orange-600 text-white"
+                ? "ml-auto bg-teal-700 text-white"
                 : "bg-white"
             } p-4 rounded-xl`}
           >
@@ -255,7 +255,7 @@ export default function NirmaanAssistant() {
                 />
                 <button
                   onClick={submitMaterial}
-                  className="w-full bg-green-600 text-white p-2 rounded"
+                  className="w-full bg-teal-700 text-white p-2 rounded"
                 >
                   Send Request
                 </button>
@@ -269,7 +269,7 @@ export default function NirmaanAssistant() {
         <button
           onClick={startListening}
           className={`p-4 rounded-full ${
-            isListening ? "bg-red-600" : "bg-orange-600"
+            isListening ? "bg-red-600" : "bg-teal-700"
           }`}
         >
           {isListening ? (
@@ -289,7 +289,7 @@ export default function NirmaanAssistant() {
 
         <button
           onClick={() => handleUserText(input)}
-          className="bg-orange-600 p-3 rounded"
+          className="bg-teal-700 p-3 rounded"
         >
           <Send className="text-white" />
         </button>
