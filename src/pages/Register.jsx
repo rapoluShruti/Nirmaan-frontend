@@ -157,14 +157,14 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-white px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-white to-slate-100 px-4 py-10">
       <form
         onSubmit={handleSubmit}
-        className="bg-white w-full max-w-lg rounded-2xl shadow-xl p-8 space-y-6"
+        className="bg-white w-full max-w-lg rounded-2xl border border-slate-200 shadow-xl p-6 sm:p-8 space-y-6"
       >
         {/* HEADER */}
         <div>
-          <h1 className="text-2xl font-black text-gray-900">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900">
             Organization Registration
           </h1>
           <p className="text-sm text-gray-500">
@@ -179,7 +179,7 @@ export default function Register() {
             placeholder="Company / Firm Name"
             value={form.companyName}
             onChange={handleChange}
-            className="w-full p-3 border rounded-xl"
+            className="w-full p-3.5 border rounded-xl transition"
             required
           />
 
@@ -202,7 +202,7 @@ export default function Register() {
               value={form.gst}
               onChange={handleChange}
               onBlur={handleGSTBlur}
-              className="w-full p-3 border rounded-xl pr-10"
+              className="w-full p-3.5 border rounded-xl pr-10 transition"
             />
 
             {gstLoading && (
@@ -224,7 +224,7 @@ export default function Register() {
             value={form.address}
             onChange={handleChange}
             rows={2}
-            className="w-full p-3 border rounded-xl resize-none"
+            className="w-full p-3.5 border rounded-xl resize-none transition"
             required
           />
 
@@ -296,7 +296,7 @@ export default function Register() {
         {/* SUBMIT */}
         <button
           type="submit"
-          className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition"
+          className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orange-500/20 transition"
         >
           Register Organization
         </button>
