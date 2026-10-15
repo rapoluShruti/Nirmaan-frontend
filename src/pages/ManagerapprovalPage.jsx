@@ -121,5 +121,6 @@ export default function ManagerapprovalPage() {
         </div>
       )}
     </div>
+    </div>
   );
 }
