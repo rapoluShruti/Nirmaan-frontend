@@ -462,3 +462,93 @@ header.w-full.bg-white.border-b button {
     box-shadow: 0 12px 28px rgba(15, 23, 42, 0.07);
   }
 }
+
+
+/* Consistent application surfaces across legacy and newer screens */
+main {
+  min-width: 0;
+}
+
+main .min-h-screen.bg-gray-100,
+main .min-h-screen.bg-gray-50,
+main .min-h-screen.bg-slate-50,
+main .min-h-screen.bg-background {
+  background: transparent;
+}
+
+main .bg-gray-100,
+main .bg-gray-50 {
+  background-color: transparent;
+}
+
+main .bg-white.rounded,
+main .bg-white.rounded-lg,
+main .bg-white.rounded-xl,
+main .bg-white.rounded-2xl,
+main .bg-card.rounded,
+main .bg-card.rounded-lg,
+main .bg-card.rounded-xl {
+  border: 1px solid rgba(226, 232, 240, 0.88);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.025), 0 12px 28px rgba(15, 23, 42, 0.025);
+}
+
+main .bg-white.rounded.shadow,
+main .bg-white.rounded-lg.shadow,
+main .bg-white.rounded-xl.shadow,
+main .bg-white.rounded-2xl.shadow,
+main .bg-white.rounded.shadow-sm,
+main .bg-white.rounded-lg.shadow-sm,
+main .bg-white.rounded-xl.shadow-sm {
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.025), 0 12px 28px rgba(15, 23, 42, 0.025);
+}
+
+main h1, main h2, main h3 {
+  color: #172033;
+  letter-spacing: -0.035em;
+}
+
+main h1 {
+  line-height: 1.15;
+}
+
+main input:not([type="checkbox"]):not([type="radio"]),
+main select,
+main textarea {
+  border-radius: 0.7rem;
+  border-color: #dbe2ec;
+  background-color: #fff;
+}
+
+main input:not([type="checkbox"]):not([type="radio"]):focus,
+main select:focus,
+main textarea:focus {
+  border-color: #fb923c;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+}
+
+main table tbody tr:hover {
+  background: rgba(248, 250, 252, 0.9);
+}
+
+main a[class*="bg-orange-"],
+main button[class*="bg-orange-"] {
+  box-shadow: 0 4px 10px rgba(234, 88, 12, 0.1);
+}
+
+main button:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 640px) {
+  main {
+    overflow-wrap: anywhere;
+  }
+
+  main .grid {
+    min-width: 0;
+  }
+
+  main table {
+    font-size: 0.84rem;
+  }
+}
