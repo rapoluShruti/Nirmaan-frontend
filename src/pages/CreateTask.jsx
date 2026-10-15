@@ -639,19 +639,19 @@ const CreateTask = () => {
                     </h4>
                     
                     <div className="grid grid-cols-2 gap-y-3">
-                      <div className={`flex items-center gap-2 text-[11px] font-medium ${selectedTask?._id === task._id ? 'text-blue-100' : 'text-slate-500'}`}>
+                      <div className={`flex items-center gap-2 text-[11px] font-medium ${selectedTask?._id === task._id ? 'text-teal-100' : 'text-slate-500'}`}>
                         <Calendar size={12}/> {new Date(task.startDate).toLocaleDateString()}
                       </div>
-                      <div className={`flex items-center gap-2 text-[11px] font-medium ${selectedTask?._id === task._id ? 'text-blue-100' : 'text-slate-500'}`}>
+                      <div className={`flex items-center gap-2 text-[11px] font-medium ${selectedTask?._id === task._id ? 'text-teal-100' : 'text-slate-500'}`}>
                         <Users size={12}/> {task.workersRequired} Men
                       </div>
-                      <div className={`flex items-center gap-2 text-[11px] font-medium col-span-2 ${selectedTask?._id === task._id ? 'text-blue-100' : 'text-slate-500'}`}>
+                      <div className={`flex items-center gap-2 text-[11px] font-medium col-span-2 ${selectedTask?._id === task._id ? 'text-teal-100' : 'text-slate-500'}`}>
                         <HardHat size={12}/> {renderSupervisor(task.assignedSupervisor)}
                       </div>
                     </div>
 
                     <div className={`mt-4 pt-4 border-t flex justify-between items-center ${selectedTask?._id === task._id ? 'border-teal-300' : 'border-slate-50'}`}>
-                      <div className={`flex items-center gap-1 text-[10px] font-bold uppercase ${selectedTask?._id === task._id ? 'text-blue-200' : 'text-slate-400'}`}>
+                      <div className={`flex items-center gap-1 text-[10px] font-bold uppercase ${selectedTask?._id === task._id ? 'text-teal-200' : 'text-slate-400'}`}>
                         {task.aiVerified ? <ShieldCheck size={12}/> : <ShieldAlert size={12}/>}
                         {task.aiVerified ? 'AI Verified' : 'Awaiting Audit'}
                       </div>
@@ -728,7 +728,7 @@ const CreateTask = () => {
              </div>
 
              <div className="p-6 bg-teal-700 rounded-[2rem] text-white shadow-xl shadow-teal-100 relative overflow-hidden">
-                <Layers className="absolute -right-4 -bottom-4 text-blue-500 opacity-30" size={100} />
+                <Layers className="absolute -right-4 -bottom-4 text-teal-500 opacity-30" size={100} />
                 <p className="text-[10px] font-black uppercase mb-3 opacity-60">Field Instructions</p>
                 <p className="text-sm font-medium leading-relaxed italic relative z-10">
                   "{selectedTask.description?.text || "No manual override instructions provided for this deployment."}"
