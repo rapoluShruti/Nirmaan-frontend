@@ -103,7 +103,7 @@
 // //           <section className="xl:col-span-3">
 // //             <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm h-full">
 // //               <h3 className="font-bold mb-4 text-gray-700 flex items-center gap-2">
-// //                 <span className="w-6 h-6 rounded-full bg-orange-100 text-teal-700 text-xs flex items-center justify-center">1</span>
+// //                 <span className="w-6 h-6 rounded-full bg-[#e6f3ee] text-teal-700 text-xs flex items-center justify-center">1</span>
 // //                 Available Layouts
 // //               </h3>
 // //               <LayoutList
@@ -119,13 +119,13 @@
 // //             <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm min-h-[500px] flex flex-col">
 // //               <div className="flex items-center justify-between mb-4">
 // //                 <h3 className="font-bold text-gray-700 flex items-center gap-2">
-// //                   <span className="w-6 h-6 rounded-full bg-orange-100 text-teal-700 text-xs flex items-center justify-center">2</span>
+// //                   <span className="w-6 h-6 rounded-full bg-[#e6f3ee] text-teal-700 text-xs flex items-center justify-center">2</span>
 // //                   Blueprint Interaction
 // //                 </h3>
 // //                 {coordinates && (
 // //                   <button 
 // //                     onClick={() => setIsModalOpen(true)}
-// //                     className="bg-[#e6f3ee]0 hover:bg-teal-700 text-white px-5 py-2 rounded-xl transition-all font-medium shadow-md shadow-orange-100"
+// //                     className="bg-[#e6f3ee]0 hover:bg-teal-700 text-white px-5 py-2 rounded-xl transition-all font-medium shadow-md shadow-teal-100"
 // //                   >
 // //                     + Pin Task Here
 // //                   </button>
