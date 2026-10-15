@@ -202,7 +202,7 @@
 // // //           <div className="flex items-center gap-2 lg:gap-6">
 // // //             <div className="hidden sm:flex items-center gap-2 lg:gap-4 px-2 lg:px-4 py-1.5 lg:py-2 bg-zinc-100 border border-zinc-200 rounded">
 // // //               <div className="flex items-center gap-1.5 lg:gap-2">
-// // //                 <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-indigo-600 rounded-full animate-pulse"></div>
+// // //                 <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-teal-600 rounded-full animate-pulse"></div>
 // // //                 <span className="text-zinc-600 text-[10px] lg:text-xs font-mono">LIVE</span>
 // // //               </div>
 // // //               <div className="w-px h-3 lg:h-4 bg-zinc-300"></div>
@@ -256,14 +256,14 @@
 // // //               <div className="text-zinc-900 text-2xl lg:text-3xl font-mono font-bold">{totalTasks.toString().padStart(2, '0')}</div>
 // // //             </div>
             
-// // //             <div className="bg-indigo-50/30 border border-indigo-100 p-3 lg:p-4 rounded shadow-sm">
+// // //             <div className="bg-teal-50/30 border border-teal-100 p-3 lg:p-4 rounded shadow-sm">
 // // //               <div className="flex items-center justify-between mb-1.5 lg:mb-2">
-// // //                 <span className="text-indigo-700 text-[9px] lg:text-[10px] font-mono tracking-widest">IN PROGRESS</span>
-// // //                 <div className="w-5 lg:w-6 h-5 lg:h-6 bg-indigo-100 flex items-center justify-center rounded">
-// // //                   <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-indigo-600 rounded-full animate-pulse"></div>
+// // //                 <span className="text-teal-700 text-[9px] lg:text-[10px] font-mono tracking-widest">IN PROGRESS</span>
+// // //                 <div className="w-5 lg:w-6 h-5 lg:h-6 bg-teal-100 flex items-center justify-center rounded">
+// // //                   <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-teal-600 rounded-full animate-pulse"></div>
 // // //                 </div>
 // // //               </div>
-// // //               <div className="text-indigo-700 text-2xl lg:text-3xl font-mono font-bold">{inProgressCount.toString().padStart(2, '0')}</div>
+// // //               <div className="text-teal-700 text-2xl lg:text-3xl font-mono font-bold">{inProgressCount.toString().padStart(2, '0')}</div>
 // // //             </div>
             
 // // //             <div className="bg-red-50/30 border border-red-100 p-3 lg:p-4 rounded shadow-sm">
@@ -323,7 +323,7 @@
 // // //                   value={searchText}
 // // //                   onChange={(e) => setSearchText(e.target.value)}
 // // //                   placeholder="Task / location / ID"
-// // //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+// // //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
 // // //                 />
 // // //               </div>
 
@@ -334,7 +334,7 @@
 // // //                 <select
 // // //                   value={filterStatus}
 // // //                   onChange={(e) => setFilterStatus(e.target.value)}
-// // //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+// // //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
 // // //                 >
 // // //                   <option value="ALL">All</option>
 // // //                   <option value="IN_PROGRESS">In Progress</option>
@@ -350,7 +350,7 @@
 // // //                 <select
 // // //                   value={filterDate}
 // // //                   onChange={(e) => setFilterDate(e.target.value)}
-// // //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+// // //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
 // // //                 >
 // // //                   <option value="ALL">All</option>
 // // //                   <option value="TODAY">Today</option>
@@ -504,7 +504,7 @@
 // // //                               }}
 // // //                               className={`hidden lg:grid grid-cols-12 gap-6 px-6 py-4 items-center cursor-pointer transition-all
 // // //                                 ${isSelected 
-// // //                                   ? "bg-indigo-50/50 border-l-4 border-l-indigo-600" 
+// // //                                   ? "bg-teal-50/50 border-l-4 border-l-teal-700" 
 // // //                                   : "hover:bg-[#f4f7f4] border-l-4 border-l-transparent"
 // // //                                 }`}
 // // //                             >
@@ -520,8 +520,8 @@
 // // //                               <div className="col-span-2">
 // // //                                 {group === "Auto Carried Forward" ? (
 // // //                                   isInProgress ? (
-// // //                                     <div className="inline-flex items-center gap-2 px-2 py-1 bg-indigo-100 rounded text-indigo-700">
-// // //                                       <div className="w-1 h-1 bg-indigo-600 rounded-full animate-pulse"></div>
+// // //                                     <div className="inline-flex items-center gap-2 px-2 py-1 bg-teal-100 rounded text-teal-700">
+// // //                                       <div className="w-1 h-1 bg-teal-600 rounded-full animate-pulse"></div>
 // // //                                       <span className="text-[9px] font-mono font-bold">IN_PROGRESS</span>
 // // //                                     </div>
 // // //                                   ) : (
@@ -562,7 +562,7 @@
 // // //                               }}
 // // //                               className={`lg:hidden p-3 cursor-pointer transition-all border-l-4 ${
 // // //                                 isSelected 
-// // //                                   ? "bg-indigo-50/50 border-l-indigo-600" 
+// // //                                   ? "bg-teal-50/50 border-l-teal-700" 
 // // //                                   : "hover:bg-[#f4f7f4] border-l-transparent"
 // // //                               }`}
 // // //                             >
@@ -579,8 +579,8 @@
 // // //                               <div className="flex items-center gap-2 mb-2">
 // // //                                 {group === "Auto Carried Forward" ? (
 // // //                                   isInProgress ? (
-// // //                                     <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-indigo-100 rounded text-indigo-700">
-// // //                                       <div className="w-1 h-1 bg-indigo-600 rounded-full animate-pulse"></div>
+// // //                                     <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-teal-100 rounded text-teal-700">
+// // //                                       <div className="w-1 h-1 bg-teal-600 rounded-full animate-pulse"></div>
 // // //                                       <span className="text-[8px] font-mono font-bold">IN_PROGRESS</span>
 // // //                                     </div>
 // // //                                   ) : (
@@ -644,7 +644,7 @@
 // // //                 <div className="flex items-center justify-between">
 // // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">PROGRESS LOG</span>
 // // //                   {selectedTask && (
-// // //                     <span className="text-[9px] font-mono text-indigo-600 bg-indigo-50 px-2 py-0.5 border border-indigo-100 rounded">
+// // //                     <span className="text-[9px] font-mono text-teal-600 bg-teal-50 px-2 py-0.5 border border-teal-100 rounded">
 // // //                       #{selectedTask.taskId?.slice(-6).toUpperCase()}
 // // //                     </span>
 // // //                   )}
@@ -926,7 +926,7 @@
 // //           <div className="flex items-center gap-2 lg:gap-6">
 // //             <div className="hidden sm:flex items-center gap-2 lg:gap-4 px-2 lg:px-4 py-1.5 lg:py-2 bg-zinc-100 border border-zinc-200 rounded">
 // //               <div className="flex items-center gap-1.5 lg:gap-2">
-// //                 <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-indigo-600 rounded-full animate-pulse"></div>
+// //                 <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-teal-600 rounded-full animate-pulse"></div>
 // //                 <span className="text-zinc-600 text-[10px] lg:text-xs font-mono">LIVE</span>
 // //               </div>
 // //               <div className="w-px h-3 lg:h-4 bg-zinc-300"></div>
@@ -980,14 +980,14 @@
 // //               <div className="text-zinc-900 text-2xl lg:text-3xl font-mono font-bold">{totalTasks.toString().padStart(2, '0')}</div>
 // //             </div>
             
-// //             <div className="bg-indigo-50/30 border border-indigo-100 p-3 lg:p-4 rounded shadow-sm">
+// //             <div className="bg-teal-50/30 border border-teal-100 p-3 lg:p-4 rounded shadow-sm">
 // //               <div className="flex items-center justify-between mb-1.5 lg:mb-2">
-// //                 <span className="text-indigo-700 text-[9px] lg:text-[10px] font-mono tracking-widest">IN PROGRESS</span>
-// //                 <div className="w-5 lg:w-6 h-5 lg:h-6 bg-indigo-100 flex items-center justify-center rounded">
-// //                   <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-indigo-600 rounded-full animate-pulse"></div>
+// //                 <span className="text-teal-700 text-[9px] lg:text-[10px] font-mono tracking-widest">IN PROGRESS</span>
+// //                 <div className="w-5 lg:w-6 h-5 lg:h-6 bg-teal-100 flex items-center justify-center rounded">
+// //                   <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-teal-600 rounded-full animate-pulse"></div>
 // //                 </div>
 // //               </div>
-// //               <div className="text-indigo-700 text-2xl lg:text-3xl font-mono font-bold">{inProgressCount.toString().padStart(2, '0')}</div>
+// //               <div className="text-teal-700 text-2xl lg:text-3xl font-mono font-bold">{inProgressCount.toString().padStart(2, '0')}</div>
 // //             </div>
             
 // //             <div className="bg-red-50/30 border border-red-100 p-3 lg:p-4 rounded shadow-sm">
@@ -1047,7 +1047,7 @@
 // //                   value={searchText}
 // //                   onChange={(e) => setSearchText(e.target.value)}
 // //                   placeholder="Task / location / ID"
-// //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+// //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                 />
 // //               </div>
 
@@ -1058,7 +1058,7 @@
 // //                 <select
 // //                   value={filterStatus}
 // //                   onChange={(e) => setFilterStatus(e.target.value)}
-// //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+// //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                 >
 // //                   <option value="ALL">All</option>
 // //                   <option value="IN_PROGRESS">In Progress</option>
@@ -1074,7 +1074,7 @@
 // //                 <select
 // //                   value={filterDate}
 // //                   onChange={(e) => setFilterDate(e.target.value)}
-// //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+// //                   className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
 // //                 >
 // //                   <option value="ALL">All</option>
 // //                   <option value="TODAY">Today</option>
@@ -1228,7 +1228,7 @@
 // //                               }}
 // //                               className={`hidden lg:grid grid-cols-12 gap-6 px-6 py-4 items-center cursor-pointer transition-all
 // //                                 ${isSelected 
-// //                                   ? "bg-indigo-50/50 border-l-4 border-l-indigo-600" 
+// //                                   ? "bg-teal-50/50 border-l-4 border-l-teal-700" 
 // //                                   : "hover:bg-[#f4f7f4] border-l-4 border-l-transparent"
 // //                                 }`}
 // //                             >
@@ -1244,8 +1244,8 @@
 // //                               <div className="col-span-2">
 // //                                 {group === "Auto Carried Forward" ? (
 // //                                   isInProgress ? (
-// //                                     <div className="inline-flex items-center gap-2 px-2 py-1 bg-indigo-100 rounded text-indigo-700">
-// //                                       <div className="w-1 h-1 bg-indigo-600 rounded-full animate-pulse"></div>
+// //                                     <div className="inline-flex items-center gap-2 px-2 py-1 bg-teal-100 rounded text-teal-700">
+// //                                       <div className="w-1 h-1 bg-teal-600 rounded-full animate-pulse"></div>
 // //                                       <span className="text-[9px] font-mono font-bold">IN_PROGRESS</span>
 // //                                     </div>
 // //                                   ) : (
@@ -1286,7 +1286,7 @@
 // //                               }}
 // //                               className={`lg:hidden p-3 cursor-pointer transition-all border-l-4 ${
 // //                                 isSelected 
-// //                                   ? "bg-indigo-50/50 border-l-indigo-600" 
+// //                                   ? "bg-teal-50/50 border-l-teal-700" 
 // //                                   : "hover:bg-[#f4f7f4] border-l-transparent"
 // //                               }`}
 // //                             >
@@ -1303,8 +1303,8 @@
 // //                               <div className="flex items-center gap-2 mb-2">
 // //                                 {group === "Auto Carried Forward" ? (
 // //                                   isInProgress ? (
-// //                                     <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-indigo-100 rounded text-indigo-700">
-// //                                       <div className="w-1 h-1 bg-indigo-600 rounded-full animate-pulse"></div>
+// //                                     <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-teal-100 rounded text-teal-700">
+// //                                       <div className="w-1 h-1 bg-teal-600 rounded-full animate-pulse"></div>
 // //                                       <span className="text-[8px] font-mono font-bold">IN_PROGRESS</span>
 // //                                     </div>
 // //                                   ) : (
@@ -1368,7 +1368,7 @@
 // //                 <div className="flex items-center justify-between">
 // //                   <span className="text-[10px] font-mono text-zinc-500 tracking-widest font-bold">PROGRESS LOG</span>
 // //                   {selectedTask && (
-// //                     <span className="text-[9px] font-mono text-indigo-600 bg-indigo-50 px-2 py-0.5 border border-indigo-100 rounded">
+// //                     <span className="text-[9px] font-mono text-teal-600 bg-teal-50 px-2 py-0.5 border border-teal-100 rounded">
 // //                       #{selectedTask.taskId?.slice(-6).toUpperCase()}
 // //                     </span>
 // //                   )}
@@ -1811,7 +1811,7 @@
 //                               setShowSidePanel(true);
 //                             }}
 //                             className={`px-4 py-3 cursor-pointer transition-all border-l-4 ${
-//                               isSelected ? "bg-indigo-50 border-l-indigo-600" : "hover:bg-[#f4f7f4] border-l-transparent"
+//                               isSelected ? "bg-teal-50 border-l-teal-700" : "hover:bg-[#f4f7f4] border-l-transparent"
 //                             } ${isHighRisk ? "bg-red-50/60" : ""}`}
 //                           >
 //                             <div className="flex items-start justify-between">
@@ -2285,7 +2285,7 @@ export default function SupervisorItineraryPage() {
           <div className="flex items-center gap-2 lg:gap-6">
             <div className="hidden sm:flex items-center gap-2 lg:gap-4 px-2 lg:px-4 py-1.5 lg:py-2 bg-zinc-100 border border-zinc-200 rounded">
               <div className="flex items-center gap-1.5 lg:gap-2">
-                <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-indigo-600 rounded-full animate-pulse"></div>
+                <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-teal-600 rounded-full animate-pulse"></div>
                 <span className="text-zinc-600 text-[10px] lg:text-xs font-mono">LIVE</span>
               </div>
               <div className="w-px h-3 lg:h-4 bg-zinc-300"></div>
@@ -2346,16 +2346,16 @@ export default function SupervisorItineraryPage() {
               </div>
             </div>
 
-            <div className="bg-indigo-50/30 border border-indigo-100 p-3 lg:p-4 rounded shadow-sm">
+            <div className="bg-teal-50/30 border border-teal-100 p-3 lg:p-4 rounded shadow-sm">
               <div className="flex items-center justify-between mb-1.5 lg:mb-2">
-                <span className="text-indigo-700 text-[9px] lg:text-[10px] font-mono tracking-widest">
+                <span className="text-teal-700 text-[9px] lg:text-[10px] font-mono tracking-widest">
                   IN PROGRESS
                 </span>
-                <div className="w-5 lg:w-6 h-5 lg:h-6 bg-indigo-100 flex items-center justify-center rounded">
-                  <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-indigo-600 rounded-full animate-pulse"></div>
+                <div className="w-5 lg:w-6 h-5 lg:h-6 bg-teal-100 flex items-center justify-center rounded">
+                  <div className="w-1.5 lg:w-2 h-1.5 lg:h-2 bg-teal-600 rounded-full animate-pulse"></div>
                 </div>
               </div>
-              <div className="text-indigo-700 text-2xl lg:text-3xl font-mono font-bold">
+              <div className="text-teal-700 text-2xl lg:text-3xl font-mono font-bold">
                 {inProgressCount.toString().padStart(2, "0")}
               </div>
             </div>
@@ -2424,7 +2424,7 @@ export default function SupervisorItineraryPage() {
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
                   placeholder="Task / location / ID"
-                  className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
                 />
               </div>
 
@@ -2435,7 +2435,7 @@ export default function SupervisorItineraryPage() {
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
-                  className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
                 >
                   <option value="ALL">All</option>
                   <option value="IN_PROGRESS">In Progress</option>
@@ -2451,7 +2451,7 @@ export default function SupervisorItineraryPage() {
                 <select
                   value={filterDate}
                   onChange={(e) => setFilterDate(e.target.value)}
-                  className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-xs lg:text-sm border border-zinc-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-teal-500"
                 >
                   <option value="ALL">All</option>
                   <option value="TODAY">Today</option>
@@ -2641,7 +2641,7 @@ export default function SupervisorItineraryPage() {
                                   setShowSidePanel(true);
                                 }}
                                 className={`hidden lg:grid grid-cols-12 gap-6 px-6 py-4 items-center cursor-pointer transition-all border-l-4
-                                  ${isSelected ? "bg-indigo-50/50 border-l-indigo-600" : `hover:bg-[#f4f7f4] ${riskBg} ${riskBorder}`}
+                                  ${isSelected ? "bg-teal-50/50 border-l-teal-700" : `hover:bg-[#f4f7f4] ${riskBg} ${riskBorder}`}
                                 `}
                               >
                                 <div className="col-span-1">
@@ -2674,8 +2674,8 @@ export default function SupervisorItineraryPage() {
                                 <div className="col-span-2">
                                   {group === "Auto Carried Forward" ? (
                                     isInProgress ? (
-                                      <div className="inline-flex items-center gap-2 px-2 py-1 bg-indigo-100 rounded text-indigo-700">
-                                        <div className="w-1 h-1 bg-indigo-600 rounded-full animate-pulse"></div>
+                                      <div className="inline-flex items-center gap-2 px-2 py-1 bg-teal-100 rounded text-teal-700">
+                                        <div className="w-1 h-1 bg-teal-600 rounded-full animate-pulse"></div>
                                         <span className="text-[9px] font-mono font-bold">IN_PROGRESS</span>
                                       </div>
                                     ) : (
@@ -2720,7 +2720,7 @@ export default function SupervisorItineraryPage() {
                                 }}
                                 className={`lg:hidden p-3 cursor-pointer transition-all border-l-4 ${
                                   isSelected
-                                    ? "bg-indigo-50/50 border-l-indigo-600"
+                                    ? "bg-teal-50/50 border-l-teal-700"
                                     : `${isHighRisk ? "bg-red-50/60 border-l-red-500" : "hover:bg-[#f4f7f4] border-l-transparent"}`
                                 }`}
                               >
@@ -2748,8 +2748,8 @@ export default function SupervisorItineraryPage() {
                                 <div className="flex items-center gap-2 mb-2">
                                   {group === "Auto Carried Forward" ? (
                                     isInProgress ? (
-                                      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-indigo-100 rounded text-indigo-700">
-                                        <div className="w-1 h-1 bg-indigo-600 rounded-full animate-pulse"></div>
+                                      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-teal-100 rounded text-teal-700">
+                                        <div className="w-1 h-1 bg-teal-600 rounded-full animate-pulse"></div>
                                         <span className="text-[8px] font-mono font-bold">IN_PROGRESS</span>
                                       </div>
                                     ) : (
@@ -2816,7 +2816,7 @@ export default function SupervisorItineraryPage() {
                     PROGRESS LOG
                   </span>
                   {selectedTask && (
-                    <span className="text-[9px] font-mono text-indigo-600 bg-indigo-50 px-2 py-0.5 border border-indigo-100 rounded">
+                    <span className="text-[9px] font-mono text-teal-600 bg-teal-50 px-2 py-0.5 border border-teal-100 rounded">
                       #{selectedTask.taskId?.slice(-6).toUpperCase()}
                     </span>
                   )}
