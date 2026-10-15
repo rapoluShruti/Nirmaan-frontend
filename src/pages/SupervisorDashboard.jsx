@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { supervisorTasks } from "./supervisorTasks";
-import { ClipboardList, Users, Package, CalendarDays, WifiOff, MapPinned, X, Mic, Image as ImageIcon, Clock3, ArrowUpRight } from "lucide-react";
+import { ClipboardList, Users, Package, CalendarDays, WifiOff, MapPinned, X, Mic, Image as ImageIcon, ArrowUpRight } from "lucide-react";
 
 const priorityStyles = {
   High: "bg-rose-50 text-rose-700 border-rose-200",
