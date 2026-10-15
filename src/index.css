@@ -1611,3 +1611,30 @@ main [class~="focus:border-orange-500"]:focus { border-color: #0f766e !important
   }
   .tool-qr-print button { display: none !important; }
 }
+
+
+/* App-wide brand alignment for legacy screens still using blue Tailwind utilities. */
+main .bg-blue-600, main .bg-blue-500, main .bg-blue-700 {
+  background-color: #0f766e !important;
+}
+main [class~="hover:bg-blue-700"]:hover,
+main [class~="hover:bg-blue-600"]:hover { background-color: #0b5d57 !important; }
+main .text-blue-500, main .text-blue-600, main .text-blue-700, main .text-blue-800 {
+  color: #0f766e !important;
+}
+main .bg-blue-50, main .bg-blue-100 { background-color: #e6f3ee !important; }
+main .border-blue-100, main .border-blue-200, main .border-blue-300 {
+  border-color: #b9d9cf !important;
+}
+main [class~="focus:ring-blue-500"]:focus {
+  --tw-ring-color: rgba(15, 118, 110, .28) !important;
+}
+main [class~="focus:border-blue-500"]:focus { border-color: #0f766e !important; }
+main .bg-gradient-to-r.from-blue-500,
+main .bg-gradient-to-br.from-blue-500,
+main .bg-gradient-to-r.from-blue-600,
+main .bg-gradient-to-br.from-blue-600,
+main .bg-gradient-to-r.from-indigo-500,
+main .bg-gradient-to-br.from-indigo-500 {
+  background-image: linear-gradient(135deg, #102b2a, #0f766e) !important;
+}
