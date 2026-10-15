@@ -86,7 +86,7 @@
 //                 setSelectedTask(null);
 //               }}
 //               className={`border rounded-lg overflow-hidden ${
-//                 selectedLayout === layout ? "ring-2 ring-orange-400" : ""
+//                 selectedLayout === layout ? "ring-2 ring-teal-300" : ""
 //               }`}
 //             >
 //               <img
@@ -260,7 +260,7 @@
 //                         }}
 //                         className={`w-full border rounded-lg overflow-hidden transition-all hover:shadow-md ${
 //                           selectedLayout === layout 
-//                             ? "ring-2 ring-orange-400 border-orange-400" 
+//                             ? "ring-2 ring-teal-300 border-teal-300" 
 //                             : "border-gray-200 hover:border-gray-300"
 //                         }`}
 //                       >
@@ -404,7 +404,7 @@ export default function ManagerProjectLayoutPage() {
         };
       case "inprogress":
         return {
-          color: "bg-blue-100 text-blue-700 border-blue-200",
+          color: "bg-[#e6f3ee] text-teal-800 border-[#b9d9cf]",
           icon: "⟳",
           display: "In Progress"
         };
@@ -440,7 +440,7 @@ export default function ManagerProjectLayoutPage() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-8 h-8 border-4 border-teal-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-slate-600 font-medium">Loading projects...</p>
         </div>
       </div>
@@ -537,7 +537,7 @@ export default function ManagerProjectLayoutPage() {
             </div>
             <div className="text-center">
               <p className="text-xs text-slate-500 uppercase tracking-wider">In Progress</p>
-              <p className="text-lg font-bold text-blue-600">{taskStats.inProgress}</p>
+              <p className="text-lg font-bold text-teal-700">{taskStats.inProgress}</p>
             </div>
             <div className="text-center">
               <p className="text-xs text-slate-500 uppercase tracking-wider">Pending</p>
@@ -570,15 +570,15 @@ export default function ManagerProjectLayoutPage() {
                   <button
                     key={project.projectId}
                     onClick={() => setSelectedProjectId(project.projectId)}
-                    className="group bg-white/80 backdrop-blur-sm hover:bg-white border border-slate-200/60 hover:border-orange-300 rounded-2xl p-6 text-left transition-all duration-300 hover:shadow-lg hover:scale-105"
+                    className="group bg-white/80 backdrop-blur-sm hover:bg-white border border-slate-200/60 hover:border-teal-200 rounded-2xl p-6 text-left transition-all duration-300 hover:shadow-lg hover:scale-105"
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-orange-100 to-red-100 rounded-xl flex items-center justify-center group-hover:from-orange-200 group-hover:to-red-200 transition-all duration-300">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#e6f3ee] to-red-100 rounded-xl flex items-center justify-center group-hover:from-[#d7ebe2] group-hover:to-red-200 transition-all duration-300">
                         <svg className="w-6 h-6 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
                       </div>
-                      <svg className="w-5 h-5 text-slate-400 group-hover:text-orange-500 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-slate-400 group-hover:text-teal-700 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </div>
@@ -629,8 +629,8 @@ export default function ManagerProjectLayoutPage() {
                       }}
                       className={`min-w-[140px] md:min-w-0 border rounded-xl overflow-hidden transition-all duration-300 group ${
                         selectedLayout === layout 
-                          ? "border-orange-500 ring-2 ring-teal-200 shadow-lg scale-105" 
-                          : "border-slate-200 hover:border-orange-400 hover:shadow-md hover:scale-102"
+                          ? "border-teal-600 ring-2 ring-teal-200 shadow-lg scale-105" 
+                          : "border-slate-200 hover:border-teal-300 hover:shadow-md hover:scale-102"
                       }`}
                     >
                       <div className="relative">
