@@ -255,6 +255,7 @@ const PettyCashWallet = () => {
     return filteredExpenses.reduce((sum, exp) => sum + parseFloat(exp.amount), 0);
   };
 
+  const filteredExpenses = dateFilter ? expenses.filter((exp) => new Date(exp.date).toISOString().split('T')[0] === dateFilter) : expenses;
   const grandTotal = expenses.reduce((sum, exp) => sum + parseFloat(exp.amount), 0);
   const dailyTotal = calculateDailyTotal();
 
