@@ -9,7 +9,7 @@
 //         <button
 //           key={idx}
 //           onClick={() => onSelect(url)}
-//           className="border rounded overflow-hidden hover:ring-2 hover:ring-orange-500"
+//           className="border rounded overflow-hidden hover:ring-2 hover:ring-teal-500"
 //         >
 //           <img
 //             src={url}
@@ -32,12 +32,12 @@ export default function LayoutList({ layouts, selectedLayout, onSelect }) {
           <button
             key={idx}
             onClick={() => onSelect(url)}
-            className={`w-full group transition-all text-left rounded-xl overflow-hidden border-2 ${active ? "border-[#f27420] shadow-md" : "border-gray-100 hover:border-gray-300"}`}
+            className={`w-full group transition-all text-left rounded-xl overflow-hidden border-2 ${active ? "border-[#0f766e] shadow-md" : "border-gray-100 hover:border-gray-300"}`}
           >
             <div className="bg-gray-100 aspect-[16/10] flex items-center justify-center p-2">
               <img src={url} alt="" className={`max-h-full object-contain ${!active && "opacity-60 grayscale"}`} />
             </div>
-            <div className={`py-2.5 text-center text-[11px] font-bold ${active ? "bg-orange-50 text-[#f27420]" : "bg-gray-50 text-gray-500"}`}>
+            <div className={`py-2.5 text-center text-[11px] font-bold ${active ? "bg-teal-50 text-[#0f766e]" : "bg-gray-50 text-gray-500"}`}>
               Floor Layout {idx + 1}
             </div>
           </button>
