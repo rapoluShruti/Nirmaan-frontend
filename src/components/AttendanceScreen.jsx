@@ -1045,9 +1045,9 @@
 //   }, []);
 
 //   return (
-//     <div className="min-h-screen bg-gray-50">
+//     <div className="min-h-screen bg-[#f4f7f4]">
 //       {/* HEADER */}
-//       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+//       <header className="bg-[#102b2a] text-white border-b border-white/10 sticky top-0 z-10">
 //         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-3 sm:py-4">
 //           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
 //             <div>
@@ -1063,7 +1063,7 @@
 //                 })}
 //               </p>
 
-//               <p className="text-[11px] text-gray-500 mt-1">
+//               <p className="text-[11px] text-slate-400 mt-1">
 //                 Offline Photo Verification + GPS Geofence + Wage Automation (Hackathon Demo)
 //               </p>
 //             </div>
@@ -2715,17 +2715,17 @@ export default function AttendanceScreen() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#f4f7f4]">
       {/* HEADER */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+      <header className="bg-[#102b2a] text-white border-b border-white/10 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-3 sm:py-4">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
             <div className="min-w-0">
-              <h1 className="text-lg sm:text-2xl font-bold text-gray-900">
+              <h1 className="text-lg sm:text-2xl font-bold text-white">
                 Attendance Management
               </h1>
 
-              <p className="text-[11px] sm:text-sm text-gray-600 mt-1">
+              <p className="text-[11px] sm:text-sm text-slate-300 mt-1">
                 {new Date(selectedDate).toLocaleDateString("en-IN", {
                   weekday: "long",
                   day: "numeric",
@@ -2745,7 +2745,7 @@ export default function AttendanceScreen() {
                   {isOnline ? "Online" : "Offline"}
                 </span>
 
-                <span className="text-[11px] text-gray-500">
+                <span className="text-[11px] text-slate-400">
                   Offline Photo + Geofence + Wage Auto (Demo)
                 </span>
 
@@ -2825,7 +2825,7 @@ export default function AttendanceScreen() {
             <h2 className="text-base sm:text-xl font-bold text-gray-900">
               Visitors (Engineer/Manager/Client/Supervisor)
             </h2>
-            <p className="text-[11px] sm:text-sm text-gray-600 mt-1">
+            <p className="text-[11px] sm:text-sm text-slate-300 mt-1">
               Enroll → Start → End (Offline verification + Geofence)
             </p>
           </div>
@@ -2920,7 +2920,7 @@ export default function AttendanceScreen() {
               <h2 className="text-base sm:text-xl font-bold text-gray-900">
                 Labor Attendance + Wage
               </h2>
-              <p className="text-[11px] sm:text-sm text-gray-600 mt-1">
+              <p className="text-[11px] sm:text-sm text-slate-300 mt-1">
                 Enroll → Start Work → End Work → Wage Auto Calc → Pay
               </p>
             </div>
