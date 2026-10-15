@@ -346,7 +346,7 @@ export default function ToolLibrary() {
                   value={toolIdInput}
                   onChange={(e) => setToolIdInput(e.target.value.toUpperCase())}
                   placeholder="Tool ID (HT-001 / LT-003)"
-                  className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400 text-sm"
+                  className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400 text-sm"
                 />
                 <button
                   onClick={handleOpenAllocateByToolId}
@@ -363,7 +363,7 @@ export default function ToolLibrary() {
                 onClick={() => setActiveTab("heavy")}
                 className={`px-4 py-2.5 rounded-xl text-sm font-semibold border transition ${
                   activeTab === "heavy"
-                    ? "bg-teal-700 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-teal-600"
                     : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -374,7 +374,7 @@ export default function ToolLibrary() {
                 onClick={() => setActiveTab("light")}
                 className={`px-4 py-2.5 rounded-xl text-sm font-semibold border transition ${
                   activeTab === "light"
-                    ? "bg-teal-700 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-teal-600"
                     : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -385,7 +385,7 @@ export default function ToolLibrary() {
                 onClick={() => setActiveTab("repair")}
                 className={`px-4 py-2.5 rounded-xl text-sm font-semibold border transition ${
                   activeTab === "repair"
-                    ? "bg-teal-700 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-teal-600"
                     : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -400,7 +400,7 @@ export default function ToolLibrary() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search by ID / name / issued to..."
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400 text-sm"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400 text-sm"
               />
             </div>
           </div>
@@ -533,7 +533,7 @@ export default function ToolLibrary() {
             <select
               value={allocateForm.worker}
               onChange={(e) => setAllocateForm({ ...allocateForm, worker: e.target.value })}
-              className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400"
+              className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400"
             >
               <option value="">Select...</option>
               {workers.map((w, i) => (
@@ -550,7 +550,7 @@ export default function ToolLibrary() {
             <select
               value={allocateForm.zone}
               onChange={(e) => setAllocateForm({ ...allocateForm, zone: e.target.value })}
-              className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400"
+              className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400"
             >
               <option value="">Select...</option>
               {zones.map((z, i) => (
@@ -568,7 +568,7 @@ export default function ToolLibrary() {
               value={allocateForm.purpose}
               onChange={(e) => setAllocateForm({ ...allocateForm, purpose: e.target.value })}
               placeholder="e.g., slab drilling / shuttering work"
-              className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400"
+              className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400"
             />
           </div>
 
@@ -636,7 +636,7 @@ export default function ToolLibrary() {
                 onClick={() => setReturnForm({ ...returnForm, condition: "good" })}
                 className={`py-3 rounded-xl border text-sm font-semibold transition ${
                   returnForm.condition === "good"
-                    ? "bg-teal-700 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-teal-600"
                     : "bg-white text-gray-800 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -647,7 +647,7 @@ export default function ToolLibrary() {
                 onClick={() => setReturnForm({ ...returnForm, condition: "damaged" })}
                 className={`py-3 rounded-xl border text-sm font-semibold transition ${
                   returnForm.condition === "damaged"
-                    ? "bg-teal-700 text-white border-orange-600"
+                    ? "bg-teal-700 text-white border-teal-600"
                     : "bg-white text-gray-800 border-gray-200 hover:bg-gray-50"
                 }`}
               >
@@ -663,7 +663,7 @@ export default function ToolLibrary() {
                   onChange={(e) => setReturnForm({ ...returnForm, damageNote: e.target.value })}
                   rows={4}
                   placeholder="Describe issue clearly..."
-                  className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-orange-200 focus:border-orange-400"
+                  className="mt-2 w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400"
                 />
               </div>
             )}
@@ -737,9 +737,9 @@ export default function ToolLibrary() {
                     <div
                       className={`w-8 h-8 rounded-full border flex items-center justify-center ${
                         done
-                          ? "bg-teal-700 border-orange-600"
+                          ? "bg-teal-700 border-teal-600"
                           : active
-                          ? "bg-[#e6f3ee] border-orange-300"
+                          ? "bg-[#e6f3ee] border-teal-300"
                           : "bg-white border-gray-200"
                       }`}
                     >
