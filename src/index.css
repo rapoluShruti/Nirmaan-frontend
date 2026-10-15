@@ -1583,3 +1583,9 @@ main .bg-gradient-to-r.from-orange-500.to-orange-700,
 main .bg-gradient-to-br.from-orange-500.to-orange-700 {
   background-image: linear-gradient(135deg, #102b2a, #0f766e) !important;
 }
+
+/* Attribute selectors keep Tailwind's colon-containing utilities valid in plain CSS. */
+main [class~="hover:bg-orange-700"]:hover,
+main [class~="hover:bg-orange-600"]:hover { background-color: #0b5d57 !important; }
+main [class~="focus:ring-orange-500"]:focus { --tw-ring-color: rgba(15, 118, 110, .28) !important; }
+main [class~="focus:border-orange-500"]:focus { border-color: #0f766e !important; }
