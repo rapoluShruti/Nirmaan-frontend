@@ -91,7 +91,7 @@ export default function SupervisorLayoutPage() {
         };
       case "inprogress":
         return {
-          color: "bg-blue-100 text-blue-700 border-blue-200",
+          color: "bg-blue-100 text-blue-700 border-[#b9d9cf]",
           icon: "⟳",
           display: "In Progress"
         };
@@ -153,7 +153,7 @@ export default function SupervisorLayoutPage() {
       {/* MODERN HEADER */}
       <header className="bg-white/80 backdrop-blur-sm border-b border-slate-200/60 px-4 md:px-8 flex items-center justify-between shrink-0 sticky top-0 z-50">
         <div className="flex items-center space-x-4 py-4">
-          <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
+          <div className="w-10 h-10 bg-gradient-to-r from-[#102b2a] to-[#0f766e] rounded-xl flex items-center justify-center">
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
             </svg>
@@ -174,7 +174,7 @@ export default function SupervisorLayoutPage() {
             onClick={() => setViewMode("layout")}
             className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
               viewMode === "layout"
-                ? "bg-white text-orange-600 shadow-sm"
+                ? "bg-white text-teal-700 shadow-sm"
                 : "text-slate-600 hover:text-slate-800"
             }`}
           >
@@ -187,7 +187,7 @@ export default function SupervisorLayoutPage() {
             onClick={() => setViewMode("table")}
             className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
               viewMode === "table"
-                ? "bg-white text-orange-600 shadow-sm"
+                ? "bg-white text-teal-700 shadow-sm"
                 : "text-slate-600 hover:text-slate-800"
             }`}
           >
@@ -212,7 +212,7 @@ export default function SupervisorLayoutPage() {
           </div>
           <div className="text-center">
             <p className="text-xs text-slate-500 uppercase tracking-wider">In Progress</p>
-            <p className="text-lg font-bold text-blue-600">{taskStats.inProgress}</p>
+            <p className="text-lg font-bold text-teal-700">{taskStats.inProgress}</p>
           </div>
           <div className="text-center">
             <p className="text-xs text-slate-500 uppercase tracking-wider">Pending</p>
@@ -250,7 +250,7 @@ export default function SupervisorLayoutPage() {
                     }}
                     className={`min-w-[140px] md:min-w-0 border rounded-xl overflow-hidden transition-all duration-300 group ${
                       selectedLayout === layout
-                        ? "border-orange-500 ring-2 ring-orange-200 shadow-lg scale-105"
+                        ? "border-orange-500 ring-2 ring-teal-200 shadow-lg scale-105"
                         : "border-slate-200 hover:border-orange-400 hover:shadow-md hover:scale-102"
                     }`}
                   >
@@ -265,7 +265,7 @@ export default function SupervisorLayoutPage() {
                         Layout {index + 1}
                       </div>
                       {selectedLayout === layout && (
-                        <div className="absolute top-2 right-2 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                        <div className="absolute top-2 right-2 w-6 h-6 bg-teal-700 rounded-full flex items-center justify-center">
                           <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
@@ -291,7 +291,7 @@ export default function SupervisorLayoutPage() {
                   </div>
                   {selectedLayout && (
                     <div className="flex items-center space-x-2 text-xs text-slate-500">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                      <div className="w-2 h-2 bg-teal-700 rounded-full"></div>
                       <span>
                         {projectTasks.filter(t => t.layoutImage === selectedLayout).length} tasks on this layout
                       </span>
@@ -369,8 +369,8 @@ export default function SupervisorLayoutPage() {
                         <tr
                           key={task._id}
                           onClick={() => setSelectedTask(task)}
-                          className={`hover:bg-orange-50/50 transition-all duration-200 cursor-pointer group ${
-                            selectedTask?._id === task._id ? "bg-orange-50/80 ring-1 ring-orange-200" : ""
+                          className={`hover:bg-[#f7fbf8] transition-all duration-200 cursor-pointer group ${
+                            selectedTask?._id === task._id ? "bg-[#e6f3ee] ring-1 ring-teal-200" : ""
                           }`}
                         >
                           <td className="px-6 py-4 text-sm font-medium text-slate-900">
@@ -378,7 +378,7 @@ export default function SupervisorLayoutPage() {
                           </td>
                           <td className="px-6 py-4">
                             <div>
-                              <p className="font-semibold text-slate-800 group-hover:text-orange-600 transition-colors">
+                              <p className="font-semibold text-slate-800 group-hover:text-teal-700 transition-colors">
                                 {task.taskName}
                               </p>
                             </div>
@@ -395,7 +395,7 @@ export default function SupervisorLayoutPage() {
                                 e.stopPropagation();
                                 setSelectedTask(task);
                               }}
-                              className="text-orange-600 hover:text-orange-700 font-medium text-sm hover:bg-orange-50 px-3 py-1 rounded-lg transition-all duration-200"
+                              className="text-teal-700 hover:text-teal-800 font-medium text-sm hover:bg-[#f7fbf8] px-3 py-1 rounded-lg transition-all duration-200"
                             >
                               View Details
                             </button>
