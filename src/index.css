@@ -1638,3 +1638,22 @@ main .bg-gradient-to-r.from-indigo-500,
 main .bg-gradient-to-br.from-indigo-500 {
   background-image: linear-gradient(135deg, #102b2a, #0f766e) !important;
 }
+
+
+/* Indigo was used as a secondary primary color in older task flows; align it to teal. */
+main .bg-indigo-600, main .bg-indigo-500 {
+  background-color: #0f766e !important;
+}
+main [class~="hover:bg-indigo-700"]:hover,
+main [class~="hover:bg-indigo-600"]:hover { background-color: #0b5d57 !important; }
+main .text-indigo-500, main .text-indigo-600, main .text-indigo-700 {
+  color: #0f766e !important;
+}
+main .bg-indigo-50, main .bg-indigo-100 { background-color: #e6f3ee !important; }
+main .border-indigo-100, main .border-indigo-200, main .border-indigo-300 {
+  border-color: #b9d9cf !important;
+}
+main .bg-gradient-to-r.from-amber-500.to-orange-500,
+main .bg-gradient-to-r.from-amber-600.to-orange-600 {
+  background-image: linear-gradient(135deg, #102b2a, #0f766e) !important;
+}
