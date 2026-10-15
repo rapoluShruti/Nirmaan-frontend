@@ -450,7 +450,7 @@ export default function ManagerProjectLayoutPage() {
   const selectedProject = projects.find(p => p.projectId === selectedProjectId);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex flex-col">
+    <div className="min-h-screen bg-[#f4f7f4] flex flex-col">
       
       {/* MODERN HEADER */}
       <header className="bg-white/80 backdrop-blur-sm border-b border-slate-200/60 px-4 md:px-8 flex items-center justify-between shrink-0 sticky top-0 z-50">
