@@ -426,8 +426,9 @@ function App() {
       ],
       wrapper_selector: ".gtranslate_wrapper",
       flag_size: 28,
-      horizontal_position: "right",
-      vertical_position: "bottom",
+      switcher_horizontal_position: "right",
+      switcher_vertical_position: "bottom",
+      float_switcher_open_direction: "top",
       native_language_names: true,
     };
 
