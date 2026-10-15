@@ -590,7 +590,7 @@ const CreateTask = () => {
                 {tasks.filter(t => t.layoutImage === selectedImage).map(task => (
                   <div key={task._id} 
                     className={`absolute w-7 h-7 -ml-3.5 -mt-3.5 rounded-full border-2 border-white shadow-lg cursor-pointer flex items-center justify-center transition-all 
-                    ${selectedTask?._id === task._id ? 'scale-150 z-50 ring-4 ring-blue-500/20' : 'z-40'} 
+                    ${selectedTask?._id === task._id ? 'scale-150 z-50 ring-4 ring-teal-600/20' : 'z-40'} 
                     ${task.priority === 'High' || task.priority === 'Critical' ? 'bg-red-500' : 'bg-teal-700'}`}
                     style={{ left: `${task.coordinates.xPercent}%`, top: `${task.coordinates.yPercent}%` }}
                     onClick={() => setSelectedTask(task)}>
@@ -629,7 +629,7 @@ const CreateTask = () => {
                         <Hammer size={18} className={selectedTask?._id === task._id ? 'text-white' : 'text-teal-700'}/>
                       </div>
                       <span className={`text-[9px] px-2 py-1 rounded-md font-black uppercase tracking-tighter 
-                        ${task.priority === 'High' ? 'bg-red-100 text-red-600' : 'bg-blue-100 text-teal-700'}`}>
+                        ${task.priority === 'High' ? 'bg-red-100 text-red-600' : 'bg-[#e6f3ee] text-teal-700'}`}>
                         {task.priority}
                       </span>
                     </div>
@@ -650,7 +650,7 @@ const CreateTask = () => {
                       </div>
                     </div>
 
-                    <div className={`mt-4 pt-4 border-t flex justify-between items-center ${selectedTask?._id === task._id ? 'border-blue-400' : 'border-slate-50'}`}>
+                    <div className={`mt-4 pt-4 border-t flex justify-between items-center ${selectedTask?._id === task._id ? 'border-teal-300' : 'border-slate-50'}`}>
                       <div className={`flex items-center gap-1 text-[10px] font-bold uppercase ${selectedTask?._id === task._id ? 'text-blue-200' : 'text-slate-400'}`}>
                         {task.aiVerified ? <ShieldCheck size={12}/> : <ShieldAlert size={12}/>}
                         {task.aiVerified ? 'AI Verified' : 'Awaiting Audit'}
@@ -727,7 +727,7 @@ const CreateTask = () => {
                 </div>
              </div>
 
-             <div className="p-6 bg-teal-700 rounded-[2rem] text-white shadow-xl shadow-blue-200 relative overflow-hidden">
+             <div className="p-6 bg-teal-700 rounded-[2rem] text-white shadow-xl shadow-teal-100 relative overflow-hidden">
                 <Layers className="absolute -right-4 -bottom-4 text-blue-500 opacity-30" size={100} />
                 <p className="text-[10px] font-black uppercase mb-3 opacity-60">Field Instructions</p>
                 <p className="text-sm font-medium leading-relaxed italic relative z-10">
@@ -779,7 +779,7 @@ const CreateTask = () => {
               onChange={e => setFormData({...formData, descriptionText: e.target.value})} />
 
             <div className="flex gap-4 pt-4">
-              <button type="submit" className="flex-1 bg-teal-700 text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-teal-800 shadow-lg shadow-blue-200 transition-all">Submit to Field</button>
+              <button type="submit" className="flex-1 bg-teal-700 text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-teal-800 shadow-lg shadow-teal-100 transition-all">Submit to Field</button>
             </div>
           </form>
         </div>
