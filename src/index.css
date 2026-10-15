@@ -715,3 +715,21 @@ main .max-w-xl.bg-white {
     max-width: 100%;
   }
 }
+
+
+/* Mobile navigation uses a class-token selector to avoid escaped utility selectors. */
+@media (max-width: 767px) {
+  header.w-full.bg-white.border-b [class~="md:hidden"] {
+    padding: 0 1rem 1rem;
+    background: #fff;
+  }
+
+  header.w-full.bg-white.border-b [class~="md:hidden"] > div {
+    margin-top: 0.5rem;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.07);
+  }
+}
