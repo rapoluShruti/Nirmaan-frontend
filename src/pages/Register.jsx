@@ -3,51 +3,41 @@ import { registerUser } from "../api/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { HardHat, ArrowUpRight, Building2, ShieldCheck, CheckCircle2 } from "lucide-react";
 
-/* Demo GST lookup retained from the existing registration flow. */
-const mockGSTLookup = (gst) =>
-  new Promise((resolve) => {
-    setTimeout(() => resolve({
-      companyName: "Shree Infra Projects Pvt Ltd",
-      address: "Andheri East, Mumbai, Maharashtra – 400069",
-      status: "Active",
-    }), 1500);
-  });
-
 export default function Register() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     companyName: "", orgType: "BUILDER", gst: "", address: "", phone: "",
     name: "", email: "", password: "", role: "MANAGER",
   });
-  const [gstLoading, setGstLoading] = useState(false);
-  const [gstVerified, setGstVerified] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleGSTBlur = async () => {
-    if (form.gst.length < 10) return;
-    setGstLoading(true);
-    setGstVerified(false);
-    try {
-      const data = await mockGSTLookup(form.gst);
-      setForm((f) => ({ ...f, companyName: data.companyName, address: data.address }));
-      setGstVerified(true);
-    } catch {
-      setGstVerified(false);
-    } finally {
-      setGstLoading(false);
-    }
+  const handleChange = (e) => {
+    setForm((current) => ({ ...current, [e.target.name]: e.target.value }));
+    setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = { name: form.name, email: form.email, password: form.password, role: form.role };
+    setLoading(true);
+    setError("");
     try {
-      await registerUser(payload);
-      alert("Organization registered successfully!");
-      navigate("/login");
+      await registerUser({
+        companyName: form.companyName.trim(),
+        orgType: form.orgType,
+        gst: form.gst.trim().toUpperCase(),
+        address: form.address.trim(),
+        phone: form.phone.trim(),
+        name: form.name.trim(),
+        email: form.email.trim().toLowerCase(),
+        password: form.password,
+        role: form.role,
+      });
+      navigate("/login", { replace: true, state: { registered: true } });
     } catch (err) {
-      alert(err.response?.data?.message || "Registration failed");
+      setError(err.response?.data?.message || "Registration failed. Check your details and try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -77,7 +67,7 @@ export default function Register() {
             <div className="nirmaan-form-grid">
               <div className="nirmaan-field nirmaan-field-full"><label htmlFor="reg-company">Company / firm name</label><input id="reg-company" name="companyName" placeholder="e.g. Shree Infra Projects" value={form.companyName} onChange={handleChange} required /></div>
               <div className="nirmaan-field"><label htmlFor="reg-type">Organization type</label><select id="reg-type" name="orgType" value={form.orgType} onChange={handleChange}><option value="INDIVIDUAL">Individual / Contractor</option><option value="BUILDER">Builder</option><option value="DEVELOPER">Developer</option></select></div>
-              <div className="nirmaan-field"><label htmlFor="reg-gst">GST number <span>Optional</span></label><div className="nirmaan-gst-wrap"><input id="reg-gst" name="gst" placeholder="Enter GSTIN" value={form.gst} onChange={handleChange} onBlur={handleGSTBlur} />{gstLoading && <small>Checking…</small>}{gstVerified && !gstLoading && <CheckCircle2 size={17} />}</div></div>
+              <div className="nirmaan-field"><label htmlFor="reg-gst">GST number <span>Optional</span></label><input id="reg-gst" name="gst" placeholder="Enter GSTIN (optional)" value={form.gst} onChange={handleChange} /></div>
               <div className="nirmaan-field nirmaan-field-full"><label htmlFor="reg-address">Registered address</label><textarea id="reg-address" name="address" placeholder="Street, city, state and PIN code" value={form.address} onChange={handleChange} rows={2} required /></div>
               <div className="nirmaan-field nirmaan-field-full"><label htmlFor="reg-phone">Primary contact number</label><input id="reg-phone" name="phone" type="tel" placeholder="+91 98765 43210" value={form.phone} onChange={handleChange} required /></div>
             </div>
@@ -85,12 +75,13 @@ export default function Register() {
             <div className="nirmaan-form-grid">
               <div className="nirmaan-field"><label htmlFor="reg-name">Admin name</label><input id="reg-name" name="name" placeholder="Your full name" value={form.name} onChange={handleChange} required /></div>
               <div className="nirmaan-field"><label htmlFor="reg-email">Work email</label><input id="reg-email" type="email" name="email" placeholder="you@company.com" value={form.email} onChange={handleChange} autoComplete="email" required /></div>
-              <div className="nirmaan-field"><label htmlFor="reg-password">Password</label><input id="reg-password" type="password" name="password" placeholder="Create a password" value={form.password} onChange={handleChange} autoComplete="new-password" required /></div>
+              <div className="nirmaan-field"><label htmlFor="reg-password">Password</label><input id="reg-password" type="password" name="password" placeholder="At least 8 characters" value={form.password} onChange={handleChange} autoComplete="new-password" minLength={8} required /></div>
               <div className="nirmaan-field"><label htmlFor="reg-role">Your role</label><select id="reg-role" name="role" value={form.role} onChange={handleChange}><option value="MANAGER">Manager</option><option value="SITE_ENGINEER">Site Engineer</option><option value="SUPERVISOR">Supervisor</option></select></div>
             </div>
-            <button type="submit" className="nirmaan-submit">Create organization <ArrowUpRight size={17} /></button>
+            {error && <p className="nirmaan-auth-error" role="alert">{error}</p>}
+            <button type="submit" disabled={loading} className="nirmaan-submit">{loading ? "Creating workspace…" : "Create organization"} <ArrowUpRight size={17} /></button>
           </form>
-          <div className="nirmaan-secure-note"><ShieldCheck size={16} /><span>Registration details are used to configure your workspace. GST lookup is currently a demo.</span></div>
+          <div className="nirmaan-secure-note"><ShieldCheck size={16} /><span>Your organization details are stored with your admin account.</span></div>
         </section>
       </div>
       <footer className="nirmaan-register-footer">© NIRMAAN <span>·</span> Construction operations, thoughtfully connected.</footer>
