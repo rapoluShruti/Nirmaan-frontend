@@ -1,6 +1,14 @@
-import axios from "axios";
+import api from "../api";
 
-const API_URL = "http://localhost:5000/api/auth";
+// Both login and registration use the same configured API client.
+// VITE_BACKEND_URL must contain the backend origin, for example:
+// https://your-backend.onrender.com (without a trailing /api).
+export const registerUser = async (data) => {
+  const response = await api.post("/auth/register", data);
+  return response.data;
+};
 
-export const registerUser = (data) => axios.post(`${API_URL}/register`, data);
-export const loginUser = (data) => axios.post(`${API_URL}/login`, data);
+export const loginUser = async (data) => {
+  const response = await api.post("/auth/login", data);
+  return response.data;
+};
