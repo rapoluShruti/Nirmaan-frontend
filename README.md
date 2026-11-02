@@ -1,16 +1,27 @@
-# React + Vite
+# NIRMAAN Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite frontend for NIRMAAN construction operations.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Install dependencies: `npm install`
+2. Start the backend on port `5000` (see the backend repository's README and `.env.example`).
+3. Start the frontend: `npm run dev`
 
-## React Compiler
+The Vite development server proxies `/api` and `/uploads` to `http://localhost:5000`. The shared Axios client uses the relative `/api` path when `VITE_BACKEND_URL` is not set.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+To use an explicit backend origin locally, copy `.env.example` to `.env` and set `VITE_BACKEND_URL=http://localhost:5000`.
 
-## Expanding the ESLint configuration
+## Production deployment
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Set the Vite environment variable `VITE_BACKEND_URL` in your frontend hosting provider to the **backend origin only**, without a trailing slash or `/api` suffix. Example:
+
+```text
+VITE_BACKEND_URL=https://your-nirmaan-backend.example.com
+```
+
+Trigger a fresh frontend deployment after changing this variable; Vite embeds it at build time.
+
+Configure `FRONTEND_URL` in the backend environment to the exact deployed frontend origin (for example, `https://your-nirmaan-frontend.vercel.app`). For multiple allowed origins, separate them with commas.
+
+Never commit `.env` files or production secrets.
