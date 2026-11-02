@@ -1,29 +1,47 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { HardHat, Mail, Lock, ArrowUpRight, ShieldCheck, Building2, CheckCircle2 } from "lucide-react";
-import API from "../api/axiosConfig";
+import { loginUser } from "../api/auth";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setForm((current) => ({ ...current, [e.target.name]: e.target.value }));
+    setError("");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
     try {
-      const { data } = await API.post("/auth/login", form);
+      const data = await loginUser({
+        email: form.email.trim().toLowerCase(),
+        password: form.password,
+      });
+
+      if (!data?.token || !data?.user) {
+        throw new Error("The server returned an incomplete login response. Please try again.");
+      }
+
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-      const role = data.user.role;
-      if (role === "MANAGER") navigate("/quick-view", { replace: true });
-      else if (role === "SITE_ENGINEER") navigate("/task", { replace: true });
-      else if (role === "SUPERVISOR") navigate("/iop", { replace: true });
+
+      const roleRoutes = {
+        MANAGER: "/quick-view",
+        SITE_ENGINEER: "/task",
+        SUPERVISOR: "/iop",
+      };
+      const destination = roleRoutes[data.user.role] || "/";
+      const requestedPath = location.state?.from?.pathname;
+      navigate(requestedPath && requestedPath !== "/login" ? requestedPath : destination, { replace: true });
     } catch (err) {
-      alert(err.response?.data?.message || "Login failed");
+      setError(err.response?.data?.message || err.message || "Unable to sign in. Check your connection and try again.");
     } finally {
       setLoading(false);
     }
@@ -61,6 +79,7 @@ export default function Login() {
             <div className="nirmaan-input-wrap"><Mail size={18} /><input id="login-email" type="email" name="email" placeholder="you@company.com" value={form.email} onChange={handleChange} autoComplete="username" required /></div>
             <div className="nirmaan-password-label"><label htmlFor="login-password">Password</label><span>Secure access</span></div>
             <div className="nirmaan-input-wrap"><Lock size={18} /><input id="login-password" type="password" name="password" placeholder="Enter your password" value={form.password} onChange={handleChange} autoComplete="current-password" required /></div>
+            {error && <p className="nirmaan-auth-error" role="alert">{error}</p>}
             <button type="submit" disabled={loading} className="nirmaan-submit">{loading ? "Signing in…" : "Sign in to Nirmaan"} <ArrowUpRight size={17} /></button>
           </form>
           <div className="nirmaan-secure-note"><ShieldCheck size={16} /><span>Your workspace is protected with secure sign-in.</span></div>
